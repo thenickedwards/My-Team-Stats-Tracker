@@ -11,8 +11,8 @@ const goalSchema = new Schema({
 const assistSchema = new Schema({
   game: SoccerGame,
   minute: Number
-}
-)
+})
+
 // SOCCER PLAYER SCHEMA
 const soccerPlayerSchema = new Schema({
   playerFirstName: {

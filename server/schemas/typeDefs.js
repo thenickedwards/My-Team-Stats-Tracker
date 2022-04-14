@@ -68,16 +68,26 @@ const typeDefs = gql`
     seasons: [Season]
   }
 
+  type Goal {
+    _id: ID!
+    game: SoccerGame
+    minute: Number
+  }
+
+  type Assist {
+    _id: ID!
+    game: SoccerGame
+    minute: Number
+  }
+
   type SoccerPlayer {
     _id: ID!
     playerFirstName: String!
     playerLastName: String!
     playerPic: String
     playerNumber: Number
-    # UPDATE THESE!!!
-    # GOALS AND ASSISTS TO BE SUBDOC
-    goals: [SoccerPlayer]
-    assists: [SoccerPlayer]
+    goals: [Goal]
+    assists: [Assist]
     teams: [Team]
   }
 
