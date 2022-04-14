@@ -40,6 +40,8 @@ const theme = createTheme({
   },
 });
 
+
+
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
   uri: "/graphql",
@@ -64,9 +66,16 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
+
+
 function App() {
+
+  // const { location: { pathname } } = this.props;
+
   return (
+   
     <ApolloProvider client={client}>
+
       {
         <ThemeProvider theme={theme}>
           <Router>
@@ -88,6 +97,8 @@ function App() {
         </ThemeProvider>
       }
     </ApolloProvider>
+
+
   );
 }
 
