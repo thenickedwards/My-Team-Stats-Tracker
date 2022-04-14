@@ -12,6 +12,12 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 
+const sectionStyle = {
+  backgroundImage: 'url("/images/menu-stripes.png")',
+  backgroundRepeat: "no-repeat",
+  backgroundSize: "cover",
+};
+
 const pages = ["Games", "Teams", "Leagues"];
 const settings = ["Account", "My Leagues", "My Teams", "My Seasons"];
 
@@ -36,10 +42,10 @@ const Navbar = () => {
 
   return (
     <AppBar position="static">
-      <Container maxWidth="xl">
+      <Container maxWidth="xl" style={sectionStyle}>
         <Toolbar disableGutters>
           <Typography
-            variant="h6"
+            variant="h3"
             noWrap
             component="div"
             sx={{ mr: 2, display: { xs: "none", md: "flex" } }}
@@ -84,7 +90,7 @@ const Navbar = () => {
             </Menu>
           </Box>
           <Typography
-            variant="h6"
+            variant="h3"
             noWrap
             component="div"
             sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}
@@ -106,7 +112,11 @@ const Navbar = () => {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                <Avatar
+                  alt="Remy Sharp"
+                  src="/static/images/avatar/2.jpg"
+                  sx={{ width: 56, height: 56 }}
+                />
               </IconButton>
             </Tooltip>
             <Menu

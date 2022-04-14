@@ -24,6 +24,20 @@ const theme = createTheme({
   typography: {
     fontFamily: ["Bebas Neue", "cursive"].join(","),
   },
+  palette: {
+    primary: {
+      light: "#ECF6FC",
+      main: "#062740",
+      dark: "#062740",
+      contrastText: "#FFFFFF",
+    },
+    secondary: {
+      light: "#C1E0F8",
+      main: "#ECF6FC",
+      dark: "#06274033",
+      contrastText: "#000000",
+    },
+  },
 });
 
 // Construct our main GraphQL API endpoint
@@ -56,9 +70,9 @@ function App() {
       {
         <ThemeProvider theme={theme}>
           <Router>
+            <Navbar />
             <div className="flex-column justify-flex-start min-100-vh">
               <Header />
-              <Navbar />
               <div className="container">
                 <Routes>
                   <Route path="/" element={<Home />} />
