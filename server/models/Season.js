@@ -8,7 +8,7 @@ const seasonSchema = new Schema({
   },
   startMonth: {
     type: Number,
-    required: true,
+    // required: true,
   },
   endYear: {
     type: Number,
@@ -17,7 +17,7 @@ const seasonSchema = new Schema({
   },
   endMonth: {
     type: Number,
-    required: true,
+    // required: true,
   },
   league: {
     type: Schema.Types.ObjectId,
