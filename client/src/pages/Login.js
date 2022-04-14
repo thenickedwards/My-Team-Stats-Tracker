@@ -12,7 +12,7 @@ import Grid from '@mui/material/Grid';
 // import Box from '@mui/material/Box';
 ///////////////////
 
-const sectionStyle = {
+const loginStyle = {
   height: "100vh",
   backgroundImage: 'url("/images/login-background.png")',            
   backgroundRepeat: "no-repeat",
@@ -58,14 +58,15 @@ const Login = () => {
   return (
     <>
     <CssBaseline />
-    <Container disableGutters maxWidth="false" sx={{ bgcolor: '#cfe8fc', height: '100vh' }}>
+    <Container disableGutters maxWidth="false" sx={{ bgcolor: '#062740', height: '100vh' }}>
       
 
-      <Grid container spacing={2}>
-        <Grid item xs={8} style={sectionStyle}>
-          
+      <Grid spacing={2} container alignItems="center" >
+
+        <Grid xs={8} item style={loginStyle}>
         </Grid>
-        <Grid item xs={4}>
+
+        <Grid xs={4} item>
           
           {/* <form onSubmit={handleFormSubmit}> */}
           <form>
