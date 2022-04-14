@@ -3,13 +3,19 @@ const SoccerGame = require('./SoccerGame');
 
 // GOAL SCHEMA
 const goalSchema = new Schema({
-  game: SoccerGame,
+  game: {
+    type: Schema.Types.ObjectId,
+    ref: 'SoccerGame',
+  },
   minute: Number
 })
 
 // ASSIST SCHEMA
 const assistSchema = new Schema({
-  game: SoccerGame,
+  game: {
+    type: Schema.Types.ObjectId,
+    ref: 'SoccerGame',
+  },
   minute: Number
 })
 
