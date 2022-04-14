@@ -16,6 +16,8 @@ import Profile from './pages/Profile';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
+
+
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -40,40 +42,59 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
+
+
 function App() {
+
+  // const { location: { pathname } } = this.props;
+
   return (
+   
     <ApolloProvider client={client}>
-      <Router>
-        <div className="flex-column justify-flex-start min-100-vh">
-          <Header />
-          <div className="container">
-            <Routes>
-              <Route 
-                path="/"
-                element={<Home />}
-              />
-              <Route 
-                path="/login"
-                element={<Login />}
-              />
-              <Route 
-                path="/signup"
-                element={<Signup />}
-              />
-              <Route 
-                path="/me"
-                element={<Profile />}
-              />
-              <Route 
-                path="/profiles/:username"
-                element={<Profile />}
-              />
-            </Routes>
-          </div>
-          <Footer />
+     
+
+    <Router>
+      <div className="flex-column justify-flex-start min-100-vh">
+
+
+
+        <Header />
+        <div className="container">
+
+        
+          <Routes>
+            <Route 
+              path="/"
+              element={<Home />}
+            />
+            <Route 
+              path="/login"
+              element={<Login />}
+            />
+            <Route 
+              path="/signup"
+              element={<Signup />}
+            />
+            <Route 
+              path="/me"
+              element={<Profile />}
+            />
+            <Route 
+              path="/profiles/:username"
+              element={<Profile />}
+            />
+          </Routes>
+          
         </div>
-      </Router>
-    </ApolloProvider>
+        <Footer />
+
+        {/* { pathname !== 'login' && <Header /> } */}
+
+      </div>
+     
+    </Router>
+   
+  </ApolloProvider>
   );
 }
 
