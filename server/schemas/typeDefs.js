@@ -30,17 +30,17 @@ const typeDefs = gql`
 
   type Season {
     _id: ID!
-    startYear: Number!
-    startMonth: Number
-    endYear: Number
-    endMonth: Number
+    startYear: Int!
+    startMonth: Int
+    endYear: Int
+    endMonth: Int
     league: [League]
     teams: [Team]
   }
 
   input SeasonInput {
-    startYear: Number!
-    endYear: Number
+    startYear: Int!
+    endYear: Int
   }
 
   type SoccerTeam {
@@ -52,12 +52,12 @@ const typeDefs = gql`
     seasons: [Season]
     games: [SoccerGame]
     roster: [SoccerPlayer]
-    wins: Number
-    draws: Number
-    losses: Number
-    goalsFor: Number
-    goalsAgainst: Number
-    goalDifferential: Number
+    wins: Int
+    draws: Int
+    losses: Int
+    goalsFor: Int
+    goalsAgainst: Int
+    goalDifferential: Int
   }
 
   input SoccerTeamInput {
@@ -71,13 +71,13 @@ const typeDefs = gql`
   type Goal {
     _id: ID!
     game: SoccerGame
-    minute: Number
+    minute: Int
   }
 
   type Assist {
     _id: ID!
     game: SoccerGame
-    minute: Number
+    minute: Int
   }
 
   type SoccerPlayer {
@@ -85,7 +85,7 @@ const typeDefs = gql`
     playerFirstName: String!
     playerLastName: String!
     playerPic: String
-    playerNumber: Number
+    playerNumber: Int
     goals: [Goal]
     assists: [Assist]
     teams: [Team]
@@ -95,7 +95,7 @@ const typeDefs = gql`
     playerFirstName: String!
     playerLastName: String!
     playerPic: String
-    playerNumber: Number
+    playerNumber: Int
   }
 
   type SoccerGame {
@@ -103,20 +103,20 @@ const typeDefs = gql`
     gameDate: String!
     homeTeam: [Team]
     awayTeam: [Team]
-    goalsHome: Number
-    goalsAway: Number
-    assistsHome: Number
-    assistsAway: Number
+    goalsHome: Int
+    goalsAway: Int
+    assistsHome: Int
+    assistsAway: Int
   }
 
   type SoccerGameInput {
     gameDate: String!
     homeTeam: [Team]
     awayTeam: [Team]
-    goalsHome: Number
-    goalsAway: Number
-    assistsHome: Number
-    assistsAway: Number
+    goalsHome: Int
+    goalsAway: Int
+    assistsHome: Int
+    assistsAway: Int
   }
 
 
