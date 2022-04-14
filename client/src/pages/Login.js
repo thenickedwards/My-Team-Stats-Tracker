@@ -9,7 +9,15 @@
 import CssBaseline from '@mui/material/CssBaseline';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
+// import Box from '@mui/material/Box';
 ///////////////////
+
+const sectionStyle = {
+  height: "100vh",
+  backgroundImage: 'url("/images/login-background.png")',            
+  backgroundRepeat: "no-repeat",
+  backgroundSize: "cover"
+}
 
 const Login = () => {
 // const Login = (props) => {
@@ -54,8 +62,7 @@ const Login = () => {
       
 
       <Grid container spacing={2}>
-        <Grid item xs={8}>
-          <h1>Something</h1>
+        <Grid item xs={8} style={sectionStyle}>
           
         </Grid>
         <Grid item xs={4}>
