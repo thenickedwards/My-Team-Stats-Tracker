@@ -15,7 +15,8 @@ import MenuItem from "@mui/material/MenuItem";
 const sectionStyle = {
   backgroundImage: 'url("/images/menu-stripes.png")',
   backgroundRepeat: "no-repeat",
-  backgroundSize: "cover",
+  backgroundSize: "40%",
+  backgroundPosition: "right",
 };
 
 const pages = ["Games", "Teams", "Leagues"];
@@ -42,7 +43,7 @@ const Navbar = () => {
 
   return (
     <AppBar position="static">
-      <Container maxWidth="xl" style={sectionStyle}>
+      <Container maxWidth="xl" style={sectionStyle} justify="end">
         <Toolbar disableGutters>
           <Typography
             variant="h3"
