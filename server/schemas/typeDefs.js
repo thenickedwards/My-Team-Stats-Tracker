@@ -15,23 +15,21 @@ const typeDefs = gql`
   }
 
   type League {
-    _id: ID
+    _id: ID!
     leagueName: String!
     sport: String!
     leaguePic: String
     seasons: [Season]
   }
 
-  # _id: on both type and input???
   input LeagueInput {
-    _id: ID
     leagueName: String!
     sport: String!
     leaguePic: String
   }
 
   type Season {
-    _id: ID
+    _id: ID!
     startYear: Number!
     startMonth: Number
     endYear: Number
@@ -40,17 +38,13 @@ const typeDefs = gql`
     teams: [Team]
   }
 
-  # ASK ABOUT THESE INPUTS VS FORM IN XD
   input SeasonInput {
-    _id: ID
     startYear: Number!
-    startMonth: Number
     endYear: Number
-    endMonth: Number
   }
 
   type SoccerTeam {
-    _id: ID
+    _id: ID!
     teamName: String!
     teamColor: String
     teamPic: String
@@ -58,20 +52,15 @@ const typeDefs = gql`
     seasons: [Season]
     games: [SoccerGame]
     roster: [SoccerPlayer]
-    record: [
-      {
-        wins: Number,
-        draws: Number,
-        losses: Number,
-      }
-    ],
+    wins: Number,
+    draws: Number,
+    losses: Number,
     goalsFor: Number,
     goalsAgainst: Number,
     goalDifferential: Number
   }
 
   input SoccerTeamInput {
-    _id: ID
     teamName: String!
     teamColor: String
     teamPic: String
@@ -80,7 +69,7 @@ const typeDefs = gql`
   }
 
   type SoccerPlayer {
-    _id: ID
+    _id: ID!
     playerFirstName: String!
     playerLastName: String!
     playerPic: String
@@ -99,7 +88,6 @@ const typeDefs = gql`
   }
 
   input SoccerPlayerInput {
-    _id: ID
     playerFirstName: String!
     playerLastName: String!
     playerPic: String
@@ -107,7 +95,7 @@ const typeDefs = gql`
   }
 
   type SoccerGame {
-    _id: ID
+    _id: ID!
     gameDate: String!
     homeTeam: [Team]
     awayTeam: [Team]
@@ -117,8 +105,15 @@ const typeDefs = gql`
     assistsAway: Number
   }
 
-  # SoocerGameInput???
-
+  type SoccerGameInput {
+    gameDate: String!
+    homeTeam: [Team]
+    awayTeam: [Team]
+    goalsHome: Number
+    goalsAway: Number
+    assistsHome: Number
+    assistsAway: Number
+  }
 
 
   type Query {

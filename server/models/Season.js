@@ -6,18 +6,10 @@ const seasonSchema = new Schema({
     required: true,
     match: [/^\d\d\d\d$/, 'Must be 4 digit year!'],
   },
-  startMonth: {
-    type: Number,
-    // required: true,
-  },
   endYear: {
     type: Number,
     trim: true,
     match: [/^\d\d\d\d$/, 'Must be 4 digit year!'],
-  },
-  endMonth: {
-    type: Number,
-    // required: true,
   },
   league: {
     type: Schema.Types.ObjectId,
