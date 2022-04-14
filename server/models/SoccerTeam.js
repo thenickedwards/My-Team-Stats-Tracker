@@ -28,13 +28,9 @@ const soccerTeamSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'SoccerPlayer',
   },
-  record: [
-    {
-      wins: Number,
-      draws: Number,
-      losses: Number,
-    }
-  ],
+  wins: Number,
+  draws: Number,
+  losses: Number,
   goalsFor: Number,
   goalsAgainst: Number,
   goalDifferential: Number
