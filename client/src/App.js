@@ -16,6 +16,8 @@ import Profile from './pages/Profile';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
+
+
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -49,6 +51,8 @@ function App() {
   return (
    
     <ApolloProvider client={client}>
+     
+
     <Router>
       <div className="flex-column justify-flex-start min-100-vh">
 
@@ -87,7 +91,9 @@ function App() {
         {/* { pathname !== 'login' && <Header /> } */}
 
       </div>
+     
     </Router>
+   
   </ApolloProvider>
   );
 }

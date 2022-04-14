@@ -6,20 +6,46 @@
 // import Auth from '../utils/auth';
 
 // MATERIALS
-import CssBaseline from '@mui/material/CssBaseline';
-import Container from '@mui/material/Container';
-import Grid from '@mui/material/Grid';
+import { CssBaseline, Container, Grid, Box, TextField, Button } from '@mui/material';
+// import { makeStyles } from '@mui/styles';
+
+// import CssBaseline from '@mui/material/CssBaseline';
+// import Container from '@mui/material/Container';
+// import Grid from '@mui/material/Grid';
 // import Box from '@mui/material/Box';
+// import TextField from '@mui/material/TextField';
+
 ///////////////////
 
 const loginStyle = {
-  height: "100vh",
-  backgroundImage: 'url("/images/login-background.png")',            
-  backgroundRepeat: "no-repeat",
-  backgroundSize: "cover"
+  background: {
+    height: "100vh",
+    backgroundImage: 'url("/images/login-background.png")',            
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "cover"
+  },
+  textField: {
+    backgroundColor: "white",
+    borderRadius: "5px",
+    border: "none"
+  }
+
 }
 
+
+
+// const useStyles = makeStyles(() => ({
+//   textField: {
+//     backgroundColor: "#ffffff",
+//   },
+//   input: {
+//     color: "white"
+//   }
+// }))
+
 const Login = () => {
+
+  // const classes = useStyles();
 // const Login = (props) => {
   // const [formState, setFormState] = useState({ email: '', password: '' });
   // const [login, { error, data }] = useMutation(LOGIN_USER);
@@ -61,15 +87,59 @@ const Login = () => {
     <Container disableGutters maxWidth="false" sx={{ bgcolor: '#062740', height: '100vh' }}>
       
 
-      <Grid spacing={2} container alignItems="center" >
+      <Grid spacing={2} container alignItems="center" style={{position: "relative"}}>
 
-        <Grid xs={8} item style={loginStyle}>
+        <Grid xs={12} s={12} md={8} lg={8} style={loginStyle.background}>
+          {/* Background Image */}
         </Grid>
 
-        <Grid xs={4} item>
+
+        <Grid xs={12} s={12} md={4} lg={4} sx={{ p: 5, bgcolor: '#062740' }}             
+             >
           
+        <img src="images/login-slashes.png" alt="Abstract"  style={{position: "absolute", top:"0", right: "0"}} /> 
+
+          <Box sx={{ display: 'flex', gap:'25px'}}>
+
+            <h1>Login</h1>
+
+            <img src="images/login-line.png" alt="Abstract" /> 
+
+            <h1>Signup</h1>
+
+          </Box>
+      
+
+
+          <Box component="form" >
+
+            <div>
+              <TextField fullWidth
+                id="email-input"
+                placeholder="Email"
+                type="email"
+                margin="normal"
+                style={loginStyle.textField}
+              />
+
+              <TextField fullWidth
+                id="password-input"
+                placeholder="Password"
+                type="password"
+                margin="normal"
+                style={loginStyle.textField}
+              />
+
+              <Button 
+                variant="contained"  
+                sx={{ mt: 2, height: 50, bgcolor: "#105F9A" }}
+                fullWidth
+                disableElevation>
+                Login
+              </Button>
+        </div>
           {/* <form onSubmit={handleFormSubmit}> */}
-          <form>
+          {/* <form>
                 <input
                   className="form-input"
                   placeholder="Your email"
@@ -93,9 +163,11 @@ const Login = () => {
                 >
                   Submit
                 </button>
-              </form>
-
+              </form> */}
+            </Box>
           
+            <img src="images/login-dots.png" alt="Abstract"  style={{position: "absolute", bottom:"30px", right: "0"}} /> 
+
         </Grid>
       </Grid>
 
