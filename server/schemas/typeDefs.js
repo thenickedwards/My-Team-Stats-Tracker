@@ -52,11 +52,11 @@ const typeDefs = gql`
     seasons: [Season]
     games: [SoccerGame]
     roster: [SoccerPlayer]
-    wins: Number,
-    draws: Number,
-    losses: Number,
-    goalsFor: Number,
-    goalsAgainst: Number,
+    wins: Number
+    draws: Number
+    losses: Number
+    goalsFor: Number
+    goalsAgainst: Number
     goalDifferential: Number
   }
 
@@ -74,16 +74,10 @@ const typeDefs = gql`
     playerLastName: String!
     playerPic: String
     playerNumber: Number
-    goals: {
-      gameDate: String,
-      minute: Number,
-      totalGoals: Number,
-    },
-    assists: {
-      gameDate: String,
-      minute: Number,
-      totalAssists: Number,
-    },
+    # UPDATE THESE!!!
+    # GOALS AND ASSISTS TO BE SUBDOC
+    goals: [SoccerPlayer]
+    assists: [SoccerPlayer]
     teams: [Team]
   }
 
