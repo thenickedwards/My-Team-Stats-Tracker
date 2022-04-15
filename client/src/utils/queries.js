@@ -121,16 +121,9 @@ export const QUERY_SOCCERPLAYER = gql`
       playerPic
       playerNumber
       # Correct syntax?
-      goals [
-        gameDate
-        minute
-        totalGoals
-      ]
-      assists [
-        gameDate
-        minute
-        totalAssists
-      ]
+      # Updated by NE
+      goals
+      assists
       teams
     }
   }
@@ -145,16 +138,9 @@ export const QUERY_SOCCERPLAYERS = gql`
       playerPic
       playerNumber
       # Correct syntax?
-      goals [
-        gameDate
-        minute
-        totalGoals
-      ]
-      assists [
-        gameDate
-        minute
-        totalAssists
-      ]
+      # Updated by NE
+      goals
+      assists
       teams
     }
   }
