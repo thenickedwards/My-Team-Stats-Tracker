@@ -126,11 +126,29 @@ const typeDefs = gql`
     # user(username: String!): User
     user(email: String!): User
     me: User
+    # Above preloaded with React boilerplate
+    league: League
+    allLeagues: [League]
+    season: Season
+    allSeasons: [Season]
+    soccerTeam: SoccerTeam
+    allSoccerTeams: [SoccerTeam]
+    soccerPlayer: SoccerPlayer
+    allSoccerPlayers: [SoccerPlayer]
+    soccerGame: SoccerGame
+    allSoccerGames: [SoccerGame]
   }
 
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
+    # Above preloaded with React boilerplate
+    addLeague(league: LeagueInput): League
+    addSeason(season: SeasonInput): Season
+    addTeam(team: SoccerTeamInput): SoccerTeam
+    addPlayer(roster: SoccerPlayerInput): SoccerPlayer
+    addGame(games: SoccerGameInput): SoccerGame
+    # Still need edits and deletions
   }
 `;
 
