@@ -11,18 +11,29 @@ import { setContext } from "@apollo/client/link/context";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Home from "./pages/Home";
-import Signup from "./pages/Signup";
+// import Signup from "./pages/Signup";
 import Login from "./pages/Login";
-import Profile from "./pages/Profile";
+// import Profile from "./pages/Profile";
 
-import Header from "./components/Header";
+// import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
+// import { fontFamily } from "@mui/system";
 
 // Font import here (SEE INDEX.CSS FOR IMPORT)
 const theme = createTheme({
   typography: {
     fontFamily: ["Bebas Neue", "cursive"].join(","),
+    h1: {
+      fontSize: "3em"
+    },
+    h3: {
+      fontSize: "1.25em"
+    },
+    p: {
+      fontSize: "1em",
+      fontFamily: "Helvetica, sans-serif"
+    }
   },
   palette: {
     primary: {
@@ -34,7 +45,7 @@ const theme = createTheme({
     secondary: {
       light: "#C1E0F8",
       main: "#ECF6FC",
-      dark: "#06274033",
+      dark: "#597992",
       contrastText: "#000000",
     },
   },
@@ -79,20 +90,22 @@ function App() {
       {
         <ThemeProvider theme={theme}>
           <Router>
-            <Navbar />
-            <div className="flex-column justify-flex-start min-100-vh">
-              <Header />
-              <div className="container">
+            {/* <Navbar />
+            <div> */}
+              {/* <Header />
+              <div> */}
+
+{this.props.location.pathname !== '/login' && <Navbar />}
                 <Routes>
                   <Route path="/" element={<Home />} />
                   <Route path="/login" element={<Login />} />
-                  <Route path="/signup" element={<Signup />} />
-                  <Route path="/me" element={<Profile />} />
-                  <Route path="/profiles/:username" element={<Profile />} />
+                  {/* <Route path="/signup" element={<Signup />} /> */}
+                  {/* <Route path="/me" element={<Profile />} />
+                  <Route path="/profiles/:username" element={<Profile />} /> */}
                 </Routes>
-              </div>
+              {/* </div> */}
               <Footer />
-            </div>
+            {/* </div> */}
           </Router>
         </ThemeProvider>
       }
