@@ -40,7 +40,9 @@ const loginStyle = {
 };
 
 const Login = (props) => {
-  const [formState, setFormState] = useState({ email: "", password: "" });
+  // const [formState, setFormState] = useState({ email: "", password: "" });
+
+  const [formState, setFormState] = useState({ username: "", password: "" });
   const [login, { error, data }] = useMutation(LOGIN_USER);
 
   // update state based on form input changes
@@ -69,7 +71,8 @@ const Login = (props) => {
 
     // clear form values
     setFormState({
-      email: "",
+      // email: "",
+      username: "",
       password: "",
     });
   };
@@ -148,18 +151,21 @@ const Login = (props) => {
                   <form onSubmit={handleFormSubmit}>
                     <TextField
                       fullWidth
-                      id="email-input"
-                      placeholder="Email"
-                      type="email"
+                      id="username"
+                      name="username"
+                      placeholder="Username"
+                      // type="username"
+                      type="text"
                       margin="normal"
                       style={loginStyle.textField}
-                      value={formState.email}
+                      value={formState.username}
                       onChange={handleChange}
                     />
 
                     <TextField
                       fullWidth
-                      id="password-input"
+                      id="password"
+                      name="password"
                       placeholder="Password"
                       type="password"
                       margin="normal"

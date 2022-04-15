@@ -1,45 +1,76 @@
 import { gql } from '@apollo/client';
 
-// TODO: Double check arguemnts, add to rest of mutations
 export const LOGIN_USER = gql`
-  mutation login(
-    $email: String!, 
-    $password: String!,
-    $firstName: String,
-    $lastName: String
-    ) {
-    login(
-      email: $email, 
-      password: $password,
-      firstName: $firstName,
-      lastName: $lastName
-      ) {
+  mutation login($username: String!, $password: String!) {
+    login(username: $username, password: $password) {
       token
       user {
         _id
-        email
-        password
-        firstName
-        lastName
+        username
       }
     }
   }
 `;
 
+// Need to add email, firstname, lastname
 export const ADD_USER = gql`
-  mutation addUser($email: String!, $password: String!) {
-    addUser(email: $email, password: $password) {
+  mutation addUser($username: String!, $password: String!) {
+    addUser(username: $username, password: $password) {
       token
       user {
         _id
-        email
-        password
-        firstName
-        lastName
+        username
       }
     }
   }
 `;
+
+// TODO: Double check arguemnts, add to rest of mutations
+// export const LOGIN_USER = gql`
+//   mutation login(
+//     $username: String!,
+//     # $email: String, 
+//     $password: String!,
+//     # $firstName: String,
+//     # $lastName: String
+//     ) {
+//     login(
+//       username: $username,
+//       # email: $email, 
+//       password: $password,
+//       # firstName: $firstName,
+//       # lastName: $lastName
+//       ) {
+//       token
+//       user {
+//         _id
+//         username
+//         email
+//         password
+//         firstName
+//         lastName
+//       }
+//     }
+//   }
+// `;
+
+// For Signup Form?
+// Switch email to username
+// export const ADD_USER = gql`
+//   mutation addUser($email: String!, $password: String!) {
+//     addUser(email: $email, password: $password) {
+//       token
+//       user {
+//         _id
+//         username
+//         email
+//         password
+//         firstName
+//         lastName
+//       }
+//     }
+//   }
+// `;
 
 // export const ADD_LEAGUE = gql`
 //   mutation addLeague() {

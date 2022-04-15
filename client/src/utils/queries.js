@@ -1,26 +1,26 @@
 import { gql } from '@apollo/client';
 
-// export const QUERY_USER = gql`
-//   query user($username: String!) {
-//     user(username: $username) {
-//       _id
-//       username
-//       email
-//     }
-//   }
-// `;
+export const QUERY_USER = gql`
+  query user($username: String!) {
+    user(username: $username) {
+      _id
+      username
+      email
+    }
+  }
+`;
 
 // ** Could use for favorites page, beyond MVP **
 
-// export const QUERY_ME = gql`
-//   query me {
-//     me {
-//       _id
-//       username
-//       email
-//     }
-//   }
-// `;
+export const QUERY_ME = gql`
+  query me {
+    me {
+      _id
+      username
+      email
+    }
+  }
+`;
 
 export const QUERY_LEAGUE = gql`
   query league {
