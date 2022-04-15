@@ -12,11 +12,16 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 
-const sectionStyle = {
-  backgroundImage: 'url("/images/menu-stripes.png")',
-  backgroundRepeat: "no-repeat",
-  backgroundSize: "40%",
-  backgroundPosition: "right",
+const navStyle = {
+  navImage: {
+    backgroundImage: 'url("/images/menu-stripes.png")',
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "40%",
+    backgroundPosition: "right",
+  },
+  navBackground: {
+    backgroundColor: "#062740"
+  }
 };
 
 const pages = ["Games", "Teams", "Leagues"];
@@ -42,8 +47,8 @@ const Navbar = () => {
   };
 
   return (
-    <AppBar position="static">
-      <Container maxWidth="xl" style={sectionStyle} justify="end">
+    <AppBar position="static" style={navStyle.navBackground}>
+      <Container maxWidth="xl" style={navStyle.navImage} justify="end">
         <Toolbar disableGutters>
           <Typography
             variant="h3"

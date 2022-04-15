@@ -8,39 +8,51 @@ import {
   createHttpLink,
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 
 import Home from "./pages/Home";
-import Signup from "./pages/Signup";
+// import Signup from "./pages/Signup";
 import Login from "./pages/Login";
-import Profile from "./pages/Profile";
+// import Profile from "./pages/Profile";
 
-import Header from "./components/Header";
+// import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
+// import { fontFamily } from "@mui/system";
 
 // Font import here (SEE INDEX.CSS FOR IMPORT)
 const theme = createTheme({
   typography: {
-    fontFamily: ["Bebas Neue", "cursive"].join(","),
+    // fontFamily: ["Bebas Neue", "cursive"].join(","),
+    fontFamily: '"Bebas Neue", Arial, sans-serif',
+    h1: {
+      fontSize: "3em",
+      textTransform: "uppercase"
+    },
+    h3: {
+      fontSize: "1.25em",
+      textTransform: "uppercase"
+    },
+    p: {
+      fontSize: "1em",
+      fontFamily: "Helvetica, sans-serif",
+    },
   },
   palette: {
     primary: {
-      light: "#ECF6FC",
-      main: "#062740",
-      dark: "#062740",
+      light: "#ECF6FC", // background light blue
+      main: "#105F9A", // theme blue
+      dark: "#168BE2", // bright blue
       contrastText: "#FFFFFF",
     },
     secondary: {
-      light: "#C1E0F8",
-      main: "#ECF6FC",
-      dark: "#06274033",
-      contrastText: "#000000",
+      light: "#597992", // disabled blue
+      main: "#062740", // dark blue
+      accent: "#F5E410", // yellow
+      contrastText: "#062740", // dark blue, text color
     },
   },
 });
-
-
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -66,39 +78,27 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-
-
 function App() {
-
-  // const { location: { pathname } } = this.props;
+  let location = useLocation();
 
   return (
-   
     <ApolloProvider client={client}>
-
       {
         <ThemeProvider theme={theme}>
-          <Router>
-            <Navbar />
-            <div className="flex-column justify-flex-start min-100-vh">
-              <Header />
-              <div className="container">
-                <Routes>
-                  <Route path="/" element={<Home />} />
-                  <Route path="/login" element={<Login />} />
-                  <Route path="/signup" element={<Signup />} />
-                  <Route path="/me" element={<Profile />} />
-                  <Route path="/profiles/:username" element={<Profile />} />
-                </Routes>
-              </div>
-              <Footer />
-            </div>
-          </Router>
+          {location.pathname === "/login" ? null : <Navbar />}
+
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            {/* <Route path="/signup" element={<Signup />} /> */}
+            {/* <Route path="/me" element={<Profile />} />
+                  <Route path="/profiles/:username" element={<Profile />} /> */}
+          </Routes>
+
+          {location.pathname === "/login" ? null : <Footer />}
         </ThemeProvider>
       }
     </ApolloProvider>
-
-
   );
 }
 
