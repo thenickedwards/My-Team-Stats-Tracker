@@ -3,6 +3,7 @@ const { gql } = require('apollo-server-express');
 const typeDefs = gql`
   type User {
     _id: ID
+    username: String
     email: String
     password: String
     userFirstName: String!
@@ -122,9 +123,7 @@ const typeDefs = gql`
 
   type Query {
     users: [User]
-    # # Doubble check below was previously
-    # user(username: String!): User
-    user(email: String!): User
+    user(username: String!): User
     me: User
     # Above preloaded with React boilerplate
     league: League
