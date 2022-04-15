@@ -140,7 +140,8 @@ const typeDefs = gql`
 
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
-    login(email: String!, password: String!): Auth
+    # login(email: String!, password: String!): Auth
+    login(username: String!, password: String!): Auth
     # Above preloaded with React boilerplate
     addLeague(league: LeagueInput): League
     addSeason(season: SeasonInput): Season
