@@ -31,6 +31,12 @@ const loginStyle = {
     borderRadius: "5px",
     border: "none",
   },
+  formButton: {
+    backgroundColor: "primary.main",
+    "&:hover": {
+      backgroundColor: "secondary.main",
+    },
+  }
 };
 
 const Login = (props) => {
@@ -78,9 +84,9 @@ const Login = (props) => {
       >
         <Grid
           item
-          spacing={2}
           container
           alignItems="center"
+          justify="center"
           style={{ position: "relative" }}
         >
           <Grid
@@ -125,7 +131,7 @@ const Login = (props) => {
                 variant="h1"
                 href="/signup"
                 underline="none"
-                color="secondary.dark"
+                color="secondary.light"
               >
                 Signup
               </Link>
@@ -165,7 +171,8 @@ const Login = (props) => {
                     <Button
                       variant="contained"
                       type="submit"
-                      sx={{ mt: 2, height: 50, bgcolor: "#105F9A" }}
+                      sx={{ mt: 2, height: 50}}
+                      style={loginStyle.formButton}
                       fullWidth
                       disableElevation
                     >
