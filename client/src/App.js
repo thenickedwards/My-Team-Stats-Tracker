@@ -13,6 +13,7 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import Home from "./pages/Home";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
+import Team from "./pages/Team"
 // import Profile from "./pages/Profile";
 import Leagues from "./pages/Leagues";
 
@@ -86,6 +87,8 @@ function App() {
     <ApolloProvider client={client}>
       {
         <ThemeProvider theme={theme}>
+
+          <main>
           {location.pathname === "/login" || location.pathname === "/signup" ? null : <Navbar />}
 
           <Leagues/>
@@ -94,11 +97,16 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/leagues" element={<Leagues />} />
+
+            {/* Need to add team specific route */}
+            <Route path="/team" element={<Team />} />
             {/* <Route path="/me" element={<Profile />} />
                   <Route path="/profiles/:username" element={<Profile />} /> */}
           </Routes>
 
           {location.pathname === "/login" || location.pathname === "/signup" ? null : <Footer />}
+
+          </main>
         </ThemeProvider>
       }
     </ApolloProvider>
