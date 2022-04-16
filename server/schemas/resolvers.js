@@ -26,7 +26,14 @@ const resolvers = {
     },
     allLeagues: async () => {
       return League.find();
-    }
+    },
+    // Season queries
+    season: async (parent, { season }) => {
+      return Season.findOne({ season });
+    },
+    allSeasons: async () => {
+      return Season.find();
+    },
   },
 
 

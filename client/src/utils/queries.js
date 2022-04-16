@@ -64,8 +64,8 @@ export const QUERY_SEASONS = gql`
       _id
       startYear
       endYear
-      league
-      teams
+      # league
+      # teams
     }
   }
 `;
