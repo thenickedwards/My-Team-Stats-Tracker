@@ -15,6 +15,8 @@ import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 // import Profile from "./pages/Profile";
 
+import Leagues from "./pages/Leagues";
+
 // import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
@@ -87,6 +89,7 @@ function App() {
         <ThemeProvider theme={theme}>
           {location.pathname === "/login" ? null : <Navbar />}
 
+          <Leagues/>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
