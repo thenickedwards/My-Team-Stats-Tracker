@@ -15,6 +15,7 @@ import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import Team from "./pages/Team"
 // import Profile from "./pages/Profile";
+import Leagues from "./pages/Leagues";
 
 // import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -90,10 +91,12 @@ function App() {
           <main>
           {location.pathname === "/login" || location.pathname === "/signup" ? null : <Navbar />}
 
+          <Leagues/>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
+            <Route path="/leagues" element={<Leagues />} />
 
             {/* Need to add team specific route */}
             <Route path="/team" element={<Team />} />
