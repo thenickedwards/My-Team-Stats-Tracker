@@ -12,62 +12,32 @@ export const LOGIN_USER = gql`
   }
 `;
 
-// Need to add email, firstname, lastname
 export const ADD_USER = gql`
-  mutation addUser($username: String!, $password: String!) {
-    addUser(username: $username, password: $password) {
+  mutation addUser(
+    $username: String!,
+    $password: String!
+    $email: String!,
+    $firstName: String!,
+    $lastName: String!
+    ) {
+    addUser(
+      username: $username,
+      password: $password,
+      email: $email,
+      firstName: $firstName,
+      lastName: $lastName
+      ) {
       token
       user {
         _id
         username
+        email
+        firstName
+        lastName
       }
     }
   }
 `;
-
-// export const LOGIN_USER = gql`
-//   mutation login(
-//     $username: String!,
-//     $email: String, 
-//     $password: String!,
-//     $firstName: String,
-//     $lastName: String
-//     ) {
-//     login(
-//       username: $username,
-//       email: $email, 
-//       password: $password,
-//       firstName: $firstName,
-//       lastName: $lastName
-//       ) {
-//       token
-//       user {
-//         _id
-//         username
-//         email
-//         firstName
-//         lastName
-//       }
-//     }
-//   }
-// `;
-
-// For Signup Form?
-// Switch email to username
-// export const ADD_USER = gql`
-//   mutation addUser($email: String!, $password: String!) {
-//     addUser(email: $email, password: $password) {
-//       token
-//       user {
-//         _id
-//         username
-//         email
-//         firstName
-//         lastName
-//       }
-//     }
-//   }
-// `;
 
 export const ADD_LEAGUE = gql`
   mutation addLeague(
@@ -93,21 +63,16 @@ export const ADD_LEAGUE = gql`
   }
 `;
 
-// *** Are we keeping start/end month in season? -CJB ***
 export const ADD_SEASON = gql`
   mutation addSeason(
     $startYear: Int!,
-    $startMonth: Int,
     $endYear: Int,
-    $endMonth: Int,
     $league: [League],
-    $teams: [Team],
+    $teams: [SoccerTeam],
   ) {
     addSeason(
       startYear: $startYear,
-      startMonth: $startMonth,
       endYear: $endYear,
-      endMonth: $endMonth,
       league: $league,
       teams: $teams,
     ) {
@@ -181,7 +146,7 @@ export const ADD_SOCCERPLAYER = gql`
     $playerNumber: Int,
     $goals: [Goal],
     $assists: [Assist],
-    $teams: [Team]
+    $teams: [SoccerTeam]
   ) {
     addPlayer(
       playerFirstName: $playerFirstName,
@@ -208,8 +173,8 @@ export const ADD_SOCCERPLAYER = gql`
 export const ADD_SOCCERGAME = gql`
   mutation addGame(
     $gameDate: String!,
-    $homeTeam: [Team],
-    $awayTeam: [Team],
+    $homeTeam: [SoccerTeam],
+    $awayTeam: [SoccerTeam],
     $goalsHome: Int,
     $goalsAway: Int,
     $assistsHome: Int,

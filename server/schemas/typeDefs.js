@@ -32,9 +32,9 @@ const typeDefs = gql`
   type Season {
     _id: ID!
     startYear: Int!
-    startMonth: Int
+    # startMonth: Int
     endYear: Int
-    endMonth: Int
+    # endMonth: Int
     league: [League]
     teams: [SoccerTeam]
   }
