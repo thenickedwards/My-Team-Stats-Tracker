@@ -87,7 +87,7 @@ function App() {
     <ApolloProvider client={client}>
       {
         <ThemeProvider theme={theme}>
-          {location.pathname === "/login" ? null : <Navbar />}
+          {location.pathname === "/login" || location.pathname === "/signup" ? null : <Navbar />}
 
           <Leagues/>
           <Routes>
@@ -98,7 +98,7 @@ function App() {
                   <Route path="/profiles/:username" element={<Profile />} /> */}
           </Routes>
 
-          {location.pathname === "/login" ? null : <Footer />}
+          {location.pathname === "/login" || location.pathname === "/signup" ? null : <Footer />}
         </ThemeProvider>
       }
     </ApolloProvider>

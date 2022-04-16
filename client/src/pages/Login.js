@@ -189,8 +189,9 @@ const Login = (props) => {
                     </Button>
                   </form>
                 )}
-
+              <Typography variant="p" color="primary.contrastText">
                 {error && <div>{error.message}</div>}
+              </Typography>
               </div>
             </Box>
 
