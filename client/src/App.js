@@ -11,7 +11,7 @@ import { setContext } from "@apollo/client/link/context";
 import { Routes, Route, useLocation } from "react-router-dom";
 
 import Home from "./pages/Home";
-// import Signup from "./pages/Signup";
+import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 // import Profile from "./pages/Profile";
 
@@ -90,7 +90,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
-            {/* <Route path="/signup" element={<Signup />} /> */}
+            <Route path="/signup" element={<Signup />} />
             {/* <Route path="/me" element={<Profile />} />
                   <Route path="/profiles/:username" element={<Profile />} /> */}
           </Routes>

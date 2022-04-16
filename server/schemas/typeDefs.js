@@ -4,7 +4,7 @@ const typeDefs = gql`
   type User {
     _id: ID
     username: String
-    email: String
+    # email: String
     password: String
     userFirstName: String!
     userLastName: String!
@@ -36,7 +36,7 @@ const typeDefs = gql`
     endYear: Int
     endMonth: Int
     league: [League]
-    teams: [Team]
+    teams: [SoccerTeam]
   }
 
   input SeasonInput {
@@ -65,8 +65,8 @@ const typeDefs = gql`
     teamName: String!
     teamColor: String
     teamPic: String
-    league: [League]
-    seasons: [Season]
+    # league: [League]
+    # seasons: [Season]
   }
 
   type Goal {
@@ -89,7 +89,7 @@ const typeDefs = gql`
     playerNumber: Int
     goals: [Goal]
     assists: [Assist]
-    teams: [Team]
+    teams: [SoccerTeam]
   }
 
   input SoccerPlayerInput {
@@ -102,18 +102,18 @@ const typeDefs = gql`
   type SoccerGame {
     _id: ID!
     gameDate: String!
-    homeTeam: [Team]
-    awayTeam: [Team]
+    homeTeam: [SoccerTeam]
+    awayTeam: [SoccerTeam]
     goalsHome: Int
     goalsAway: Int
     assistsHome: Int
     assistsAway: Int
   }
 
-  type SoccerGameInput {
+  input SoccerGameInput {
     gameDate: String!
-    homeTeam: [Team]
-    awayTeam: [Team]
+    homeTeam: ID!
+    awayTeam: ID!
     goalsHome: Int
     goalsAway: Int
     assistsHome: Int
@@ -139,7 +139,8 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    addUser(username: String!, email: String!, password: String!): Auth
+    addUser(username: String!, password: String!): Auth
+    # addUser(username: String!, email: String!, password: String!): Auth
     # login(email: String!, password: String!): Auth
     login(username: String!, password: String!): Auth
     # Above preloaded with React boilerplate
