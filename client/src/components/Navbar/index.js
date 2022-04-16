@@ -15,14 +15,12 @@ import Auth from "../../utils/auth";
 
 let userInitials = () => {
   const token = Auth.loggedIn() ? Auth.getProfile() : null;
-  if (!token) {
-    return "RQ";
-  } else {
+  if (token) {
     const initials =
       token.data.userFirstName.charAt(0).toUpperCase() +
       token.data.userLastName.charAt(0).toUpperCase();
     return initials;
-  }
+  } else return "NO USER";
 };
 
 const navStyle = {
@@ -38,7 +36,7 @@ const navStyle = {
 };
 
 const pages = ["Games", "Teams", "Leagues"];
-const settings = ["Account", "My Leagues", "My Teams", "My Seasons"];
+const settings = ["Account", "My Leagues", "My Teams", "My Seasons", "Logout"];
 
 const Navbar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -64,7 +62,7 @@ const Navbar = () => {
       <Container maxWidth="xl" style={navStyle.navImage} justify="end">
         <Toolbar disableGutters>
           <Typography
-            variant="h3"
+            variant="h2"
             noWrap
             component="div"
             sx={{ mr: 2, display: { xs: "none", md: "flex" } }}
@@ -158,7 +156,7 @@ const Navbar = () => {
                 </Menu>
               </>
             ) : (
-              "login link"
+              <div></div>
             )}
           </Box>
         </Toolbar>
