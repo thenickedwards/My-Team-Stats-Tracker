@@ -5,12 +5,13 @@ import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
-// import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
+
+const userInitials = "CH";
 
 const navStyle = {
   navImage: {
@@ -20,8 +21,8 @@ const navStyle = {
     backgroundPosition: "right",
   },
   navBackground: {
-    backgroundColor: "#062740"
-  }
+    backgroundColor: "#062740",
+  },
 };
 
 const pages = ["Games", "Teams", "Leagues"];
@@ -67,9 +68,7 @@ const Navbar = () => {
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
               color="inherit"
-            >
-              {/* <MenuIcon /> */}
-            </IconButton>
+            ></IconButton>
             <Menu
               id="menu-appbar"
               anchorEl={anchorElNav}
@@ -118,11 +117,7 @@ const Navbar = () => {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar
-                  alt="Remy Sharp"
-                  // src="/static/images/avatar/2.jpg"
-                  sx={{ width: 56, height: 56 }}
-                />
+                <Avatar>{userInitials}</Avatar>
               </IconButton>
             </Tooltip>
             <Menu
