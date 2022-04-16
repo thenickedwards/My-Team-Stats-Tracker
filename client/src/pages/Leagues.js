@@ -17,8 +17,8 @@ export default function Leagues() {
         </Box>
         
         <Grid container spacing={2}>
-
             <Grid item>
+
                 <Paper elevation={3}>
                     <Typography variant="h6" gutterBottom component="div">
                         Washington Premier League
@@ -26,7 +26,6 @@ export default function Leagues() {
                 </Paper>
 
             </Grid>
-
         </Grid>
         
       </Container>
