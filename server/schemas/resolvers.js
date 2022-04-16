@@ -1,12 +1,15 @@
 const { AuthenticationError } = require('apollo-server-express');
 const { User } = require('../models');
+const League = require('../models/League');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
   Query: {
+    // All users
     users: async () => {
       return User.find();
     },
+    // One user
     user: async (parent, { username }) => {
       return User.findOne({ username });
     },
@@ -16,15 +19,24 @@ const resolvers = {
       }
       throw new AuthenticationError('You need to be logged in!');
     },
+    // League queries
+    league: async (parent, { league }) => {
+      return League.findOne({ league });
+    },
+    allLeagues: async () => {
+      return League.find();
+    }
   },
 
-  // Add email, firstname, lastname
+
   Mutation: {
+    // Signup
     addUser: async (parent, { username, email, password, userFirstName, userLastName }) => {
       const user = await User.create({ username, email, password, userFirstName, userLastName });
       const token = signToken(user);
       return { token, user };
     },
+    // Login
     login: async (parent, { username, password }) => {
       const user = await User.findOne({ username });
 
@@ -41,7 +53,16 @@ const resolvers = {
       const token = signToken(user);
 
       return { token, user };
-    }
+    },
+    // Add league
+    addLeague: async (parent, { league }, context) => {
+      // if (context.user) {
+        const newLeague = await League.create({...league});
+        return newLeague
+      // }
+      throw new AuthenticationError('You need to be logged in!');
+    },
+ 
   }
 };
 

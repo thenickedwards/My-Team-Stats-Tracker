@@ -40,28 +40,16 @@ export const ADD_USER = gql`
 `;
 
 export const ADD_LEAGUE = gql`
-  mutation addLeague(
-    $leagueName: String!, 
-    $sport: String!,
-    $leaguePic: String,
-    $seasons: [Season]
-    ) {
-    addLeague(
-      leagueName: $leagueName,
-      sport: $sport,
-      leaguePic: $leaguePic
-      seasons: $seasons
-    ) {
-      league {
-        _id
-        leagueName
-        sport
-        leaguePic
-        seasons
-      }
-    }
+  mutation addLeague($league: LeagueInput) {
+  addLeague(league: $league) {
+    _id
+    leagueName
+    sport
+    leaguePic
   }
+}
 `;
+
 
 export const ADD_SEASON = gql`
   mutation addSeason(
