@@ -1,12 +1,19 @@
 const db = require('../config/connection');
 const { User } = require('../models');
 const userSeeds = require('./userSeeds.json');
+const { League } = require('../models');
+const leagueSeeds = require('./leagueSeeds.json');
+
 
 db.once('open', async () => {
   try {
     await User.deleteMany({});
 
     await User.create(userSeeds);
+
+    await League.deleteMany({});
+
+    await League.create(leagueSeeds);
 
     // for (let i = 0; i < thoughtSeeds.length; i++) {
     //   const { _id, thoughtAuthor } = await Thought.create(thoughtSeeds[i]);

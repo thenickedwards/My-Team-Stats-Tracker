@@ -1,7 +1,8 @@
 const { AuthenticationError } = require('apollo-server-express');
 const { User } = require('../models');
-const League = require('../models/League');
 const { signToken } = require('../utils/auth');
+const League = require('../models/League');
+const Season = require('../models/Season');
 
 const resolvers = {
   Query: {
@@ -60,9 +61,16 @@ const resolvers = {
         const newLeague = await League.create({...league});
         return newLeague
       // }
-      throw new AuthenticationError('You need to be logged in!');
+      // throw new AuthenticationError('You need to be logged in!');
     },
- 
+    // Add season
+    addSeason: async (parent, { season }, context) => {
+      // if (context.user) {
+        const newSeason = await Season.create({...season});
+        return newSeason
+      // }
+      // throw new AuthenticationError('You need to be logged in!');
+    },
   }
 };
 

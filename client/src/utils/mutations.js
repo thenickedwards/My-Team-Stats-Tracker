@@ -50,30 +50,39 @@ export const ADD_LEAGUE = gql`
 }
 `;
 
-
 export const ADD_SEASON = gql`
-  mutation addSeason(
-    $startYear: Int!,
-    $endYear: Int,
-    $league: [League],
-    $teams: [SoccerTeam],
-  ) {
-    addSeason(
-      startYear: $startYear,
-      endYear: $endYear,
-      league: $league,
-      teams: $teams,
-    ) {
-      season {
+  mutation addSeason($season: SeasonInput) {
+    addSeason(season: $season) {
       _id
       startYear
       endYear
-      league
-      teams
-      }
     }
   }
 `;
+
+// export const ADD_SEASON = gql`
+//   mutation addSeason(
+//     $startYear: Int!,
+//     $endYear: Int,
+//     $league: [League],
+//     $teams: [SoccerTeam],
+//   ) {
+//     addSeason(
+//       startYear: $startYear,
+//       endYear: $endYear,
+//       league: $league,
+//       teams: $teams,
+//     ) {
+//       season {
+//       _id
+//       startYear
+//       endYear
+//       league
+//       teams
+//       }
+//     }
+//   }
+// `;
 
 export const ADD_SOCCERTEAM = gql`
   mutation addTeam(
