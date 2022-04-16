@@ -7,11 +7,11 @@ const soccerGameSchema = new Schema({
   },
   homeTeam: {
     type: Schema.Types.ObjectId,
-    ref: 'Team',
+    ref: 'SoccerTeam',
   },
   awayTeam: {
     type: Schema.Types.ObjectId,
-    ref: 'Team',
+    ref: 'SoccerTeam',
   },
   goalsHome: Number,
   goalsAway: Number,
