@@ -120,7 +120,7 @@ const Navbar = () => {
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar
                   alt="Remy Sharp"
-                  src="/static/images/avatar/2.jpg"
+                  // src="/static/images/avatar/2.jpg"
                   sx={{ width: 56, height: 56 }}
                 />
               </IconButton>

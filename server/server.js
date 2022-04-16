@@ -15,6 +15,7 @@ const server = new ApolloServer({
 });
 
 app.use(express.urlencoded({ extended: false }));
+// app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 if (process.env.NODE_ENV === 'production') {
@@ -30,6 +31,7 @@ const startApolloServer = async (typeDefs, resolvers) => {
     app.get('*', (req, res) => {
       res.sendFile(path.join(__dirname, '../client/build/index.html'));
     });
+    // app.use(express.static(path.join(__dirname, '../client/build')));
   }
 
   db.once('open', () => {
