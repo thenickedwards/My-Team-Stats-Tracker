@@ -14,7 +14,6 @@ import Home from "./pages/Home";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 // import Profile from "./pages/Profile";
-
 import Leagues from "./pages/Leagues";
 
 // import Header from "./components/Header";
@@ -94,6 +93,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
+            <Route path="/leagues" element={<Leagues />} />
             {/* <Route path="/me" element={<Profile />} />
                   <Route path="/profiles/:username" element={<Profile />} /> */}
           </Routes>
