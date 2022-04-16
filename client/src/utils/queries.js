@@ -120,8 +120,6 @@ export const QUERY_SOCCERPLAYER = gql`
       playerLastName
       playerPic
       playerNumber
-      # Correct syntax?
-      # Updated by NE
       goals
       assists
       teams
@@ -137,8 +135,6 @@ export const QUERY_SOCCERPLAYERS = gql`
       playerLastName
       playerPic
       playerNumber
-      # Correct syntax?
-      # Updated by NE
       goals
       assists
       teams
