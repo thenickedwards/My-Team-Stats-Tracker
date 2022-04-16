@@ -43,6 +43,9 @@ const Login = (props) => {
   // const [formState, setFormState] = useState({ email: "", password: "" });
 
   const [formState, setFormState] = useState({ username: "", password: "" });
+
+  const {username, password} = formState;
+
   const [login, { error, data }] = useMutation(LOGIN_USER);
 
   // update state based on form input changes
@@ -158,7 +161,7 @@ const Login = (props) => {
                       type="text"
                       margin="normal"
                       style={loginStyle.textField}
-                      value={formState.username}
+                      value={username}
                       onChange={handleChange}
                     />
 
@@ -170,7 +173,7 @@ const Login = (props) => {
                       type="password"
                       margin="normal"
                       style={loginStyle.textField}
-                      value={formState.password}
+                      value={password}
                       onChange={handleChange}
                     />
 
