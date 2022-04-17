@@ -15,4 +15,5 @@ body {
 }
 main {
   background-color: #ECF6FC;
+  min-height: 100vh;
 }

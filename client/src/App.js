@@ -28,11 +28,11 @@ const theme = createTheme({
     fontFamily: '"Bebas Neue", Arial, sans-serif',
     h1: {
       fontSize: "3em",
-      textTransform: "uppercase"
+      textTransform: "uppercase",
     },
     h3: {
       fontSize: "1.25em",
-      textTransform: "uppercase"
+      textTransform: "uppercase",
     },
     p: {
       fontSize: "1em",
