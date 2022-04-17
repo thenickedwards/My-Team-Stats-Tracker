@@ -31,15 +31,15 @@ const typeDefs = gql`
 
   type Season {
     _id: ID!
+    seasonName: String!
     startYear: Int!
-    # startMonth: Int
     endYear: Int
-    # endMonth: Int
     league: [League]
     teams: [SoccerTeam]
   }
 
   input SeasonInput {
+    seasonName: String!
     startYear: Int!
     endYear: Int
   }

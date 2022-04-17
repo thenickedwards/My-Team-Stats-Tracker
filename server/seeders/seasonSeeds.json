@@ -1,0 +1,32 @@
+[
+    {
+      "_id": "625b4fa6ddc662eea0b18cdc",
+      "seasonName": "HDYS - Boys U8 Spring",
+      "startYear": 2021,
+      "endYear": 2022
+    },
+    {
+      "_id": "625b507e44a061e78145643b",
+      "seasonName": "HDYS - Girls U8 Spring",
+      "startYear": 2021,
+      "endYear": 2022
+    },
+    {
+        "_id": "625b4fa6ddc662eea0b18cdc",
+        "seasonName": "Adult Coed A - 11v11 Spring",
+        "startYear": 2022,
+        "endYear": 2022
+      },
+      {
+        "_id": "625b4fa6ddc662eea0b18cdc",
+        "seasonName": "Adult Womens A - 11v11 Spring",
+        "startYear": 2022,
+        "endYear": 2022
+      },
+      {
+        "_id": "625b4fa6ddc662eea0b18cdc",
+        "seasonName": "Adult Mens A - 11v11 Spring",
+        "startYear": 2022,
+        "endYear": 2022
+      }
+  ]
