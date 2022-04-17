@@ -1,6 +1,10 @@
 const { Schema, model } = require('mongoose');
 
 const seasonSchema = new Schema({
+  seasonName: {
+    type: String,
+    required: true,
+  },
   startYear: {
     type: Number,
     required: true,

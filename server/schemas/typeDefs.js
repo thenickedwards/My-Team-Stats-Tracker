@@ -31,15 +31,15 @@ const typeDefs = gql`
 
   type Season {
     _id: ID!
+    seasonName: String!
     startYear: Int!
-    # startMonth: Int
     endYear: Int
-    # endMonth: Int
     league: [League]
     teams: [SoccerTeam]
   }
 
   input SeasonInput {
+    seasonName: String!
     startYear: Int!
     endYear: Int
   }
@@ -102,8 +102,8 @@ const typeDefs = gql`
   type SoccerGame {
     _id: ID!
     gameDate: String!
-    homeTeam: [SoccerTeam]
-    awayTeam: [SoccerTeam]
+    homeTeam: SoccerTeam
+    awayTeam: SoccerTeam
     goalsHome: Int
     goalsAway: Int
     assistsHome: Int
