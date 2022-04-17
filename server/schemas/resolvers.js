@@ -1,10 +1,6 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User } = require('../models');
 const { signToken } = require('../utils/auth');
-const League = require('../models/League');
-const Season = require('../models/Season');
-const SoccerTeam = require('../models/SoccerTeam');
-const SoccerPlayer = require('../models/SoccerPlayer')
+const { User, League, Season, SoccerTeam, SoccerTeam, SoccerPlayer } = require('../models');
 
 
 const resolvers = {
