@@ -41,7 +41,21 @@ const pages = [
   { id: 3, name: "Leagues", URL: "leagues" },
 ];
 
-const settings = ["Account", "My Leagues", "My Teams", "My Seasons", "Logout"];
+const settings = [
+  { id: 1, name: "Account", URL: "account" },
+  { id: 2, name: "My Leagues", URL: ":userId/leagues" },
+  { id: 3, name: "My Teams", URL: ":/userId/teams" },
+  { id: 4, name: "My Seasons", URL: ":userId/seasons" },
+  { id: 5, name: "Logout", URL: "logout" },
+];
+
+// const logout = "Logout";
+
+// const handleLogoutClick = (event) => {
+//     Auth.logout().then(() => {
+//      window.location.reload();
+//     });
+//    }
 
 const Navbar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -150,8 +164,14 @@ const Navbar = () => {
                   onClose={handleCloseUserMenu}
                 >
                   {settings.map((setting) => (
-                    <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                      <Typography textAlign="center">{setting}</Typography>
+                    <MenuItem
+                      key={setting.id}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        window.location.href = `/${setting.URL}`;
+                      }}
+                    >
+                      <Typography textAlign="center">{setting.name}</Typography>
                     </MenuItem>
                   ))}
                 </Menu>
