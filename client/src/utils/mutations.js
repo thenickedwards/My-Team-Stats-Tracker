@@ -85,55 +85,65 @@ export const ADD_SEASON = gql`
 // `;
 
 export const ADD_SOCCERTEAM = gql`
-  mutation addTeam(
-    $teamName: String!,
-    $teamColor: String,
-    $teamPic: String,
-    $league: [League],
-    $seasons: [Season],
-    $games: [SoccerGame],
-    $roster: [SoccerPlayer],
-    $wins: Int,
-    $draws: Int,
-    $losses: Int,
-    $goalsFor: Int,
-    $goalsAgainst: Int,
-    $goalDifferential: Int,
-  ) {
-    addTeam(
-      teamName: $teamName,
-      teamColor: $teamColor,
-      teamPic: $teamPic,
-      league: $league,
-      seasons: $seasons,
-      games: $games,
-      roster: $roster,
-      wins: $wins,
-      draws: $draws,
-      losses: $losses
-      goalsFor: $goalsFor,
-      goalsAgainst: $goalsAgainst,
-      goalDifferential: $goalDifferential
-    ) {
-      soccerTeam {
-        _id
-        teamName
-        teamColor
-        teamPic
-        league
-        seasons
-        games
-        roster
-        wins
-        draws
-        losses
-        goalsFor
-        goalsAgainst
-        goalDifferential
-      }
+  mutation addTeam($teams: SoccerTeamInput) {
+    addTeam(team: $team) {
+      teamName
+      teamColor
+      teamPic
     }
   }
 `;
+
+// export const ADD_SOCCERTEAM = gql`
+//   mutation addTeam(
+//     $teamName: String!,
+//     $teamColor: String,
+//     $teamPic: String,
+//     $league: [League],
+//     $seasons: [Season],
+//     $games: [SoccerGame],
+//     $roster: [SoccerPlayer],
+//     $wins: Int,
+//     $draws: Int,
+//     $losses: Int,
+//     $goalsFor: Int,
+//     $goalsAgainst: Int,
+//     $goalDifferential: Int,
+//   ) {
+//     addTeam(
+//       teamName: $teamName,
+//       teamColor: $teamColor,
+//       teamPic: $teamPic,
+//       league: $league,
+//       seasons: $seasons,
+//       games: $games,
+//       roster: $roster,
+//       wins: $wins,
+//       draws: $draws,
+//       losses: $losses
+//       goalsFor: $goalsFor,
+//       goalsAgainst: $goalsAgainst,
+//       goalDifferential: $goalDifferential
+//     ) {
+//       soccerTeam {
+//         _id
+//         teamName
+//         teamColor
+//         teamPic
+//         league
+//         seasons
+//         games
+//         roster
+//         wins
+//         draws
+//         losses
+//         goalsFor
+//         goalsAgainst
+//         goalDifferential
+//       }
+//     }
+//   }
+// `;
 
 export const ADD_SOCCERPLAYER = gql`
   mutation addPlayer(
