@@ -102,8 +102,8 @@ const typeDefs = gql`
   type SoccerGame {
     _id: ID!
     gameDate: String!
-    homeTeam: [SoccerTeam]
-    awayTeam: [SoccerTeam]
+    homeTeam: SoccerTeam
+    awayTeam: SoccerTeam
     goalsHome: Int
     goalsAway: Int
     assistsHome: Int
