@@ -4,6 +4,7 @@ const { signToken } = require('../utils/auth');
 const League = require('../models/League');
 const Season = require('../models/Season');
 const SoccerTeam = require('../models/SoccerTeam');
+const SoccerPlayer = require('../models/SoccerPlayer')
 
 
 const resolvers = {
@@ -42,6 +43,13 @@ const resolvers = {
     },
     allSoccerTeams: async () => {
       return SoccerTeam.find();
+    },
+    // Player queries
+    soccerPlayer: async (parent, { soccerPlayer }) => {
+      return SoccerPlayer.findOne({ soccerPlayer });
+    },
+    allSoccerPlayers: async () => {
+      return SoccerPlayer.find();
     },
   },
 
@@ -92,6 +100,13 @@ const resolvers = {
       // if (context.user) {
         const newTeam = await SoccerTeam.create({...team});
         return newTeam
+      // }
+      // throw new AuthenticationError('You need to be logged in!');
+    },
+    addPlayer: async (parent, { roster }, context) => {
+      // if (context.user) {
+        const newPlayer = await SoccerPlayer.create({...roster});
+        return newPlayer
       // }
       // throw new AuthenticationError('You need to be logged in!');
     },

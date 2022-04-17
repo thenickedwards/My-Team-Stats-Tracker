@@ -146,35 +146,47 @@ export const ADD_SOCCERTEAM = gql`
 // `;
 
 export const ADD_SOCCERPLAYER = gql`
-  mutation addPlayer(
-    $playerFirstName: String!,
-    $playerLastName: String!,
-    $playerPic: String,
-    $playerNumber: Int,
-    $goals: [Goal],
-    $assists: [Assist],
-    $teams: [SoccerTeam]
-  ) {
-    addPlayer(
-      playerFirstName: $playerFirstName,
-      playerLastName: $playerLastName,
-      playerPic: $playerPic,
-      playerNumber: $playerNumber,
-      goals: $goals,
-      assists: $assists,
-      teams: $teams
-    ) {
-      soccerPlayer {
-        _id
-        playerFirstName
-        playerLastName
-        playerPic
-        playerNumber
-        teams
-      }
+  mutation addPlayer($roster: SoccerPlayerInput) {
+    addPlayer(roster: $roster) {
+      _id
+      playerFirstName
+      playerLastName
+      playerPic
+      playerNumber
     }
   }
 `;
+
+// export const ADD_SOCCERPLAYER = gql`
+//   mutation addPlayer(
+//     $playerFirstName: String!,
+//     $playerLastName: String!,
+//     $playerPic: String,
+//     $playerNumber: Int,
+//     $goals: [Goal],
+//     $assists: [Assist],
+//     $teams: [SoccerTeam]
+//   ) {
+//     addPlayer(
+//       playerFirstName: $playerFirstName,
+//       playerLastName: $playerLastName,
+//       playerPic: $playerPic,
+//       playerNumber: $playerNumber,
+//       goals: $goals,
+//       assists: $assists,
+//       teams: $teams
+//     ) {
+//       soccerPlayer {
+//         _id
+//         playerFirstName
+//         playerLastName
+//         playerPic
+//         playerNumber
+//         teams
+//       }
+//     }
+//   }
+// `;
 
 
 export const ADD_SOCCERGAME = gql`
