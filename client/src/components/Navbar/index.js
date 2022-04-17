@@ -35,7 +35,12 @@ const navStyle = {
   },
 };
 
-const pages = ["Games", "Teams", "Leagues"];
+const pages = [
+  { id: 1, name: "Games", URL: "games" },
+  { id: 2, name: "Teams", URL: "teams" },
+  { id: 3, name: "Leagues", URL: "leagues" },
+];
+
 const settings = ["Account", "My Leagues", "My Teams", "My Seasons", "Logout"];
 
 const Navbar = () => {
@@ -98,28 +103,24 @@ const Navbar = () => {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                <MenuItem key={page.id} onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">{page.name}</Typography>
                 </MenuItem>
               ))}
             </Menu>
           </Box>
-          <Typography
-            variant="h3"
-            noWrap
-            component="div"
-            sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}
-          >
-            LOGO
-          </Typography>
+
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
               <Button
-                key={page}
-                onClick={handleCloseNavMenu}
+                key={page.id}
+                onClick={(e) => {
+                  e.preventDefault();
+                  window.location.href = `/${page.URL}`;
+                }}
                 sx={{ my: 2, color: "white", display: "block" }}
               >
-                {page}
+                {page.name}
               </Button>
             ))}
           </Box>
