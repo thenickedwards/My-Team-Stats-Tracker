@@ -8,16 +8,10 @@ import {
     Paper,
     Typography,
     Tabs,
-    Tab,
-    InputLabel,
-    MenuItem,
-    FormControl,
-    Select
+    Tab
   } from "@mui/material";
   import PropTypes from 'prop-types';
   import { DataGrid } from '@mui/x-data-grid';
-  import IconButton from '@mui/material/IconButton';
-  import AddIcon from '@mui/icons-material/Add';
 
 // ////////////////////////////////////
 //   DATAGRID (TEMPORARY DATA)
@@ -56,9 +50,9 @@ import {
 // ////////////////////////////////////
 
 
-// STYLES
+// Styles
 
-const teamStyle = {
+const playerStyle = {
     statsPaper: {
         display: 'flex', 
         flexDirection: 'column', 
@@ -81,14 +75,6 @@ const teamStyle = {
 
 
 export default function Team() {
-
-    // Functionality for Dropdown
-
-    const [season, setSeason] = React.useState('');
-
-    const handleSeasonChange = (event) => {
-      setSeason(event.target.value);
-    };
 
 
     // Functionality for Tabs
@@ -144,8 +130,12 @@ export default function Team() {
                 <Grid container  
                     spacing={5} 
                     sx={{py: 8, px: 5}}
-                    position="relative"
+                    position='relative'
                 >
+
+                <Box sx={{position: 'absolute', bottom: 0, left: 0}}>
+                    <img src='images/abstract-corner-dots-lines.png' alt="Abstract graphic with dots and lines." width='250px'/>
+                </Box>
 
                     <Grid item 
                      xs={12}
@@ -153,29 +143,27 @@ export default function Team() {
                      md={8}
                      lg={8} >
 
-                <Box sx={{position: 'absolute', bottom: 0, left: 0}}>
-                    <img src='images/abstract-corner-dots-lines.png' alt="Abstract graphic with dots and lines." width='250px'/>
-                </Box>
-
-                {/* Team Heading */}
+                {/* Player Heading */}
                         <Box sx={{display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '20px', mb: 5}}>
 
-                            <img src='images/chicago.png' alt="Chicago Logo" height='70px' width='auto'/>
+                            <Box style={playerStyle.teamRoster}>
+                                <img src='images/player-default-profile.png' alt="Player Profile Icon" width="30px" height="auto" style={{padding: '10px 0 0 0'}}/>
+                            </Box>
 
                             <Typography variant='h1' color='secondary.contrastText'>
-                                Chicago Football Club
+                                Trevor Smith
                             </Typography>
 
                         </Box>
 
-                {/* Team Stats */}
+                {/* Player Stats */}
 
-                        <Grid container spacing={{xs:4}}>
+                        <Grid container spacing={{xs:4}} >
 
                             {/* Stats Cards. Map over this section. */}
-                            <Grid item xs={6} s={6} md={3} lg={3}  >
+                            <Grid item xs={6} s={6} md={4} lg={4}  >
                                 
-                                <Paper elevation={5} sx={teamStyle.statsPaper} >
+                                <Paper elevation={5} sx={playerStyle.statsPaper} >
 
                                     <Typography variant='h1' color='secondary.contrastText'>
                                         4
@@ -190,44 +178,33 @@ export default function Team() {
 
                             {/* ----------------------------------------------------- */}
                             {/* Temporary Data. Delete */}
-                            <Grid item xs={6} s={6} md={3} lg={3} >
-                                <Paper elevation={5} sx={teamStyle.statsPaper}>
+                            <Grid item xs={6} s={6} md={4} lg={4} >
+                                <Paper elevation={5} sx={playerStyle.statsPaper}>
 
                                     <Typography variant='h1' color='secondary.contrastText'>
                                         4
                                     </Typography>
                                     <Typography variant='h6'  color='secondary.contrastText'>
-                                        Played
+                                        Goals
                                     </Typography>
 
                                 </Paper>
                             </Grid>
 
-                            <Grid item xs={6} s={6} md={3} lg={3}>
-                                <Paper elevation={5} sx={teamStyle.statsPaper} >
+                            <Grid item xs={6} s={6} md={4} lg={4}>
+                                <Paper elevation={5} sx={playerStyle.statsPaper} >
 
                                     <Typography variant='h1' color='secondary.contrastText'>
                                         4
                                     </Typography>
                                     <Typography variant='h6' color='secondary.contrastText'>
-                                        Played
+                                        Assists
                                     </Typography>
 
                                 </Paper>
                             </Grid>
 
-                            <Grid item xs={6} s={6} md={3} lg={3}>
-                                <Paper elevation={5} sx={teamStyle.statsPaper} >
-
-                                    <Typography variant='h1' color='secondary.contrastText'>
-                                        4
-                                    </Typography>
-                                    <Typography variant='h6' color='secondary.contrastText'>
-                                        Played
-                                    </Typography>
-
-                                </Paper>
-                            </Grid>
+                           
                             {/* End Temporary Data. */}
                             {/* ----------------------------------------------------- */}
                             
@@ -260,6 +237,7 @@ export default function Team() {
                                 <Tab label="Games" {...a11yProps(0)} />
                                 <Tab label="Schedule" {...a11yProps(1)} />
                                 <Tab label="Stats" {...a11yProps(2)} />
+                                <Tab label="Teams" {...a11yProps(3)} />
                                 </Tabs>
                             </Box>
                             <TabPanel value={value} index={0}>
@@ -305,7 +283,10 @@ export default function Team() {
                             <TabPanel value={value} index={2}>
                                 Item Three
                             </TabPanel>
-                            </Box>              
+                            <TabPanel value={value} index={3}>
+                                Item Four
+                            </TabPanel>
+                        </Box>              
 
 
 
@@ -314,157 +295,22 @@ export default function Team() {
 
                 {/* Right Side */}
 
-                    <Grid item  
-                    xs={12}
-                     s={12}
-                     md={4}
-                     lg={4}>
+                    <Grid item xs={12} s={12} md={4} lg={4}                     
+                        sx={{ display: 'flex', flexDirection: 'column', alignItems: 'self-end', justifyContent: 'space-between'}}
+                     >
 
-                    {/* Dropdown. Season Selector. */}
-                    <FormControl size="small" 
-                        sx={{ 
-                            m: 1, 
-                            minWidth: '100%', 
-                            mb: 5, 
-                            ml: 0,
-                            '& .MuiOutlinedInput-notchedOutline': {
-                                borderColor: 'secondary.main'
-                            }
-                        }}
-                        >
-                        <InputLabel id="select-season">Season</InputLabel>
-                        <Select
-                            labelId="select-season"
-                            id="select-season"
-                            value={season}
-                            label="Season"
-                            onChange={handleSeasonChange}
-                        >
-                            <MenuItem value="">
-                            <em>None</em>
-                            </MenuItem>
-                            <MenuItem value={10}>Ten</MenuItem>
-                            <MenuItem value={20}>Twenty</MenuItem>
-                            <MenuItem value={30}>Thirty</MenuItem>
-                        </Select>
-                        </FormControl>
+                        <Box>
+                             <img src='images/large-triangles.png' alt='Abstract triangles graphic.' />
+                        </Box>    
 
-
-                         {/* Team Roster Heading */}
-
-                        <Box sx={{display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '15px', mb: 5}}>
-                            <Typography variant='h3'>
-                                Team Roster
+                        <Box>
+                            <Typography fontSize={200} color={'secondary.main'}>
+                                #23
                             </Typography>
-                            <IconButton aria-label="Add Player" size="medium"
-                                  sx={{
-                                    backgroundColor: 'secondary.accent',
-                                    borderRadius: 10,
-                                    '&:hover': {
-                                        backgroundColor: 'primary.main'
-                                    }
-                                }}>
-                                <AddIcon fontSize="inherit" sx={{color: '#ffffff'}}/>
-                            </IconButton>
-
-                        </Box>
-
-                         {/* Players */}
-
-                        <Grid container sx={{display: 'flex', flexDirection:'column'}}>
-
-                            {/* Player Details. Map over this section. */}
-                            <Grid item sx={{display: 'flex', flexDirection:'row', mb: 3}}>
-                                <Box style={teamStyle.teamRoster}>
-                                    <img src='images/player-default-profile.png' alt="Player Profile Icon" width="30px" height="auto" style={{padding: '10px 0 0 0'}}/>
-                                </Box>
-                          
-                                <Box>
-                                    <Typography variant='h3'>
-                                        #11
-                                    </Typography>
-                                    <Typography variant='h6'>
-                                        Antonio Sanchez
-                                    </Typography>
-                                </Box>
-                            </Grid>
-                            {/* End Player Details Mapping. */}
-                           
-
-                            {/* ----------------------------------------------------- */}
-                            {/* Temporary Data. Delete */}                          
-                            <Grid item sx={{display: 'flex', flexDirection:'row', mb: 3}}>
-
-                                <Box style={teamStyle.teamRoster}>
-                                    <img src='images/player-default-profile.png' alt="Player Profile Icon" width="30px" height="auto" style={{padding: '10px 0 0 0'}}/>
-                                </Box>
-                          
-                                <Box>
-                                    <Typography variant='h3'>
-                                        #11
-                                    </Typography>
-                                    <Typography variant='h6'>
-                                        Antonio Sanchez
-                                    </Typography>
-                                </Box>
-                            </Grid>
-
-                            <Grid item sx={{display: 'flex', flexDirection:'row', mb: 3}}>
-                                <Box style={teamStyle.teamRoster}>
-                                    <img src='images/player-default-profile.png' alt="Player Profile Icon" width="30px" height="auto" style={{padding: '10px 0 0 0'}}/>
-                                </Box>
-                          
-                                <Box>
-                                    <Typography variant='h3'>
-                                        #11
-                                    </Typography>
-                                    <Typography variant='h6'>
-                                        Antonio Sanchez
-                                    </Typography>
-                                </Box>
-                            </Grid>
-
-                            <Grid item sx={{display: 'flex', flexDirection:'row', mb: 3}}>
-                                <Box style={teamStyle.teamRoster}>
-                                    <img src='images/player-default-profile.png' alt="Player Profile Icon" width="30px" height="auto" style={{padding: '10px 0 0 0'}}/>
-                                </Box>
-                          
-                                <Box>
-                                    <Typography variant='h3'>
-                                        #11
-                                    </Typography>
-                                    <Typography variant='h6'>
-                                        Antonio Sanchez
-                                    </Typography>
-                                </Box>
-                            </Grid>
-
-                            <Grid item sx={{display: 'flex', flexDirection:'row', mb: 3}}>
-                                <Box style={teamStyle.teamRoster}>
-                                    <img src='images/player-default-profile.png' alt="Player Profile Icon" width="30px" height="auto" style={{padding: '10px 0 0 0'}}/>
-                                </Box>
-                          
-                                <Box>
-                                    <Typography variant='h3'>
-                                        #11
-                                    </Typography>
-                                    <Typography variant='h6'>
-                                        Antonio Sanchez
-                                    </Typography>
-                                </Box>
-                            </Grid>
-
-                            {/* Temporary Data. Delete */}
-                            {/* ----------------------------------------------------- */}
-                              
-
-
-                        </Grid>
-
+                        </Box>               
 
                     </Grid>
-
-                    
+           
                 </Grid>
 
             </Container>
