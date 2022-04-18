@@ -17,6 +17,7 @@ import Login from "./pages/Login";
 import Logout from "./pages/Logout";
 
 import Team from "./pages/Team";
+import Player from "./pages/Player";
 
 // import Profile from "./pages/Profile";
 import Leagues from "./pages/Leagues";
@@ -38,6 +39,10 @@ const theme = createTheme({
     h3: {
       fontSize: "1.25em",
       textTransform: "uppercase",
+    },
+    h6: {
+      fontSize: "1em",
+      fontFamily: "Helvetica, sans-serif",
     },
     p: {
       fontSize: "1em",
@@ -110,6 +115,9 @@ function App() {
 
               {/* Need to add team specific route */}
               <Route path="/team" element={<Team />} />
+
+              {/* Need to add team specific route */}
+              <Route path="/player" element={<Player />} />
 
               {/* <Route path="/me" element={<Profile />} />
                   <Route path="/profiles/:username" element={<Profile />} /> */}
