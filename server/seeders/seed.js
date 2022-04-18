@@ -1,8 +1,10 @@
 const db = require('../config/connection');
-const { User, League, Season } = require('../models');
+const { User, League, Season, SoccerTeam, SoccerPlayer } = require('../models');
 const userSeeds = require('./userSeeds.json');
 const leagueSeeds = require('./leagueSeeds.json');
 const seasonSeeds = require('./seasonSeeds.json');
+const soccerTeamSeeds = require('./soccerTeamSeeds.json')
+const soccerPLayerSeeds = require('./soccerPlayerSeeds.json')
 
 
 db.once('open', async () => {
@@ -18,6 +20,14 @@ db.once('open', async () => {
     await Season.deleteMany({});
 
     await Season.create(seasonSeeds);
+
+    await SoccerTeam.deleteMany({});
+
+    await SoccerTeam.create(soccerTeamSeeds);
+
+    await SoccerPlayer.deleteMany({});
+
+    await SoccerPlayer.create(soccerPLayerSeeds);
 
     // for (let i = 0; i < thoughtSeeds.length; i++) {
     //   const { _id, thoughtAuthor } = await Thought.create(thoughtSeeds[i]);
