@@ -13,6 +13,7 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import Home from "./pages/Home";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
+import Logout from "./pages/Logout";
 // import Profile from "./pages/Profile";
 
 // import Header from "./components/Header";
@@ -27,11 +28,11 @@ const theme = createTheme({
     fontFamily: '"Bebas Neue", Arial, sans-serif',
     h1: {
       fontSize: "3em",
-      textTransform: "uppercase"
+      textTransform: "uppercase",
     },
     h3: {
       fontSize: "1.25em",
-      textTransform: "uppercase"
+      textTransform: "uppercase",
     },
     p: {
       fontSize: "1em",
@@ -85,17 +86,24 @@ function App() {
     <ApolloProvider client={client}>
       {
         <ThemeProvider theme={theme}>
-          {location.pathname === "/login" || location.pathname === "/signup" ? null : <Navbar />}
+          {location.pathname === "/login" ||
+          location.pathname === "/signup" ? null : (
+            <Navbar />
+          )}
 
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
+            <Route path="/logout" element={<Logout />} />
             {/* <Route path="/me" element={<Profile />} />
                   <Route path="/profiles/:username" element={<Profile />} /> */}
           </Routes>
 
-          {location.pathname === "/login" || location.pathname === "/signup" ? null : <Footer />}
+          {location.pathname === "/login" ||
+          location.pathname === "/signup" ? null : (
+            <Footer />
+          )}
         </ThemeProvider>
       }
     </ApolloProvider>
