@@ -9,13 +9,11 @@ import {
     Typography,
     Tabs,
     Tab
-  
-    // TextField,
-    // Typography,
-    // Link,
   } from "@mui/material";
   import PropTypes from 'prop-types';
   import { DataGrid } from '@mui/x-data-grid';
+  import IconButton from '@mui/material/IconButton';
+  import AddIcon from '@mui/icons-material/Add';
 
 //   DATAGRID (TEMPORARY DATA)
   const columns = [
@@ -101,13 +99,18 @@ export default function Team() {
             <CssBaseline />
             <Container
                 disableGutters
-                maxWidth="false"
-                sx={{m:10}}
+                alignItems="center"
+                justifyContent="center"
+                // maxWidth="false"
             >
 
-                <Grid container>
+                <Grid container  spacing={5} style={{margin: "25px"}}>
 
-                    <Grid item xs={8}>
+                    <Grid item 
+                     xs={12}
+                     s={12}
+                     md={8}
+                     lg={8} >
 
                 {/* Team Heading */}
                         <Box sx={{display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '20px', mb: 5}}>
@@ -123,7 +126,7 @@ export default function Team() {
                 {/* Team Stats */}
 
                         <Grid container spacing={{xs:4}}>
-                            <Grid item xs={3}  >
+                            <Grid item xs={6} s={6} md={3} lg={3}  >
                                 <Paper elevation={5} sx={{display: 'flex', flexDirection: 'column', alignItems: 'center', p:2, borderRadius: 4}} >
 
                                     <Typography variant='h1' color='secondary.contrastText'>
@@ -136,7 +139,7 @@ export default function Team() {
                                 </Paper>
                             </Grid>
 
-                            <Grid item xs={3} >
+                            <Grid item xs={6} s={6} md={3} lg={3} >
                                 <Paper elevation={5} sx={{display: 'flex', flexDirection: 'column', alignItems: 'center', p:2, borderRadius: 4}}>
 
                                     <Typography variant='h1' color='secondary.contrastText'>
@@ -149,7 +152,7 @@ export default function Team() {
                                 </Paper>
                             </Grid>
 
-                            <Grid item xs={3}>
+                            <Grid item xs={6} s={6} md={3} lg={3}>
                                 <Paper elevation={5} sx={{display: 'flex', flexDirection: 'column', alignItems: 'center', p:2, borderRadius: 4}} >
 
                                     <Typography variant='h1' color='secondary.contrastText'>
@@ -162,7 +165,7 @@ export default function Team() {
                                 </Paper>
                             </Grid>
 
-                            <Grid item xs={3}>
+                            <Grid item xs={6} s={6} md={3} lg={3}>
                                 <Paper elevation={5} sx={{display: 'flex', flexDirection: 'column', alignItems: 'center', p:2, borderRadius: 4}} >
 
                                     <Typography variant='h1' color='secondary.contrastText'>
@@ -192,6 +195,8 @@ export default function Team() {
                                     },
                                     '& .Mui-selected': {
                                         borderTop: '3px solid #F5E410',
+                                    },
+                                    '& .MuiButtonBase-root.MuiTab-root.Mui-selected': {
                                         color: '#062740'
                                     }
                                 }}>
@@ -236,12 +241,6 @@ export default function Team() {
                             </div>
 
 
-
-
-
-
-
-
                             </TabPanel>
                             <TabPanel value={value} index={1}>
                                 Item Two
@@ -253,15 +252,114 @@ export default function Team() {
 
 
 
-
-
-
                         </Grid>
                     </Grid>
 
                 {/* Right Side */}
 
-                    <Grid item xs={4}>
+                    <Grid item  
+                    xs={12}
+                     s={12}
+                     md={4}
+                     lg={4}>
+
+                        <Box sx={{display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '15px', mb: 5}}>
+                            <Typography variant='h3'>
+                                Team Roster
+                            </Typography>
+                            <IconButton aria-label="Add Player" size="medium"
+                                  sx={{
+                                    backgroundColor: 'secondary.accent',
+                                    borderRadius: 10,
+                                }}>
+                                <AddIcon fontSize="inherit" sx={{color: '#ffffff'}}/>
+                            </IconButton>
+
+                        </Box>
+
+                        <Grid container sx={{display: 'flex', flexDirection:'column'}}>
+                    {/* Players */}
+                            <Grid item sx={{display: 'flex', flexDirection:'row', mb: 3}}>
+                                <Box style={{backgroundColor: "black", borderRadius: '100%', width: '50px', height: '50px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginRight: '15px'}}>
+                                    <img src='images/player-default-profile.png' alt="Player Profile Icon" width="30px" height="auto" style={{padding: '10px 0 0 0'}}/>
+                                </Box>
+                          
+                                <Box>
+                                    <Typography variant='h3'>
+                                        #11
+                                    </Typography>
+                                    <Typography variant='h6'>
+                                        Antonio Sanchez
+                                    </Typography>
+                                </Box>
+                            </Grid>
+
+                           
+                            <Grid item sx={{display: 'flex', flexDirection:'row', mb: 3}}>
+                                <Box style={{backgroundColor: "black", borderRadius: '100%', width: '50px', height: '50px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginRight: '15px'}}>
+                                    <img src='images/player-default-profile.png' alt="Player Profile Icon" width="30px" height="auto" style={{padding: '10px 0 0 0'}}/>
+                                </Box>
+                          
+                                <Box>
+                                    <Typography variant='h3'>
+                                        #11
+                                    </Typography>
+                                    <Typography variant='h6'>
+                                        Antonio Sanchez
+                                    </Typography>
+                                </Box>
+                            </Grid>
+
+                            <Grid item sx={{display: 'flex', flexDirection:'row', mb: 3}}>
+                                <Box style={{backgroundColor: "black", borderRadius: '100%', width: '50px', height: '50px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginRight: '15px'}}>
+                                    <img src='images/player-default-profile.png' alt="Player Profile Icon" width="30px" height="auto" style={{padding: '10px 0 0 0'}}/>
+                                </Box>
+                          
+                                <Box>
+                                    <Typography variant='h3'>
+                                        #11
+                                    </Typography>
+                                    <Typography variant='h6'>
+                                        Antonio Sanchez
+                                    </Typography>
+                                </Box>
+                            </Grid>
+
+                            <Grid item sx={{display: 'flex', flexDirection:'row', mb: 3}}>
+                                <Box style={{backgroundColor: "black", borderRadius: '100%', width: '50px', height: '50px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginRight: '15px'}}>
+                                    <img src='images/player-default-profile.png' alt="Player Profile Icon" width="30px" height="auto" style={{padding: '10px 0 0 0'}}/>
+                                </Box>
+                          
+                                <Box>
+                                    <Typography variant='h3'>
+                                        #11
+                                    </Typography>
+                                    <Typography variant='h6'>
+                                        Antonio Sanchez
+                                    </Typography>
+                                </Box>
+                            </Grid>
+
+                            <Grid item sx={{display: 'flex', flexDirection:'row', mb: 3}}>
+                                <Box style={{backgroundColor: "black", borderRadius: '100%', width: '50px', height: '50px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginRight: '15px'}}>
+                                    <img src='images/player-default-profile.png' alt="Player Profile Icon" width="30px" height="auto" style={{padding: '10px 0 0 0'}}/>
+                                </Box>
+                          
+                                <Box>
+                                    <Typography variant='h3'>
+                                        #11
+                                    </Typography>
+                                    <Typography variant='h6'>
+                                        Antonio Sanchez
+                                    </Typography>
+                                </Box>
+                            </Grid>
+
+
+
+                        </Grid>
+
+
 
                     </Grid>
 
