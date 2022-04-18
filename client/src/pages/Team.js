@@ -12,7 +12,10 @@ import {
     InputLabel,
     MenuItem,
     FormControl,
-    Select
+    Select,
+    Modal,
+    TextField,
+    Button
   } from "@mui/material";
   import PropTypes from 'prop-types';
   import { DataGrid } from '@mui/x-data-grid';
@@ -75,7 +78,25 @@ const teamStyle = {
         alignItems: 'center', 
         justifyContent: 'center', 
         marginRight: '15px'
-    }
+    },
+    addPlayerModal: {
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        width: 400,
+        bgcolor: 'background.paper',
+        borderRadius: 3,
+        boxShadow: 24,
+        p: 4,
+    },
+    formButton: { 
+        height: 50, 
+        backgroundColor: "secondary.main",
+        "&:hover": {
+          backgroundColor: "primary.main",
+        },
+      },
 
 }
 
@@ -83,17 +104,19 @@ const teamStyle = {
 export default function Team() {
 
     // Functionality for Dropdown
-
     const [season, setSeason] = React.useState('');
-
     const handleSeasonChange = (event) => {
       setSeason(event.target.value);
     };
 
+    // Functionality for Add Player Modal
+    const [open, setOpen] = React.useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
+
 
     // Functionality for Tabs
     const [value, setValue] = React.useState(0);
-
     const handleChange = (event, newValue) => {
       setValue(newValue);
     }
@@ -356,7 +379,7 @@ export default function Team() {
                             <Typography variant='h3'>
                                 Team Roster
                             </Typography>
-                            <IconButton aria-label="Add Player" size="medium"
+                            <IconButton onClick={handleOpen} aria-label="Add Player" size="medium"
                                   sx={{
                                     backgroundColor: 'secondary.accent',
                                     borderRadius: 10,
@@ -464,6 +487,52 @@ export default function Team() {
 
                     </Grid>
 
+                    {/* Add Player Modal */}
+
+                    <Modal
+                        open={open}
+                        onClose={handleClose}
+                        aria-labelledby="modal-modal-title"
+                        aria-describedby="modal-modal-description"
+                    >
+                        <Box sx={teamStyle.addPlayerModal}>
+                        <Typography id="modal-modal-title" variant="h1" sx={{mb:4}}>
+                            Add Player
+                        </Typography>
+
+                        {/* <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+                        </Typography> */}
+                        <FormControl fullWidth sx={{gap:4}}>
+                            {/* <InputLabel htmlFor="firstName" variant='h3'> First Name</InputLabel> */}
+                            <TextField id="firstName" label="First Name" variant="outlined" color="secondary"
+                            InputLabelProps={{ shrink: true }} 
+                         />
+                            <TextField id="lastName" label="Last Name" variant="outlined" color="secondary"
+                            InputLabelProps={{ shrink: true }} 
+                         />
+
+                            <TextField id="playerNumber" label="Player Number" variant="outlined" color="secondary"
+                            InputLabelProps={{ shrink: true }} 
+                         />      
+
+                        {/* Add Upload Photo Field */}
+
+                        <Button
+                        variant="contained"
+                        type="submit"
+                        sx={teamStyle.formButton}
+                        fullWidth
+                        disableElevation
+                        >
+                        <Typography variant="h3">Add Player</Typography>
+                        </Button>
+
+
+                        </FormControl>
+
+                        </Box>
+                    </Modal>
                     
                 </Grid>
 
