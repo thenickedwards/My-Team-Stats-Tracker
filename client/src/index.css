@@ -19,22 +19,14 @@ main {
 }
 
 /* DataGrid Styles */
-.customDataGrid .MuiDataGrid-columnHeaders {
-  background-color: #062740;
-  color: #ffffff;
-}
+
 .customDataGrid .MuiDataGrid-main {
   background-color: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 6px 15px #06274035;
+  
 }
-.customDataGrid .MuiTypography-root {
-  font-family: Helvetica, sans-serif;
+.MuiDataGrid-row:nth-child(even){
+  background-color: #ECF6FC;
 }
-/* .customDataGrid .MuiDataGrid-row:nth-child(2n) {
-  background: black
-}
-tr:nth-child(odd) {
-  background: green
-}
-tr:nth-child(1) {
-  background:none;
-} */
+

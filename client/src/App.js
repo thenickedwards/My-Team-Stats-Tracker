@@ -39,6 +39,10 @@ const theme = createTheme({
       fontSize: "1.25em",
       textTransform: "uppercase",
     },
+    h6: {
+      fontSize: "1em",
+      fontFamily: "Helvetica, sans-serif",
+    },
     p: {
       fontSize: "1em",
       fontFamily: "Helvetica, sans-serif",

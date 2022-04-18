@@ -129,7 +129,7 @@ export default function Team() {
                                     <Typography variant='h1' color='secondary.contrastText'>
                                         4
                                     </Typography>
-                                    <Typography variant='p' color='secondary.contrastText'>
+                                    <Typography variant='h6' color='secondary.contrastText'>
                                         Played
                                     </Typography>
 
@@ -142,7 +142,7 @@ export default function Team() {
                                     <Typography variant='h1' color='secondary.contrastText'>
                                         4
                                     </Typography>
-                                    <Typography variant='p'  color='secondary.contrastText'>
+                                    <Typography variant='h6'  color='secondary.contrastText'>
                                         Played
                                     </Typography>
 
@@ -155,7 +155,7 @@ export default function Team() {
                                     <Typography variant='h1' color='secondary.contrastText'>
                                         4
                                     </Typography>
-                                    <Typography variant='p' color='secondary.contrastText'>
+                                    <Typography variant='h6' color='secondary.contrastText'>
                                         Played
                                     </Typography>
 
@@ -168,7 +168,7 @@ export default function Team() {
                                     <Typography variant='h1' color='secondary.contrastText'>
                                         4
                                     </Typography>
-                                    <Typography variant='p' color='secondary.contrastText'>
+                                    <Typography variant='h6' color='secondary.contrastText'>
                                         Played
                                     </Typography>
 
@@ -179,7 +179,22 @@ export default function Team() {
 
                         <Box sx={{ width: '100%', mt: 5 }}>
                             <Box >
-                                <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
+                                <Tabs value={value} onChange={handleChange} aria-label="basic tabs example"
+                                sx={{
+                                    "& .MuiButtonBase-root.MuiTab-root": {
+                                        fontSize: '1.25em',
+                                        alignItems: 'flex-start',
+                                        marginLeft: '25px',
+                                        padding: '12px 16px 12px 2px'
+                                    },
+                                    "& .MuiTabs-indicator": {
+                                        display: "none",
+                                    },
+                                    '& .Mui-selected': {
+                                        borderTop: '3px solid #F5E410',
+                                        color: '#062740'
+                                    }
+                                }}>
                                 <Tab label="Games" {...a11yProps(0)} />
                                 <Tab label="Schedule" {...a11yProps(1)} />
                                 <Tab label="Stats" {...a11yProps(2)} />
@@ -196,6 +211,26 @@ export default function Team() {
                                     pageSize={5}
                                     rowsPerPageOptions={[5]}
                                     className={'customDataGrid'}
+                                    sx={{
+                                        '&.MuiDataGrid-root': {
+                                            border: 'none',
+                                            fontFamily: 'Helvetica, sans-serif'
+                                        },
+                                        '& .MuiDataGrid-iconSeparator': {
+                                            display: 'none',
+                                        },
+                                        '& .MuiDataGrid-columnHeaders': {
+                                            fontFamily: '"Bebas Neue", Arial, sans-serif',
+                                            fontSize: '1.25em',
+                                            bgcolor: 'secondary.main',
+                                            color: 'primary.contrastText',
+                                        },
+                                        '& .MuiDataGrid-cell': {
+                                            border:'0'
+                                        }
+                                        
+                                    }}
+                               
                                     // checkboxSelection
                                 />
                             </div>
