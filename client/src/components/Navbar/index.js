@@ -15,14 +15,12 @@ import Auth from "../../utils/auth";
 
 let userInitials = () => {
   const token = Auth.loggedIn() ? Auth.getProfile() : null;
-  if (!token) {
-    return "RQ";
-  } else {
+  if (token) {
     const initials =
       token.data.userFirstName.charAt(0).toUpperCase() +
       token.data.userLastName.charAt(0).toUpperCase();
     return initials;
-  }
+  } else return "NO USER";
 };
 
 const navStyle = {
@@ -37,8 +35,27 @@ const navStyle = {
   },
 };
 
-const pages = ["Games", "Teams", "Leagues"];
-const settings = ["Account", "My Leagues", "My Teams", "My Seasons"];
+const pages = [
+  { id: 1, name: "Games", URL: "games" },
+  { id: 2, name: "Teams", URL: "teams" },
+  { id: 3, name: "Leagues", URL: "leagues" },
+];
+
+const settings = [
+  { id: 1, name: "Account", URL: "account" },
+  { id: 2, name: "My Leagues", URL: ":userId/leagues" },
+  { id: 3, name: "My Teams", URL: ":/userId/teams" },
+  { id: 4, name: "My Seasons", URL: ":userId/seasons" },
+  { id: 5, name: "Logout", URL: "logout" },
+];
+
+// const logout = "Logout";
+
+// const handleLogoutClick = (event) => {
+//     Auth.logout().then(() => {
+//      window.location.reload();
+//     });
+//    }
 
 const Navbar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -64,7 +81,7 @@ const Navbar = () => {
       <Container maxWidth="xl" style={navStyle.navImage} justify="end">
         <Toolbar disableGutters>
           <Typography
-            variant="h3"
+            variant="h2"
             noWrap
             component="div"
             sx={{ mr: 2, display: { xs: "none", md: "flex" } }}
@@ -100,28 +117,24 @@ const Navbar = () => {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                <MenuItem key={page.id} onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">{page.name}</Typography>
                 </MenuItem>
               ))}
             </Menu>
           </Box>
-          <Typography
-            variant="h3"
-            noWrap
-            component="div"
-            sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}
-          >
-            LOGO
-          </Typography>
+
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
               <Button
-                key={page}
-                onClick={handleCloseNavMenu}
+                key={page.id}
+                onClick={(e) => {
+                  e.preventDefault();
+                  window.location.href = `/${page.URL}`;
+                }}
                 sx={{ my: 2, color: "white", display: "block" }}
               >
-                {page}
+                {page.name}
               </Button>
             ))}
           </Box>
@@ -151,14 +164,20 @@ const Navbar = () => {
                   onClose={handleCloseUserMenu}
                 >
                   {settings.map((setting) => (
-                    <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                      <Typography textAlign="center">{setting}</Typography>
+                    <MenuItem
+                      key={setting.id}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        window.location.href = `/${setting.URL}`;
+                      }}
+                    >
+                      <Typography textAlign="center">{setting.name}</Typography>
                     </MenuItem>
                   ))}
                 </Menu>
               </>
             ) : (
-              "login link"
+              <div></div>
             )}
           </Box>
         </Toolbar>
