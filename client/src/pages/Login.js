@@ -1,4 +1,4 @@
-
+import { useState } from "react";
 // import { Link } from 'react-router-dom';
 import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from "../utils/mutations";
@@ -36,7 +36,7 @@ const loginStyle = {
     "&:hover": {
       backgroundColor: "secondary.main",
     },
-  }
+  },
 };
 
 const Login = (props) => {
@@ -44,7 +44,7 @@ const Login = (props) => {
 
   const [formState, setFormState] = useState({ username: "", password: "" });
 
-  const {username, password} = formState;
+  const { username, password } = formState;
 
   const [login, { error, data }] = useMutation(LOGIN_USER);
 
@@ -180,7 +180,7 @@ const Login = (props) => {
                     <Button
                       variant="contained"
                       type="submit"
-                      sx={{ mt: 2, height: 50}}
+                      sx={{ mt: 2, height: 50 }}
                       style={loginStyle.formButton}
                       fullWidth
                       disableElevation
@@ -189,9 +189,9 @@ const Login = (props) => {
                     </Button>
                   </form>
                 )}
-              <Typography variant="p" color="primary.contrastText">
-                {error && <div>{error.message}</div>}
-              </Typography>
+                <Typography variant="p" color="primary.contrastText">
+                  {error && <div>{error.message}</div>}
+                </Typography>
               </div>
             </Box>
 
