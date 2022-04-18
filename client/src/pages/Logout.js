@@ -12,11 +12,13 @@ const Logout = async (res) => {
 };
 
 const logoutPage = () => {
+  Logout();
+  // if user's internet is slow, this page will render in interim of logout
   return (
     <>
       <Container maxWidth="sm">
         <p>
-          You are being logged out of your admin account! You can go{" "}
+          You are logged out of your admin account! You can go{" "}
           <Link href="/">back to the homepage.</Link>
         </p>
       </Container>
