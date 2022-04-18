@@ -15,6 +15,7 @@ import {
   import IconButton from '@mui/material/IconButton';
   import AddIcon from '@mui/icons-material/Add';
 
+// ////////////////////////////////////
 //   DATAGRID (TEMPORARY DATA)
   const columns = [
     { field: 'id', headerName: 'ID', width: 70 },
@@ -48,18 +49,42 @@ import {
     { id: 8, lastName: 'Frances', firstName: 'Rossini', age: 36 },
     { id: 9, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
   ];
+// ////////////////////////////////////
+
+
+// Styles
+
+const teamStyle = {
+    statsPaper: {
+        display: 'flex', 
+        flexDirection: 'column', 
+        alignItems: 'center', 
+        p:2, 
+        borderRadius: 4
+    },
+    teamRoster: {
+        backgroundColor: "black", 
+        borderRadius: '100%', 
+        width: '50px', 
+        height: '50px', 
+        display: 'flex', 
+        alignItems: 'center', 
+        justifyContent: 'center', 
+        marginRight: '15px'
+    }
+
+}
 
 
 export default function Team() {
 
 
+    // Functionality for Tabs
     const [value, setValue] = React.useState(0);
 
     const handleChange = (event, newValue) => {
       setValue(newValue);
     }
-
-
       function TabPanel(props) {
         const { children, value, index, ...other } = props;
       
@@ -104,7 +129,10 @@ export default function Team() {
                 // maxWidth="false"
             >
 
-                <Grid container  spacing={5} style={{margin: "25px"}}>
+                <Grid container  
+                    spacing={5} 
+                    sx={{py: 8, px: 5}}
+                >
 
                     <Grid item 
                      xs={12}
@@ -126,8 +154,11 @@ export default function Team() {
                 {/* Team Stats */}
 
                         <Grid container spacing={{xs:4}}>
+
+                            {/* Stats Cards. Map over this section. */}
                             <Grid item xs={6} s={6} md={3} lg={3}  >
-                                <Paper elevation={5} sx={{display: 'flex', flexDirection: 'column', alignItems: 'center', p:2, borderRadius: 4}} >
+                                
+                                <Paper elevation={5} sx={teamStyle.statsPaper} >
 
                                     <Typography variant='h1' color='secondary.contrastText'>
                                         4
@@ -138,9 +169,12 @@ export default function Team() {
 
                                 </Paper>
                             </Grid>
+                            {/* End Stats Cards mapping. */}
 
+                            {/* ----------------------------------------------------- */}
+                            {/* Temporary Data. Delete */}
                             <Grid item xs={6} s={6} md={3} lg={3} >
-                                <Paper elevation={5} sx={{display: 'flex', flexDirection: 'column', alignItems: 'center', p:2, borderRadius: 4}}>
+                                <Paper elevation={5} sx={teamStyle.statsPaper}>
 
                                     <Typography variant='h1' color='secondary.contrastText'>
                                         4
@@ -153,7 +187,7 @@ export default function Team() {
                             </Grid>
 
                             <Grid item xs={6} s={6} md={3} lg={3}>
-                                <Paper elevation={5} sx={{display: 'flex', flexDirection: 'column', alignItems: 'center', p:2, borderRadius: 4}} >
+                                <Paper elevation={5} sx={teamStyle.statsPaper} >
 
                                     <Typography variant='h1' color='secondary.contrastText'>
                                         4
@@ -166,7 +200,7 @@ export default function Team() {
                             </Grid>
 
                             <Grid item xs={6} s={6} md={3} lg={3}>
-                                <Paper elevation={5} sx={{display: 'flex', flexDirection: 'column', alignItems: 'center', p:2, borderRadius: 4}} >
+                                <Paper elevation={5} sx={teamStyle.statsPaper} >
 
                                     <Typography variant='h1' color='secondary.contrastText'>
                                         4
@@ -177,6 +211,9 @@ export default function Team() {
 
                                 </Paper>
                             </Grid>
+                            {/* End Temporary Data. */}
+                            {/* ----------------------------------------------------- */}
+                            
 
                         {/* Tabs */}
 
@@ -198,6 +235,9 @@ export default function Team() {
                                     },
                                     '& .MuiButtonBase-root.MuiTab-root.Mui-selected': {
                                         color: '#062740'
+                                    },
+                                    '& .MuiBox-root': {
+                                        padding: '24px 0 24px 24px'
                                     }
                                 }}>
                                 <Tab label="Games" {...a11yProps(0)} />
@@ -271,16 +311,22 @@ export default function Team() {
                                   sx={{
                                     backgroundColor: 'secondary.accent',
                                     borderRadius: 10,
+                                    '&:hover': {
+                                        backgroundColor: 'primary.main'
+                                    }
                                 }}>
                                 <AddIcon fontSize="inherit" sx={{color: '#ffffff'}}/>
                             </IconButton>
 
                         </Box>
 
+                         {/* Players */}
+
                         <Grid container sx={{display: 'flex', flexDirection:'column'}}>
-                    {/* Players */}
+
+                            {/* Player Details. Map over this section. */}
                             <Grid item sx={{display: 'flex', flexDirection:'row', mb: 3}}>
-                                <Box style={{backgroundColor: "black", borderRadius: '100%', width: '50px', height: '50px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginRight: '15px'}}>
+                                <Box style={teamStyle.teamRoster}>
                                     <img src='images/player-default-profile.png' alt="Player Profile Icon" width="30px" height="auto" style={{padding: '10px 0 0 0'}}/>
                                 </Box>
                           
@@ -293,10 +339,14 @@ export default function Team() {
                                     </Typography>
                                 </Box>
                             </Grid>
-
+                            {/* End Player Details Mapping. */}
                            
+
+                            {/* ----------------------------------------------------- */}
+                            {/* Temporary Data. Delete */}                          
                             <Grid item sx={{display: 'flex', flexDirection:'row', mb: 3}}>
-                                <Box style={{backgroundColor: "black", borderRadius: '100%', width: '50px', height: '50px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginRight: '15px'}}>
+
+                                <Box style={teamStyle.teamRoster}>
                                     <img src='images/player-default-profile.png' alt="Player Profile Icon" width="30px" height="auto" style={{padding: '10px 0 0 0'}}/>
                                 </Box>
                           
@@ -311,7 +361,7 @@ export default function Team() {
                             </Grid>
 
                             <Grid item sx={{display: 'flex', flexDirection:'row', mb: 3}}>
-                                <Box style={{backgroundColor: "black", borderRadius: '100%', width: '50px', height: '50px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginRight: '15px'}}>
+                                <Box style={teamStyle.teamRoster}>
                                     <img src='images/player-default-profile.png' alt="Player Profile Icon" width="30px" height="auto" style={{padding: '10px 0 0 0'}}/>
                                 </Box>
                           
@@ -326,7 +376,7 @@ export default function Team() {
                             </Grid>
 
                             <Grid item sx={{display: 'flex', flexDirection:'row', mb: 3}}>
-                                <Box style={{backgroundColor: "black", borderRadius: '100%', width: '50px', height: '50px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginRight: '15px'}}>
+                                <Box style={teamStyle.teamRoster}>
                                     <img src='images/player-default-profile.png' alt="Player Profile Icon" width="30px" height="auto" style={{padding: '10px 0 0 0'}}/>
                                 </Box>
                           
@@ -341,7 +391,7 @@ export default function Team() {
                             </Grid>
 
                             <Grid item sx={{display: 'flex', flexDirection:'row', mb: 3}}>
-                                <Box style={{backgroundColor: "black", borderRadius: '100%', width: '50px', height: '50px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginRight: '15px'}}>
+                                <Box style={teamStyle.teamRoster}>
                                     <img src='images/player-default-profile.png' alt="Player Profile Icon" width="30px" height="auto" style={{padding: '10px 0 0 0'}}/>
                                 </Box>
                           
@@ -355,15 +405,15 @@ export default function Team() {
                                 </Box>
                             </Grid>
 
+                            {/* Temporary Data. Delete */}
+                            {/* ----------------------------------------------------- */}
+                              
 
 
                         </Grid>
 
-
-
                     </Grid>
-
-                    
+           
                 </Grid>
 
             </Container>
