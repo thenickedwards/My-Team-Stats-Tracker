@@ -14,11 +14,10 @@ import {
     // Typography,
     // Link,
   } from "@mui/material";
-
   import PropTypes from 'prop-types';
-
   import { DataGrid } from '@mui/x-data-grid';
 
+//   DATAGRID (TEMPORARY DATA)
   const columns = [
     { field: 'id', headerName: 'ID', width: 70 },
     { field: 'firstName', headerName: 'First name', width: 130 },
@@ -53,13 +52,9 @@ import {
   ];
 
 
-
-
-
-
 export default function Team() {
 
- 
+
     const [value, setValue] = React.useState(0);
 
     const handleChange = (event, newValue) => {
@@ -194,13 +189,14 @@ export default function Team() {
                                 
                                 
                     {/* Games */}
-                            <div style={{ height: 400, width: '100%' }}>
+                            <div style={{ height: 400, width: '100%'}}>
                                 <DataGrid
                                     rows={rows}
                                     columns={columns}
                                     pageSize={5}
                                     rowsPerPageOptions={[5]}
-                                    checkboxSelection
+                                    className={'customDataGrid'}
+                                    // checkboxSelection
                                 />
                             </div>
 
