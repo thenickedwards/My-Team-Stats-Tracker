@@ -38,7 +38,7 @@ const soccerPlayerSchema = new Schema({
   playerNumber: Number,
   goals: [goalSchema],
   assists: [assistSchema],
-  teams: {
+  team: {
     type: Schema.Types.ObjectId,
     ref: 'SoccerTeam',
   }

@@ -13,10 +13,12 @@ const leagueSchema = new Schema({
     type: String,
     trim: true,
   },
-  seasons: {
+  seasons: [
+    {
     type: Schema.Types.ObjectId,
     ref: 'Season',
-  }
+    }
+  ]
 });
 
 

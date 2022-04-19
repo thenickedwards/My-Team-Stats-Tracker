@@ -21,10 +21,10 @@ const resolvers = {
     },
     // League queries
     league: async (parent, { league }) => {
-      return League.findOne({ league });
+      return League.findOne({ league }).populate('seasons');;
     },
     allLeagues: async () => {
-      return League.find();
+      return League.find().populate('seasons');
     },
     // Season queries
     season: async (parent, { season }) => {
@@ -57,6 +57,7 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
+
     // Login
     login: async (parent, { username, password }) => {
       const user = await User.findOne({ username });
@@ -75,7 +76,8 @@ const resolvers = {
 
       return { token, user };
     },
-    // Add league
+
+    //// Add league
     addLeague: async (parent, { league }, context) => {
       // if (context.user) {
         const newLeague = await League.create({...league});
@@ -83,25 +85,47 @@ const resolvers = {
       // }
       // throw new AuthenticationError('You need to be logged in!');
     },
-    // Add season
+
+    //// Add season
     addSeason: async (parent, { season }, context) => {
       // if (context.user) {
         const newSeason = await Season.create({...season});
+        await League.findOneAndUpdate(
+          // { _id: req.params.leagueId },
+          { _id: season.league },
+          { $addToSet: { seasons: newSeason._id } },
+          { new: true }
+        )
         return newSeason
       // }
       // throw new AuthenticationError('You need to be logged in!');
     },
-    // Add team
+
+    //// Add team
     addTeam: async (parent, { team }, context) => {
       // if (context.user) {
         const newTeam = await SoccerTeam.create({...team});
+        await Season.findOneAndUpdate(
+          // { _id: req.params.seasonId },
+          { _id: team.season },
+          { $addToSet: { teams: newTeam._id } },
+          { new: true }
+        )
         return newTeam
       // }
       // throw new AuthenticationError('You need to be logged in!');
     },
+
+    //// Add player
     addPlayer: async (parent, { roster }, context) => {
       // if (context.user) {
         const newPlayer = await SoccerPlayer.create({...roster});
+        await SoccerTeam.findOneAndUpdate(
+          // { _id: req.params.seasonId },
+          { _id: roster.teams },
+          { $addToSet: { teams: newPlayer._id } },
+          { new: true }
+        )
         return newPlayer
       // }
       // throw new AuthenticationError('You need to be logged in!');
