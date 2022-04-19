@@ -1,5 +1,6 @@
 import * as React from "react";
 import Container from "@mui/material/Container";
+import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
@@ -26,34 +27,42 @@ const Footer = () => {
       sx={{ width: 500, position: "relative", bottom: 0, left: 0, right: 0 }}
       elevation={3}
     >
-      <BottomNavigation
-        // style={footerStyle.footerComponents}
-        showLabels
-        value={value}
-        onChange={(event, newValue) => {
-          setValue(newValue);
+      <Box>
+        <BottomNavigation
+          // style={footerStyle.footerComponents}
+          showLabels
+          value={value}
+          onChange={(event, newValue) => {
+            setValue(newValue);
+          }}
+        >
+          <BottomNavigationAction
+            label="Homepage"
+            href="/"
+            icon={<HomeIcon />}
+          />
+          <BottomNavigationAction
+            label="Admin Login"
+            href="login"
+            icon={<AdminPanelSettingsIcon />}
+          />
+          <BottomNavigationAction
+            label="Admin Signup"
+            href="signup"
+            icon={<AddModeratorIcon />}
+          />
+        </BottomNavigation>
+      </Box>
+      <Box
+        sx={{
+          textAlign: "center",
+          mt: 2,
+          mb: 2,
+          display: "flex",
         }}
       >
-        <BottomNavigationAction label="Homepage" href="/" icon={<HomeIcon />} />
-        <BottomNavigationAction
-          label="Admin Login"
-          href="login"
-          icon={<AdminPanelSettingsIcon />}
-        />
-        <BottomNavigationAction
-          label="Admin Signup"
-          href="signup"
-          icon={<AddModeratorIcon />}
-        />
-      </BottomNavigation>
-      <Typography
-        noWrap
-        justifyContent="center"
-        overflow="visible"
-        sx={{ mt: 2, mb: 2, display: { xs: "flex", md: "flex" } }}
-      >
-        {footerText}
-      </Typography>
+        <Typography>{footerText}</Typography>
+      </Box>
     </Container>
   );
 };
