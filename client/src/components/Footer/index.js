@@ -1,5 +1,6 @@
 import * as React from "react";
 import Container from "@mui/material/Container";
+import Typography from "@mui/material/Typography";
 import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 import AdminPanelSettingsIcon from "@mui/icons-material/AdminPanelSettings";
@@ -33,11 +34,7 @@ const Footer = () => {
           setValue(newValue);
         }}
       >
-        <BottomNavigationAction
-          label="Homepage"
-          href="/"
-          icon={<HomeIcon/>}
-        />
+        <BottomNavigationAction label="Homepage" href="/" icon={<HomeIcon />} />
         <BottomNavigationAction
           label="Admin Login"
           href="login"
@@ -46,10 +43,17 @@ const Footer = () => {
         <BottomNavigationAction
           label="Admin Signup"
           href="signup"
-          icon={<AddModeratorIcon/>}
+          icon={<AddModeratorIcon />}
         />
       </BottomNavigation>
-      <Container justify="center">{footerText}</Container>
+      <Typography
+        noWrap
+        justifyContent="center"
+        overflow="visible"
+        sx={{ mr: 2, display: { xs: "flex", md: "flex" } }}
+      >
+        {footerText}
+      </Typography>
     </Container>
   );
 };
