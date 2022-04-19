@@ -79,7 +79,34 @@ export default function Teams() {
 
             </Box>
             
-
+            {/* Dropdown. Season Selector. */}
+            <FormControl size="small" 
+                sx={{ 
+                    m: 1, 
+                    minWidth: '100%', 
+                    mb: 5, 
+                    ml: 0,
+                    '& .MuiOutlinedInput-notchedOutline': {
+                        borderColor: 'secondary.main'
+                    }
+                }}
+                >
+                <InputLabel id="select-season">Season</InputLabel>
+                <Select
+                    labelId="select-season"
+                    id="select-season"
+                    value={season}
+                    label="Season"
+                    onChange={handleSeasonChange}
+                >
+                    <MenuItem value="">
+                    <em>None</em>
+                    </MenuItem>
+                    <MenuItem value={10}>Ten</MenuItem>
+                    <MenuItem value={20}>Twenty</MenuItem>
+                    <MenuItem value={30}>Thirty</MenuItem>
+                </Select>
+            </FormControl>
 
             {/* Team Cards - Map Over Seeds */}
             <Grid container  spacing={{xs: 4}}>
