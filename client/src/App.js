@@ -13,15 +13,15 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import Home from "./pages/Home";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
-
 import Logout from "./pages/Logout";
 
-import Team from "./pages/Team";
-import Player from "./pages/Player";
-
-// import Profile from "./pages/Profile";
 import Leagues from "./pages/Leagues";
 import Teams from "./pages/Teams";
+import League from "./pages/League";
+import Team from "./pages/Team";
+import Player from "./pages/Player";
+// import Profile from "./pages/Profile";
+
 
 // import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -114,12 +114,17 @@ function App() {
 
               <Route path="/leagues" element={<Leagues />} />
 
+
               <Route path="/teams" element={<Teams />} />
+
+              {/* Need to add league specific route */}
+              <Route path="/league" element={<League />} />
+
 
               {/* Need to add team specific route */}
               <Route path="/team" element={<Team />} />
 
-              {/* Need to add team specific route */}
+              {/* Need to add player specific route */}
               <Route path="/player" element={<Player />} />
 
               {/* <Route path="/me" element={<Profile />} />

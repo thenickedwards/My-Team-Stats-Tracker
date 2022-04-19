@@ -161,8 +161,8 @@ export default function Team() {
             <CssBaseline />
             <Container
                 disableGutters
-                alignItems="center"
-                justifyContent="center"
+                // alignItems="center"
+                justify="center"
                 // maxWidth="false"
             >
 
@@ -502,9 +502,7 @@ export default function Team() {
                             Add Player
                         </Typography>
 
-                        {/* <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                            Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-                        </Typography> */}
+                        
                         <FormControl fullWidth sx={{gap:4}}>
                             {/* <InputLabel htmlFor="firstName" variant='h3'> First Name</InputLabel> */}
                             <TextField id="firstName" label="First Name" variant="outlined" color="secondary"
