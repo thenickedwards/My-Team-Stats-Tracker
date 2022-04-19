@@ -41,6 +41,16 @@ export default function Leagues() {
     return (
       <Container  alignItems="center" justifyContent="center">
 
+
+        {/* Page styling */}
+        <Box sx={{position: 'absolute', top: 100, right: 15}}>
+            <img src='images/abstract-up-arrows.png' alt="Abstract graphic with arrows." width='60px'/>
+        </Box>
+        
+        <Box sx={{position: 'absolute', bottom: 40, left: 40}}>
+            <img src='images/abstract-corner-dots-lines.png' alt="Abstract graphic with dots and lines." width='250px'/>
+        </Box>
+
         <Grid container sx={{py: 8, px: 5}} position="relative">
 
             {/* Header and "Add" button */}
@@ -64,8 +74,8 @@ export default function Leagues() {
             </Box>
             
             {/* League Cards - Map Over Seeds */}
-            <Grid container  sx={{justifyContent: 'space-around'}}>
-                <Grid >
+            <Grid container  spacing={{xs: 4}}>
+                <Grid item  xs={6} s={6} md={3} lg={3}>
 
                     <Paper elevation={5} sx={leaguesStyle.leaguePaper} >
                         <img
@@ -80,7 +90,7 @@ export default function Leagues() {
                     </Paper>
 
                 </Grid>
-                <Grid>
+                <Grid item  xs={6} s={6} md={3} lg={3}>
 
                     <Paper elevation={5} sx={leaguesStyle.leaguePaper}>
                         <img
@@ -95,7 +105,7 @@ export default function Leagues() {
                     </Paper>
 
                 </Grid>
-                <Grid>
+                <Grid item  xs={6} s={6} md={3} lg={3}>
 
                     <Paper elevation={5} sx={leaguesStyle.leaguePaper}>
                         <img
@@ -110,7 +120,7 @@ export default function Leagues() {
                     </Paper>
 
                 </Grid>
-                <Grid>
+                <Grid item  xs={6} s={6} md={3} lg={3}>
 
                     <Paper elevation={5} sx={leaguesStyle.leaguePaper}>
                         <img
@@ -126,17 +136,7 @@ export default function Leagues() {
 
                 </Grid>
             </Grid>
-
         </Grid>
-
-        {/* Page styling */}
-        <Box sx={{position: 'absolute', top: 100, right: 15}}>
-            <img src='images/abstract-up-arrows.png' alt="Abstract graphic with arrows." width='60px'/>
-        </Box>
-        
-        <Box sx={{position: 'absolute', bottom: 40, left: 40}}>
-            <img src='images/abstract-corner-dots-lines.png' alt="Abstract graphic with dots and lines." width='250px'/>
-        </Box>
 
       </Container>
     );
