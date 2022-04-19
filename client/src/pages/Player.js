@@ -124,8 +124,8 @@ export default function Team() {
             <CssBaseline />
             <Container
                 disableGutters
-                alignItems="center"
-                justifyContent="center"
+                // alignItems="center"
+                justify="center"
                 // maxWidth="false"
             >
 
