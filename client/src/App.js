@@ -21,6 +21,7 @@ import Player from "./pages/Player";
 
 // import Profile from "./pages/Profile";
 import Leagues from "./pages/Leagues";
+import League from "./pages/League";
 
 // import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -113,10 +114,13 @@ function App() {
 
               <Route path="/leagues" element={<Leagues />} />
 
+              {/* Need to add league specific route */}
+              <Route path="/league" element={<League />} />
+
               {/* Need to add team specific route */}
               <Route path="/team" element={<Team />} />
 
-              {/* Need to add team specific route */}
+              {/* Need to add player specific route */}
               <Route path="/player" element={<Player />} />
 
               {/* <Route path="/me" element={<Profile />} />
