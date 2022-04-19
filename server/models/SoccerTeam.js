@@ -12,22 +12,23 @@ const soccerTeamSchema = new Schema({
     type: String,
     trim: true,
   },
-  league: {
-    type: Schema.Types.ObjectId,
-    ref: 'League',
-  },
-  seasons: {
+  season:
+    {
     type: Schema.Types.ObjectId,
     ref: 'Season',
-  },
-  games: {
+    },
+  games: [
+    {
     type: Schema.Types.ObjectId,
     ref: 'SoccerGame',
-  },
-  roster: {
+    }
+  ],
+  roster: [
+    {
     type: Schema.Types.ObjectId,
     ref: 'SoccerPlayer',
-  },
+    }
+  ],
   wins: Number,
   draws: Number,
   losses: Number,

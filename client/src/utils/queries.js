@@ -50,6 +50,7 @@ export const QUERY_SEASON = gql`
   query season {
     season {
       _id
+      seasonName
       startYear
       endYear
       league
@@ -62,10 +63,11 @@ export const QUERY_SEASONS = gql`
   query allSeasons {
     season {
       _id
+      seasonName
       startYear
       endYear
-      # league
-      # teams
+      league
+      teams
     }
   }
 `;
@@ -77,8 +79,7 @@ export const QUERY_SOCCERTEAM = gql`
       teamName
       teamColor
       teamPic
-      league
-      seasons
+      season
       games
       roster
       wins
@@ -98,8 +99,7 @@ export const QUERY_SOCCERTEAMS = gql`
       teamName
       teamColor
       teamPic
-      league
-      seasons
+      season
       games
       roster
       wins
@@ -122,7 +122,7 @@ export const QUERY_SOCCERPLAYER = gql`
       playerNumber
       goals
       assists
-      teams
+      team
     }
   }
 `;
@@ -137,7 +137,7 @@ export const QUERY_SOCCERPLAYERS = gql`
       playerNumber
       goals
       assists
-      teams
+      team
     }
   }
 `;

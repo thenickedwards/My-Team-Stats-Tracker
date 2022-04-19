@@ -34,7 +34,7 @@ const typeDefs = gql`
     seasonName: String!
     startYear: Int!
     endYear: Int
-    league: [League]
+    league: League
     teams: [SoccerTeam]
   }
 
@@ -42,6 +42,7 @@ const typeDefs = gql`
     seasonName: String!
     startYear: Int!
     endYear: Int
+    league: ID
   }
 
   type SoccerTeam {
@@ -49,8 +50,7 @@ const typeDefs = gql`
     teamName: String!
     teamColor: String
     teamPic: String
-    league: [League]
-    seasons: [Season]
+    season: Season
     games: [SoccerGame]
     roster: [SoccerPlayer]
     wins: Int
@@ -65,8 +65,7 @@ const typeDefs = gql`
     teamName: String!
     teamColor: String
     teamPic: String
-    # league: [League]
-    # seasons: [Season]
+    season: ID
   }
 
   type Goal {
@@ -89,7 +88,7 @@ const typeDefs = gql`
     playerNumber: Int
     goals: [Goal]
     assists: [Assist]
-    teams: [SoccerTeam]
+    team: SoccerTeam
   }
 
   input SoccerPlayerInput {
@@ -97,6 +96,7 @@ const typeDefs = gql`
     playerLastName: String!
     playerPic: String
     playerNumber: Int
+    team: ID
   }
 
   type SoccerGame {

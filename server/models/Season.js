@@ -15,14 +15,17 @@ const seasonSchema = new Schema({
     trim: true,
     match: [/^\d\d\d\d$/, 'Must be 4 digit year!'],
   },
-  league: {
-    type: Schema.Types.ObjectId,
-    ref: 'League',
+  league:
+  {
+  type: Schema.Types.ObjectId,
+  ref: 'League',
   },
-  teams: {
+  teams: [
+    {
     type: Schema.Types.ObjectId,
     ref: 'Team',
-  }
+    }
+  ]
 });
 
 
