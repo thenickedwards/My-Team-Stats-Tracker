@@ -21,6 +21,7 @@ import Player from "./pages/Player";
 
 // import Profile from "./pages/Profile";
 import Leagues from "./pages/Leagues";
+import Teams from "./pages/Teams";
 
 // import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -112,6 +113,8 @@ function App() {
               <Route path="/logout" element={<Logout />} />
 
               <Route path="/leagues" element={<Leagues />} />
+
+              <Route path="/teams" element={<Teams />} />
 
               {/* Need to add team specific route */}
               <Route path="/team" element={<Team />} />
