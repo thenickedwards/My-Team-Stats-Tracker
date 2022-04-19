@@ -21,6 +21,8 @@ import League from "./pages/League";
 import Team from "./pages/Team";
 import Player from "./pages/Player";
 import LeagueSeasonStats from "./pages/LeagueSeasonStats"
+import Games from "./pages/Games"
+import Game from "./pages/Game"
 // import Profile from "./pages/Profile";
 
 
@@ -130,6 +132,11 @@ function App() {
 
               {/* Need to add player specific route */}
               <Route path="/league-season-stats" element={<LeagueSeasonStats />} />
+
+              <Route path="/games" element={<Games />} />
+
+              {/* Need to add game specific route */}
+              <Route path="/game" element={<Game />} />
 
               {/* <Route path="/me" element={<Profile />} />
                   <Route path="/profiles/:username" element={<Profile />} /> */}
