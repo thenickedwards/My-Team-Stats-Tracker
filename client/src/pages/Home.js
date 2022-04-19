@@ -73,6 +73,11 @@ const homeStyle = {
     justifyContent: 'space-between', 
     alignItems: 'center', 
     padding: '5px 40px'
+  },
+  statsTeamDetails: {
+    display:'flex', 
+    alignItems: 'center', 
+    gap: 2
   }
 }
 
@@ -124,18 +129,22 @@ const Home = () => {
                             
                             {/* Team 1 */}
                             <Box sx={homeStyle.statsTeams}>
-                              <img src="images/chicago.png" alt="Team Logo" width="40px" height="auto" />
-                              <Typography>Chicago</Typography>
+                              <Box sx={homeStyle.statsTeamDetails}>
+                                <img src="images/chicago.png" alt="Team Logo" width="30px" height="auto" />
+                                <Typography>Chicago</Typography>
+                              </Box>
                               <Typography>5</Typography>
                             </Box>
 
                              
                             {/* Team 2 */}
                             <Box sx={homeStyle.statsTeams}>
-                              <img src="images/la-galaxy.png" alt="Team Logo" width="40px" height="auto" />
-                              <Typography>Los Angeles</Typography>
-                              <Typography>10</Typography>
-                            </Box>                          
+                              <Box sx={homeStyle.statsTeamDetails}>
+                                <img src="images/la-galaxy.png" alt="Team Logo" width="30px" height="auto" />
+                                <Typography>Los Angeles</Typography>
+                              </Box>
+                              <Typography>5</Typography>
+                            </Box>                        
 
 
                         </Paper>
@@ -144,41 +153,6 @@ const Home = () => {
 
                     {/* ----------------------------------------------------- */}
                     {/* Temporary Data. Delete */}
-                    <Grid item xs={12} s={12} md={3} lg={3} >
-                        
-                        <Paper elevation={5} sx={homeStyle.statsPaper} >
-
-
-                            {/* Header */}
-                            <Box sx={homeStyle.statsHeader} className='statsBox'>
-                              <Typography variant="p" fontSize={13}>
-                                League Name
-                              </Typography>
-                              <Typography variant="p" fontSize={13}>
-                                4/9 @ 8:00pm
-                              </Typography>
-                            </Box>
-                            
-                            {/* Team 1 */}
-                            <Box sx={homeStyle.statsTeams}>
-                              <img src="images/chicago.png" alt="Team Logo" width="40px" height="auto" />
-                              <Typography>Chicago</Typography>
-                              <Typography>5</Typography>
-                            </Box>
-
-                             
-                            {/* Team 2 */}
-                            <Box sx={homeStyle.statsTeams}>
-                              <img src="images/la-galaxy.png" alt="Team Logo" width="40px" height="auto" />
-                              <Typography>Los Angeles</Typography>
-                              <Typography>10</Typography>
-                            </Box>                          
-
-
-                        </Paper>
-                    </Grid>
- 
-
 
                     <Grid item xs={12} s={12} md={3} lg={3} >
                         
@@ -197,23 +171,27 @@ const Home = () => {
                             
                             {/* Team 1 */}
                             <Box sx={homeStyle.statsTeams}>
-                              <img src="images/chicago.png" alt="Team Logo" width="40px" height="auto" />
-                              <Typography>Chicago</Typography>
+                              <Box sx={homeStyle.statsTeamDetails}>
+                                <img src="images/chicago.png" alt="Team Logo" width="30px" height="auto" />
+                                <Typography>Chicago</Typography>
+                              </Box>
                               <Typography>5</Typography>
                             </Box>
 
                              
                             {/* Team 2 */}
                             <Box sx={homeStyle.statsTeams}>
-                              <img src="images/la-galaxy.png" alt="Team Logo" width="40px" height="auto" />
-                              <Typography>Los Angeles</Typography>
-                              <Typography>10</Typography>
-                            </Box>                          
+                              <Box sx={homeStyle.statsTeamDetails}>
+                                <img src="images/la-galaxy.png" alt="Team Logo" width="30px" height="auto" />
+                                <Typography>Los Angeles</Typography>
+                              </Box>
+                              <Typography>5</Typography>
+                            </Box>                        
 
 
                         </Paper>
                     </Grid>
- 
+
 
 
                     <Grid item xs={12} s={12} md={3} lg={3} >
@@ -233,22 +211,68 @@ const Home = () => {
                             
                             {/* Team 1 */}
                             <Box sx={homeStyle.statsTeams}>
-                              <img src="images/chicago.png" alt="Team Logo" width="40px" height="auto" />
-                              <Typography>Chicago</Typography>
+                              <Box sx={homeStyle.statsTeamDetails}>
+                                <img src="images/chicago.png" alt="Team Logo" width="30px" height="auto" />
+                                <Typography>Chicago</Typography>
+                              </Box>
                               <Typography>5</Typography>
                             </Box>
 
                              
                             {/* Team 2 */}
                             <Box sx={homeStyle.statsTeams}>
-                              <img src="images/la-galaxy.png" alt="Team Logo" width="40px" height="auto" />
-                              <Typography>Los Angeles</Typography>
-                              <Typography>10</Typography>
-                            </Box>                          
+                              <Box sx={homeStyle.statsTeamDetails}>
+                                <img src="images/la-galaxy.png" alt="Team Logo" width="30px" height="auto" />
+                                <Typography>Los Angeles</Typography>
+                              </Box>
+                              <Typography>5</Typography>
+                            </Box>                        
 
 
                         </Paper>
                     </Grid>
+
+
+
+                    <Grid item xs={12} s={12} md={3} lg={3} >
+                        
+                        <Paper elevation={5} sx={homeStyle.statsPaper} >
+
+
+                            {/* Header */}
+                            <Box sx={homeStyle.statsHeader} className='statsBox'>
+                              <Typography variant="p" fontSize={13}>
+                                League Name
+                              </Typography>
+                              <Typography variant="p" fontSize={13}>
+                                4/9 @ 8:00pm
+                              </Typography>
+                            </Box>
+                            
+                            {/* Team 1 */}
+                            <Box sx={homeStyle.statsTeams}>
+                              <Box sx={homeStyle.statsTeamDetails}>
+                                <img src="images/chicago.png" alt="Team Logo" width="30px" height="auto" />
+                                <Typography>Chicago</Typography>
+                              </Box>
+                              <Typography>5</Typography>
+                            </Box>
+
+                             
+                            {/* Team 2 */}
+                            <Box sx={homeStyle.statsTeams}>
+                              <Box sx={homeStyle.statsTeamDetails}>
+                                <img src="images/la-galaxy.png" alt="Team Logo" width="30px" height="auto" />
+                                <Typography>Los Angeles</Typography>
+                              </Box>
+                              <Typography>5</Typography>
+                            </Box>                        
+
+
+                        </Paper>
+                    </Grid>
+
+
  
 
 
