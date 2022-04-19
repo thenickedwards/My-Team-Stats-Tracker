@@ -127,17 +127,17 @@ export default function Leagues() {
                 </Grid>
             </Grid>
 
+        </Grid>
 
-            </Grid>
+        {/* Page styling */}
+        <Box sx={{position: 'absolute', top: 100, right: 15}}>
+            <img src='images/abstract-up-arrows.png' alt="Abstract graphic with arrows." width='60px'/>
+        </Box>
+        
+        <Box sx={{position: 'absolute', bottom: 40, left: 40}}>
+            <img src='images/abstract-corner-dots-lines.png' alt="Abstract graphic with dots and lines." width='250px'/>
+        </Box>
 
-            {/* Page styling */}
-            <Box sx={{position: 'absolute', top: 0, right: 0}}>
-                <img src='images/abstract-up-arrows.png' alt="Abstract graphic with arrows." width='60px'/>
-            </Box>
-            
-            <Box sx={{position: 'absolute', bottom: 0, left: 40}}>
-                <img src='images/abstract-corner-dots-lines.png' alt="Abstract graphic with dots and lines." width='250px'/>
-            </Box>
       </Container>
     );
   }
