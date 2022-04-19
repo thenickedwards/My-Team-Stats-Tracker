@@ -3,10 +3,14 @@ import * as React from 'react';
 // Material UI Imports
 import { 
     Box,
+    Button,
     Container,
+    FormControl,
     Grid,
     IconButton,
+    Modal,
     Paper,
+    TextField,
     Typography
 } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
@@ -28,7 +32,25 @@ const leaguesStyle = {
         width: "70%",
         margin: "auto",
         textAlign: "center"
-    }
+    },
+    addLeagueModal: {
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+        width: 400,
+        bgcolor: 'background.paper',
+        borderRadius: 3,
+        boxShadow: 24,
+        p: 4,
+    },
+    formButton: { 
+        height: 50, 
+        backgroundColor: "secondary.main",
+        "&:hover": {
+          backgroundColor: "primary.main",
+        },
+    },
   }
 
 export default function Leagues() {
@@ -136,8 +158,52 @@ export default function Leagues() {
 
                 </Grid>
             </Grid>
-        </Grid>
 
+            {/* Add League Modal */}
+            <Modal
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+            >
+                <Box sx={leaguesStyle.addLeagueModal}>
+                    <Typography id="modal-modal-title" variant="h1" sx={{mb:4}}>
+                        Add League
+                    </Typography>
+
+                
+                    <FormControl fullWidth sx={{gap:4}}>
+
+                        <TextField id="leagueName" label="League Name" variant="outlined" color="secondary"
+                        InputLabelProps={{ shrink: true }} 
+                        />
+
+                        <TextField id="sport" label="Sport" variant="outlined" color="secondary"
+                        InputLabelProps={{ shrink: true }} 
+                        />
+
+                        <TextField id="seasons" label="Seasons" variant="outlined" color="secondary"
+                        InputLabelProps={{ shrink: true }} 
+                        />      
+
+                        {/* TODO: Add Upload Photo Field */}
+
+                        <Button
+                        variant="contained"
+                        type="submit"
+                        sx={leaguesStyle.formButton}
+                        fullWidth
+                        disableElevation
+                        >
+                            <Typography variant="h3">Add League</Typography>
+
+                        </Button>
+
+                    </FormControl>
+
+                </Box>
+            </Modal>
+        </Grid>
       </Container>
     );
   }
