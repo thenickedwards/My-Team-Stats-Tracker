@@ -49,14 +49,6 @@ const settings = [
   { id: 5, name: "Logout", URL: "logout" },
 ];
 
-// const logout = "Logout";
-
-// const handleLogoutClick = (event) => {
-//     Auth.logout().then(() => {
-//      window.location.reload();
-//     });
-//    }
-
 const Navbar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -84,12 +76,12 @@ const Navbar = () => {
             variant="h2"
             noWrap
             component="div"
-            sx={{ mr: 2, display: { xs: "none", md: "flex" } }}
+            sx={{ mr: 2, display: { xs: "flex", md: "flex" } }}
           >
             THE LITTLES
           </Typography>
 
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "flex" } }}>
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -113,7 +105,7 @@ const Navbar = () => {
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
               sx={{
-                display: { xs: "block", md: "none" },
+                display: { xs: "block" },
               }}
             >
               {pages.map((page) => (
@@ -124,7 +116,7 @@ const Navbar = () => {
             </Menu>
           </Box>
 
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "flex" } }}>
             {pages.map((page) => (
               <Button
                 key={page.id}
