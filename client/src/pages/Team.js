@@ -23,7 +23,7 @@ import {
   import AddIcon from '@mui/icons-material/Add';
 
 // ////////////////////////////////////
-//   DATAGRID (TEMPORARY DATA)
+//   DATAGRID (EDIT DATA)
   const columns = [
     { field: 'id', headerName: 'ID', width: 70 },
     { field: 'firstName', headerName: 'First name', width: 130 },
@@ -44,6 +44,8 @@ import {
         `${params.row.firstName || ''} ${params.row.lastName || ''}`,
     },
   ];
+
+  //   DATAGRID (TEMPORARY DATA)
   
   const rows = [
     { id: 1, lastName: 'Snow', firstName: 'Jon', age: 35 },
