@@ -40,8 +40,7 @@ const loginStyle = {
 };
 
 const Login = (props) => {
-  // const [formState, setFormState] = useState({ email: "", password: "" });
-
+ 
   const [formState, setFormState] = useState({ username: "", password: "" });
 
   const { username, password } = formState;
