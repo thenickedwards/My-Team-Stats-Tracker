@@ -23,7 +23,7 @@ const Footer = () => {
   return (
     <Container
       xs={12}
-      sx={{ width: 500, position: "fixed", bottom: 0, left: 0, right: 0 }}
+      sx={{ width: 500, position: "relative", bottom: 0, left: 0, right: 0 }}
       elevation={3}
     >
       <BottomNavigation
@@ -50,7 +50,7 @@ const Footer = () => {
         noWrap
         justifyContent="center"
         overflow="visible"
-        sx={{ mr: 2, display: { xs: "flex", md: "flex" } }}
+        sx={{ mt: 2, mb: 2, display: { xs: "flex", md: "flex" } }}
       >
         {footerText}
       </Typography>
