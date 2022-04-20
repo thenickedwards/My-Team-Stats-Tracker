@@ -63,17 +63,31 @@ export const ADD_SEASON = gql`
   }
 `;
 
+// export const ADD_SOCCERTEAM = gql`
+//   mutation addTeam($teams: SoccerTeamInput) {
+//     addTeam(team: $team) {
+//       _id
+//       teamName
+//       teamColor
+//       teamPic
+//       season
+//     }
+//   }
+// `;
+
 export const ADD_SOCCERTEAM = gql`
-  mutation addTeam($teams: SoccerTeamInput) {
+  mutation addTeam($team: SoccerTeamInput) {
     addTeam(team: $team) {
       _id
       teamName
       teamColor
       teamPic
-      season
+      season {
+        _id
+      }
     }
-  }
-`;
+  }`;
+
 
 export const ADD_SOCCERPLAYER = gql`
   mutation addPlayer($roster: SoccerPlayerInput) {

@@ -28,10 +28,10 @@ const resolvers = {
     },
     // Season queries
     season: async (parent, { season }) => {
-      return Season.findOne({ season });
+      return Season.findOne({ season }).populate('teams');
     },
     allSeasons: async () => {
-      return Season.find();
+      return Season.find().populate('teams');
     },
     // Team queries
     soccerTeam: async (parent, { soccerTeam }) => {
@@ -100,16 +100,34 @@ const resolvers = {
       // }
       // throw new AuthenticationError('You need to be logged in!');
     },
+    //  //// Add team
+    //  addTeam: async (parent, args, context) => {
+    //   // if (context.user) {
+    //     const newTeam = await SoccerTeam.create({...args});
+    //     await Season.findOneAndUpdate(
+    //       // { _id: req.params.seasonId },
+    //       { _id: args.season },
+    //       { $addToSet: { teams: args._id } },
+    //       { new: true }
+    //     )
+    //     return newTeam
+    //   // }
+    //   // throw new AuthenticationError('You need to be logged in!');
+    // },
+
 
     //// Add team
     addTeam: async (parent, { team }, context) => {
       // if (context.user) {
         const newTeam = await SoccerTeam.create({...team});
+        
         await Season.findOneAndUpdate(
           // { _id: req.params.seasonId },
           { _id: team.season },
           { $addToSet: { teams: newTeam._id } },
-          { new: true }
+          { new: true,
+            runValidators: true
+           }
         )
         return newTeam
       // }
