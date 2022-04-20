@@ -98,7 +98,7 @@ const teamStyle = {
         "&:hover": {
           backgroundColor: "primary.main",
         },
-      },
+    },
 
 }
 
