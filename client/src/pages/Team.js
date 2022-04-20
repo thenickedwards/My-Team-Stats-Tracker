@@ -97,8 +97,6 @@ const teamStyle = {
     "&:hover": {
       backgroundColor: "primary.main",
     },
-  },
-};
 
 export default function Team() {
   // Functionality for Dropdown
