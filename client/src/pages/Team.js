@@ -97,8 +97,10 @@ const teamStyle = {
     "&:hover": {
       backgroundColor: "primary.main",
     },
+    }
+}
 
-export default function Team() {
+export default function Team () {
   // Functionality for Dropdown
   const [season, setSeason] = React.useState("");
   const handleSeasonChange = (event) => {
