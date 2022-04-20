@@ -3,11 +3,13 @@ const { Schema, model } = require('mongoose');
 const leagueSchema = new Schema({
   leagueName: {
     type: String,
-    required: true,
+    // required: true,
+    required: [true, 'League name is required']
   },
   sport: {
     type: String,
-    required: true,
+    // required: true,
+    required: [true, 'Sport is required']
   },
   leaguePic: {
     type: String,
