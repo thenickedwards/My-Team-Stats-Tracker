@@ -16,6 +16,9 @@ import {
 import { DataGrid } from "@mui/x-data-grid";
 import IconButton from "@mui/material/IconButton";
 import AddIcon from "@mui/icons-material/Add";
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 
 // ////////////////////////////////////
 //   DATAGRID (EDIT DATA)
@@ -118,6 +121,7 @@ export default function Games() {
     );
   };
 
+
   // Functionality for Select Away Team Dropdown
   const [awayTeam, setAwayTeam] = React.useState([]);
 
@@ -130,6 +134,9 @@ export default function Games() {
       typeof value === "string" ? value.split(",") : value
     );
   };
+
+  // Functionality for Date Picker
+  const [value, setValue] = React.useState(null);
 
   return (
     <>
@@ -305,13 +312,26 @@ export default function Games() {
                     </Select>
                   </FormControl>
 
-                  <TextField
+                  {/* <TextField
                     id="gameDate"
                     label="Game Date"
                     variant="outlined"
                     color="secondary"
                     InputLabelProps={{ shrink: true }}
-                  />
+                  /> */}
+
+                <LocalizationProvider dateAdapter={AdapterDateFns}>
+                      <DatePicker
+                        label="Game Date"
+                        value={value}
+                        onChange={(newValue) => {
+                          setValue(newValue);
+                        }}
+                        renderInput={(params) => <TextField {...params} />}
+                      />
+                    </LocalizationProvider>
+
+
 
                   <Button
                     variant="contained"
