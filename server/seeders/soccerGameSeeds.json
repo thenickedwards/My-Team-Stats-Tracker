@@ -1,0 +1,65 @@
+[
+  {
+    "gameDate": "Apr 19, 2022 6:09 PM",
+    "homeTeam": {
+        "_id": "625ed86067002f3af12e6711",
+        "teamName": "Tigers",
+        "teamColor": "#ffa91f",
+        "teamPic": "GooooTigers.jpg",
+        "roster": []
+      },
+    "awayTeam": {
+        "_id": "625ed86067002f3af12e6712",
+        "teamName": "Bees",
+        "teamColor": "#00e3eb",
+        "teamPic": "ohno_bees.png",
+        "roster": []
+      },
+    "goalsHome": 6,
+    "goalsAway": 2,
+    "assistsHome": 5,
+    "assistsAway": 2
+  },
+  {
+    "gameDate": "Apr 20, 2022 7:30 PM",
+    "homeTeam": {
+        "_id": "625ed86067002f3af12e6715",
+        "teamName": "Hurricanes",
+        "teamColor": "#ebdf00",
+        "teamPic": "hurricanes_2021.jpg",
+        "roster": []
+      },
+    "awayTeam": {
+        "_id": "625ed86067002f3af12e6714",
+        "teamName": "Wolves",
+        "teamColor": "#a8f7f7",
+        "teamPic": "wolfpack_2022.jpg",
+        "roster": []
+      },
+    "goalsHome": 2,
+    "goalsAway": 1,
+    "assistsHome": 1,
+    "assistsAway": 1
+  },
+  {
+    "gameDate": "Apr 21, 2022 10:35 AM",
+    "homeTeam": {
+        "_id": "625ed935d70efc430f05fbb5",
+        "teamName": "Mariners",
+        "teamColor": "#ffa91f",
+        "teamPic": "GooooMs.jpg",
+        "roster": []
+      },
+    "awayTeam": {
+        "_id": "625ed86067002f3af12e6713",
+        "teamName": "Salmon",
+        "teamColor": "#f7a8e9",
+        "teamPic": "salmon_team.gif",
+        "roster": []
+      },
+    "goalsHome": 2,
+    "goalsAway": 0,
+    "assistsHome": 2,
+    "assistsAway": 0
+  }
+]
