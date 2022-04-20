@@ -61,16 +61,24 @@ export const QUERY_SEASON = gql`
 
 export const QUERY_SEASONS = gql`
   query allSeasons {
-    season {
+    allSeasons {
       _id
       seasonName
       startYear
       endYear
-      league
-      teams
+      league {
+        _id
+      }
+      teams {
+        _id
+        teamName
+        teamColor
+        teamPic
+      }
     }
-  }
-`;
+  }`;
+
+
 
 export const QUERY_SOCCERTEAM = gql`
   query soccerTeam {

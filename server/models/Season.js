@@ -23,7 +23,7 @@ const seasonSchema = new Schema({
   teams: [
     {
     type: Schema.Types.ObjectId,
-    ref: 'Team',
+    ref: 'SoccerTeam',
     }
   ]
 });
