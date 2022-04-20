@@ -29,6 +29,7 @@ const userSchema = new Schema({
     required: true,
     trim: true,
   }
+  // , myLeagues , mySeasons, mySoccerTeams, mySoccerPlayers, mySoccerGames???
 });
 
 userSchema.pre('save', async function (next) {
