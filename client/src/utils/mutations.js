@@ -50,6 +50,7 @@ export const ADD_LEAGUE = gql`
 }
 `;
 
+
 export const ADD_SEASON = gql`
   mutation addSeason($season: SeasonInput) {
     addSeason(season: $season) {
