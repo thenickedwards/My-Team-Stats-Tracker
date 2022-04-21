@@ -1,4 +1,3 @@
-
 import React from "react";
 import { useQuery } from "@apollo/client";
 import { QUERY_LEAGUES } from "../utils/queries";
@@ -48,7 +47,7 @@ const leaguesStyle = {
 };
 
 export default function Leagues() {
-//   const token = Auth.loggedIn() ? Auth.getToken() : null;
+  //   const token = Auth.loggedIn() ? Auth.getToken() : null;
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -106,51 +105,48 @@ export default function Leagues() {
         </Box>
 
         {/* League Cards - Map Over Seeds */}
-
-          <Grid container sx={{ justifyContent: "space-around" }}>
-            {leagues.map((league) => {
-              return (
-                <Grid item key={league._id}>
-                  <Paper elevation={5} sx={leaguesStyle.leaguePaper}>
-                    <img
-                      src={league.leaguePic}
-                      alt="logo"
-                      loading="lazy"
-                      height={100}
-                    />
-                    <Typography
-                      variant="p"
-                      gutterBottom
-                      component="div"
-                      sx={leaguesStyle.leaguePaperText}
-                    >
-                      {league.leagueName}
-                    </Typography>
-                  </Paper>
-                </Grid>
-              );
-            })}
-          </Grid>
+        <Grid container sx={{ justifyContent: "space-around" }}>
+          {leagues.map((league) => {
+            return (
+              <Grid item key={league._id}>
+                <Paper elevation={5} sx={leaguesStyle.leaguePaper}>
+                  <img
+                    src={league.leaguePic}
+                    alt="logo"
+                    loading="lazy"
+                    height={100}
+                  />
+                  <Typography
+                    variant="p"
+                    gutterBottom
+                    component="div"
+                    sx={leaguesStyle.leaguePaperText}
+                  >
+                    {league.leagueName}
+                  </Typography>
+                </Paper>
+              </Grid>
+            );
+          })}
         </Grid>
-
-        {/* Add League Modal */}
-        <Modal
-          open={open}
-          onClose={handleClose}
-          aria-labelledby="modal-modal-title"
-          aria-describedby="modal-modal-description"
-        >
-          <Box sx={leaguesStyle.addLeagueModal}>
-            <Typography id="modal-modal-title" variant="h1" sx={{ mb: 4 }}>
-              Add League
-            </Typography>
-
-            {/* ADD LEAGUE FORM */}
-            <AddLeague />
-
-          </Box>
-        </Modal>
       </Grid>
+
+      {/* Add League Modal */}
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={leaguesStyle.addLeagueModal}>
+          <Typography id="modal-modal-title" variant="h1" sx={{ mb: 4 }}>
+            Add League
+          </Typography>
+
+          {/* ADD LEAGUE FORM */}
+          <AddLeague />
+        </Box>
+      </Modal>
     </Container>
   );
 }
