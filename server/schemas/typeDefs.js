@@ -145,12 +145,20 @@ const typeDefs = gql`
     # login(email: String!, password: String!): Auth
     login(username: String!, password: String!): Auth
     # Above preloaded with React boilerplate
+    # Below custom mutations
+    # Create mutations
     addLeague(league: LeagueInput): League
     addSeason(season: SeasonInput): Season
     addTeam(team: SoccerTeamInput): SoccerTeam
     addPlayer(roster: SoccerPlayerInput): SoccerPlayer
     addGame(games: SoccerGameInput): SoccerGame
     # Still need edits and deletions
+
+    # Update mutations
+    updateLeague(leagueId: ID!, league: LeagueInput): League
+    updateSeason(seasonId: ID!, season: SeasonInput): Season
+    updateSoccerTeam(soccerTeamId: ID!, soccerTeam: SoccerTeamInput): SoccerTeam
+    updateSoccerPlayer(soccerPlayerId: ID!, soccerPlayer: SoccerPlayerInput): SoccerPlayer
   }
 `;
 

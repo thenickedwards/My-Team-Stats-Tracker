@@ -141,6 +141,44 @@ const resolvers = {
       // }
       // throw new AuthenticationError('You need to be logged in!');
     },
+
+
+
+    //// Update league
+    updateLeague: async (parent, { leagueId, league }) => {
+      return await League.findOneAndUpdate(
+        { _id: leagueId }, 
+        { ...league },
+        { new: true }
+      );
+    },
+
+    //// Update season
+    updateSeason: async (parent, { seasonId, season }) => {
+      return await Season.findOneAndUpdate(
+        { _id: seasonId }, 
+        { ...season },
+        { new: true }
+      );
+    },
+
+    //// Update team
+    updateSoccerTeam: async (parent, { soccerTeamId, soccerTeam }) => {
+      return await SoccerTeam.findOneAndUpdate(
+        { _id: soccerTeamId }, 
+        { ...soccerTeam },
+        { new: true }
+      );
+    },
+
+    //// Update player
+    updateSoccerPlayer: async (parent, { soccerPlayerId, soccerPlayer }) => {
+      return await SoccerPlayer.findOneAndUpdate(
+        { _id: soccerPlayerId }, 
+        { ...soccerPlayer },
+        { new: true }
+      );
+    }
   }
 };
 
