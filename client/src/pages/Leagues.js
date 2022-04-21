@@ -54,7 +54,6 @@ export default function Leagues() {
   // Get leagues
   const { loading, data } = useQuery(QUERY_LEAGUES);
   const leagues = data?.allLeagues || [];
-  console.log(leagues);
 
   return (
     <Container alignItems="center" justifyContent="center">
@@ -104,7 +103,7 @@ export default function Leagues() {
           </IconButton>
         </Box>
 
-        {/* League Cards - Map Over Seeds */}
+        {/* League Cards - Map over data */}
         <Grid container sx={{ justifyContent: "space-around" }}>
           {leagues.map((league) => {
             return (

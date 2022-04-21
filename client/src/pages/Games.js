@@ -16,9 +16,9 @@ import {
 import { DataGrid } from "@mui/x-data-grid";
 import IconButton from "@mui/material/IconButton";
 import AddIcon from "@mui/icons-material/Add";
-import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 
 // ////////////////////////////////////
 //   DATAGRID (EDIT DATA)
@@ -73,7 +73,6 @@ const teams = [
 
 // ////////////////////////////////////
 
-
 // STYLES
 const gamesStyle = {
   addGameModal: {
@@ -120,7 +119,6 @@ export default function Games() {
       typeof value === "string" ? value.split(",") : value
     );
   };
-
 
   // Functionality for Select Away Team Dropdown
   const [awayTeam, setAwayTeam] = React.useState([]);
@@ -278,14 +276,13 @@ export default function Games() {
                 <FormControl fullWidth sx={{ gap: 4 }}>
                   <FormControl>
                     <InputLabel id="select-home-team">Home Team</InputLabel>
-                    <Select                     
+                    <Select
                       labelId="select-home-team"
                       id="homeTeam"
                       value={homeTeam}
                       onChange={handleHomeChange}
                       label="Home Team"
                     >
-               
                       {teams.map((team) => (
                         <MenuItem key={team} value={team}>
                           {team}
@@ -303,7 +300,6 @@ export default function Games() {
                       onChange={handleAwayChange}
                       label="Away Team"
                     >
-
                       {teams.map((team) => (
                         <MenuItem key={team} value={team}>
                           {team}
@@ -320,18 +316,16 @@ export default function Games() {
                     InputLabelProps={{ shrink: true }}
                   /> */}
 
-                <LocalizationProvider dateAdapter={AdapterDateFns}>
-                      <DatePicker
-                        label="Game Date"
-                        value={value}
-                        onChange={(newValue) => {
-                          setValue(newValue);
-                        }}
-                        renderInput={(params) => <TextField {...params} />}
-                      />
-                    </LocalizationProvider>
-
-
+                  <LocalizationProvider dateAdapter={AdapterDateFns}>
+                    <DatePicker
+                      label="Game Date"
+                      value={value}
+                      onChange={(newValue) => {
+                        setValue(newValue);
+                      }}
+                      renderInput={(params) => <TextField {...params} />}
+                    />
+                  </LocalizationProvider>
 
                   <Button
                     variant="contained"
