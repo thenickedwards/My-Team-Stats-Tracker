@@ -2,16 +2,16 @@
   {
     "leagueName": "Washington Premier League",
     "sport": "Soccer",
-    "leaguePic": "washington-premier-league.png"
+    "leaguePic": "images/washington-premier-league.png"
   },
   {
     "leagueName": "Washington Soccer Academy",
     "sport": "Soccer",
-    "leaguePic": "WSA.png"
+    "leaguePic": "images/WSA.png"
   },
   {
     "leagueName": "Greater Seattle Soccer League",
     "sport": "Soccer",
-    "leaguePic": "washington-premier-league.png"
+    "leaguePic": "images/league-rcl.png"
   }
 ]
