@@ -1,17 +1,17 @@
 [
-    {
-        "leagueName": "Hazel Dell Youth Soccer",
-        "sport": "Soccer",
-        "leaguePic": "hdys-logo.jpg"
-    },
-    {
-        "leagueName": "StarFire Sports",
-        "sport": "Soccer",
-        "leaguePic": "starfiremain-logo.png"
-    },
-    {
-        "leagueName": "Greater Seattle Soccer League",
-        "sport": "Soccer",
-        "leaguePic": "gssl-logo_finalFINAL2.png"
-    }
+  {
+    "leagueName": "Washington Premier League",
+    "sport": "Soccer",
+    "leaguePic": "washington-premier-league.png"
+  },
+  {
+    "leagueName": "Washington Soccer Academy",
+    "sport": "Soccer",
+    "leaguePic": "WSA.png"
+  },
+  {
+    "leagueName": "Greater Seattle Soccer League",
+    "sport": "Soccer",
+    "leaguePic": "washington-premier-league.png"
+  }
 ]
