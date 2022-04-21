@@ -162,7 +162,7 @@ export const QUERY_SOCCERPLAYERS = gql`
 
 export const QUERY_SOCCERGAME = gql`
   query soccerGame($soccerGameId: ID!) {
-    soccerGame(SoccerGameId: $soccerGameId) {
+    soccerGame(soccerGameId: $soccerGameId) {
       _id
       gameDate
       homeTeam {
