@@ -152,10 +152,10 @@ const typeDefs = gql`
 
     # Deletions
     removeLeague(league: LeagueInput): League
-    removeSeason($season: SeasonInput): Season
-    removeTeam($team: SoccerTeamInput): SoccerTeam
-    removePlayer($roster: SoccerPlayerInput): SoccerPlayer
-    removeGame($game: SoccerGame): SoccerGame
+    removeSeason(season: SeasonInput): Season
+    removeTeam(team: SoccerTeamInput): SoccerTeam
+    removePlayer(roster: SoccerPlayerInput): SoccerPlayer
+    removeGame(game: SoccerGameInput): SoccerGame
 
     # Still need edits
   }

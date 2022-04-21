@@ -194,7 +194,7 @@ export const ADD_ASSIST = gql`
 //// Delete Mutations TODO: Double check arguments
 
 export const REMOVE_LEAGUE = gql`
-  mutation removeLeague($league: LeagueInput) {
+  mutation removeLeague($leagueId: ID!) {
     removeLeague(league: $league) {
       _id
       leagueName

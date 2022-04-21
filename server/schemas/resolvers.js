@@ -137,22 +137,51 @@ const resolvers = {
 
     //// Delete League
     removeLeague: async (parent, { leagueId }, context) => {
-      if (context.user) {
-        return League.findOneAndDelete({ _id: context.user.leagueId });
-    }
-    throw new AuthenticationError('You need to be logged in!');
+      // if (context.user) {
+        const league = await League.findOneAndDelete({
+          _id: leagueId
+        });
+
+        // Add context.user before _id value
+        await User.findOneAndUpdate(
+          { _id: _id },
+          { $pull: { leagues: league._id } }
+        );
+
+        return league;
+
+    // }
+    // throw new AuthenticationError('You need to be logged in!');
   },
     
     //// Delete Season
-    removeSeason: async (parent, { leagueId, season }, context) => {
+    // removeSeason: async (parent, { leagueId, season }, context) => {
+    //   if (context.user) {
+    //     return League.findOneAndUpdate(
+    //       { _id: context.user.leagueId },
+    //       { $pull: { seasons: season } },
+    //       { new: true }
+    //     );
+    //   }
+    // throw new AuthenticationError('You need to be logged in!');
+    // },
+
+    removeSeason: async (parent, { thoughtId, seasonId }, context) => {
       if (context.user) {
         return League.findOneAndUpdate(
-          { _id: context.user.leagueId },
-          { $pull: { seasons: season } },
+          { _id: leagueId },
+          {
+            $pull: {
+              seasons: {
+                _id: seasonId
+                // Do all fields need to be listed here?
+              },
+            },
+          },
           { new: true }
         );
       }
-    throw new AuthenticationError('You need to be logged in!');
+      throw new AuthenticationError('You need to be logged in!');
     },
 
     //// Delete Team
