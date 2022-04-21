@@ -1,44 +1,43 @@
 [
-    {
-        "teamName": "Tigers",
-        "teamColor": "#ffa91f",
-        "teamPic": "GooooTigers.jpg"
-    },
-    {
-        "teamName": "Bees",
-        "teamColor": "#00e3eb",
-        "teamPic": "ohno_bees.png"
-    },
-    {
-        "teamName": "Salmon",
-        "teamColor": "#f7a8e9",
-        "teamPic": "salmon_team.gif"
-    },
-    {
-        "teamName": "Wolves",
-        "teamColor": "#a8f7f7",
-        "teamPic": "wolfpack_2022.jpg"
-    },
-    {
-        "teamName": "Hurricanes",
-        "teamColor": "#ebdf00",
-        "teamPic": "hurricanes_2021.jpg"
-    },
+  {
+    "teamName": "Chi Town Tigers",
+    "teamColor": "#ffa91f",
+    "teamPic": "images/chicago.png"
+  },
+  {
+    "teamName": "Galaxy Bees",
+    "teamColor": "#00e3eb",
+    "teamPic": "images/la-galaxy.png"
+  },
+  {
+    "teamName": "Salmon",
+    "teamColor": "#f7a8e9",
+    "teamPic": "images/georgetown.jpeg"
+  },
+  {
+    "teamName": "Wolves",
+    "teamColor": "#a8f7f7",
+    "teamPic": "images/football.jpeg"
+  },
+  {
+    "teamName": "Hurricanes",
+    "teamColor": "#ebdf00",
+    "teamPic": "images/jacksonville.png"
+  },
 
-    {
-        "teamName": "Blizzard",
-        "teamColor": "#0512ff",
-        "teamPic": "blizz-team-pic.jpeg"
-    },
-    {
-        "teamName": "Lightning",
-        "teamColor": "#f3ff05",
-        "teamPic": "lightn_team.bmp"
-    },
-    {
-        "teamName": "Thunder",
-        "teamColor": "#d40f1f",
-        "teamPic": "boomboomclap.jpg"
-    }   
-    
+  {
+    "teamName": "Blizzard",
+    "teamColor": "#0512ff",
+    "teamPic": "images/bird.jpeg"
+  },
+  {
+    "teamName": "Lightning",
+    "teamColor": "#f3ff05",
+    "teamPic": "images/mt-view.png"
+  },
+  {
+    "teamName": "Thunder",
+    "teamColor": "#d40f1f",
+    "teamPic": "images/strikers.jpeg"
+  }
 ]
