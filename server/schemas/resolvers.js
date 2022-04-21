@@ -48,10 +48,10 @@ const resolvers = {
       return SoccerPlayer.find();
     },
     // Game queries
-    soccerPlayer: async (parent, { SoccerGameId }) => {
-      return SoccerGame.findOne({ _id: SoccerGameId });
+    soccerGame: async (parent, { soccerGameId }) => {
+      return SoccerGame.findOne({ _id: soccerGameId });
     },
-    allSoccerPlayers: async () => {
+    allSoccerGames: async () => {
       return SoccerGame.find();
     },
   },

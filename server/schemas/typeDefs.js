@@ -135,8 +135,8 @@ const typeDefs = gql`
     allSoccerTeams: [SoccerTeam]
     soccerPlayer(soccerPlayerId: ID!): SoccerPlayer
     allSoccerPlayers: [SoccerPlayer]
-    # soccerGame(SoccerGameId: ID!): SoccerGame
-    # allSoccerGames: [SoccerGame]
+    soccerGame(soccerGameId: ID!): SoccerGame
+    allSoccerGames: [SoccerGame]
   }
 
   type Mutation {
