@@ -126,16 +126,17 @@ const typeDefs = gql`
     user(username: String!): User
     me: User
     # Above preloaded with React boilerplate
-    league: League
+    # league: League
+    league(leagueId: ID!): League
     allLeagues: [League]
-    season: Season
+    season(seasonId: ID!): Season
     allSeasons: [Season]
-    soccerTeam: SoccerTeam
+    soccerTeam(soccerTeamId: ID!): SoccerTeam
     allSoccerTeams: [SoccerTeam]
-    soccerPlayer: SoccerPlayer
+    soccerPlayer(soccerPlayerId: ID!): SoccerPlayer
     allSoccerPlayers: [SoccerPlayer]
-    soccerGame: SoccerGame
-    allSoccerGames: [SoccerGame]
+    # soccerGame(SoccerGameId: ID!): SoccerGame
+    # allSoccerGames: [SoccerGame]
   }
 
   type Mutation {
