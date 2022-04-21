@@ -50,100 +50,44 @@ export const ADD_LEAGUE = gql`
 }
 `;
 
+
 export const ADD_SEASON = gql`
   mutation addSeason($season: SeasonInput) {
     addSeason(season: $season) {
       _id
+      seasonName
       startYear
       endYear
-    }
-  }
-`;
-
-// export const ADD_SEASON = gql`
-//   mutation addSeason(
-//     $startYear: Int!,
-//     $endYear: Int,
-//     $league: [League],
-//     $teams: [SoccerTeam],
-//   ) {
-//     addSeason(
-//       startYear: $startYear,
-//       endYear: $endYear,
-//       league: $league,
-//       teams: $teams,
-//     ) {
-//       season {
-//       _id
-//       startYear
-//       endYear
-//       league
-//       teams
-//       }
-//     }
-//   }
-// `;
-
-export const ADD_SOCCERTEAM = gql`
-  mutation addTeam($teams: SoccerTeamInput) {
-    addTeam(team: $team) {
-      teamName
-      teamColor
-      teamPic
+      league
     }
   }
 `;
 
 // export const ADD_SOCCERTEAM = gql`
-//   mutation addTeam(
-//     $teamName: String!,
-//     $teamColor: String,
-//     $teamPic: String,
-//     $league: [League],
-//     $seasons: [Season],
-//     $games: [SoccerGame],
-//     $roster: [SoccerPlayer],
-//     $wins: Int,
-//     $draws: Int,
-//     $losses: Int,
-//     $goalsFor: Int,
-//     $goalsAgainst: Int,
-//     $goalDifferential: Int,
-//   ) {
-//     addTeam(
-//       teamName: $teamName,
-//       teamColor: $teamColor,
-//       teamPic: $teamPic,
-//       league: $league,
-//       seasons: $seasons,
-//       games: $games,
-//       roster: $roster,
-//       wins: $wins,
-//       draws: $draws,
-//       losses: $losses
-//       goalsFor: $goalsFor,
-//       goalsAgainst: $goalsAgainst,
-//       goalDifferential: $goalDifferential
-//     ) {
-//       soccerTeam {
-//         _id
-//         teamName
-//         teamColor
-//         teamPic
-//         league
-//         seasons
-//         games
-//         roster
-//         wins
-//         draws
-//         losses
-//         goalsFor
-//         goalsAgainst
-//         goalDifferential
-//       }
+//   mutation addTeam($teams: SoccerTeamInput) {
+//     addTeam(team: $team) {
+//       _id
+//       teamName
+//       teamColor
+//       teamPic
+//       season
 //     }
 //   }
 // `;
+
+export const ADD_SOCCERTEAM = gql`
+  mutation addTeam($team: SoccerTeamInput) {
+    addTeam(team: $team) {
+      _id
+      teamName
+      teamColor
+      teamPic
+      season {
+        _id
+      }
+    }
+  }`;
+
 
 export const ADD_SOCCERPLAYER = gql`
   mutation addPlayer($roster: SoccerPlayerInput) {

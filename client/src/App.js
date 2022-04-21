@@ -13,14 +13,18 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import Home from "./pages/Home";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
-
 import Logout from "./pages/Logout";
 
+import Leagues from "./pages/Leagues";
+import Teams from "./pages/Teams";
+import League from "./pages/League";
 import Team from "./pages/Team";
 import Player from "./pages/Player";
-
+import LeagueSeasonStats from "./pages/LeagueSeasonStats"
+import Games from "./pages/Games"
+import Game from "./pages/Game"
 // import Profile from "./pages/Profile";
-import Leagues from "./pages/Leagues";
+
 
 // import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -113,11 +117,26 @@ function App() {
 
               <Route path="/leagues" element={<Leagues />} />
 
+
+              <Route path="/teams" element={<Teams />} />
+
+              {/* Need to add league specific route */}
+              <Route path="/league" element={<League />} />
+
+
               {/* Need to add team specific route */}
               <Route path="/team" element={<Team />} />
 
-              {/* Need to add team specific route */}
+              {/* Need to add player specific route */}
               <Route path="/player" element={<Player />} />
+
+              {/* Need to add player specific route */}
+              <Route path="/league-season-stats" element={<LeagueSeasonStats />} />
+
+              <Route path="/games" element={<Games />} />
+
+              {/* Need to add game specific route */}
+              <Route path="/game" element={<Game />} />
 
               {/* <Route path="/me" element={<Profile />} />
                   <Route path="/profiles/:username" element={<Profile />} /> */}

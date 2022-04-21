@@ -2,8 +2,10 @@ const { Schema, model } = require('mongoose');
 
 const soccerGameSchema = new Schema({
   gameDate: {
-    type: String,
     required: true,
+    type: Date,
+    default: Date.now,
+    // get: timestamp => dayjs(timestamp).format('MMM D, YYYY h:mm A')
   },
   homeTeam: {
     type: Schema.Types.ObjectId,

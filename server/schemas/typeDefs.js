@@ -34,7 +34,7 @@ const typeDefs = gql`
     seasonName: String!
     startYear: Int!
     endYear: Int
-    league: [League]
+    league: League
     teams: [SoccerTeam]
   }
 
@@ -42,6 +42,7 @@ const typeDefs = gql`
     seasonName: String!
     startYear: Int!
     endYear: Int
+    league: ID
   }
 
   type SoccerTeam {
@@ -49,8 +50,7 @@ const typeDefs = gql`
     teamName: String!
     teamColor: String
     teamPic: String
-    league: [League]
-    seasons: [Season]
+    season: Season
     games: [SoccerGame]
     roster: [SoccerPlayer]
     wins: Int
@@ -65,8 +65,7 @@ const typeDefs = gql`
     teamName: String!
     teamColor: String
     teamPic: String
-    # league: [League]
-    # seasons: [Season]
+    season: ID
   }
 
   type Goal {
@@ -89,7 +88,7 @@ const typeDefs = gql`
     playerNumber: Int
     goals: [Goal]
     assists: [Assist]
-    teams: [SoccerTeam]
+    team: SoccerTeam
   }
 
   input SoccerPlayerInput {
@@ -97,6 +96,7 @@ const typeDefs = gql`
     playerLastName: String!
     playerPic: String
     playerNumber: Int
+    team: ID
   }
 
   type SoccerGame {
@@ -126,16 +126,17 @@ const typeDefs = gql`
     user(username: String!): User
     me: User
     # Above preloaded with React boilerplate
-    league: League
+    # league: League
+    league(leagueId: ID!): League
     allLeagues: [League]
-    season: Season
+    season(seasonId: ID!): Season
     allSeasons: [Season]
-    soccerTeam: SoccerTeam
+    soccerTeam(soccerTeamId: ID!): SoccerTeam
     allSoccerTeams: [SoccerTeam]
-    soccerPlayer: SoccerPlayer
+    soccerPlayer(soccerPlayerId: ID!): SoccerPlayer
     allSoccerPlayers: [SoccerPlayer]
-    soccerGame: SoccerGame
-    allSoccerGames: [SoccerGame]
+    # soccerGame(SoccerGameId: ID!): SoccerGame
+    # allSoccerGames: [SoccerGame]
   }
 
   type Mutation {
