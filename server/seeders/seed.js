@@ -12,27 +12,27 @@ db.once('open', async () => {
   try {
     await User.deleteMany({});
 
-    await User.create(userSeeds);
+    // await User.create(userSeeds);
 
     await League.deleteMany({});
 
-    await League.create(leagueSeeds);
+    // await League.create(leagueSeeds);
 
     await Season.deleteMany({});
 
-    await Season.create(seasonSeeds);
+    // await Season.create(seasonSeeds);
 
     await SoccerTeam.deleteMany({});
 
-    await SoccerTeam.create(soccerTeamSeeds);
+    // await SoccerTeam.create(soccerTeamSeeds);
 
     await SoccerPlayer.deleteMany({});
 
-    await SoccerPlayer.create(soccerPlayerSeeds);
+    // await SoccerPlayer.create(soccerPlayerSeeds);
 
     await SoccerGame.deleteMany({});
 
-    await SoccerGame.create(soccerGameSeeds)
+    // await SoccerGame.create(soccerGameSeeds)
 
     // for (let i = 0; i < thoughtSeeds.length; i++) {
     //   const { _id, thoughtAuthor } = await Thought.create(thoughtSeeds[i]);
