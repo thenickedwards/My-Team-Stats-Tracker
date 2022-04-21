@@ -1,5 +1,6 @@
 import { gql } from '@apollo/client';
 
+// USER LOGIN & SIGNUP
 export const LOGIN_USER = gql`
   mutation login($username: String!, $password: String!) {
     login(username: $username, password: $password) {
@@ -39,6 +40,8 @@ export const ADD_USER = gql`
   }
 `;
 
+// CREATE MUTATIONS
+
 export const ADD_LEAGUE = gql`
   mutation addLeague($league: LeagueInput) {
   addLeague(league: $league) {
@@ -62,18 +65,6 @@ export const ADD_SEASON = gql`
     }
   }
 `;
-
-// export const ADD_SOCCERTEAM = gql`
-//   mutation addTeam($teams: SoccerTeamInput) {
-//     addTeam(team: $team) {
-//       _id
-//       teamName
-//       teamColor
-//       teamPic
-//       season
-//     }
-//   }
-// `;
 
 export const ADD_SOCCERTEAM = gql`
   mutation addTeam($team: SoccerTeamInput) {
@@ -100,38 +91,6 @@ export const ADD_SOCCERPLAYER = gql`
     }
   }
 `;
-
-// export const ADD_SOCCERPLAYER = gql`
-//   mutation addPlayer(
-//     $playerFirstName: String!,
-//     $playerLastName: String!,
-//     $playerPic: String,
-//     $playerNumber: Int,
-//     $goals: [Goal],
-//     $assists: [Assist],
-//     $teams: [SoccerTeam]
-//   ) {
-//     addPlayer(
-//       playerFirstName: $playerFirstName,
-//       playerLastName: $playerLastName,
-//       playerPic: $playerPic,
-//       playerNumber: $playerNumber,
-//       goals: $goals,
-//       assists: $assists,
-//       teams: $teams
-//     ) {
-//       soccerPlayer {
-//         _id
-//         playerFirstName
-//         playerLastName
-//         playerPic
-//         playerNumber
-//         teams
-//       }
-//     }
-//   }
-// `;
-
 
 export const ADD_SOCCERGAME = gql`
   mutation addGame(
@@ -189,3 +148,23 @@ export const ADD_ASSIST = gql`
     }
   }
 `;
+
+
+
+// UPDATE MUTTIONS
+// UPDATE LEAGUE
+export const UPDATE_LEAGUE = gql`
+  mutation updateLeague($leagueId: ID!, $league: LeagueInput) {
+    updateLeague(leagueId: $leagueId, league: $league) {
+      _id
+      leagueName
+      sport
+      leaguePic
+    }
+  }
+`;
+
+// UPDATE SEASON
+// UPDATE TEAM
+// UPDATE PLAYER
+// UPDATE GAME??

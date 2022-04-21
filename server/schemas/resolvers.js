@@ -141,6 +141,17 @@ const resolvers = {
       // }
       // throw new AuthenticationError('You need to be logged in!');
     },
+
+
+
+    //// Update league
+    updateLeague: async (parent, { leagueId, league }) => {
+      return await League.findOneAndUpdate(
+        { _id: leagueId }, 
+        { ...league },
+        { new: true }
+      );
+    }
   }
 };
 
