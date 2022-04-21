@@ -89,9 +89,8 @@ export const QUERY_SEASONS = gql`
         teamPic
       }
     }
-  }`;
-
-
+  }
+`;
 
 export const QUERY_SOCCERTEAM = gql`
   query soccerTeam {
@@ -115,14 +114,28 @@ export const QUERY_SOCCERTEAM = gql`
 
 export const QUERY_SOCCERTEAMS = gql`
   query allSoccerTeams {
-    soccerTeam {
+    allSoccerTeams {
       _id
       teamName
       teamColor
       teamPic
-      season
-      games
-      roster
+      season {
+        _id
+        seasonName
+        startYear
+        endYear
+      }
+      games {
+        _id
+        gameDate
+      }
+      roster {
+        _id
+        playerFirstName
+        playerLastName
+        playerPic
+        playerNumber
+      }
       wins
       draws
       losses

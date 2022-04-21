@@ -76,9 +76,9 @@ export default function Teams() {
   const handleClose = () => setOpen(false);
 
   //Get teams
-  // Get leagues
   const { loading, data } = useQuery(QUERY_SOCCERTEAMS);
   const teams = data?.allSoccerTeams || [];
+  console.log(teams);
 
   return (
     <Container alignItems="center" justifyContent="center">
@@ -190,62 +190,28 @@ export default function Teams() {
 
         {/* Team Cards - Map Over Seeds */}
         <Grid container spacing={{ xs: 4 }}>
-          {/* Team cards - map over data */}
-          <Grid item xs={6} s={6} md={3} lg={3}>
-            <Paper elevation={5} sx={teamsStyle.teamPaper}>
-              <img
-                src="images/washington-premier-league.png"
-                alt="logo"
-                loading="lazy"
-                height={100}
-              />
-              <Typography
-                variant="p"
-                gutterBottom
-                component="div"
-                sx={teamsStyle.teamPaperText}
-              >
-                Washington Premier League
-              </Typography>
-            </Paper>
-          </Grid>
-          <Grid item xs={6} s={6} md={3} lg={3}>
-            <Paper elevation={5} sx={teamsStyle.teamPaper}>
-              <img
-                src="images/WSA.png"
-                alt="logo"
-                loading="lazy"
-                height={100}
-              />
-              <Typography
-                variant="p"
-                gutterBottom
-                component="div"
-                sx={teamsStyle.teamPaperText}
-              >
-                Washington Soccer Academy
-              </Typography>
-            </Paper>
-          </Grid>
-          <Grid item xs={6} s={6} md={3} lg={3}>
-            <Paper elevation={5} sx={teamsStyle.teamPaper}>
-              <img
-                src="images/chicago.png"
-                alt="logo"
-                loading="lazy"
-                height={100}
-              />
-              <Typography
-                variant="p"
-                gutterBottom
-                component="div"
-                sx={teamsStyle.teamPaperText}
-              >
-                Washington Premier League
-              </Typography>
-            </Paper>
-          </Grid>
-          {/* ---- End temporary filler data ---- */}
+          {teams.map((team) => {
+            return (
+              <Grid item key={team._id} xs={6} s={6} md={3} lg={3}>
+                <Paper elevation={5} sx={teamsStyle.teamPaper}>
+                  <img
+                    src={team.teamPic}
+                    alt="logo"
+                    loading="lazy"
+                    height={100}
+                  />
+                  <Typography
+                    variant="p"
+                    gutterBottom
+                    component="div"
+                    sx={teamsStyle.teamPaperText}
+                  >
+                    {team.teamName}
+                  </Typography>
+                </Paper>
+              </Grid>
+            );
+          })}
         </Grid>
 
         {/* Add Team Modal */}
