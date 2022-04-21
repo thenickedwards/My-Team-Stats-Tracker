@@ -115,7 +115,7 @@ export const QUERY_SOCCERTEAM = gql`
 
 export const QUERY_SOCCERTEAMS = gql`
   query allSoccerTeams {
-    soccerTeam {
+    allSoccerTeams {
       _id
       teamName
       teamColor

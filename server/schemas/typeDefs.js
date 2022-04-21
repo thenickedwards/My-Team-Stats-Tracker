@@ -156,6 +156,9 @@ const typeDefs = gql`
 
     # Update mutations
     updateLeague(leagueId: ID!, league: LeagueInput): League
+    updateSeason(seasonId: ID!, season: SeasonInput): Season
+    updateSoccerTeam(soccerTeamId: ID!, soccerTeam: SoccerTeamInput): SoccerTeam
+    updateSoccerPlayer(soccerPlayerId: ID!, soccerPlayer: SoccerPlayerInput): SoccerPlayer
   }
 `;
 

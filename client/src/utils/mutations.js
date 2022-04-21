@@ -152,7 +152,7 @@ export const ADD_ASSIST = gql`
 
 
 // UPDATE MUTTIONS
-// UPDATE LEAGUE
+
 export const UPDATE_LEAGUE = gql`
   mutation updateLeague($leagueId: ID!, $league: LeagueInput) {
     updateLeague(leagueId: $leagueId, league: $league) {
@@ -164,7 +164,40 @@ export const UPDATE_LEAGUE = gql`
   }
 `;
 
-// UPDATE SEASON
-// UPDATE TEAM
+export const UPDATE_SEASON = gql `
+  mutation updateSeason($seasonId: ID!, $season: SeasonInput) {
+    updateSeason(seasonId: $seasonId, season: $season) {
+      _id
+      seasonName
+      startYear
+      endYear
+    }
+  }
+`;
+
+export const UPDATE_TEAM = gql `
+  mutation updateSoccerTeam($soccerTeamId: ID!, $team: SoccerTeamInput) {
+    updateSoccerTeam(soccerTeamId: $soccerTeamId, soccerTeam: $team) {
+      _id
+      teamName
+      teamColor
+      teamPic
+    }
+  }
+`;
+
 // UPDATE PLAYER
+export const UPDATE_PLAYER = gql `
+  mutation updateSoccerPlayer($soccerPlayerId: ID!, $team: SoccerPlayerInput) {
+    updateSoccerPlayer(soccerPlayerId: $soccerPlayerId, team: $team) {
+      _id
+      playerFirstName
+      playerLastName
+      playerPic
+      playerNumber
+    }
+}
+`;
+
+
 // UPDATE GAME??
