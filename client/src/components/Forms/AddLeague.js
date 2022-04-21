@@ -38,7 +38,7 @@ const leaguesStyle = {
   },
 };
 
-const AddLeague = () => {
+const AddLeague = ( {handleClose}) => {
 
   // Functionality to Adding League via Form
   const [formState, setFormState] = useState({
@@ -46,6 +46,7 @@ const AddLeague = () => {
     sport: "",
     leaguePic: "",
   });
+
 
   const { leagueName, sport, leaguePic } = formState;
 
@@ -67,9 +68,18 @@ const AddLeague = () => {
 
     try {
       const { data } = await addLeague({
-        variables: { ...formState },
+        variables: { league: {...formState} },
       });
-      setFormState("");
+      console.log("second", formState);
+
+      setFormState({
+        leagueName: "",
+        sport: "",
+        leaguePic: "",
+      });
+
+      handleClose();
+      
     } catch (e) {
       console.error(e);
     }

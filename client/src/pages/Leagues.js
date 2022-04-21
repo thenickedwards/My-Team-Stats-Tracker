@@ -187,7 +187,7 @@ export default function Leagues() {
             </Typography>
 
             {/* ADD LEAGUE FORM */}
-            <AddLeague />
+            <AddLeague handleClose={handleClose} />
 
           </Box>
         </Modal>
