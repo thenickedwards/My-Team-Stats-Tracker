@@ -2,7 +2,6 @@ import * as React from "react";
 import { useQuery } from "@apollo/client";
 import { QUERY_LEAGUES } from "../utils/queries";
 import Auth from "../utils/auth";
-import { leagueIds } from "../utils/localStorage";
 
 // Material UI Imports
 import {
@@ -41,32 +40,32 @@ export default function Leagues() {
   // const handleClose = () => setOpen(false);
 
   // Render league cards
-  const [findLeagues] = useQuery(QUERY_LEAGUES);
-  const renderLeagues = async (event) => {
-    event.preventDefault();
-    if (!leagues) {
-      return false;
-    }
+  const { leagues } = useQuery(QUERY_LEAGUES);
+  // const renderLeagues = async (event) => {
+  //   event.preventDefault();
+  //   if (loading) {
+  //     return false;
+  //   }
 
-    try {
-      const response = await findLeagues();
+  //   try {
+  //     const response = await findLeagues();
 
-      if (!response.ok) {
-        throw new Error("something went wrong!");
-      }
+  //     if (!response.ok) {
+  //       throw new Error("something went wrong!");
+  //     }
 
-      const { items } = await response.json();
+  //     const { items } = await response.json();
 
-      const leagues = items.map((league) => ({
-        leagueId: league._id,
-        leagueName: league.leagueName,
-        leaguePic: league.leaguePic,
-        leagueSeason: league.seasons,
-      }));
-    } catch (err) {
-      console.error(err);
-    }
-  };
+  //     const leagues = items.map((league) => ({
+  //       leagueId: league._id,
+  //       leagueName: league.leagueName,
+  //       leaguePic: league.leaguePic,
+  //       leagueSeason: league.seasons,
+  //     }));
+  //   } catch (err) {
+  //     console.error(err);
+  //   }
+  // };
 
   return (
     <Container alignItems="center" justifyContent="center">
