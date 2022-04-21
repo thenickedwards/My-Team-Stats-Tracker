@@ -95,7 +95,7 @@ export default function Leagues() {
                       component="div"
                       sx={leaguesStyle.leaguePaperText}
                     >
-                      {leagues.leagueName}
+                      {league.leagueName}
                     </Typography>
                   </Paper>
                 </Grid>
