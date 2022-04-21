@@ -174,12 +174,16 @@ export const QUERY_SOCCERPLAYERS = gql`
 `;
 
 export const QUERY_SOCCERGAME = gql`
-  query soccerGame {
-    soccerGame {
+  query soccerGame($soccerGameId: ID!) {
+    soccerGame(soccerGameId: $soccerGameId) {
       _id
       gameDate
-      homeTeam
-      awayTeam
+      homeTeam {
+        _id
+      }
+      awayTeam {
+        _id
+      }
       goalsHome
       goalsAway
       assistsHome
@@ -190,11 +194,15 @@ export const QUERY_SOCCERGAME = gql`
 
 export const QUERY_SOCCERGAMES = gql`
   query allSoccerGames {
-    soccerGame {
+    allSoccerGames {
       _id
       gameDate
-      homeTeam
-      awayTeam
+      homeTeam {
+        _id
+      }
+      awayTeam {
+        _id
+      }
       goalsHome
       goalsAway
       assistsHome

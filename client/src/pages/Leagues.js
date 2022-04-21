@@ -103,11 +103,11 @@ export default function Leagues() {
           </IconButton>
         </Box>
 
-        {/* League Cards - Map over data */}
-        <Grid container sx={{ justifyContent: "space-around" }}>
+        {/* League Cards - Map Over Seeds */}
+        <Grid container spacing={{ xs: 4 }}>
           {leagues.map((league) => {
             return (
-              <Grid item key={league._id}>
+              <Grid item key={league._id} xs={6} s={6} md={3} lg={3}>
                 <Paper elevation={5} sx={leaguesStyle.leaguePaper}>
                   <img
                     src={league.leaguePic}
@@ -143,7 +143,7 @@ export default function Leagues() {
           </Typography>
 
           {/* ADD LEAGUE FORM */}
-          <AddLeague />
+          <AddLeague handleClose={handleClose} />
         </Box>
       </Modal>
     </Container>

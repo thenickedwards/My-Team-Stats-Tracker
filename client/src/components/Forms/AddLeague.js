@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { ADD_LEAGUE } from "../../utils/mutations";
+import { QUERY_LEAGUES } from "../../utils/queries";
 
 import {
   Button,
@@ -38,7 +39,7 @@ const leaguesStyle = {
   },
 };
 
-const AddLeague = () => {
+const AddLeague = ( {handleClose}) => {
 
   // Functionality to Adding League via Form
   const [formState, setFormState] = useState({
@@ -47,9 +48,13 @@ const AddLeague = () => {
     leaguePic: "",
   });
 
+
   const { leagueName, sport, leaguePic } = formState;
 
-  const [addLeague, { error, data }] = useMutation(ADD_LEAGUE);
+  // const [addLeague, { error, data }] = useMutation(ADD_LEAGUE);
+  const [addLeague, { error }] = useMutation(ADD_LEAGUE, {
+    refetchQueries: [ QUERY_LEAGUES ]
+ });
 
   const handleFormChange = (event) => {
     const { name, value } = event.target;
@@ -67,9 +72,18 @@ const AddLeague = () => {
 
     try {
       const { data } = await addLeague({
-        variables: { ...formState },
+        variables: { league: {...formState} },
       });
-      setFormState("");
+      console.log("second", formState);
+
+      setFormState({
+        leagueName: "",
+        sport: "",
+        leaguePic: "",
+      });
+
+      handleClose();
+      
     } catch (e) {
       console.error(e);
     }
