@@ -105,10 +105,12 @@ export default function Leagues() {
         </Box>
 
         {/* League Cards - Map Over Seeds */}
-        <Grid container sx={{ justifyContent: "space-around" }}>
+        <Grid container  spacing={{xs: 4}}>
           {leagues.map((league) => {
             return (
-              <Grid item key={league._id}>
+              <Grid item key={league._id}
+                xs={6} s={6} md={3} lg={3}
+              >
                 <Paper elevation={5} sx={leaguesStyle.leaguePaper}>
                   <img
                     src={league.leaguePic}
