@@ -35,10 +35,10 @@ const resolvers = {
     },
     // Team queries
     soccerTeam: async (parent, { soccerTeam }) => {
-      return SoccerTeam.findOne({ soccerTeam });
+      return SoccerTeam.findOne({ soccerTeam }).populate('roster');
     },
     allSoccerTeams: async () => {
-      return SoccerTeam.find();
+      return SoccerTeam.find().populate('roster');
     },
     // Player queries
     soccerPlayer: async (parent, { soccerPlayer }) => {

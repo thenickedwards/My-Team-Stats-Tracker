@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { ADD_LEAGUE } from "../../utils/mutations";
 
@@ -38,7 +38,7 @@ const leaguesStyle = {
   },
 };
 
-export default function AddLeague() {
+const AddLeague = () => {
 
   // Functionality to Adding League via Form
   const [formState, setFormState] = useState({
@@ -69,6 +69,7 @@ export default function AddLeague() {
       const { data } = await addLeague({
         variables: { ...formState },
       });
+      setFormState("");
     } catch (e) {
       console.error(e);
     }
@@ -82,6 +83,7 @@ export default function AddLeague() {
             id="leagueName"
             name="leagueName"
             label="League Name"
+            type="text"
             variant="outlined"
             color="secondary"
             value={leagueName}
@@ -96,6 +98,7 @@ export default function AddLeague() {
               labelId="sport"
               id="sport"
               name="sport"
+              type="text"
               value={sport}
               onChange={handleFormChange}
               input={<OutlinedInput label="Sport Name" />}
@@ -117,6 +120,7 @@ export default function AddLeague() {
             id="leaguePic"
             name="leaguePic"
             label="League Picture"
+            type="text"
             variant="outlined"
             color="secondary"
             value={leaguePic}
@@ -151,3 +155,5 @@ export default function AddLeague() {
     </div>
   );
 }
+
+export default AddLeague;
