@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
 
 export const QUERY_USER = gql`
   query user($username: String!) {
@@ -36,12 +36,16 @@ export const QUERY_LEAGUE = gql`
 
 export const QUERY_LEAGUES = gql`
   query allLeagues {
-    league {
+    allLeagues {
       _id
       leagueName
       sport
       leaguePic
-      seasons
+      seasons {
+        _id
+        startYear
+        endYear
+      }
     }
   }
 `;
