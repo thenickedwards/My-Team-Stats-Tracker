@@ -134,6 +134,59 @@ const resolvers = {
       // }
       // throw new AuthenticationError('You need to be logged in!');
     },
+
+    //// Delete League
+    removeLeague: async (parent, { leagueId }, context) => {
+      if (context.user) {
+        return League.findOneAndDelete({ _id: context.user.leagueId });
+    }
+    throw new AuthenticationError('You need to be logged in!');
+  },
+    
+    //// Delete Season
+    removeSeason: async (parent, { leagueId, season }, context) => {
+      if (context.user) {
+        return League.findOneAndUpdate(
+          { _id: context.user.leagueId },
+          { $pull: { seasons: season } },
+          { new: true }
+        );
+      }
+    throw new AuthenticationError('You need to be logged in!');
+    },
+
+    //// Delete Team
+    removeTeam: async (parent, { seasonId, team }, context) => {
+      if (context.user) {
+        return Season.findOneAndUpdate(
+          { _id: context.user.seasonId },
+          { $pull: { teams: team } },
+          { new: true }
+        );
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
+
+    //// Delete Player
+    removePlayer: async (parent, { teamId, player }, context) => {
+      if (context.user) {
+        return Team.findOneAndUpdate(
+          { _id: context.user.teamId },
+          { $pull: { players: player } },
+          { new: true }
+        );
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
+
+    //// Update League
+
+    //// Update Season
+
+    //// Update Team
+
+    //// Update Player
+
   }
 };
 

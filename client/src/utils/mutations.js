@@ -189,3 +189,96 @@ export const ADD_ASSIST = gql`
     }
   }
 `;
+
+
+//// Delete Mutations TODO: Double check arguments
+
+export const REMOVE_LEAGUE = gql`
+  mutation removeLeague($league: LeagueInput) {
+    removeLeague(league: $league) {
+      _id
+      leagueName
+      sport
+      leaguePic
+    }
+  }
+`;
+
+export const REMOVE_SEASON = gql`
+  mutation removeSeason($season: SeasonInput) {
+    removeSeason(season: $season) {
+      _id
+      seasonName
+      startYear
+      endYear
+      league
+    }
+  }
+`;
+
+export const REMOVE_SOCCERTEAM = gql`
+  mutation removeTeam($team: SoccerTeamInput) {
+    removeTeam(team: $team) {
+      _id
+      teamName
+      teamColor
+      teamPic
+      season {
+        _id
+      }
+    }
+  }`;
+
+
+export const REMOVE_SOCCERPLAYER = gql`
+  mutation removePlayer($roster: SoccerPlayerInput) {
+    removePlayer(roster: $roster) {
+      _id
+      playerFirstName
+      playerLastName
+      playerPic
+      playerNumber
+    }
+  }
+`;
+
+export const REMOVE_SOCCERGAME = gql`
+  mutation removeGame($game: SoccerGame) {
+    removeGame(game: $game) {
+      soccerGame {
+        _id
+        gameDate
+        homeTeam
+        awayTeam
+        goalsHome
+        goalsAway
+        assistsHome
+        assistsAway
+      }
+    }
+  }
+`;
+
+export const REMOVE_GOAL = gql`
+  mutation removeGoal($goal: goal) {
+    removeGoal(goal: $goal) {
+      goal {
+        _id
+        game
+        minute
+      }
+    }
+  }
+`;
+
+export const REMOVE_ASSIST = gql`
+  mutation removeAssist($assist: assist) {
+    removeAssist(assist: $assist) {
+      assist {
+        _id
+        game
+        minute
+      }
+    }
+  }
+`;
