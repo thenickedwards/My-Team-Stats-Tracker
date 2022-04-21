@@ -1,7 +1,8 @@
 import React from "react";
+import { useQuery } from "@apollo/client";
+import { QUERY_LEAGUES } from "../utils/queries";
 import AddLeague from "../components/Forms/AddLeague";
-
-
+// import Auth from "../utils/auth";
 
 // Material UI Imports
 import {
@@ -31,6 +32,7 @@ const leaguesStyle = {
     margin: "auto",
     textAlign: "center",
   },
+
   addLeagueModal: {
     position: "absolute",
     top: "50%",
@@ -45,10 +47,14 @@ const leaguesStyle = {
 };
 
 export default function Leagues() {
-  // Functionality for Add League Modal
+  //   const token = Auth.loggedIn() ? Auth.getToken() : null;
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  // Get leagues
+  const { loading, data } = useQuery(QUERY_LEAGUES);
+  const leagues = data?.allLeagues || [];
+  console.log(leagues);
 
   return (
     <Container alignItems="center" justifyContent="center">
@@ -99,80 +105,31 @@ export default function Leagues() {
         </Box>
 
         {/* League Cards - Map Over Seeds */}
-        <Grid container spacing={{ xs: 4 }}>
-          <Grid item xs={6} s={6} md={3} lg={3}>
-            <Paper elevation={5} sx={leaguesStyle.leaguePaper}>
-              <img
-                src="images/washington-premier-league.png"
-                alt="logo"
-                loading="lazy"
-                height={100}
-              />
-              <Typography
-                variant="p"
-                gutterBottom
-                component="div"
-                sx={leaguesStyle.leaguePaperText}
-              >
-                Washington Premier League
-              </Typography>
-            </Paper>
-          </Grid>
-          <Grid item xs={6} s={6} md={3} lg={3}>
-            <Paper elevation={5} sx={leaguesStyle.leaguePaper}>
-              <img
-                src="images/WSA.png"
-                alt="logo"
-                loading="lazy"
-                height={100}
-              />
-              <Typography
-                variant="p"
-                gutterBottom
-                component="div"
-                sx={leaguesStyle.leaguePaperText}
-              >
-                Washington Soccer Academy
-              </Typography>
-            </Paper>
-          </Grid>
-          <Grid item xs={6} s={6} md={3} lg={3}>
-            <Paper elevation={5} sx={leaguesStyle.leaguePaper}>
-              <img
-                src="images/chicago.png"
-                alt="logo"
-                loading="lazy"
-                height={100}
-              />
-              <Typography
-                variant="p"
-                gutterBottom
-                component="div"
-                sx={leaguesStyle.leaguePaperText}
-              >
-                Washington Premier League
-              </Typography>
-            </Paper>
-          </Grid>
-          <Grid item xs={6} s={6} md={3} lg={3}>
-            <Paper elevation={5} sx={leaguesStyle.leaguePaper}>
-              <img
-                src="images/chicago.png"
-                alt="logo"
-                loading="lazy"
-                height={100}
-              />
-              <Typography
-                variant="p"
-                gutterBottom
-                component="div"
-                sx={leaguesStyle.leaguePaperText}
-              >
-                Washington Premier League
-              </Typography>
-            </Paper>
-          </Grid>
+        <Grid container sx={{ justifyContent: "space-around" }}>
+          {leagues.map((league) => {
+            return (
+              <Grid item key={league._id}>
+                <Paper elevation={5} sx={leaguesStyle.leaguePaper}>
+                  <img
+                    src={league.leaguePic}
+                    alt="logo"
+                    loading="lazy"
+                    height={100}
+                  />
+                  <Typography
+                    variant="p"
+                    gutterBottom
+                    component="div"
+                    sx={leaguesStyle.leaguePaperText}
+                  >
+                    {league.leagueName}
+                  </Typography>
+                </Paper>
+              </Grid>
+            );
+          })}
         </Grid>
+      </Grid>
 
         {/* Add League Modal */}
         <Modal
@@ -189,9 +146,8 @@ export default function Leagues() {
             {/* ADD LEAGUE FORM */}
             <AddLeague handleClose={handleClose} />
 
-          </Box>
-        </Modal>
-      </Grid>
+        </Box>
+      </Modal>
     </Container>
   );
 }
