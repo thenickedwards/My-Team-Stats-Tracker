@@ -198,4 +198,51 @@ export const UPDATE_PLAYER = gql `
 }
 `;
 
+
 // UPDATE GAME??
+
+
+//// Delete Mutations
+
+export const REMOVE_LEAGUE = gql`
+  mutation removeLeague($leagueId: ID!) {
+    removeLeague(league: $league)
+  }
+`;
+
+export const REMOVE_SEASON = gql`
+  mutation removeSeason($seasonId: ID!) {
+    removeSeason(season: $season)
+  }
+`;
+
+export const REMOVE_SOCCERTEAM = gql`
+  mutation removeTeam($soccerTeamId: ID!) {
+    removeTeam(soccerTeam: $soccerTeam)
+  }
+`;
+
+export const REMOVE_SOCCERPLAYER = gql`
+  mutation removeSoccerPlayer($soccerPlayerId: ID!) {
+    removePlayer(roster: $roster)
+  }
+`;
+
+export const REMOVE_SOCCERGAME = gql`
+  mutation removeSoccerGame($soccerGameId: ID!) {
+    removeGame(soccerGame: $soccerGame)
+  }
+`;
+
+export const REMOVE_GOAL = gql`
+  mutation removeGoal($goal: goal) {
+    removeGoal(goal: $goal)
+  }
+`;
+
+export const REMOVE_ASSIST = gql`
+  mutation removeAssist($assist: assist) {
+    removeAssist(assist: $assist)
+  }
+`;
+

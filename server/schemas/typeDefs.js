@@ -152,7 +152,13 @@ const typeDefs = gql`
     addTeam(team: SoccerTeamInput): SoccerTeam
     addPlayer(roster: SoccerPlayerInput): SoccerPlayer
     addGame(games: SoccerGameInput): SoccerGame
-    # Still need edits and deletions
+
+    # Deletion Mutations
+    removeLeague(leagueId: ID!): League
+    removeSeason(seasonId: ID!): Season
+    removeSoccerTeam(soccerTeamId: ID!): SoccerTeam
+    removeSoccerPlayer(soccerPlayerId: ID!): SoccerPlayer
+    removeSoccerGame(soccerGameId: ID!): SoccerGame
 
     # Update mutations
     updateLeague(leagueId: ID!, league: LeagueInput): League
