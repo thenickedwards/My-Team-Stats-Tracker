@@ -20,9 +20,11 @@ db.once('open', async () => {
 
     await Season.deleteMany({});
 
+    // await Season.create(seasonSeeds);
+
     for (let i = 0; i < seasonSeeds.length; i++) {
       const newSeasonSeed = await Season.create(seasonSeeds[i]);
-      console.log(newSeasonSeed)
+      
       try {
         await League.findOneAndUpdate(
           { _id: seasonSeeds[i].league },
@@ -34,15 +36,54 @@ db.once('open', async () => {
       };
     }
 
-    // await Season.create(seasonSeeds);
-
     await SoccerTeam.deleteMany({});
 
-    await SoccerTeam.create(soccerTeamSeeds);
+    // await SoccerTeam.create(soccerTeamSeeds);
+
+    for (let i = 0; i < soccerTeamSeeds.length; i++) {
+      const newSoccerTeamSeed = await SoccerTeam.create(soccerTeamSeeds[i]);
+      try {
+        await Season.findOneAndUpdate(
+          { _id: soccerTeamSeeds[i].season },
+          { $addToSet: { seasons: newSoccerTeamSeed._id } },
+        )
+      }
+      catch (err) {
+        console.log(err);
+      };
+    }
 
     await SoccerPlayer.deleteMany({});
 
-    await SoccerPlayer.create(soccerPlayerSeeds);
+    // await SoccerPlayer.create(soccerPlayerSeeds);
+
+    for (let i = 0; i < soccerPlayerSeeds.length; i++) {
+      const newSoccerPlayerSeed = await SoccerPlayer.create(soccerPlayerSeeds[i]);
+      console.log(newSoccerPlayerSeed)
+      try {
+        await SoccerTeam.findOneAndUpdate(
+          { _id: soccerPlayerSeeds[i].team },
+          { $addToSet: { roster: newSoccerPlayerSeed._id } },
+        )
+      }
+      catch (err) {
+        console.log(err);
+      };
+    }
+
+//////////
+
+    // for (let i = 0; i < thoughtSeeds.length; i++) {
+    //   const { _id, thoughtAuthor } = await Thought.create(thoughtSeeds[i]);
+    //   const user = await User.findOneAndUpdate(
+    //     { username: thoughtAuthor },
+    //     {
+    //       $addToSet: {
+    //         thoughts: _id,
+    //       },
+    //     }
+    //   );
+    // }
 
     await SoccerGame.deleteMany({});
 
