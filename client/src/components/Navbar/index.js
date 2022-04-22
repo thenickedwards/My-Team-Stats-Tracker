@@ -44,7 +44,7 @@ const pages = [
 const settings = [
   { id: 1, name: "Account", URL: "account" },
   { id: 2, name: "My Leagues", URL: ":userId/leagues" },
-  { id: 3, name: "My Teams", URL: ":/userId/teams" },
+  { id: 3, name: "My Teams", URL: ":userId/teams" },
   { id: 4, name: "My Seasons", URL: ":userId/seasons" },
   { id: 5, name: "Logout", URL: "logout" },
 ];
