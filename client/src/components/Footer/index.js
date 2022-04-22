@@ -18,7 +18,7 @@ import HomeIcon from "@mui/icons-material/Home";
 const Footer = () => {
   const [value, setValue] = React.useState(0);
   const footerText = [
-    "The Littles was created by Juanita Samborski, Christina Bohn. Nick Edwards, and Chandra Holt. All rights reserved.",
+    "The myTeam Stats was created by Juanita Samborski, Christina Bohn. Nick Edwards, and Chandra Holt. All rights reserved.",
   ];
 
   return (
