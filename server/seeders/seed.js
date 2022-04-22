@@ -20,7 +20,21 @@ db.once('open', async () => {
 
     await Season.deleteMany({});
 
-    await Season.create(seasonSeeds);
+    for (let i = 0; i < seasonSeeds.length; i++) {
+      const newSeasonSeed = await Season.create(seasonSeeds[i]);
+      console.log(newSeasonSeed)
+      try {
+        await League.findOneAndUpdate(
+          { _id: seasonSeeds[i].league },
+          { $addToSet: { seasons: newSeasonSeed._id } },
+        )
+      }
+      catch (err) {
+        console.log(err);
+      };
+    }
+
+    // await Season.create(seasonSeeds);
 
     await SoccerTeam.deleteMany({});
 
@@ -34,17 +48,6 @@ db.once('open', async () => {
 
     await SoccerGame.create(soccerGameSeeds)
 
-    // for (let i = 0; i < thoughtSeeds.length; i++) {
-    //   const { _id, thoughtAuthor } = await Thought.create(thoughtSeeds[i]);
-    //   const user = await User.findOneAndUpdate(
-    //     { username: thoughtAuthor },
-    //     {
-    //       $addToSet: {
-    //         thoughts: _id,
-    //       },
-    //     }
-    //   );
-    // }
   } catch (err) {
     console.error(err);
     process.exit(1);
