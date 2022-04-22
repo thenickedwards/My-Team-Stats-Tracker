@@ -149,8 +149,6 @@ export const ADD_ASSIST = gql`
   }
 `;
 
-
-
 // UPDATE MUTTIONS
 
 export const UPDATE_LEAGUE = gql`
@@ -206,13 +204,17 @@ export const UPDATE_PLAYER = gql `
 
 export const REMOVE_LEAGUE = gql`
   mutation removeLeague($leagueId: ID!) {
-    removeLeague(league: $league)
+    removeLeague(league: $league) {
+      _id
+    }
   }
 `;
 
 export const REMOVE_SEASON = gql`
   mutation removeSeason($seasonId: ID!) {
-    removeSeason(season: $season)
+    removeSeason(season: $season) {
+      _id
+    }
   }
 `;
 

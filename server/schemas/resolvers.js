@@ -198,7 +198,7 @@ const resolvers = {
 
     // }
     // throw new AuthenticationError('You need to be logged in!');
-  },
+    },
 
     //// Delete Season
     removeSeason: async (parent, { seasonId }, context) => {
@@ -218,30 +218,30 @@ const resolvers = {
         });
 
         return season;
-    }
-      // throw new AuthenticationError('You need to be logged in!');
     },
+      // throw new AuthenticationError('You need to be logged in!');
+  // },
 
     //// Delete Team
-    // removeSoccerTeam: async (parent, { soccerTeamId }, context) => {
+    removeSoccerTeam: async (parent, { soccerTeamId }, context) => {
     //   // if (context.user) {
-    //     const seasonId = await Team.findOne({
-    //       _id: soccerTeamId
-    //     });
+        const seasonId = await SoccerTeam.findOne({
+          _id: soccerTeamId
+        });
 
-    //     await Season.findOneAndUpdate(
-    //       { _id: seasonId.season},
-    //       { $pull: { teams: {soccerTeamId} } }
-    //     );
+        await Season.findOneAndUpdate(
+          { _id: seasonId.season},
+          { $pull: { teams: {soccerTeamId} } }
+        );
 
-    //     const team = await SoccerTeam.findOneAndDelete({
-    //       _id: soccerTeamId
-    //     });
+        const team = await SoccerTeam.findOneAndDelete({
+          _id: soccerTeamId
+        });
 
-    //     return team;
-    // }
+        return team;
+    }
       // throw new AuthenticationError('You need to be logged in!');
-    // }
+  },
 
     //// Delete Player
     // removeSoccerPlayer: async (parent, { soccerPlayerId }, context) => {
@@ -262,7 +262,7 @@ const resolvers = {
         // return player;
     
       // throw new AuthenticationError('You need to be logged in!');
-    // },
+    // }
   
 };
 
