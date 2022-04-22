@@ -1,6 +1,6 @@
 const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
-const { User, League, Season, SoccerTeam, SoccerPlayer } = require('../models');
+const { User, League, Season, SoccerTeam, SoccerPlayer, SoccerGame } = require('../models');
 
 
 const resolvers = {
@@ -20,32 +20,39 @@ const resolvers = {
       throw new AuthenticationError('You need to be logged in!');
     },
     // League queries
-    league: async (parent, { league }) => {
-      return League.findOne({ league }).populate('seasons');;
+    league: async (parent, { leagueId }) => {
+      return League.findOne({ _id: leagueId }).populate('seasons');;
     },
     allLeagues: async () => {
       return League.find().populate('seasons');
     },
     // Season queries
-    season: async (parent, { season }) => {
-      return Season.findOne({ season }).populate('teams');
+    season: async (parent, { seasonId }) => {
+      return Season.findOne({ _id: seasonId }).populate('teams');
     },
     allSeasons: async () => {
       return Season.find().populate('teams');
     },
     // Team queries
-    soccerTeam: async (parent, { soccerTeam }) => {
-      return SoccerTeam.findOne({ soccerTeam }).populate('roster');
+    soccerTeam: async (parent, { soccerTeamId }) => {
+      return SoccerTeam.findOne({ _id: soccerTeamId }).populate('roster');
     },
     allSoccerTeams: async () => {
       return SoccerTeam.find().populate('roster');
     },
     // Player queries
-    soccerPlayer: async (parent, { soccerPlayer }) => {
-      return SoccerPlayer.findOne({ soccerPlayer });
+    soccerPlayer: async (parent, { soccerPlayerId }) => {
+      return SoccerPlayer.findOne({ _id: soccerPlayerId });
     },
     allSoccerPlayers: async () => {
       return SoccerPlayer.find();
+    },
+    // Game queries
+    soccerGame: async (parent, { soccerGameId }) => {
+      return SoccerGame.findOne({ _id: soccerGameId });
+    },
+    allSoccerGames: async () => {
+      return SoccerGame.find();
     },
   },
 
@@ -135,6 +142,45 @@ const resolvers = {
       // throw new AuthenticationError('You need to be logged in!');
     },
 
+
+    
+    //// Update league
+    updateLeague: async (parent, { leagueId, league }) => {
+      return await League.findOneAndUpdate(
+        { _id: leagueId }, 
+        { ...league },
+        { new: true }
+      );
+    },
+
+    //// Update season
+    updateSeason: async (parent, { seasonId, season }) => {
+      return await Season.findOneAndUpdate(
+        { _id: seasonId }, 
+        { ...season },
+        { new: true }
+      );
+    },
+
+    //// Update team
+    updateSoccerTeam: async (parent, { soccerTeamId, soccerTeam }) => {
+      return await SoccerTeam.findOneAndUpdate(
+        { _id: soccerTeamId }, 
+        { ...soccerTeam },
+        { new: true }
+      );
+    },
+
+    //// Update player
+    updateSoccerPlayer: async (parent, { soccerPlayerId, soccerPlayer }) => {
+      return await SoccerPlayer.findOneAndUpdate(
+        { _id: soccerPlayerId }, 
+        { ...soccerPlayer },
+        { new: true }
+      );
+    },
+    
+    
     //// Delete League
     removeLeague: async (parent, { leagueId }, context) => {
       // if (context.user) {
@@ -143,9 +189,9 @@ const resolvers = {
         });
 
         // Add context.user before _id value
-        await User.findOneAndUpdate(
-          { _id: _id },
-          { $pull: { leagues: league._id } }
+        await Season.findOneAndUpdate(
+          { league: leagueId },
+          { $pull: { leagues: leagueId } }
         );
 
         return league;
@@ -153,69 +199,70 @@ const resolvers = {
     // }
     // throw new AuthenticationError('You need to be logged in!');
   },
-    
-    //// Delete Season
-    // removeSeason: async (parent, { leagueId, season }, context) => {
-    //   if (context.user) {
-    //     return League.findOneAndUpdate(
-    //       { _id: context.user.leagueId },
-    //       { $pull: { seasons: season } },
-    //       { new: true }
-    //     );
-    //   }
-    // throw new AuthenticationError('You need to be logged in!');
-    // },
 
-    removeSeason: async (parent, { thoughtId, seasonId }, context) => {
-      if (context.user) {
-        return League.findOneAndUpdate(
-          { _id: leagueId },
-          {
-            $pull: {
-              seasons: {
-                _id: seasonId
-                // Do all fields need to be listed here?
-              },
-            },
-          },
-          { new: true }
+    //// Delete Season
+    removeSeason: async (parent, { seasonId }, context) => {
+      // if (context.user) {
+        // To pull a model from a parent model, retrieve the ID before deleting
+        const leagueId = await Season.findOne({
+          _id: seasonId
+        });
+
+        await League.findOneAndUpdate(
+          { _id: leagueId.league},
+          { $pull: { seasons: {seasonId} } }
         );
-      }
-      throw new AuthenticationError('You need to be logged in!');
+        // Main delete action for the model
+        const season = await Season.findOneAndDelete({
+          _id: seasonId
+        });
+
+        return season;
+    }
+      // throw new AuthenticationError('You need to be logged in!');
     },
 
     //// Delete Team
-    removeTeam: async (parent, { seasonId, team }, context) => {
-      if (context.user) {
-        return Season.findOneAndUpdate(
-          { _id: context.user.seasonId },
-          { $pull: { teams: team } },
-          { new: true }
+    removeSoccerTeam: async (parent, { soccerTeamId }, context) => {
+      // if (context.user) {
+        const seasonId = await Team.findOne({
+          _id: soccerTeamId
+        });
+
+        await Season.findOneAndUpdate(
+          { _id: seasonId.season},
+          { $pull: { teams: {soccerTeamId} } }
         );
-      }
-      throw new AuthenticationError('You need to be logged in!');
+
+        const team = await SoccerTeam.findOneAndDelete({
+          _id: soccerTeamId
+        });
+
+        return team;
+    }
+      // throw new AuthenticationError('You need to be logged in!');
     },
 
     //// Delete Player
-    removePlayer: async (parent, { teamId, player }, context) => {
-      if (context.user) {
-        return Team.findOneAndUpdate(
-          { _id: context.user.teamId },
-          { $pull: { players: player } },
-          { new: true }
+    removeSoccerPlayer: async (parent, { soccerPlayerId }, context) => {
+      // if (context.user) {
+        const soccerTeamId = await Team.findOne({
+          _id: soccerTeamId
+        });
+
+        await SoccerTeam.findOneAndUpdate(
+          { _id: soccerTeamId.soccerTeam},
+          { $pull: { player: {soccerPlayerId} } }
         );
-      }
-      throw new AuthenticationError('You need to be logged in!');
+
+        const player = await SoccerPlayer.findOneAndDelete({
+          _id: soccerPlayerId
+        });
+
+        return player;
+    
+      // throw new AuthenticationError('You need to be logged in!');
     },
-
-    //// Update League
-
-    //// Update Season
-
-    //// Update Team
-
-    //// Update Player
-
   }
 };
 
