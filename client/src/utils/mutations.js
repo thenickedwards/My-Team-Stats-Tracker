@@ -149,8 +149,6 @@ export const ADD_ASSIST = gql`
   }
 `;
 
-
-
 // UPDATE MUTTIONS
 
 export const UPDATE_LEAGUE = gql`
@@ -206,25 +204,33 @@ export const UPDATE_PLAYER = gql `
 
 export const REMOVE_LEAGUE = gql`
   mutation removeLeague($leagueId: ID!) {
-    removeLeague(league: $league)
+    removeLeague(league: $league) {
+      _id
+    }
   }
 `;
 
 export const REMOVE_SEASON = gql`
   mutation removeSeason($seasonId: ID!) {
-    removeSeason(season: $season)
+    removeSeason(season: $season) {
+      _id
+    }
   }
 `;
 
 export const REMOVE_SOCCERTEAM = gql`
   mutation removeTeam($soccerTeamId: ID!) {
-    removeTeam(soccerTeam: $soccerTeam)
+    removeTeam(soccerTeam: $soccerTeam) {
+      _id
+    }
   }
 `;
 
 export const REMOVE_SOCCERPLAYER = gql`
   mutation removeSoccerPlayer($soccerPlayerId: ID!) {
-    removePlayer(roster: $roster)
+    removePlayer(roster: $roster) {
+      _id
+    }
   }
 `;
 

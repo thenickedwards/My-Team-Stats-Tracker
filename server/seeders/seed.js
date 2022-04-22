@@ -42,6 +42,7 @@ db.once('open', async () => {
 
     for (let i = 0; i < soccerTeamSeeds.length; i++) {
       const newSoccerTeamSeed = await SoccerTeam.create(soccerTeamSeeds[i]);
+      
       try {
         await Season.findOneAndUpdate(
           { _id: soccerTeamSeeds[i].season },
@@ -59,7 +60,7 @@ db.once('open', async () => {
 
     for (let i = 0; i < soccerPlayerSeeds.length; i++) {
       const newSoccerPlayerSeed = await SoccerPlayer.create(soccerPlayerSeeds[i]);
-      console.log(newSoccerPlayerSeed)
+
       try {
         await SoccerTeam.findOneAndUpdate(
           { _id: soccerPlayerSeeds[i].team },
