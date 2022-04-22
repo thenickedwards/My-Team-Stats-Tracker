@@ -68,7 +68,7 @@ export default function AddPlayer( {handleClose} ) {
     
         try {
           const { data } = await addPlayer({
-            variables: { player: {...formState} },
+            variables: { roster: {...formState} },
           });
 
         console.log("Player Details:", formState)
