@@ -224,13 +224,13 @@ export const REMOVE_SOCCERTEAM = gql`
 `;
 
 export const REMOVE_SOCCERPLAYER = gql`
-  mutation removePlayer($soccerPlayerId: ID!) {
+  mutation removeSoccerPlayer($soccerPlayerId: ID!) {
     removePlayer(roster: $roster)
   }
 `;
 
 export const REMOVE_SOCCERGAME = gql`
-  mutation removeGame($soccerGameId: ID!) {
+  mutation removeSoccerGame($soccerGameId: ID!) {
     removeGame(soccerGame: $soccerGame)
   }
 `;

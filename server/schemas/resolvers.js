@@ -223,47 +223,47 @@ const resolvers = {
     },
 
     //// Delete Team
-    removeSoccerTeam: async (parent, { soccerTeamId }, context) => {
-      // if (context.user) {
-        const seasonId = await Team.findOne({
-          _id: soccerTeamId
-        });
+    // removeSoccerTeam: async (parent, { soccerTeamId }, context) => {
+    //   // if (context.user) {
+    //     const seasonId = await Team.findOne({
+    //       _id: soccerTeamId
+    //     });
 
-        await Season.findOneAndUpdate(
-          { _id: seasonId.season},
-          { $pull: { teams: {soccerTeamId} } }
-        );
+    //     await Season.findOneAndUpdate(
+    //       { _id: seasonId.season},
+    //       { $pull: { teams: {soccerTeamId} } }
+    //     );
 
-        const team = await SoccerTeam.findOneAndDelete({
-          _id: soccerTeamId
-        });
+    //     const team = await SoccerTeam.findOneAndDelete({
+    //       _id: soccerTeamId
+    //     });
 
-        return team;
-    }
+    //     return team;
+    // }
       // throw new AuthenticationError('You need to be logged in!');
-    },
+    // }
 
     //// Delete Player
-    removeSoccerPlayer: async (parent, { soccerPlayerId }, context) => {
+    // removeSoccerPlayer: async (parent, { soccerPlayerId }, context) => {
       // if (context.user) {
-        const soccerTeamId = await Team.findOne({
-          _id: soccerTeamId
-        });
+        // const soccerTeamId = await Team.findOne({
+        //   _id: soccerTeamId
+        // });
 
-        await SoccerTeam.findOneAndUpdate(
-          { _id: soccerTeamId.soccerTeam},
-          { $pull: { player: {soccerPlayerId} } }
-        );
+        // await SoccerTeam.findOneAndUpdate(
+        //   { _id: soccerTeamId.soccerTeam},
+        //   { $pull: { roster: {soccerPlayerId} } }
+        // );
 
-        const player = await SoccerPlayer.findOneAndDelete({
-          _id: soccerPlayerId
-        });
+        // const player = await SoccerPlayer.findOneAndDelete({
+        //   _id: soccerPlayerId
+        // });
 
-        return player;
+        // return player;
     
       // throw new AuthenticationError('You need to be logged in!');
-    },
-  }
+    // },
+  
 };
 
 module.exports = resolvers;
