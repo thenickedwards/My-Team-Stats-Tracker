@@ -5,18 +5,12 @@ import {
   Grid,
   Box,
   Typography,
-  Button,
-  TextField,
-  FormControl,
   Modal,
-  Select,
-  OutlinedInput,
-  MenuItem,
-  InputLabel,
 } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import IconButton from "@mui/material/IconButton";
 import AddIcon from "@mui/icons-material/Add";
+import AddSeason from "../components/Forms/AddSeason";
 
 // ////////////////////////////////////
 //   DATAGRID (EDIT DATA)
@@ -41,7 +35,7 @@ const columns = [
   },
 ];
 
-//   DATAGRID (TEMPORARY DATA)
+  // DATAGRID (TEMPORARY DATA)
 const rows = [
   { id: 1, lastName: "Snow", firstName: "Jon", age: 35 },
   { id: 2, lastName: "Lannister", firstName: "Cersei", age: 42 },
@@ -54,22 +48,6 @@ const rows = [
   { id: 9, lastName: "Roxie", firstName: "Harvey", age: 65 },
 ];
 
-// Seasons Modal Select Team (TEMPORARY DATA)
-
-const teams = [
-  "Oliver Hansen",
-  "Van Henry",
-  "April Tucker",
-  "Ralph Hubbard",
-  "Omar Alexander",
-  "Carlos Abbott",
-  "Miriam Wagner",
-  "Bradley Wilkerson",
-  "Virginia Andrews",
-  "Kelly Snyder",
-];
-
-// ////////////////////////////////////
 
 // Add Seasons Modal Multiselect
 const ITEM_HEIGHT = 48;
@@ -96,14 +74,7 @@ const leagueStyle = {
     borderRadius: 3,
     boxShadow: 24,
     p: 4,
-  },
-  formButton: {
-    height: 50,
-    backgroundColor: "secondary.main",
-    "&:hover": {
-      backgroundColor: "primary.main",
-    },
-  },
+  }
 };
 
 export default function League() {
@@ -113,19 +84,7 @@ export default function League() {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  // Functionality for Select Team Dropdown
-  const [teamName, setTeamName] = React.useState([]);
-
-  const handleChange = (event) => {
-    const {
-      target: { value },
-    } = event;
-    setTeamName(
-      // On autofill we get a stringified value.
-      typeof value === "string" ? value.split(",") : value
-    );
-  };
-
+ 
   return (
     <>
       <CssBaseline />
@@ -221,7 +180,6 @@ export default function League() {
                     },
                   }}
 
-                  // checkboxSelection
                 />
               </div>
             </Box>
@@ -239,71 +197,10 @@ export default function League() {
                 Add Season
               </Typography>
 
-              <form>
-                <FormControl fullWidth sx={{ gap: 4 }}>
-                  <TextField
-                    id="seasonName"
-                    label="Season Name"
-                    variant="outlined"
-                    color="secondary"
-                    InputLabelProps={{ shrink: true }}
-                  />
+            {/* ADD SEASON FORM */}
+            <AddSeason handleClose={handleClose} />
 
-                  {/* <InputLabel htmlFor="firstName" variant='h3'> First Name</InputLabel> */}
-                  <TextField
-                    id="startYear"
-                    label="Start Year"
-                    variant="outlined"
-                    color="secondary"
-                    InputLabelProps={{ shrink: true }}
-                  />
-                  <TextField
-                    id="endYear"
-                    label="End Year"
-                    variant="outlined"
-                    color="secondary"
-                    InputLabelProps={{ shrink: true }}
-                  />
-
-                  <FormControl>
-                    <InputLabel
-                      id="multiple-team-label"
-                    >
-                      Teams
-                    </InputLabel>
-                    <Select
-                      displayEmpty
-                      labelId="multiple-team-label"
-                      id="multiple-team"
-                      multiple
-                      value={teamName}
-                      onChange={handleChange}
-                      input={<OutlinedInput label="Team Name" />}
-                      MenuProps={MenuProps}
-                    >
-                      <MenuItem disabled value="">
-                        <em>Select Teams</em>
-                      </MenuItem>
-
-                      {teams.map((team) => (
-                        <MenuItem key={team} value={team}>
-                          {team}
-                        </MenuItem>
-                      ))}
-                    </Select>
-                  </FormControl>
-
-                  <Button
-                    variant="contained"
-                    type="submit"
-                    sx={leagueStyle.formButton}
-                    fullWidth
-                    disableElevation
-                  >
-                    <Typography variant="h3">Add Season</Typography>
-                  </Button>
-                </FormControl>
-              </form>
+             
             </Box>
           </Modal>
         </Grid>
