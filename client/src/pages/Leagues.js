@@ -7,6 +7,7 @@ import AddLeague from "../components/Forms/AddLeague";
 // Material UI Imports
 import {
   Box,
+  Link,
   Container,
   Grid,
   IconButton,
@@ -54,6 +55,10 @@ export default function Leagues() {
   // Get leagues
   const { loading, data } = useQuery(QUERY_LEAGUES);
   const leagues = data?.allLeagues || [];
+
+  if (loading) {
+    return <div>LOADING</div>;
+  }
 
   return (
     <Container alignItems="center" justifyContent="center">
@@ -115,14 +120,22 @@ export default function Leagues() {
                     loading="lazy"
                     height={100}
                   />
-                  <Typography
+                  {/* <Typography
                     variant="p"
                     gutterBottom
                     component="div"
                     sx={leaguesStyle.leaguePaperText}
                   >
                     {league.leagueName}
-                  </Typography>
+                  </Typography> */}
+                  <Link
+                    variant="p"
+                    gutterBottom
+                    sx={leaguesStyle.leaguePaperText}
+                    href="/league"
+                  >
+                    {league.leagueName}
+                  </Link>
                 </Paper>
               </Grid>
             );

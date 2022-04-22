@@ -65,6 +65,10 @@ export default function Teams() {
   const { loading, data } = useQuery(QUERY_SOCCERTEAMS);
   const teams = data?.allSoccerTeams || [];
 
+  if (loading) {
+    return <div>LOADING</div>;
+  }
+
   return (
     <Container alignItems="center" justifyContent="center">
       {/* Abstract Images */}
