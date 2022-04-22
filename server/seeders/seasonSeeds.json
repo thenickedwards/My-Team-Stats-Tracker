@@ -1,32 +1,58 @@
 [
   {
-    "_id": "625e1e6f77706d0fa1867f19",
-    "seasonName": "Boys U8 Spring",
-    "startYear": 2021,
-    "endYear": 2022
-  },
-  {
-    "_id": "625e1e6f77706d0fa1867f1a",
-    "seasonName": "Girls U8 Spring",
-    "startYear": 2021,
-    "endYear": 2022
-  },
-  {
-    "_id": "625e1e6f77706d0fa1867f1b",
+    "_id": "6261fc1cd335321576f02424",
     "seasonName": "Adult Coed A - 11v11 Spring",
     "startYear": 2022,
-    "endYear": 2022
+    "endYear": 2022,
+    "league": "6261fa562be2f14423579bd6",
+    "teams": []
   },
   {
-    "_id": "625e1e6f77706d0fa1867f1c",
+    "_id": "6261fc1cd335321576f02427",
     "seasonName": "Adult Womens A - 11v11 Spring",
     "startYear": 2022,
-    "endYear": 2022
+    "endYear": 2022,
+    "league": "6261fa562be2f14423579bd6",
+    "teams": []
   },
   {
-    "_id": "625e1e6f77706d0fa1867f1d",
+    "_id": "6261fc1cd335321576f0242a",
     "seasonName": "Adult Mens A - 11v11 Spring",
     "startYear": 2022,
-    "endYear": 2022
+    "endYear": 2022,
+    "league": "6261fa562be2f14423579bd6",
+    "teams": []
+  },
+  {
+    "_id": "6261fc1cd335321576f0242d",
+    "seasonName": "Boys U8 Spring",
+    "startYear": 2021,
+    "endYear": 2022,
+    "league": "6261fa562be2f14423579bd7",
+    "teams": []
+  },
+  {
+    "_id": "6261fc1cd335321576f02430",
+    "seasonName": "Girls U8 Spring",
+    "startYear": 2021,
+    "endYear": 2022,
+    "league": "6261fa562be2f14423579bd7",
+    "teams": []
+  },
+  {
+    "_id": "6261fc1cd335321576f02433",
+    "seasonName": "Ballard Womens Rec Summer",
+    "startYear": 2021,
+    "endYear": 2022,
+    "league": "6261fa562be2f14423579bd8",
+    "teams": []
+  },
+  {
+    "_id": "6261fc1cd335321576f02436",
+    "seasonName": "Tukwila Mens Rec Fall",
+    "startYear": 2021,
+    "endYear": 2022,
+    "league": "6261fa562be2f14423579bd8",
+    "teams": []
   }
 ]

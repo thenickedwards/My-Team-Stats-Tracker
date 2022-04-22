@@ -1,43 +1,114 @@
 [
   {
+    "_id": "626202fae2194997c7e76e86",
     "teamName": "Chi Town Tigers",
     "teamColor": "#ffa91f",
-    "teamPic": "images/chicago.png"
+    "teamPic": "images/chicago.png",
+    "season": "6261fc1cd335321576f02424",
+    "roster": [],
+    "wins": 5,
+    "draws": 2,
+    "losses": 1,
+    "goalsFor": 12,
+    "goalsAgainst": 3,
+    "goalDifferential": 9
   },
   {
+    "_id": "626202fae2194997c7e76e89",
     "teamName": "Galaxy Bees",
     "teamColor": "#00e3eb",
-    "teamPic": "images/la-galaxy.png"
+    "teamPic": "images/la-galaxy.png",
+    "season": "6261fc1cd335321576f02424",
+    "roster": [],
+    "wins": 4,
+    "draws": 1,
+    "losses": 3,
+    "goalsFor": 10,
+    "goalsAgainst": 8,
+    "goalDifferential": 2
   },
   {
+    "_id": "626202fae2194997c7e76e8c",
     "teamName": "Salmon",
     "teamColor": "#f7a8e9",
-    "teamPic": "images/georgetown.jpeg"
+    "teamPic": "images/georgetown.jpeg",
+    "season": "6261fc1cd335321576f02424",
+    "roster": [],
+    "wins": 3,
+    "draws": 2,
+    "losses": 5,
+    "goalsFor": 4,
+    "goalsAgainst": 12,
+    "goalDifferential": -8
   },
   {
+    "_id": "626202fae2194997c7e76e8f",
     "teamName": "Wolves",
     "teamColor": "#a8f7f7",
-    "teamPic": "images/football.jpeg"
+    "teamPic": "images/football.jpeg",
+    "season": "6261fc1cd335321576f02424",
+    "roster": [],
+    "wins": 1,
+    "draws": 3,
+    "losses": 7,
+    "goalsFor": 3,
+    "goalsAgainst": 17,
+    "goalDifferential": -14
   },
   {
+    "_id": "626202fae2194997c7e76e92",
     "teamName": "Hurricanes",
     "teamColor": "#ebdf00",
-    "teamPic": "images/jacksonville.png"
+    "teamPic": "images/jacksonville.png",
+    "season": "6261fc1cd335321576f02427",
+    "roster": [],
+    "wins": 2,
+    "draws": 1,
+    "losses": 1,
+    "goalsFor": 5,
+    "goalsAgainst": 2,
+    "goalDifferential": 3
   },
-
   {
+    "_id": "626202fae2194997c7e76e95",
     "teamName": "Blizzard",
     "teamColor": "#0512ff",
-    "teamPic": "images/bird.jpeg"
+    "teamPic": "images/bird.jpeg",
+    "season": "6261fc1cd335321576f02427",
+    "roster": [],
+    "wins": 1,
+    "draws": 1,
+    "losses": 2,
+    "goalsFor": 2,
+    "goalsAgainst": 5,
+    "goalDifferential": -3
   },
   {
+    "_id": "626202fae2194997c7e76e98",
     "teamName": "Lightning",
     "teamColor": "#f3ff05",
-    "teamPic": "images/mt-view.png"
+    "teamPic": "images/mt-view.png",
+    "season": "6261fc1cd335321576f0242a",
+    "roster": [],
+    "wins": 99,
+    "draws": 1,
+    "losses": 0,
+    "goalsFor": 100,
+    "goalsAgainst": 25,
+    "goalDifferential": 75
   },
   {
+    "_id": "626202fae2194997c7e76e9b",
     "teamName": "Thunder",
     "teamColor": "#d40f1f",
-    "teamPic": "images/strikers.jpeg"
+    "teamPic": "images/strikers.jpeg",
+    "season": "6261fc1cd335321576f0242a",
+    "roster": [],
+    "wins": 0,
+    "draws": 1,
+    "losses": 99,
+    "goalsFor": 25,
+    "goalsAgainst": 100,
+    "goalDifferential": -75
   }
 ]
