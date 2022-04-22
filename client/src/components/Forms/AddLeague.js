@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { ADD_LEAGUE } from "../../utils/mutations";
+import { QUERY_LEAGUES } from "../../utils/queries";
 
 import {
   Button,
@@ -50,7 +51,10 @@ const AddLeague = ( {handleClose}) => {
 
   const { leagueName, sport, leaguePic } = formState;
 
-  const [addLeague, { error, data }] = useMutation(ADD_LEAGUE);
+  // const [addLeague, { error, data }] = useMutation(ADD_LEAGUE);
+  const [addLeague, { error }] = useMutation(ADD_LEAGUE, {
+    refetchQueries: [ QUERY_LEAGUES ]
+ });
 
   const handleFormChange = (event) => {
     const { name, value } = event.target;

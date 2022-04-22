@@ -78,7 +78,7 @@ const Navbar = () => {
             component="div"
             sx={{ mr: 2, display: { xs: "flex", md: "flex" } }}
           >
-            THE LITTLES
+            My Team Stats
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "flex" } }}>

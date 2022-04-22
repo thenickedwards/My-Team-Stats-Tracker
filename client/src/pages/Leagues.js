@@ -54,7 +54,6 @@ export default function Leagues() {
   // Get leagues
   const { loading, data } = useQuery(QUERY_LEAGUES);
   const leagues = data?.allLeagues || [];
-  console.log(leagues);
 
   return (
     <Container alignItems="center" justifyContent="center">
@@ -105,10 +104,10 @@ export default function Leagues() {
         </Box>
 
         {/* League Cards - Map Over Seeds */}
-        <Grid container sx={{ justifyContent: "space-around" }}>
+        <Grid container spacing={{ xs: 4 }}>
           {leagues.map((league) => {
             return (
-              <Grid item key={league._id}>
+              <Grid item key={league._id} xs={6} s={6} md={3} lg={3}>
                 <Paper elevation={5} sx={leaguesStyle.leaguePaper}>
                   <img
                     src={league.leaguePic}
@@ -131,21 +130,20 @@ export default function Leagues() {
         </Grid>
       </Grid>
 
-        {/* Add League Modal */}
-        <Modal
-          open={open}
-          onClose={handleClose}
-          aria-labelledby="modal-modal-title"
-          aria-describedby="modal-modal-description"
-        >
-          <Box sx={leaguesStyle.addLeagueModal}>
-            <Typography id="modal-modal-title" variant="h1" sx={{ mb: 4 }}>
-              Add League
-            </Typography>
+      {/* Add League Modal */}
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={leaguesStyle.addLeagueModal}>
+          <Typography id="modal-modal-title" variant="h1" sx={{ mb: 4 }}>
+            Add League
+          </Typography>
 
-            {/* ADD LEAGUE FORM */}
-            <AddLeague handleClose={handleClose} />
-
+          {/* ADD LEAGUE FORM */}
+          <AddLeague handleClose={handleClose} />
         </Box>
       </Modal>
     </Container>

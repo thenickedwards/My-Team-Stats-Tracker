@@ -14,13 +14,12 @@ import {
   FormControl,
   Select,
   Modal,
-  TextField,
-  Button,
 } from "@mui/material";
 import PropTypes from "prop-types";
 import { DataGrid } from "@mui/x-data-grid";
 import IconButton from "@mui/material/IconButton";
 import AddIcon from "@mui/icons-material/Add";
+import AddPlayer from "../components/Forms/AddPlayer";
 
 // ////////////////////////////////////
 //   DATAGRID (EDIT DATA)
@@ -523,42 +522,10 @@ export default function Team () {
                   Add Player
                 </Typography>
 
-                <FormControl fullWidth sx={{ gap: 4 }}>
-                  <TextField
-                    id="firstName"
-                    label="First Name"
-                    variant="outlined"
-                    color="secondary"
-                    InputLabelProps={{ shrink: true }}
-                  />
-                  <TextField
-                    id="lastName"
-                    label="Last Name"
-                    variant="outlined"
-                    color="secondary"
-                    InputLabelProps={{ shrink: true }}
-                  />
+                {/* ADD PLAYER FORM */}
+                <AddPlayer handleClose={handleClose} />
 
-                  <TextField
-                    id="playerNumber"
-                    label="Player Number"
-                    variant="outlined"
-                    color="secondary"
-                    InputLabelProps={{ shrink: true }}
-                  />
-
-                  {/* Add Upload Photo Field */}
-
-                  <Button
-                    variant="contained"
-                    type="submit"
-                    sx={teamStyle.formButton}
-                    fullWidth
-                    disableElevation
-                  >
-                    <Typography variant="h3">Add Player</Typography>
-                  </Button>
-                </FormControl>
+              
               </Box>
             </Modal>
           </Grid>
