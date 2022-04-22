@@ -239,30 +239,32 @@ const resolvers = {
         });
 
         return team;
-    }
+    },
       // throw new AuthenticationError('You need to be logged in!');
-  },
+  // },
 
     //// Delete Player
-    // removeSoccerPlayer: async (parent, { soccerPlayerId }, context) => {
+    removeSoccerPlayer: async (parent, { soccerPlayerId }, context) => {
       // if (context.user) {
-        // const soccerTeamId = await Team.findOne({
-        //   _id: soccerTeamId
-        // });
+        const soccerTeamId = await SoccerPlayer.findOne({
+          _id: soccerPlayerId
+        });
 
-        // await SoccerTeam.findOneAndUpdate(
-        //   { _id: soccerTeamId.soccerTeam},
-        //   { $pull: { roster: {soccerPlayerId} } }
-        // );
+        await SoccerTeam.findOneAndUpdate(
+          { _id: soccerTeamId.team},
+          { $pull: { roster: {soccerPlayerId} } }
+        );
 
-        // const player = await SoccerPlayer.findOneAndDelete({
-        //   _id: soccerPlayerId
-        // });
+        const player = await SoccerPlayer.findOneAndDelete({
+          _id: soccerPlayerId
+        });
 
-        // return player;
-    
+        return player;
+      
+      }
       // throw new AuthenticationError('You need to be logged in!');
     // }
+  }
   
 };
 

@@ -220,13 +220,17 @@ export const REMOVE_SEASON = gql`
 
 export const REMOVE_SOCCERTEAM = gql`
   mutation removeTeam($soccerTeamId: ID!) {
-    removeTeam(soccerTeam: $soccerTeam)
+    removeTeam(soccerTeam: $soccerTeam) {
+      _id
+    }
   }
 `;
 
 export const REMOVE_SOCCERPLAYER = gql`
   mutation removeSoccerPlayer($soccerPlayerId: ID!) {
-    removePlayer(roster: $roster)
+    removePlayer(roster: $roster) {
+      _id
+    }
   }
 `;
 
