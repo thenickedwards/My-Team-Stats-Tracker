@@ -186,7 +186,6 @@ export const UPDATE_TEAM = gql `
   }
 `;
 
-// UPDATE PLAYER
 export const UPDATE_PLAYER = gql `
   mutation updateSoccerPlayer($soccerPlayerId: ID!, $team: SoccerPlayerInput) {
     updateSoccerPlayer(soccerPlayerId: $soccerPlayerId, team: $team) {
