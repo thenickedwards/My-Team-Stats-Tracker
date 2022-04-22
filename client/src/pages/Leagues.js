@@ -7,10 +7,12 @@ import AddLeague from "../components/Forms/AddLeague";
 // Material UI Imports
 import {
   Box,
-  Link,
+  Button,
+  ButtonGroup,
   Container,
   Grid,
   IconButton,
+  Link,
   Modal,
   Paper,
   Typography,
@@ -112,7 +114,7 @@ export default function Leagues() {
         <Grid container spacing={{ xs: 4 }}>
           {leagues.map((league) => {
             return (
-              <Grid item key={league._id} xs={6} s={6} md={3} lg={3}>
+              <Grid item key={league._id} xs={6} s={6} md={3} lg={3} sx={{display: "flex", flexDirection: "column", alignItems: "center"}}>
                 <Paper elevation={5} sx={leaguesStyle.leaguePaper}>
                   <img
                     src={league.leaguePic}
@@ -133,10 +135,18 @@ export default function Leagues() {
                     gutterBottom
                     sx={leaguesStyle.leaguePaperText}
                     href="/league"
+                    color="inherit"
                   >
                     {league.leagueName}
                   </Link>
                 </Paper>
+
+                {/* Edit | Delete buttons under league cards */}
+                <ButtonGroup variant="text" aria-label="text button group" sx={{pt: 2}} color="inherit">
+                  <Button>Edit</Button>
+                  <Button>Delete</Button>
+                </ButtonGroup>
+
               </Grid>
             );
           })}
