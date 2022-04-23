@@ -1,4 +1,9 @@
 import React from "react";
+
+// import { useQuery } from "@apollo/client";
+// import { QUERY_SOCCERTEAMS } from "./utils/queries";
+
+
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import "./index.css";
 import {
@@ -96,6 +101,12 @@ const client = new ApolloClient({
 function App() {
   let location = useLocation();
 
+  // Customize URL
+  // const { loading, data } = useQuery(QUERY_SOCCERTEAMS);
+  // const teams = data?.allSoccerTeams || [];
+
+
+
   return (
     <ApolloProvider client={client}>
       {
@@ -117,15 +128,16 @@ function App() {
 
               <Route path="/leagues" element={<Leagues />} />
 
+              {/* Need to add league specific route */}
+              <Route path="/league/:leagueid" element={<League />} />
+
 
               <Route path="/teams" element={<Teams />} />
 
-              {/* Need to add league specific route */}
-              <Route path="/league" element={<League />} />
-
-
               {/* Need to add team specific route */}
               <Route path="/team" element={<Team />} />
+
+
 
               {/* Need to add player specific route */}
               <Route path="/player" element={<Player />} />

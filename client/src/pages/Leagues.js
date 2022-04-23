@@ -132,7 +132,7 @@ export default function Leagues() {
                     variant="p"
                     gutterBottom
                     sx={leaguesStyle.leaguePaperText}
-                    href="/league"
+                    href="/league/{leagueId}"
                   >
                     {league.leagueName}
                   </Link>
