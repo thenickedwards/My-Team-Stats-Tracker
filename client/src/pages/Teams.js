@@ -7,11 +7,14 @@ import { QUERY_SOCCERTEAMS } from "../utils/queries";
 // Material UI Imports
 import {
   Box,
+  Button,
+  ButtonGroup,
   Container,
   FormControl,
   Grid,
   IconButton,
   InputLabel,
+  Link,
   MenuItem,
   Modal,
   Paper,
@@ -168,15 +171,24 @@ export default function Teams() {
                     loading="lazy"
                     height={100}
                   />
-                  <Typography
+                  <Link
                     variant="p"
                     gutterBottom
-                    component="div"
+                    // component="div"
                     sx={teamsStyle.teamPaperText}
+                    href="/team"
+                    color="inherit"
                   >
                     {team.teamName}
-                  </Typography>
+                  </Link>
                 </Paper>
+
+                {/* Edit | Delete buttons under team cards */}
+                <ButtonGroup variant="text" aria-label="text button group" sx={{pt: 2}} color="inherit">
+                  <Button>Edit</Button>
+                  <Button>Delete</Button>
+                </ButtonGroup>
+
               </Grid>
             );
           })}
