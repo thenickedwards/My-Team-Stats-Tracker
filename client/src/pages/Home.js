@@ -320,7 +320,7 @@ const Home = () => {
                             games.map((game) => ({
                               id: game._id,
                               homeTeam: game.homeTeam.teamName,
-                              awayTeam: game.awayTeam,
+                              awayTeam: game.awayTeam.teamName,
                               gameDate: game.gameDate
                             }))
                           }

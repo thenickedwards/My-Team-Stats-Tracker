@@ -52,7 +52,7 @@ const resolvers = {
       return SoccerGame.findOne({ _id: soccerGameId });
     },
     allSoccerGames: async () => {
-      return SoccerGame.find();
+      return SoccerGame.find().populate('homeTeam').populate('awayTeam');
     },
   },
 
