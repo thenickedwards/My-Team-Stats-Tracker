@@ -144,7 +144,7 @@ export default function League() {
                   {league.leagueName}
                 </Typography>
                 <Typography variant="h3" color="secondary.contrastText">
-                  {/* {league.seasons.seasonName} */}
+                  {league.seasons.seasonName}
                   Seasons
                 </Typography>
               </Box>
