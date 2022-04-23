@@ -1,8 +1,10 @@
 import * as React from "react";
 import AddTeam from "../components/Forms/AddTeam";
 
-import { useQuery } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 import { QUERY_SOCCERTEAMS } from "../utils/queries";
+import { REMOVE_SOCCERTEAM } from '../utils/mutations';
+import Auth from "../utils/auth";
 
 // Material UI Imports
 import {
@@ -68,6 +70,35 @@ export default function Teams() {
   const { loading, data } = useQuery(QUERY_SOCCERTEAMS);
   const teams = data?.allSoccerTeams || [];
 
+
+  // Handle Delete Team
+
+  const [ removeSoccerTeam ] = useMutation( REMOVE_SOCCERTEAM, {
+    refetchQueries: [ QUERY_SOCCERTEAMS ]
+  });
+
+  const handleDeleteTeam = async (soccerTeamId) => {
+    // const token = Auth.loggedIn() ? Auth.getToken() : null;
+  
+    // if (!token) {
+    //   return false;
+    // }
+    console.log(soccerTeamId);
+    try {
+      await removeSoccerTeam({
+        variables: { soccerTeamId }
+      });
+  
+      //if successful, remove team by id
+      // removeTeam(teamId);
+      
+    } catch (err) {
+      console.error(err);
+    }
+    
+  };
+  
+  
   if (loading) {
     return <div>LOADING</div>;
   }
@@ -163,7 +194,9 @@ export default function Teams() {
         <Grid container spacing={{ xs: 4 }}>
           {teams.map((team) => {
             return (
-              <Grid item key={team._id} xs={6} s={6} md={3} lg={3}>
+
+              <Grid item key={team._id} xs={6} s={6} md={3} lg={3} >
+
                 <Paper elevation={5} sx={teamsStyle.teamPaper}>
                   <img
                     src={team.teamPic}
@@ -184,14 +217,12 @@ export default function Teams() {
                 </Paper>
 
                 {/* Edit | Delete buttons under team cards */}
-                <ButtonGroup
-                  variant="text"
-                  aria-label="text button group"
-                  sx={{ pt: 2 }}
-                  color="inherit"
-                >
+
+                <ButtonGroup variant="text" aria-label="text button group" sx={{pt: 2}} color="inherit">
+                 
                   <Button>Edit</Button>
-                  <Button>Delete</Button>
+                  <Button type='submit' onClick={() => handleDeleteTeam(team._id)}>Delete</Button>
+
                 </ButtonGroup>
               </Grid>
             );

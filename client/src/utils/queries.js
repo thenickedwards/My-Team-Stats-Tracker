@@ -94,15 +94,19 @@ export const QUERY_SEASONS = gql`
 `;
 
 export const QUERY_SOCCERTEAM = gql`
-  query soccerTeam {
-    soccerTeam {
+  query soccerTeam($soccerTeamId: ID!) {
+    soccerTeam(soccerTeamId: $soccerTeamId) {
       _id
       teamName
       teamColor
       teamPic
-      season
-      games
-      roster
+      roster {
+        _id
+        playerFirstName
+        playerLastName
+        playerPic
+        playerNumber
+      }
       wins
       draws
       losses
