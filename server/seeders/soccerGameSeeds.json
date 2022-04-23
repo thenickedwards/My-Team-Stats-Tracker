@@ -5,7 +5,7 @@
       "_id": "626202fae2194997c7e76e86",
       "teamName": "Chi Town Tigers",
       "teamColor": "#ffa91f",
-      "teamPic": "images/chicago.png",
+      "teamPic": "/images/chicago.png",
       "season": "6261fc1cd335321576f02424",
       "roster": []
       },
@@ -13,7 +13,7 @@
       "_id": "626202fae2194997c7e76e89",
       "teamName": "Galaxy Bees",
       "teamColor": "#00e3eb",
-      "teamPic": "images/la-galaxy.png",
+      "teamPic": "/images/la-galaxy.png",
       "season": "6261fc1cd335321576f02424",
       "roster": []
       },
@@ -28,7 +28,7 @@
       "_id": "626202fae2194997c7e76e92",
       "teamName": "Hurricanes",
       "teamColor": "#ebdf00",
-      "teamPic": "images/jacksonville.png",
+      "teamPic": "/images/jacksonville.png",
       "season": "6261fc1cd335321576f02427",
       "roster": []
       },
@@ -36,7 +36,7 @@
       "_id": "626202fae2194997c7e76e8f",
       "teamName": "Wolves",
       "teamColor": "#a8f7f7",
-      "teamPic": "images/football.jpeg",
+      "teamPic": "/images/football.jpeg",
       "season": "6261fc1cd335321576f02424",
       "roster": []
       },
@@ -51,7 +51,7 @@
       "_id": "626202fae2194997c7e76e9b",
       "teamName": "Thunder",
       "teamColor": "#d40f1f",
-      "teamPic": "images/strikers.jpeg",
+      "teamPic": "/images/strikers.jpeg",
       "season": "6261fc1cd335321576f0242a",
       "roster": []
       },
@@ -59,7 +59,7 @@
       "_id": "626202fae2194997c7e76e8c",
       "teamName": "Salmon",
       "teamColor": "#f7a8e9",
-      "teamPic": "images/georgetown.jpeg",
+      "teamPic": "/images/georgetown.jpeg",
       "season": "6261fc1cd335321576f02424",
       "roster": []
       },

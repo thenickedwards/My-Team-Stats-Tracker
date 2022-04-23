@@ -253,7 +253,11 @@ const Home = () => {
                         </Paper>
                     </Grid>
 
+                    {games.map((game) => {
 
+                      return (
+                           
+                          
 
                     <Grid item xs={12} s={12} md={3} lg={3} >
                         
@@ -273,26 +277,26 @@ const Home = () => {
                             {/* Team 1 */}
                             <Box sx={homeStyle.statsTeams}>
                               <Box sx={homeStyle.statsTeamDetails}>
-                                <img src="images/chicago.png" alt="Team Logo" width="30px" height="auto" />
-                                <Typography>Chicago</Typography>
+                                <img src={game.homeTeam.teamPic} alt="Team Logo" width="30px" height="auto" />
+                                <Typography>{game.homeTeam.teamName}</Typography>
                               </Box>
-                              <Typography>5</Typography>
+                              <Typography>{game.goalsHome}</Typography>
                             </Box>
 
                              
                             {/* Team 2 */}
                             <Box sx={homeStyle.statsTeams}>
                               <Box sx={homeStyle.statsTeamDetails}>
-                                <img src="images/la-galaxy.png" alt="Team Logo" width="30px" height="auto" />
-                                <Typography>Los Angeles</Typography>
+                                <img src={game.awayTeam.teamPic} alt="Team Logo" width="30px" height="auto" />
+                                <Typography>{game.awayTeam.teamName}</Typography>
                               </Box>
-                              <Typography>5</Typography>
+                              <Typography>{game.goalsAway}</Typography>
                             </Box>                        
 
 
                         </Paper>
                     </Grid>
-
+  )})}
 
  
 

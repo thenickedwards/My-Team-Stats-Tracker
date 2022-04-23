@@ -204,7 +204,8 @@ export const QUERY_SOCCERGAMES = gql`
       gameDate
       homeTeam {
         _id
-        teamName
+        teamPic
+        # teamName
       }
       awayTeam {
         _id
