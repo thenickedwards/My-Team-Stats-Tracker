@@ -12,7 +12,7 @@ import {
   Typography,
   Modal,
 } from "@mui/material";
-import { DataGrid } from "@mui/x-data-grid";
+import { DataGrid, gridColumnsTotalWidthSelector } from "@mui/x-data-grid";
 import IconButton from "@mui/material/IconButton";
 import AddIcon from "@mui/icons-material/Add";
 import AddSeason from "../components/Forms/AddSeason";
@@ -89,12 +89,18 @@ export default function League() {
   });
 
   const league = data?.league || {};
-  console.log(league);
 
   // Functionality for Add Season Modal
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  let seasonNames = [];
+  if (league.seasons) {
+    seasonNames = league.seasons.map((season) => {
+      return season.seasonName;
+    });
+  }
 
   if (loading) {
     return <div>LOADING</div>;
@@ -143,10 +149,14 @@ export default function League() {
                 <Typography variant="h1" color="secondary.contrastText">
                   {league.leagueName}
                 </Typography>
-                <Typography variant="h3" color="secondary.contrastText">
-                  {league.seasons.seasonName}
-                  Seasons
-                </Typography>
+
+                {seasonNames.map((seasonName) => {
+                  return (
+                    <Typography variant="h3" color="secondary.contrastText">
+                      {seasonName}
+                    </Typography>
+                  );
+                })}
               </Box>
 
               <IconButton
