@@ -2,19 +2,21 @@
   {
     "gameDate": "Apr 19, 2022 6:09 PM",
     "homeTeam": {
-        "_id": "625ed86067002f3af12e6711",
-        "teamName": "Tigers",
-        "teamColor": "#ffa91f",
-        "teamPic": "GooooTigers.jpg",
-        "roster": []
-      },
+      "_id": "626202fae2194997c7e76e86",
+      "teamName": "Chi Town Tigers",
+      "teamColor": "#ffa91f",
+      "teamPic": "/images/chicago.png",
+      "season": "6261fc1cd335321576f02424",
+      "roster": []
+    },
     "awayTeam": {
-        "_id": "625ed86067002f3af12e6712",
-        "teamName": "Bees",
-        "teamColor": "#00e3eb",
-        "teamPic": "ohno_bees.png",
-        "roster": []
-      },
+      "_id": "626202fae2194997c7e76e89",
+      "teamName": "Galaxy Bees",
+      "teamColor": "#00e3eb",
+      "teamPic": "/images/la-galaxy.png",
+      "season": "6261fc1cd335321576f02424",
+      "roster": []
+    },
     "goalsHome": 6,
     "goalsAway": 2,
     "assistsHome": 5,
@@ -23,19 +25,21 @@
   {
     "gameDate": "Apr 20, 2022 7:30 PM",
     "homeTeam": {
-        "_id": "625ed86067002f3af12e6715",
-        "teamName": "Hurricanes",
-        "teamColor": "#ebdf00",
-        "teamPic": "hurricanes_2021.jpg",
-        "roster": []
-      },
+      "_id": "626202fae2194997c7e76e92",
+      "teamName": "Hurricanes",
+      "teamColor": "#ebdf00",
+      "teamPic": "/images/jacksonville.png",
+      "season": "6261fc1cd335321576f02427",
+      "roster": []
+    },
     "awayTeam": {
-        "_id": "625ed86067002f3af12e6714",
-        "teamName": "Wolves",
-        "teamColor": "#a8f7f7",
-        "teamPic": "wolfpack_2022.jpg",
-        "roster": []
-      },
+      "_id": "626202fae2194997c7e76e8f",
+      "teamName": "Wolves",
+      "teamColor": "#a8f7f7",
+      "teamPic": "/images/football.jpeg",
+      "season": "6261fc1cd335321576f02424",
+      "roster": []
+    },
     "goalsHome": 2,
     "goalsAway": 1,
     "assistsHome": 1,
@@ -44,19 +48,21 @@
   {
     "gameDate": "Apr 21, 2022 10:35 AM",
     "homeTeam": {
-        "_id": "625ed935d70efc430f05fbb5",
-        "teamName": "Mariners",
-        "teamColor": "#ffa91f",
-        "teamPic": "GooooMs.jpg",
-        "roster": []
-      },
+      "_id": "626202fae2194997c7e76e95",
+      "teamName": "Blizzard",
+      "teamColor": "#0512ff",
+      "teamPic": "/images/bird.jpeg",
+      "season": "6261fc1cd335321576f02427",
+      "roster": []
+    },
     "awayTeam": {
-        "_id": "625ed86067002f3af12e6713",
-        "teamName": "Salmon",
-        "teamColor": "#f7a8e9",
-        "teamPic": "salmon_team.gif",
-        "roster": []
-      },
+      "_id": "626202fae2194997c7e76e8c",
+      "teamName": "Salmon",
+      "teamColor": "#f7a8e9",
+      "teamPic": "/images/georgetown.jpeg",
+      "season": "6261fc1cd335321576f02424",
+      "roster": []
+    },
     "goalsHome": 2,
     "goalsAway": 0,
     "assistsHome": 2,
