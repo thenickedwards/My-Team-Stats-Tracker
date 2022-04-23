@@ -1,4 +1,9 @@
 import React from "react";
+import { useParams } from 'react-router-dom';
+import { useQuery } from '@apollo/client';
+
+import { QUERY_LEAGUE } from '../utils/queries';
+
 import {
   Container,
   CssBaseline,
@@ -78,7 +83,17 @@ const leagueStyle = {
 };
 
 export default function League() {
+
+  const { leagueId } = useParams();
+
+  const { data } = useQuery(QUERY_LEAGUE, {
+    // pass URL parameter
+    variables: { leagueId: leagueId },
+    // variables: { leagueId: {...leagueId} },
+  });
   
+  const league = data?.league || {};
+
   // Functionality for Add Season Modal
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
@@ -118,7 +133,7 @@ export default function League() {
               sx={{ gap: "20px", mb: 5 }}
             >
               <img
-                src="images/chicago.png"
+                src="{league.leaguePic}"
                 alt="Chicago Logo"
                 height="70px"
                 width="auto"
@@ -126,10 +141,11 @@ export default function League() {
 
               <Box mt={{ xs: 0, sm: 4 }}>
                 <Typography variant="h1" color="secondary.contrastText">
-                  Chicago Football Club
+                {league.leagueName}
                 </Typography>
                 <Typography variant="h3" color="secondary.contrastText">
-                  Season
+                  {/* {league.seasons.seasonName} */}
+                  Seasons
                 </Typography>
               </Box>
 
