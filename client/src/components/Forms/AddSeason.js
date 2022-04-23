@@ -78,6 +78,7 @@ export default function AddSeason( {handleClose} ) {
     //    event.preventDefault();
     //    setSelect(event.target.value)
     //  }
+    
 
       const handleFormChange = (event) => {
         let { name, value } = event.target;
