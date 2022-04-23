@@ -1,8 +1,11 @@
 import React from "react";
-import { useQuery } from "@apollo/client";
-import { QUERY_LEAGUES } from "../utils/queries";
+
+// Import Queries and Mutations
+import { useMutation, useQuery } from "@apollo/client";
+import { QUERY_LEAGUES, QUERY_ME } from "../utils/queries";
+import { REMOVE_LEAGUE } from '../utils/mutations';
 import AddLeague from "../components/Forms/AddLeague";
-// import Auth from "../utils/auth";
+import Auth from "../utils/auth";
 
 // Material UI Imports
 import {
@@ -49,6 +52,7 @@ const leaguesStyle = {
   },
 };
 
+
 export default function Leagues() {
   //   const token = Auth.loggedIn() ? Auth.getToken() : null;
   const [open, setOpen] = React.useState(false);
@@ -58,9 +62,39 @@ export default function Leagues() {
   const { loading, data } = useQuery(QUERY_LEAGUES);
   const leagues = data?.allLeagues || [];
 
-  if (loading) {
-    return <div>LOADING</div>;
+
+
+// Handle Delete League
+
+const [ removeLeague ] = useMutation( REMOVE_LEAGUE, {
+  refetchQueries: [ QUERY_LEAGUES ]
+});
+
+
+const handleDeleteLeague = async (leagueId) => {
+  // const token = Auth.loggedIn() ? Auth.getToken() : null;
+
+  // if (!token) {
+  //   return false;
+  // }
+  console.log(leagueId);
+  try {
+    await removeLeague({
+      variables: { leagueId }
+    });
+
+    //if successful, remove league by id
+    // removeLeague(leagueId);
+    
+  } catch (err) {
+    console.error(err);
   }
+  
+};
+
+if (loading) {
+  return <div>LOADING</div>;
+}
 
   return (
     <Container alignItems="center" justifyContent="center">
@@ -143,8 +177,10 @@ export default function Leagues() {
 
                 {/* Edit | Delete buttons under league cards */}
                 <ButtonGroup variant="text" aria-label="text button group" sx={{pt: 2}} color="inherit">
+
                   <Button>Edit</Button>
-                  <Button>Delete</Button>
+                  <Button type='submit' onClick={() => handleDeleteLeague(league._id)} >Delete</Button>
+                
                 </ButtonGroup>
 
               </Grid>

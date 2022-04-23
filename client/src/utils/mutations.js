@@ -204,7 +204,7 @@ export const UPDATE_PLAYER = gql `
 
 export const REMOVE_LEAGUE = gql`
   mutation removeLeague($leagueId: ID!) {
-    removeLeague(league: $league) {
+    removeLeague(leagueId: $leagueId) {
       _id
     }
   }
@@ -212,7 +212,7 @@ export const REMOVE_LEAGUE = gql`
 
 export const REMOVE_SEASON = gql`
   mutation removeSeason($seasonId: ID!) {
-    removeSeason(season: $season) {
+    removeSeason(seasonId: $seasonId) {
       _id
     }
   }
@@ -220,7 +220,7 @@ export const REMOVE_SEASON = gql`
 
 export const REMOVE_SOCCERTEAM = gql`
   mutation removeTeam($soccerTeamId: ID!) {
-    removeTeam(soccerTeam: $soccerTeam) {
+    removeTeam(soccerTeamId: $soccerTeamId) {
       _id
     }
   }
