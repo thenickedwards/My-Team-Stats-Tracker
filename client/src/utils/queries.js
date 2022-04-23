@@ -121,9 +121,9 @@ export const QUERY_SOCCERTEAMS = gql`
       teamPic
       season {
         _id
-        seasonName
-        startYear
-        endYear
+        # seasonName
+        # startYear
+        # endYear
       }
       games {
         _id

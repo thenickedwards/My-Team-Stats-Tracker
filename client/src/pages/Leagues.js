@@ -148,7 +148,9 @@ if (loading) {
         <Grid container spacing={{ xs: 4 }}>
           {leagues.map((league) => {
             return (
+
               <Grid item key={league._id} xs={6} s={6} md={3} lg={3} sx={{display: "flex", flexDirection: "column", alignItems: "center"}}>
+                
                 <Paper elevation={5} sx={leaguesStyle.leaguePaper}>
                   <img
                     src={league.leaguePic}
