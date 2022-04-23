@@ -53,26 +53,46 @@ export default function AddSeason( {handleClose} ) {
     // Functionality to Adding League via Form
     const [formState, setFormState] = useState({
         seasonName: "",
-        startYear: "",
-        endYear: "",
+        startYear: 0,
+        endYear: 0,
         league: ""
+        // league: ""
       });
     
+     
     
       const { seasonName, startYear, endYear, league } = formState;
+
+      console.log("startYear:", typeof(startYear))
+      // const { seasonName, startYear, endYear } = formState;
 
       const [addSeason, { error }] = useMutation(ADD_SEASON, {
         refetchQueries: [ QUERY_SEASONS ]
      });
     
+    //  const [ select, setSelect ] = useState({league: ""})
+
+    //  const league = select;
+
+    //  const handleSelectChange = (event) => {
+    //    event.preventDefault();
+    //    setSelect(event.target.value)
+    //  }
+    
 
       const handleFormChange = (event) => {
-        const { name, value } = event.target;
-    
+        let { name, value } = event.target;
+
+        if(name === startYear || name === endYear) {
+          value = parseInt(value)
+        } 
+
         setFormState({
           ...formState,
           [name]: value,
         });
+
+        
       };
     
       const handleSeasonFormSubmit = async (event) => {
@@ -89,10 +109,14 @@ export default function AddSeason( {handleClose} ) {
     
           setFormState({
             seasonName: "",
-            startYear: "",
-            endYear: "",
+            startYear: 0,
+            endYear: 0,
             league: ""
           });
+
+          // setSelect({
+          //   league: ""
+          // })
 
           handleClose();
           
@@ -157,7 +181,7 @@ export default function AddSeason( {handleClose} ) {
                       </MenuItem>
 
                       {leagues.map((league) => (
-                        <MenuItem key={league} value={league}>
+                        <MenuItem key={league} value={league._id}>
                           {league.leagueName}
                         </MenuItem>
                       ))}

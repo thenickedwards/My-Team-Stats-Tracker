@@ -61,7 +61,7 @@ export const ADD_SEASON = gql`
       seasonName
       startYear
       endYear
-      league
+      # league
     }
   }
 `;

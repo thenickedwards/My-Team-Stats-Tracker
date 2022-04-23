@@ -23,7 +23,8 @@ export const QUERY_ME = gql`
 `;
 
 export const QUERY_LEAGUE = gql`
-  query League($leagueId: ID!) {
+  # query League($leagueId: ID!) {
+  query league($leagueId: ID!) {
     league(leagueId: $leagueId) {
       _id
       leagueName
