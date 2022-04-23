@@ -11,7 +11,7 @@ Welcome to the MyTeam sports stats tracker for youth leagues, adult rec teams, a
 3. [Contributing](#contributing)
 4. [User Story](#user-story)
 5. [Screenshots](#screenshots)
-6. [Planning] (#planning)
+6. [Planning](#Planning)
 7. [Github](#github)
 
 ## Installation
