@@ -11,6 +11,8 @@ Welcome to the MyTeam sports stats tracker for youth leagues, adult rec teams, a
 3. [Contributing](#contributing)
 4. [User Story](#user-story)
 5. [Screenshots](#screenshots)
+6. [Planning] (#planning)
+7. [Github](#github)
 
 ## Installation
 
@@ -34,7 +36,19 @@ SO THAT I can enjoy the season while watching my team advance
 
 ## Screenshots
 
-TODO
+![Screenshot5](./planning/login.png)
+![Screenshot6](./planning/homepage.png)
+![Screenshot7](./planning/leagues.png)
+![Screenshot8](./planning/league.png)
+![Screenshot9](./planning/teams.png)
+![Screenshot10](./planning/add.png)
+
+## Planning
+
+![Screenshot1](./planning/models-data_doodles.jpg)
+![Screenshot2](./planning/diagram1.png)
+![Screenshot3](./planning/diagram2.svg)
+![Screenshot4](./planning/model-structure.png)
 
 ### GitHub
 
