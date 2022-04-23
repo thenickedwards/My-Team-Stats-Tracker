@@ -168,7 +168,7 @@ if (loading) {
                     variant="p"
                     gutterBottom
                     sx={leaguesStyle.leaguePaperText}
-                    href="/league"
+                    href="/:leagueId"
                     color="inherit"
                   >
                     {league.leagueName}
