@@ -205,11 +205,12 @@ export const QUERY_SOCCERGAMES = gql`
       homeTeam {
         _id
         teamPic
-        # teamName
+        teamName
       }
       awayTeam {
         _id
-        # teamName
+        teamName
+        teamPic
       }
       goalsHome
       goalsAway
