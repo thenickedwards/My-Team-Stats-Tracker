@@ -3,7 +3,6 @@ import React from "react";
 // import { useQuery } from "@apollo/client";
 // import { QUERY_SOCCERTEAMS } from "./utils/queries";
 
-
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import "./index.css";
 import {
@@ -25,11 +24,10 @@ import Teams from "./pages/Teams";
 import League from "./pages/League";
 import Team from "./pages/Team";
 import Player from "./pages/Player";
-import LeagueSeasonStats from "./pages/LeagueSeasonStats"
-import Games from "./pages/Games"
-import Game from "./pages/Game"
+import LeagueSeasonStats from "./pages/LeagueSeasonStats";
+import Games from "./pages/Games";
+import Game from "./pages/Game";
 // import Profile from "./pages/Profile";
-
 
 // import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -39,7 +37,6 @@ import Navbar from "./components/Navbar";
 // Font import here (SEE INDEX.CSS FOR IMPORT)
 const theme = createTheme({
   typography: {
-    // fontFamily: ["Bebas Neue", "cursive"].join(","),
     fontFamily: '"Bebas Neue", Arial, sans-serif',
     h1: {
       fontSize: "3em",
@@ -105,8 +102,6 @@ function App() {
   // const { loading, data } = useQuery(QUERY_SOCCERTEAMS);
   // const teams = data?.allSoccerTeams || [];
 
-
-
   return (
     <ApolloProvider client={client}>
       {
@@ -128,27 +123,22 @@ function App() {
 
               <Route path="/leagues" element={<Leagues />} />
 
-              {/* Need to add league specific route */}
-              <Route path="/league/:leagueid" element={<League />} />
-
+              <Route path="/league/:leagueId" element={<League />} />
 
               <Route path="/teams" element={<Teams />} />
 
-              {/* Need to add team specific route */}
-              <Route path="/team" element={<Team />} />
+              <Route path="/team/:teamId" element={<Team />} />
 
+              <Route path="/player/:playerId" element={<Player />} />
 
-
-              {/* Need to add player specific route */}
-              <Route path="/player" element={<Player />} />
-
-              {/* Need to add player specific route */}
-              <Route path="/league-season-stats" element={<LeagueSeasonStats />} />
+              <Route
+                path="/league-season-stats"
+                element={<LeagueSeasonStats />}
+              />
 
               <Route path="/games" element={<Games />} />
 
-              {/* Need to add game specific route */}
-              <Route path="/game" element={<Game />} />
+              <Route path="/game/:gameId" element={<Game />} />
 
               {/* <Route path="/me" element={<Profile />} />
                   <Route path="/profiles/:username" element={<Profile />} /> */}
