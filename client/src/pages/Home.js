@@ -13,6 +13,8 @@ import { DataGrid } from '@mui/x-data-grid';
 
 
 
+
+
 // ////////////////////////////////////
 //   DATAGRID (EDIT DATA)
 // const columns = [
@@ -96,6 +98,8 @@ const Home = () => {
 
   const { data } = useQuery(QUERY_SOCCERGAMES);
   const games = data?.allSoccerGames || [];
+
+  console.log("games", games)
 
   // let rows = [];
 
@@ -312,7 +316,7 @@ const Home = () => {
                           rows={
                             games.map((game) => ({
                               id: game._id,
-                              homeTeam: game.homeTeam._id,
+                              homeTeam: game.homeTeam.teamName,
                               awayTeam: game.awayTeam,
                               gameDate: game.gameDate
                             }))

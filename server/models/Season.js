@@ -3,15 +3,16 @@ const { Schema, model } = require('mongoose');
 const seasonSchema = new Schema({
   seasonName: {
     type: String,
+    trim: true,
     required: true,
   },
   startYear: {
-    type: Number,
+    type: String,
     required: true,
     match: [/^\d\d\d\d$/, 'Must be 4 digit year!'],
   },
   endYear: {
-    type: Number,
+    type: String,
     trim: true,
     match: [/^\d\d\d\d$/, 'Must be 4 digit year!'],
   },
