@@ -21,7 +21,6 @@ import IconButton from "@mui/material/IconButton";
 import AddIcon from "@mui/icons-material/Add";
 import AddPlayer from "../components/Forms/AddPlayer";
 
-// ////////////////////////////////////
 //   DATAGRID (EDIT DATA)
 const columns = [
   { field: "id", headerName: "ID", width: 70 },
@@ -45,7 +44,6 @@ const columns = [
 ];
 
 //   DATAGRID (TEMPORARY DATA)
-
 const rows = [
   { id: 1, lastName: "Snow", firstName: "Jon", age: 35 },
   { id: 2, lastName: "Lannister", firstName: "Cersei", age: 42 },
