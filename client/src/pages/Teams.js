@@ -209,7 +209,7 @@ export default function Teams() {
                     gutterBottom
                     // component="div"
                     sx={teamsStyle.teamPaperText}
-                    href="/team"
+                    href="/team/{teamId}"
                     color="inherit"
                   >
                     {team.teamName}
@@ -217,13 +217,13 @@ export default function Teams() {
                 </Paper>
 
                 {/* Edit | Delete buttons under team cards */}
+
                 <ButtonGroup variant="text" aria-label="text button group" sx={{pt: 2}} color="inherit">
                  
                   <Button>Edit</Button>
                   <Button type='submit' onClick={() => handleDeleteTeam(team._id)}>Delete</Button>
 
                 </ButtonGroup>
-
               </Grid>
             );
           })}

@@ -3,21 +3,21 @@
     "_id": "6261fa562be2f14423579bd6",
     "leagueName": "Washington Premier League",
     "sport": "Soccer",
-    "leaguePic": "images/washington-premier-league.png",
+    "leaguePic": "/images/washington-premier-league.png",
     "seasons": []
   },
   {
     "_id": "6261fa562be2f14423579bd7",
     "leagueName": "Washington Soccer Academy",
     "sport": "Soccer",
-    "leaguePic": "images/WSA.png",
+    "leaguePic": "/images/WSA.png",
     "seasons": []
   },
   {
     "_id": "6261fa562be2f14423579bd8",
     "leagueName": "Greater Seattle Soccer League",
     "sport": "Soccer",
-    "leaguePic": "images/league-rcl.png",
+    "leaguePic": "/images/league-rcl.png",
     "seasons": []
   }
 ]

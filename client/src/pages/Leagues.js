@@ -3,9 +3,9 @@ import React from "react";
 // Import Queries and Mutations
 import { useMutation, useQuery } from "@apollo/client";
 import { QUERY_LEAGUES, QUERY_ME } from "../utils/queries";
-import { REMOVE_LEAGUE } from '../utils/mutations';
+import { REMOVE_LEAGUE } from "../utils/mutations";
 import AddLeague from "../components/Forms/AddLeague";
-import Auth from "../utils/auth";
+// import Auth from "../utils/auth";
 
 // Material UI Imports
 import {
@@ -52,7 +52,6 @@ const leaguesStyle = {
   },
 };
 
-
 export default function Leagues() {
   //   const token = Auth.loggedIn() ? Auth.getToken() : null;
   const [open, setOpen] = React.useState(false);
@@ -62,39 +61,34 @@ export default function Leagues() {
   const { loading, data } = useQuery(QUERY_LEAGUES);
   const leagues = data?.allLeagues || [];
 
+  // Handle Delete League
 
+  const [removeLeague] = useMutation(REMOVE_LEAGUE, {
+    refetchQueries: [QUERY_LEAGUES],
+  });
 
-// Handle Delete League
+  const handleDeleteLeague = async (leagueId) => {
+    // const token = Auth.loggedIn() ? Auth.getToken() : null;
 
-const [ removeLeague ] = useMutation( REMOVE_LEAGUE, {
-  refetchQueries: [ QUERY_LEAGUES ]
-});
+    // if (!token) {
+    //   return false;
+    // }
+    console.log(leagueId);
+    try {
+      await removeLeague({
+        variables: { leagueId },
+      });
 
+      //if successful, remove league by id
+      // removeLeague(leagueId);
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
-const handleDeleteLeague = async (leagueId) => {
-  // const token = Auth.loggedIn() ? Auth.getToken() : null;
-
-  // if (!token) {
-  //   return false;
-  // }
-  console.log(leagueId);
-  try {
-    await removeLeague({
-      variables: { leagueId }
-    });
-
-    //if successful, remove league by id
-    // removeLeague(leagueId);
-    
-  } catch (err) {
-    console.error(err);
+  if (loading) {
+    return <div>LOADING</div>;
   }
-  
-};
-
-if (loading) {
-  return <div>LOADING</div>;
-}
 
   return (
     <Container alignItems="center" justifyContent="center">
@@ -151,6 +145,7 @@ if (loading) {
 
               <Grid item key={league._id} xs={6} s={6} md={3} lg={3} sx={{display: "flex", flexDirection: "column", alignItems: "center"}}>
                 
+
                 <Paper elevation={5} sx={leaguesStyle.leaguePaper}>
                   <img
                     src={league.leaguePic}
@@ -171,7 +166,7 @@ if (loading) {
                     gutterBottom
                     sx={leaguesStyle.leaguePaperText}
 
-                    href="/league/{leagueId}"
+                    href={`/league/${league._id}`}
 
                     color="inherit"
                   >
@@ -180,13 +175,20 @@ if (loading) {
                 </Paper>
 
                 {/* Edit | Delete buttons under league cards */}
-                <ButtonGroup variant="text" aria-label="text button group" sx={{pt: 2}} color="inherit">
-
+                <ButtonGroup
+                  variant="text"
+                  aria-label="text button group"
+                  sx={{ pt: 2 }}
+                  color="inherit"
+                >
                   <Button>Edit</Button>
-                  <Button type='submit' onClick={() => handleDeleteLeague(league._id)} >Delete</Button>
-                
+                  <Button
+                    type="submit"
+                    onClick={() => handleDeleteLeague(league._id)}
+                  >
+                    Delete
+                  </Button>
                 </ButtonGroup>
-
               </Grid>
             );
           })}

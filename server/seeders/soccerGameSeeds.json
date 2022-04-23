@@ -8,7 +8,7 @@
       "teamPic": "/images/chicago.png",
       "season": "6261fc1cd335321576f02424",
       "roster": []
-      },
+    },
     "awayTeam": {
       "_id": "626202fae2194997c7e76e89",
       "teamName": "Galaxy Bees",
@@ -16,7 +16,7 @@
       "teamPic": "/images/la-galaxy.png",
       "season": "6261fc1cd335321576f02424",
       "roster": []
-      },
+    },
     "goalsHome": 6,
     "goalsAway": 2,
     "assistsHome": 5,
@@ -31,7 +31,7 @@
       "teamPic": "/images/jacksonville.png",
       "season": "6261fc1cd335321576f02427",
       "roster": []
-      },
+    },
     "awayTeam": {
       "_id": "626202fae2194997c7e76e8f",
       "teamName": "Wolves",
@@ -39,7 +39,7 @@
       "teamPic": "/images/football.jpeg",
       "season": "6261fc1cd335321576f02424",
       "roster": []
-      },
+    },
     "goalsHome": 2,
     "goalsAway": 1,
     "assistsHome": 1,
@@ -48,13 +48,13 @@
   {
     "gameDate": "Apr 21, 2022 10:35 AM",
     "homeTeam": {
-      "_id": "626202fae2194997c7e76e9b",
-      "teamName": "Thunder",
-      "teamColor": "#d40f1f",
-      "teamPic": "/images/strikers.jpeg",
-      "season": "6261fc1cd335321576f0242a",
+      "_id": "626202fae2194997c7e76e95",
+      "teamName": "Blizzard",
+      "teamColor": "#0512ff",
+      "teamPic": "/images/bird.jpeg",
+      "season": "6261fc1cd335321576f02427",
       "roster": []
-      },
+    },
     "awayTeam": {
       "_id": "626202fae2194997c7e76e8c",
       "teamName": "Salmon",
@@ -62,7 +62,7 @@
       "teamPic": "/images/georgetown.jpeg",
       "season": "6261fc1cd335321576f02424",
       "roster": []
-      },
+    },
     "goalsHome": 2,
     "goalsAway": 0,
     "assistsHome": 2,

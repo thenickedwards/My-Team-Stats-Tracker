@@ -1,8 +1,8 @@
 import React from "react";
-import { useParams } from 'react-router-dom';
-import { useQuery } from '@apollo/client';
+import { useParams } from "react-router-dom";
+import { useQuery } from "@apollo/client";
 
-import { QUERY_LEAGUE } from '../utils/queries';
+import { QUERY_LEAGUE } from "../utils/queries";
 
 import {
   Container,
@@ -17,7 +17,6 @@ import IconButton from "@mui/material/IconButton";
 import AddIcon from "@mui/icons-material/Add";
 import AddSeason from "../components/Forms/AddSeason";
 
-// ////////////////////////////////////
 //   DATAGRID (EDIT DATA)
 const columns = [
   { field: "id", headerName: "ID", width: 70 },
@@ -40,7 +39,7 @@ const columns = [
   },
 ];
 
-  // DATAGRID (TEMPORARY DATA)
+// DATAGRID (TEMPORARY DATA)
 const rows = [
   { id: 1, lastName: "Snow", firstName: "Jon", age: 35 },
   { id: 2, lastName: "Lannister", firstName: "Cersei", age: 42 },
@@ -52,7 +51,6 @@ const rows = [
   { id: 8, lastName: "Frances", firstName: "Rossini", age: 36 },
   { id: 9, lastName: "Roxie", firstName: "Harvey", age: 65 },
 ];
-
 
 // Add Seasons Modal Multiselect
 const ITEM_HEIGHT = 48;
@@ -67,7 +65,6 @@ const MenuProps = {
 };
 
 // STYLES
-
 const leagueStyle = {
   addPlayerModal: {
     position: "absolute",
@@ -79,27 +76,30 @@ const leagueStyle = {
     borderRadius: 3,
     boxShadow: 24,
     p: 4,
-  }
+  },
 };
 
 export default function League() {
-
   const { leagueId } = useParams();
+  console.log(leagueId);
 
-  const { data } = useQuery(QUERY_LEAGUE, {
+  const { loading, data } = useQuery(QUERY_LEAGUE, {
     // pass URL parameter
-    variables: { leagueId: leagueId },
-    // variables: { leagueId: {...leagueId} },
+    variables: { leagueId },
   });
-  
+
   const league = data?.league || {};
+  console.log(league);
 
   // Functionality for Add Season Modal
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
- 
+  if (loading) {
+    return <div>LOADING</div>;
+  }
+
   return (
     <>
       <CssBaseline />
@@ -110,13 +110,13 @@ export default function League() {
       >
         <Grid container sx={{ py: 8, px: 5 }} position="relative">
           {/* Corner Abstract Image */}
-          <Box sx={{ position: "absolute", bottom: 0, left: 0 }}>
+          {/* <Box sx={{ position: "absolute", bottom: 0, left: 0 }}>
             <img
               src="images/abstract-corner-dots-lines.png"
               alt="Abstract graphic with dots and lines."
               width="250px"
             />
-          </Box>
+          </Box> */}
 
           {/* League Heading */}
           <Grid container sx={{ display: "flex", flexDirection: "column" }}>
@@ -133,15 +133,15 @@ export default function League() {
               sx={{ gap: "20px", mb: 5 }}
             >
               <img
-                src="{league.leaguePic}"
-                alt="Chicago Logo"
+                src={league.leaguePic}
+                alt="team-logo"
                 height="70px"
                 width="auto"
               />
 
               <Box mt={{ xs: 0, sm: 4 }}>
                 <Typography variant="h1" color="secondary.contrastText">
-                {league.leagueName}
+                  {league.leagueName}
                 </Typography>
                 <Typography variant="h3" color="secondary.contrastText">
                   {/* {league.seasons.seasonName} */}
@@ -195,7 +195,6 @@ export default function League() {
                       border: "0",
                     },
                   }}
-
                 />
               </div>
             </Box>
@@ -213,10 +212,8 @@ export default function League() {
                 Add Season
               </Typography>
 
-            {/* ADD SEASON FORM */}
-            <AddSeason handleClose={handleClose} />
-
-             
+              {/* ADD SEASON FORM */}
+              <AddSeason handleClose={handleClose} />
             </Box>
           </Modal>
         </Grid>
