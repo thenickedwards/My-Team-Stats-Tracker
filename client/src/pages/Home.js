@@ -13,6 +13,8 @@ import { DataGrid } from '@mui/x-data-grid';
 
 
 
+
+
 // ////////////////////////////////////
 //   DATAGRID (EDIT DATA)
 // const columns = [
@@ -96,6 +98,8 @@ const Home = () => {
 
   const { data } = useQuery(QUERY_SOCCERGAMES);
   const games = data?.allSoccerGames || [];
+
+  console.log("games", games)
 
   // let rows = [];
 
@@ -249,7 +253,10 @@ const Home = () => {
                         </Paper>
                     </Grid>
 
+                    {games.map((game) => {
 
+                      return (
+                           
 
                     <Grid item xs={12} s={12} md={3} lg={3} >
                         
@@ -269,26 +276,26 @@ const Home = () => {
                             {/* Team 1 */}
                             <Box sx={homeStyle.statsTeams}>
                               <Box sx={homeStyle.statsTeamDetails}>
-                                <img src="images/chicago.png" alt="Team Logo" width="30px" height="auto" />
-                                <Typography>Chicago</Typography>
+                                <img src={game.homeTeam.teamPic} alt="Team Logo" width="30px" height="auto" />
+                                <Typography>{game.homeTeam.teamName}</Typography>
                               </Box>
-                              <Typography>5</Typography>
+                              <Typography>{game.goalsHome}</Typography>
                             </Box>
 
                              
                             {/* Team 2 */}
                             <Box sx={homeStyle.statsTeams}>
                               <Box sx={homeStyle.statsTeamDetails}>
-                                <img src="images/la-galaxy.png" alt="Team Logo" width="30px" height="auto" />
-                                <Typography>Los Angeles</Typography>
+                                <img src={game.awayTeam.teamPic} alt="Team Logo" width="30px" height="auto" />
+                                <Typography>{game.awayTeam.teamName}</Typography>
                               </Box>
-                              <Typography>5</Typography>
+                              <Typography>{game.goalsAway}</Typography>
                             </Box>                        
 
 
                         </Paper>
                     </Grid>
-
+  )})}
 
  
 
@@ -312,7 +319,7 @@ const Home = () => {
                           rows={
                             games.map((game) => ({
                               id: game._id,
-                              homeTeam: game.homeTeam._id,
+                              homeTeam: game.homeTeam.teamName,
                               awayTeam: game.awayTeam,
                               gameDate: game.gameDate
                             }))
