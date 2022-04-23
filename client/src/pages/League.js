@@ -12,7 +12,7 @@ import {
   Typography,
   Modal,
 } from "@mui/material";
-import { DataGrid, gridColumnsTotalWidthSelector } from "@mui/x-data-grid";
+import { DataGrid } from "@mui/x-data-grid";
 import IconButton from "@mui/material/IconButton";
 import AddIcon from "@mui/icons-material/Add";
 import AddSeason from "../components/Forms/AddSeason";
