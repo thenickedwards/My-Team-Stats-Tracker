@@ -4,6 +4,7 @@ import React from "react";
 import { useMutation, useQuery } from "@apollo/client";
 import { QUERY_LEAGUES, QUERY_ME } from "../utils/queries";
 import { REMOVE_LEAGUE } from "../utils/mutations";
+import EditLeague from "../components/Forms/EditLeague";
 import AddLeague from "../components/Forms/AddLeague";
 // import Auth from "../utils/auth";
 
@@ -181,7 +182,11 @@ export default function Leagues() {
                   sx={{ pt: 2 }}
                   color="inherit"
                 >
-                  <Button>Edit</Button>
+                  <Button
+                    onClick={handleOpen}
+                  >
+                      Edit
+                  </Button>
                   <Button
                     type="submit"
                     onClick={() => handleDeleteLeague(league._id)}
@@ -211,6 +216,28 @@ export default function Leagues() {
           <AddLeague handleClose={handleClose} />
         </Box>
       </Modal>
+
+
+      {/* Edit League Modal */}
+
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={leaguesStyle.addLeagueModal}>
+          <Typography id="modal-modal-title" variant="h1" sx={{ mb: 4 }}>
+            Edit League
+          </Typography>
+
+          {/* EDIT LEAGUE FORM */}
+          <EditLeague handleClose={handleClose} />
+
+        </Box>
+      </Modal>
+
+
     </Container>
   );
 }
