@@ -80,13 +80,12 @@ const leagueStyle = {
 };
 
 export default function League() {
-  let { leagueId } = useParams();
+  const { leagueId } = useParams();
   console.log(leagueId);
 
   const { loading, data } = useQuery(QUERY_LEAGUE, {
     // pass URL parameter
     variables: { leagueId },
-    // variables: { leagueId: {...leagueId} },
   });
 
   const league = data?.league || {};
@@ -96,6 +95,10 @@ export default function League() {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  if (loading) {
+    return <div>LOADING</div>;
+  }
 
   return (
     <>

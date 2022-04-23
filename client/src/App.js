@@ -37,7 +37,6 @@ import Navbar from "./components/Navbar";
 // Font import here (SEE INDEX.CSS FOR IMPORT)
 const theme = createTheme({
   typography: {
-    // fontFamily: ["Bebas Neue", "cursive"].join(","),
     fontFamily: '"Bebas Neue", Arial, sans-serif',
     h1: {
       fontSize: "3em",
@@ -128,13 +127,10 @@ function App() {
 
               <Route path="/teams" element={<Teams />} />
 
-              {/* Need to add team specific route */}
-              <Route path="/team" element={<Team />} />
+              <Route path="/team/:teamId" element={<Team />} />
 
-              {/* Need to add player specific route */}
-              <Route path="/player" element={<Player />} />
+              <Route path="/player/:playerId" element={<Player />} />
 
-              {/* Need to add player specific route */}
               <Route
                 path="/league-season-stats"
                 element={<LeagueSeasonStats />}
@@ -142,8 +138,7 @@ function App() {
 
               <Route path="/games" element={<Games />} />
 
-              {/* Need to add game specific route */}
-              <Route path="/game" element={<Game />} />
+              <Route path="/game/:gameId" element={<Game />} />
 
               {/* <Route path="/me" element={<Profile />} />
                   <Route path="/profiles/:username" element={<Profile />} /> */}
