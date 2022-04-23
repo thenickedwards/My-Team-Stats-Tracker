@@ -23,7 +23,8 @@ export const QUERY_ME = gql`
 `;
 
 export const QUERY_LEAGUE = gql`
-  query League($leagueId: ID!) {
+  # query League($leagueId: ID!) {
+  query league($leagueId: ID!) {
     league(leagueId: $leagueId) {
       _id
       leagueName
@@ -121,9 +122,9 @@ export const QUERY_SOCCERTEAMS = gql`
       teamPic
       season {
         _id
-        seasonName
-        startYear
-        endYear
+        # seasonName
+        # startYear
+        # endYear
       }
       games {
         _id
