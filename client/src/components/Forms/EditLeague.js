@@ -69,7 +69,8 @@ const EditLeague = ( {leagueId, handleCloseEdit} ) => {
     event.preventDefault();
     
     try {
-      const { data } = await updateLeague({
+      // const { data } = 
+      await updateLeague({
         variables: { leagueId: leagueId, league: {...formState} },
       });
 
@@ -149,11 +150,9 @@ const EditLeague = ( {leagueId, handleCloseEdit} ) => {
 
 
         <Typography variant="p" color="secondary.contrastText">
-                {error && <div>{error.message}</div>}
-              </Typography>
+          {error && <div>{error.message}</div>}
+        </Typography>
               
-           
-
 
       </form>
 

@@ -180,6 +180,11 @@ const EditTeam = ( {soccerTeamId, handleCloseEdit} ) => {
         </Button>
 
     </FormControl>
+
+    <Typography variant="p" color="secondary.contrastText">
+      {error && <div>{error.message}</div>}
+    </Typography>
+
     </form>
 
     </div>
