@@ -198,14 +198,14 @@ export default function Team () {
                   sx={{ gap: "20px", mb: 5 }}
                 >
                   <img
-                    src="images/chicago.png"
+                    src={soccerTeam.teamPic}
                     alt="Chicago Logo"
                     height="70px"
                     width="auto"
                   />
 
                   <Typography variant="h1" color="secondary.contrastText">
-                    Chicago Football Club
+                    {soccerTeam.teamName}
                   </Typography>
                 </Grid>
               </Grid>
@@ -256,16 +256,19 @@ export default function Team () {
               <Grid container spacing={{ xs: 4 }}>
 
                 {/* Stats Cards. Map over this section. */}
-                <Grid item xs={6} s={6} md={3} lg={3}>
+
+  {/* *** NICK ADD GAMES PLAYED TO SOCCERTEAM QUERIES *** */}
+
+                {/* <Grid item xs={6} s={6} md={3} lg={3}>
                   <Paper elevation={5} sx={teamStyle.statsPaper}>
                     <Typography variant="h1" color="secondary.contrastText">
-                      4
+                      {soccerTeam.played}
                     </Typography>
                     <Typography variant="h6" color="secondary.contrastText">
                       Played
                     </Typography>
                   </Paper>
-                </Grid>
+                </Grid> */}
                 {/* End Stats Cards mapping. */}
 
                 {/* ----------------------------------------------------- */}
@@ -273,10 +276,10 @@ export default function Team () {
                 <Grid item xs={6} s={6} md={3} lg={3}>
                   <Paper elevation={5} sx={teamStyle.statsPaper}>
                     <Typography variant="h1" color="secondary.contrastText">
-                      4
+                      {soccerTeam.wins}
                     </Typography>
                     <Typography variant="h6" color="secondary.contrastText">
-                      Played
+                      Won
                     </Typography>
                   </Paper>
                 </Grid>
@@ -284,10 +287,10 @@ export default function Team () {
                 <Grid item xs={6} s={6} md={3} lg={3}>
                   <Paper elevation={5} sx={teamStyle.statsPaper}>
                     <Typography variant="h1" color="secondary.contrastText">
-                      4
+                      {soccerTeam.draws}
                     </Typography>
                     <Typography variant="h6" color="secondary.contrastText">
-                      Played
+                      Drawn
                     </Typography>
                   </Paper>
                 </Grid>
@@ -295,10 +298,10 @@ export default function Team () {
                 <Grid item xs={6} s={6} md={3} lg={3}>
                   <Paper elevation={5} sx={teamStyle.statsPaper}>
                     <Typography variant="h1" color="secondary.contrastText">
-                      4
+                      {soccerTeam.losses}
                     </Typography>
                     <Typography variant="h6" color="secondary.contrastText">
-                      Played
+                      Lost
                     </Typography>
                   </Paper>
                 </Grid>
