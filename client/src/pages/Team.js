@@ -1,4 +1,7 @@
 import React from "react";
+import { useParams } from "react-router-dom";
+import { useQuery } from "@apollo/client";
+import { QUERY_SOCCERTEAM } from "../utils/queries";
 
 import {
   Container,
@@ -98,6 +101,18 @@ const teamStyle = {
 }
 
 export default function Team () {
+  const { soccerTeamId } = useParams();
+  
+  const { loading, data } = useQuery(QUERY_SOCCERTEAM, {
+    // pass URL parameter
+    variables: { soccerTeamId },
+  });
+
+  const soccerTeam = data?.soccerTeam || {};
+
+  // Create roster
+  const allPlayers = soccerTeam.roster;
+
   // Functionality for Dropdown
   const [season, setSeason] = React.useState("");
   const handleSeasonChange = (event) => {
@@ -114,6 +129,10 @@ export default function Team () {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
+  if (loading) {
+    return <div>LOADING</div>;
+  }
   function TabPanel(props) {
     const { children, value, index, ...other } = props;
 
@@ -183,14 +202,14 @@ export default function Team () {
                   sx={{ gap: "20px", mb: 5 }}
                 >
                   <img
-                    src="images/chicago.png"
+                    src={soccerTeam.teamPic}
                     alt="Chicago Logo"
                     height="70px"
                     width="auto"
                   />
 
                   <Typography variant="h1" color="secondary.contrastText">
-                    Chicago Football Club
+                    {soccerTeam.teamName}
                   </Typography>
                 </Grid>
               </Grid>
@@ -241,16 +260,19 @@ export default function Team () {
               <Grid container spacing={{ xs: 4 }}>
 
                 {/* Stats Cards. Map over this section. */}
-                <Grid item xs={6} s={6} md={3} lg={3}>
+
+  {/* *** NICK ADD GAMES PLAYED TO SOCCERTEAM QUERIES *** */}
+
+                {/* <Grid item xs={6} s={6} md={3} lg={3}>
                   <Paper elevation={5} sx={teamStyle.statsPaper}>
                     <Typography variant="h1" color="secondary.contrastText">
-                      4
+                      {soccerTeam.played}
                     </Typography>
                     <Typography variant="h6" color="secondary.contrastText">
                       Played
                     </Typography>
                   </Paper>
-                </Grid>
+                </Grid> */}
                 {/* End Stats Cards mapping. */}
 
                 {/* ----------------------------------------------------- */}
@@ -258,10 +280,10 @@ export default function Team () {
                 <Grid item xs={6} s={6} md={3} lg={3}>
                   <Paper elevation={5} sx={teamStyle.statsPaper}>
                     <Typography variant="h1" color="secondary.contrastText">
-                      4
+                      {soccerTeam.wins}
                     </Typography>
                     <Typography variant="h6" color="secondary.contrastText">
-                      Played
+                      Won
                     </Typography>
                   </Paper>
                 </Grid>
@@ -269,10 +291,10 @@ export default function Team () {
                 <Grid item xs={6} s={6} md={3} lg={3}>
                   <Paper elevation={5} sx={teamStyle.statsPaper}>
                     <Typography variant="h1" color="secondary.contrastText">
-                      4
+                      {soccerTeam.draws}
                     </Typography>
                     <Typography variant="h6" color="secondary.contrastText">
-                      Played
+                      Drawn
                     </Typography>
                   </Paper>
                 </Grid>
@@ -280,10 +302,10 @@ export default function Team () {
                 <Grid item xs={6} s={6} md={3} lg={3}>
                   <Paper elevation={5} sx={teamStyle.statsPaper}>
                     <Typography variant="h1" color="secondary.contrastText">
-                      4
+                      {soccerTeam.losses}
                     </Typography>
                     <Typography variant="h6" color="secondary.contrastText">
-                      Played
+                      Lost
                     </Typography>
                   </Paper>
                 </Grid>
@@ -398,113 +420,38 @@ export default function Team () {
 
               {/* PLAYERS */}
               <Grid container sx={{ display: "flex", flexDirection: "column" }}>
-
+                
                 {/* Player Details. Map over this section. */}
-                <Grid
-                  item
-                  sx={{ display: "flex", flexDirection: "row", mb: 3 }}
-                >
-                  <Box style={teamStyle.teamRoster}>
-                    <img
-                      src="images/player-default-profile.png"
-                      alt="Player Profile Icon"
-                      width="30px"
-                      height="auto"
-                      style={{ padding: "10px 0 0 0" }}
-                    />
-                  </Box>
 
-                  <Box>
-                    <Typography variant="h3">#11</Typography>
-                    <Typography variant="h6">Antonio Sanchez</Typography>
-                  </Box>
-                </Grid>
+                {allPlayers.map((player) => {
+                  
+                  return (
+               
+                    <Grid
+                      item
+                      sx={{ display: "flex", flexDirection: "row", mb: 3 }}
+
+                    >
+                      <Box style={teamStyle.teamRoster}>
+                        <img
+                          src="images/player-default-profile.png"
+                          alt="Player Profile Icon"
+                          width="30px"
+                          height="auto"
+                          style={{ padding: "10px 0 0 0" }}
+                        />
+                      </Box>
+
+                      <Box>
+                        <Typography variant="h3">{player.playerNumber}</Typography>
+                        <Typography variant="h6">{player.playerFirstName} {player.playerLastName}</Typography>
+                      </Box>
+                    </Grid>
+                  )
+                })}
+
                 {/* End Player Details Mapping. */}
 
-                {/* ----------------------------------------------------- */}
-                {/* Temporary Data. Delete */}
-                <Grid
-                  item
-                  sx={{ display: "flex", flexDirection: "row", mb: 3 }}
-                >
-                  <Box style={teamStyle.teamRoster}>
-                    <img
-                      src="images/player-default-profile.png"
-                      alt="Player Profile Icon"
-                      width="30px"
-                      height="auto"
-                      style={{ padding: "10px 0 0 0" }}
-                    />
-                  </Box>
-
-                  <Box>
-                    <Typography variant="h3">#11</Typography>
-                    <Typography variant="h6">Antonio Sanchez</Typography>
-                  </Box>
-                </Grid>
-
-                <Grid
-                  item
-                  sx={{ display: "flex", flexDirection: "row", mb: 3 }}
-                >
-                  <Box style={teamStyle.teamRoster}>
-                    <img
-                      src="images/player-default-profile.png"
-                      alt="Player Profile Icon"
-                      width="30px"
-                      height="auto"
-                      style={{ padding: "10px 0 0 0" }}
-                    />
-                  </Box>
-
-                  <Box>
-                    <Typography variant="h3">#11</Typography>
-                    <Typography variant="h6">Antonio Sanchez</Typography>
-                  </Box>
-                </Grid>
-
-                <Grid
-                  item
-                  sx={{ display: "flex", flexDirection: "row", mb: 3 }}
-                >
-                  <Box style={teamStyle.teamRoster}>
-                    <img
-                      src="images/player-default-profile.png"
-                      alt="Player Profile Icon"
-                      width="30px"
-                      height="auto"
-                      style={{ padding: "10px 0 0 0" }}
-                    />
-                  </Box>
-
-                  <Box>
-                    <Typography variant="h3">#11</Typography>
-                    <Typography variant="h6">Antonio Sanchez</Typography>
-                  </Box>
-                </Grid>
-
-                <Grid
-                  item
-                  sx={{ display: "flex", flexDirection: "row", mb: 3 }}
-                >
-                  <Box style={teamStyle.teamRoster}>
-                    <img
-                      src="images/player-default-profile.png"
-                      alt="Player Profile Icon"
-                      width="30px"
-                      height="auto"
-                      style={{ padding: "10px 0 0 0" }}
-                    />
-                  </Box>
-
-                  <Box>
-                    <Typography variant="h3">#11</Typography>
-                    <Typography variant="h6">Antonio Sanchez</Typography>
-                  </Box>
-                </Grid>
-
-                {/* Temporary Data. Delete */}
-                {/* ----------------------------------------------------- */}
               </Grid>
             </Grid>
 
