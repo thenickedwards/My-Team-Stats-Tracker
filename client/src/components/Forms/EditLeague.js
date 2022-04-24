@@ -149,12 +149,10 @@ const EditLeague = ( {leagueId, handleCloseEdit} ) => {
 
 
         <Typography variant="p" color="secondary.contrastText">
-                {error && <div>{error.message}</div>}
-              </Typography>
+          {error && <div>{error.message}</div>}
+        </Typography>
               
-           
-
-
+              
       </form>
 
     </div>
