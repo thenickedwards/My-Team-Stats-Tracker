@@ -81,7 +81,7 @@ const leagueStyle = {
 
 export default function League() {
   const { leagueId } = useParams();
-  console.log(leagueId);
+  // console.log(leagueId);
 
   const { loading, data } = useQuery(QUERY_LEAGUE, {
     // pass URL parameter
@@ -89,6 +89,7 @@ export default function League() {
   });
 
   const league = data?.league || {};
+  // console.log(league);
 
   // Functionality for Add Season Modal
   const [open, setOpen] = React.useState(false);

@@ -39,37 +39,22 @@ const leaguesStyle = {
   },
 };
 
-const EditLeague = ( {handleCloseEdit}, {leagueId} ) => {
+const EditLeague = ( {leagueId, handleCloseEdit} ) => {
 
   // Functionality to Adding League via Form
   const [formState, setFormState] = useState({
-    league:{
       leagueName: "",
       sport:"",
       leaguePic:""
-    },
-    // sport: "",
-    // leaguePic: "",
   });
 
 
   const { leagueName, sport, leaguePic } = formState;
 
-//  const [idState, setIdState] = useState({
-//    leagueId: ''
-//  })
-
-//  const leagueId = idState;
-
   const [updateLeague, { error }] = useMutation(UPDATE_LEAGUE, {
     refetchQueries: [ QUERY_LEAGUES ]
  });
 
-
-  // const handleIdChange = (value) => {
-  //   console.log("On Change ID", value);
-  //   setIdState(value)
-  // }
 
   const handleFormChange = (event) => {
     const { name, value } = event.target;
@@ -82,24 +67,11 @@ const EditLeague = ( {handleCloseEdit}, {leagueId} ) => {
 
   const handleLeagueFormSubmit = async (event) => {
     event.preventDefault();
-    console.log({leagueId})
-    console.log(formState);
     
     try {
       const { data } = await updateLeague({
-        // variables: { league: {...formState} },
-        variables: { leagueId: {leagueId}, league: {...formState} },
-        // variables: {league: formState}
+        variables: { leagueId: leagueId, league: {...formState} },
       });
-      console.log("second", {...formState});
-
-      // setFormState({
-      //   league:{
-      //     leagueName: "",
-      //     sport:"",
-      //     leaguePic:""
-      //   },
-      // });
 
       handleCloseEdit();
       
@@ -117,7 +89,6 @@ const EditLeague = ( {handleCloseEdit}, {leagueId} ) => {
             name="leagueName"
             label="League Name"
             type="text"
-            // placeholder={leagueName}
             variant="outlined"
             color="secondary"
             value={leagueName}
