@@ -13,8 +13,27 @@ import { DataGrid } from "@mui/x-data-grid";
 
 
 const columns = [
-  { field: "homeTeam", headerName: "Home", width: 200 },
-  { field: "awayTeam", headerName: "Away", width: 200 },
+  { field: "homeTeam", 
+    headerName: "Home", 
+    width: 250,
+    renderCell: (params) => (
+      <Box sx={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 2 }}>
+        <img src={params.value.homeTeamPic} alt="Team Logo" height="auto" width="40px" objectFit="contain" />
+        <Typography variant="p">{params.value.homeTeamName}</Typography>
+      </Box>
+    ) 
+  },
+  { field: "awayTeam", 
+    headerName: "Away", 
+    width: 250,
+    renderCell: (params) => (
+      <Box sx={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 2 }}>
+        <img src={params.value.awayTeamPic} alt="Team Logo" height="auto" width="40px" objectFit="contain" />
+        <Typography variant="p">{params.value.awayTeamName}</Typography>
+      </Box>
+    )  
+  
+  },
   { field: "gameDate", headerName: "Game Date", width: 200 },
   {
     field: "viewScore",
@@ -144,8 +163,8 @@ const Home = () => {
                 <DataGrid
                   rows={games.map((game) => ({
                     id: game._id,
-                    homeTeam: game.homeTeam.teamName,
-                    awayTeam: game.awayTeam.teamName,
+                    homeTeam: {homeTeamName: game.homeTeam.teamName, homeTeamPic: game.homeTeam.teamPic},
+                    awayTeam: {awayTeamName: game.awayTeam.teamName, awayTeamPic: game.awayTeam.teamPic},
                     gameDate: game.gameDate,
                   }))}
                   columns={columns}
