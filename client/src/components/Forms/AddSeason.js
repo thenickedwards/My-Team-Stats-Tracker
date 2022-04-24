@@ -87,7 +87,7 @@ export default function AddSeason({ handleClose }) {
 
   const handleSeasonFormSubmit = async (event) => {
     event.preventDefault();
-    console.log(formState);
+    console.log("Testing", {...formState});
 
     try {
       const { data } = await addSeason({
@@ -146,6 +146,7 @@ export default function AddSeason({ handleClose }) {
             labelId="league"
             id="league"
             name="league"
+            type="text"
             //   multiple
             value={league}
             onChange={handleFormChange}
@@ -171,7 +172,7 @@ export default function AddSeason({ handleClose }) {
           fullWidth
           disableElevation
         >
-          <Typography variant="h3">Add League</Typography>
+          <Typography variant="h3">Add Season</Typography>
         </Button>
       </FormControl>
     </form>

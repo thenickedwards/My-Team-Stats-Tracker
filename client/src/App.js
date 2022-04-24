@@ -30,7 +30,8 @@ import Game from "./pages/Game";
 // import Profile from "./pages/Profile";
 
 // import Header from "./components/Header";
-import Footer from "./components/Footer";
+// import Footer from "./components/Footer";
+import Footer from "./components//Footer/Footer";
 import Navbar from "./components/Navbar";
 // import { fontFamily } from "@mui/system";
 

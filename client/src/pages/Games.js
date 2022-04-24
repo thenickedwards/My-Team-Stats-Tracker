@@ -14,6 +14,7 @@ import {
   Button,
   TextField,
   Modal,
+  Link
 } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import IconButton from "@mui/material/IconButton";
@@ -27,31 +28,34 @@ import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 const columns = [
   { field: "homeTeam", 
     headerName: "Home", 
-    width: 250,
+    flex:1,
     renderCell: (params) => (
       <Box sx={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 2 }}>
         <img src={params.value.homeTeamPic} alt="Team Logo" height="auto" width="40px" objectFit="contain" />
-        <Typography variant="p">{params.value.homeTeamName}</Typography>
+        <Link href={`/team/${params.value.homeTeamLink}`} variant="p" underline="none" color="inherit" >{params.value.homeTeamName}</Link>
       </Box>
     ) 
   },
   { field: "awayTeam", 
     headerName: "Away", 
-    width: 250,
+    flex:1,
     renderCell: (params) => (
       <Box sx={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 2 }}>
         <img src={params.value.awayTeamPic} alt="Team Logo" height="auto" width="40px" objectFit="contain" />
-        <Typography variant="p">{params.value.awayTeamName}</Typography>
+        <Link href={`/team/${params.value.awayTeamLink}`} variant="p" underline="none" color="inherit">{params.value.awayTeamName}</Link>
       </Box>
     )  
   
   },
-  { field: "gameDate", headerName: "Game Date", width: 200 },
+  { field: "gameDate", headerName: "Game Date", flex:1 },
   {
     field: "viewScore",
     headerName: "View Score",
     sortable: false,
-    width: 300,
+    flex:1,
+    renderCell: () => (
+      <Link href="/game" variant="h3" underline="none">View Game</Link>
+    )
   },
 ];
 
@@ -237,8 +241,8 @@ export default function Games() {
                 <DataGrid
                     rows={games.map((game) => ({
                     id: game._id,
-                    homeTeam: {homeTeamName: game.homeTeam.teamName, homeTeamPic: game.homeTeam.teamPic},
-                    awayTeam: {awayTeamName: game.awayTeam.teamName, awayTeamPic: game.awayTeam.teamPic},
+                    homeTeam: {homeTeamName: game.homeTeam.teamName, homeTeamPic: game.homeTeam.teamPic, homeTeamLink: game.homeTeam._id},
+                    awayTeam: {awayTeamName: game.awayTeam.teamName, awayTeamPic: game.awayTeam.teamPic, awayTeamLink: game.awayTeam._id},
                     gameDate: game.gameDate,
                   }))}
                   columns={columns}
