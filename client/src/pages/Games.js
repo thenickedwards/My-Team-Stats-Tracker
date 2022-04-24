@@ -1,4 +1,6 @@
 import React from "react";
+import { QUERY_SOCCERGAMES } from "../utils/queries";
+import { useQuery } from "@apollo/client";
 import {
   Container,
   CssBaseline,
@@ -23,38 +25,37 @@ import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 // ////////////////////////////////////
 //   DATAGRID (EDIT DATA)
 const columns = [
-  { field: "id", headerName: "ID", width: 70 },
-  { field: "firstName", headerName: "First name", width: 130 },
-  { field: "lastName", headerName: "Last name", width: 130 },
-  {
-    field: "age",
-    headerName: "Age",
-    type: "number",
-    width: 90,
+  { field: "homeTeam", 
+    headerName: "Home", 
+    width: 250,
+    renderCell: (params) => (
+      <Box sx={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 2 }}>
+        <img src={params.value.homeTeamPic} alt="Team Logo" height="auto" width="40px" objectFit="contain" />
+        <Typography variant="p">{params.value.homeTeamName}</Typography>
+      </Box>
+    ) 
   },
+  { field: "awayTeam", 
+    headerName: "Away", 
+    width: 250,
+    renderCell: (params) => (
+      <Box sx={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 2 }}>
+        <img src={params.value.awayTeamPic} alt="Team Logo" height="auto" width="40px" objectFit="contain" />
+        <Typography variant="p">{params.value.awayTeamName}</Typography>
+      </Box>
+    )  
+  
+  },
+  { field: "gameDate", headerName: "Game Date", width: 200 },
   {
-    field: "fullName",
-    headerName: "Full name",
-    description: "This column has a value getter and is not sortable.",
+    field: "viewScore",
+    headerName: "View Score",
     sortable: false,
-    width: 160,
-    valueGetter: (params) =>
-      `${params.row.firstName || ""} ${params.row.lastName || ""}`,
+    width: 300,
   },
 ];
 
-//   DATAGRID (TEMPORARY DATA)
-const rows = [
-  { id: 1, lastName: "Snow", firstName: "Jon", age: 35 },
-  { id: 2, lastName: "Lannister", firstName: "Cersei", age: 42 },
-  { id: 3, lastName: "Lannister", firstName: "Jaime", age: 45 },
-  { id: 4, lastName: "Stark", firstName: "Arya", age: 16 },
-  { id: 5, lastName: "Targaryen", firstName: "Daenerys", age: null },
-  { id: 6, lastName: "Melisandre", firstName: null, age: 150 },
-  { id: 7, lastName: "Clifford", firstName: "Ferrara", age: 44 },
-  { id: 8, lastName: "Frances", firstName: "Rossini", age: 36 },
-  { id: 9, lastName: "Roxie", firstName: "Harvey", age: 65 },
-];
+
 
 // Seasons Modal Select Team (TEMPORARY DATA)
 
@@ -96,6 +97,10 @@ const gamesStyle = {
 };
 
 export default function Games() {
+
+  const { data } = useQuery(QUERY_SOCCERGAMES);
+  const games = data?.allSoccerGames || [];
+
   // Functionality for Dropdown
   const [league, setLeague] = React.useState("");
   const handleSeasonChange = (event) => {
@@ -230,7 +235,12 @@ export default function Games() {
             <Box sx={{ width: "100%", mt: 8 }}>
               <div style={{ height: 400, width: "100%" }}>
                 <DataGrid
-                  rows={rows}
+                    rows={games.map((game) => ({
+                    id: game._id,
+                    homeTeam: {homeTeamName: game.homeTeam.teamName, homeTeamPic: game.homeTeam.teamPic},
+                    awayTeam: {awayTeamName: game.awayTeam.teamName, awayTeamPic: game.awayTeam.teamPic},
+                    gameDate: game.gameDate,
+                  }))}
                   columns={columns}
                   pageSize={5}
                   rowsPerPageOptions={[5]}
