@@ -71,7 +71,7 @@ const teamStyle = {
     borderRadius: 4,
   },
   teamRoster: {
-    backgroundColor: "black",
+    backgroundColor: "red",
     borderRadius: "100%",
     width: "50px",
     height: "50px",
