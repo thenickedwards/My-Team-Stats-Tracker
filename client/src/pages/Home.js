@@ -18,7 +18,8 @@ const columns = [
     width: 250,
     renderCell: (params) => (
       <Box sx={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 2 }}>
-        <img src={params.value.homeTeamPic} alt="Team Logo" height="auto" width="40px" objectFit="contain" />
+        <img src={params.value.homeTeamPic} alt="Team Logo" height="auto" width="40px" 
+        />
         <Typography variant="p">{params.value.homeTeamName}</Typography>
       </Box>
     ) 
@@ -28,7 +29,7 @@ const columns = [
     width: 250,
     renderCell: (params) => (
       <Box sx={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 2 }}>
-        <img src={params.value.awayTeamPic} alt="Team Logo" height="auto" width="40px" objectFit="contain" />
+        <img src={params.value.awayTeamPic} alt="Team Logo" height="auto" width="40px" />
         <Typography variant="p">{params.value.awayTeamName}</Typography>
       </Box>
     )  
@@ -103,7 +104,9 @@ const Home = () => {
 
           {/* Team Stats */}
           <Grid container spacing={{ xs: 4 }}>
-            {games.map((game) => {
+            {games.map((game, index) => {
+              if(index < 4) {
+
               return (
                 <Grid item xs={12} s={12} md={3} lg={3}>
                   <Paper elevation={5} sx={homeStyle.statsPaper}>
@@ -147,8 +150,9 @@ const Home = () => {
                     </Box>
                   </Paper>
                 </Grid>
-              );
-            })}
+              )
+            }
+          })}
 
 
             {/* Upcoming Games */}
