@@ -102,7 +102,6 @@ const teamStyle = {
 
 export default function Team () {
   const { soccerTeamId } = useParams();
-  console.log(soccerTeamId);
   
   const { loading, data } = useQuery(QUERY_SOCCERTEAM, {
     // pass URL parameter
@@ -112,7 +111,8 @@ export default function Team () {
   const soccerTeam = data?.soccerTeam || {};
 
   // Create roster
-  let allPlayers = soccerTeam.roster;
+  const allPlayers = soccerTeam.roster;
+  console.log(allPlayers);
 
   // Functionality for Dropdown
   const [season, setSeason] = React.useState("");
@@ -417,31 +417,35 @@ export default function Team () {
 
               {/* PLAYERS */}
               <Grid container sx={{ display: "flex", flexDirection: "column" }}>
-
-                
                 
                 {/* Player Details. Map over this section. */}
-                  <Grid
-                    item
-                    sx={{ display: "flex", flexDirection: "row", mb: 3 }}
-                  >
-                    <Box style={teamStyle.teamRoster}>
-                      <img
-                        src="images/player-default-profile.png"
-                        alt="Player Profile Icon"
-                        width="30px"
-                        height="auto"
-                        style={{ padding: "10px 0 0 0" }}
-                      />
-                    </Box>
 
-                    <Box>
-                      <Typography variant="h3">#11</Typography>
-                      <Typography variant="h6">Antonio Sanchez</Typography>
-                    </Box>
-                  </Grid>
+     {/* *** MAP FUNCTION MAKES ALLPLAYERS UNDEFINED */}
 
+                {/* {allPlayers.map((player) => {
+                  return (
+               
+                    <Grid
+                      item
+                      sx={{ display: "flex", flexDirection: "row", mb: 3 }}
+                    >
+                      <Box style={teamStyle.teamRoster}>
+                        <img
+                          src="images/player-default-profile.png"
+                          alt="Player Profile Icon"
+                          width="30px"
+                          height="auto"
+                          style={{ padding: "10px 0 0 0" }}
+                        />
+                      </Box>
 
+                      <Box>
+                        <Typography variant="h3">#11</Typography>
+                        <Typography variant="h6">{player.playerFirstName} {player.playerLastName}</Typography>
+                      </Box>
+                    </Grid>
+                  )
+                })} */}
 
                 {/* End Player Details Mapping. */}
 
