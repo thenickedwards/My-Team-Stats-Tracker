@@ -1,4 +1,7 @@
 import React from "react";
+import { useParams } from "react-router-dom";
+import { useQuery } from "@apollo/client";
+import { QUERY_SOCCERTEAM } from "../utils/queries";
 
 import {
   Container,
@@ -98,6 +101,18 @@ const teamStyle = {
 }
 
 export default function Team () {
+  const { soccerTeamId } = useParams();
+  console.log(soccerTeamId);
+  
+  const { loading, data } = useQuery(QUERY_SOCCERTEAM, {
+    // pass URL parameter
+    variables: { soccerTeamId },
+  });
+
+  // console.log(data);
+  const soccerTeam = data?.soccerTeam || {};
+  console.log(soccerTeam);
+
   // Functionality for Dropdown
   const [season, setSeason] = React.useState("");
   const handleSeasonChange = (event) => {
