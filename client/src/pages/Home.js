@@ -68,6 +68,7 @@ const homeStyle = {
     justifyContent: "space-between",
     alignItems: "center",
     padding: "5px 40px",
+    height: "40px"
   },
   statsTeamDetails: {
     display: "flex",
