@@ -23,6 +23,7 @@ import { DataGrid } from "@mui/x-data-grid";
 import IconButton from "@mui/material/IconButton";
 import AddIcon from "@mui/icons-material/Add";
 import AddPlayer from "../components/Forms/AddPlayer";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
 //   DATAGRID (EDIT DATA)
 const columns = [
@@ -97,12 +98,14 @@ const teamStyle = {
     "&:hover": {
       backgroundColor: "primary.main",
     },
-    }
-}
+  },
+};
 
-export default function Team () {
+export default function Team() {
+  //Grab team ID
   const { soccerTeamId } = useParams();
-  
+
+  //Query Team
   const { loading, data } = useQuery(QUERY_SOCCERTEAM, {
     // pass URL parameter
     variables: { soccerTeamId },
@@ -110,8 +113,11 @@ export default function Team () {
 
   const soccerTeam = data?.soccerTeam || {};
 
-  // Create roster
+  // Pull roster
   const allPlayers = soccerTeam.roster;
+
+  // Pull team color
+  const currentTeamColor = soccerTeam.teamColor;
 
   // Functionality for Dropdown
   const [season, setSeason] = React.useState("");
@@ -170,10 +176,8 @@ export default function Team () {
     <>
       <CssBaseline />
       <Container disableGutters justify="center">
-
         {/* Outer container allows graphic images to be placed absolute. Also establishes padding. */}
         <Grid container sx={{ py: 8, px: 5 }} position="relative">
-
           {/* CORNER ABSTRACT IMAGE */}
           <Box sx={{ position: "absolute", bottom: 0, left: 0 }}>
             <img
@@ -185,7 +189,6 @@ export default function Team () {
 
           {/* Container for the two top columns. */}
           <Grid container alignItems={"center"}>
-
             {/* LEAGUE HEADING. Left column. */}
             <Grid item xs={12} sm={12} md={9} lg={9}>
               <Grid container sx={{ display: "flex", flexDirection: "column" }}>
@@ -250,18 +253,15 @@ export default function Team () {
 
           {/* End top Grid. ----------------------- */}
 
-         {/* Creates container around two columns. Adds space between columns. */}
+          {/* Creates container around two columns. Adds space between columns. */}
           <Grid container spacing={5}>
-
             {/* Left column */}
             <Grid item xs={12} s={12} md={8} lg={8}>
-              
-            {/* TEAM STATS */}
+              {/* TEAM STATS */}
               <Grid container spacing={{ xs: 4 }}>
-
                 {/* Stats Cards. Map over this section. */}
 
-  {/* *** NICK ADD GAMES PLAYED TO SOCCERTEAM QUERIES *** */}
+                {/* *** NICK ADD GAMES PLAYED TO SOCCERTEAM QUERIES *** */}
 
                 {/* <Grid item xs={6} s={6} md={3} lg={3}>
                   <Paper elevation={5} sx={teamStyle.statsPaper}>
@@ -346,7 +346,6 @@ export default function Team () {
                     </Tabs>
                   </Box>
                   <TabPanel value={value} index={0}>
-
                     {/* GAMES */}
                     <div style={{ height: 400, width: "100%" }}>
                       <DataGrid
@@ -388,7 +387,6 @@ export default function Team () {
 
             {/* Right Column */}
             <Grid item xs={12} s={12} md={4} lg={4}>
-              
               {/* TEAM ROSTER */}
 
               {/* HEADING */}
@@ -420,38 +418,33 @@ export default function Team () {
 
               {/* PLAYERS */}
               <Grid container sx={{ display: "flex", flexDirection: "column" }}>
-                
                 {/* Player Details. Map over this section. */}
 
                 {allPlayers.map((player) => {
-                  
                   return (
-               
                     <Grid
                       item
                       sx={{ display: "flex", flexDirection: "row", mb: 3 }}
-
                     >
                       <Box style={teamStyle.teamRoster}>
-                        <img
-                          src="images/player-default-profile.png"
-                          alt="Player Profile Icon"
-                          width="30px"
-                          height="auto"
-                          style={{ padding: "10px 0 0 0" }}
-                        />
+                        <AccountCircleIcon
+                          sx={{ color: { currentTeamColor } }}
+                        ></AccountCircleIcon>
                       </Box>
 
                       <Box>
-                        <Typography variant="h3">{player.playerNumber}</Typography>
-                        <Typography variant="h6">{player.playerFirstName} {player.playerLastName}</Typography>
+                        <Typography variant="h3">
+                          {player.playerNumber}
+                        </Typography>
+                        <Typography variant="h6">
+                          {player.playerFirstName} {player.playerLastName}
+                        </Typography>
                       </Box>
                     </Grid>
-                  )
+                  );
                 })}
 
                 {/* End Player Details Mapping. */}
-
               </Grid>
             </Grid>
 
@@ -469,8 +462,6 @@ export default function Team () {
 
                 {/* ADD PLAYER FORM */}
                 <AddPlayer handleClose={handleClose} />
-
-              
               </Box>
             </Modal>
           </Grid>
