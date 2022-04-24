@@ -24,6 +24,7 @@ import IconButton from "@mui/material/IconButton";
 import AddIcon from "@mui/icons-material/Add";
 import AddPlayer from "../components/Forms/AddPlayer";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import { LARGE } from "material-ui/utils/withWidth";
 
 //   DATAGRID (EDIT DATA)
 const columns = [
@@ -72,7 +73,6 @@ const teamStyle = {
     borderRadius: 4,
   },
   teamRoster: {
-    backgroundColor: "red",
     borderRadius: "100%",
     width: "50px",
     height: "50px",
@@ -428,7 +428,8 @@ export default function Team() {
                     >
                       <Box style={teamStyle.teamRoster}>
                         <AccountCircleIcon
-                          sx={{ color: { currentTeamColor } }}
+                          fontSize="large"
+                          sx={{ color: currentTeamColor }}
                         ></AccountCircleIcon>
                       </Box>
 
