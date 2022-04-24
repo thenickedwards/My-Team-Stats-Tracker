@@ -112,7 +112,6 @@ export default function Team () {
 
   // Create roster
   const allPlayers = soccerTeam.roster;
-  console.log(allPlayers);
 
   // Functionality for Dropdown
   const [season, setSeason] = React.useState("");
@@ -130,6 +129,10 @@ export default function Team () {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
+  if (loading) {
+    return <div>LOADING</div>;
+  }
   function TabPanel(props) {
     const { children, value, index, ...other } = props;
 
@@ -420,14 +423,14 @@ export default function Team () {
                 
                 {/* Player Details. Map over this section. */}
 
-     {/* *** MAP FUNCTION MAKES ALLPLAYERS UNDEFINED */}
-
-                {/* {allPlayers.map((player) => {
+                {allPlayers.map((player) => {
+                  
                   return (
                
                     <Grid
                       item
                       sx={{ display: "flex", flexDirection: "row", mb: 3 }}
+
                     >
                       <Box style={teamStyle.teamRoster}>
                         <img
@@ -440,12 +443,12 @@ export default function Team () {
                       </Box>
 
                       <Box>
-                        <Typography variant="h3">#11</Typography>
+                        <Typography variant="h3">{player.playerNumber}</Typography>
                         <Typography variant="h6">{player.playerFirstName} {player.playerLastName}</Typography>
                       </Box>
                     </Grid>
                   )
-                })} */}
+                })}
 
                 {/* End Player Details Mapping. */}
 
