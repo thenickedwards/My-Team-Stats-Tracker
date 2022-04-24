@@ -89,7 +89,6 @@ const EditLeague = ( {leagueId, handleCloseEdit} ) => {
             name="leagueName"
             label="League Name"
             type="text"
-            // placeholder={leagueName}
             variant="outlined"
             color="secondary"
             value={leagueName}
