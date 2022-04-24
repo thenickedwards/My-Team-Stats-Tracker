@@ -58,6 +58,11 @@ export default function Leagues() {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  const [openEdit, setOpenEdit] = React.useState(false);
+  const handleOpenEdit = () => setOpenEdit(true);
+  const handleCloseEdit = () => setOpenEdit(false);
+
   // Get leagues
   const { loading, data } = useQuery(QUERY_LEAGUES);
   const leagues = data?.allLeagues || [];
@@ -183,10 +188,34 @@ export default function Leagues() {
                   color="inherit"
                 >
                   <Button
-                    onClick={handleOpen}
+                    onClick={handleOpenEdit}
                   >
                       Edit
                   </Button>
+
+                  {/* EDIT MODAL */}
+                  {/* <Modal
+                    open={openEdit}
+                    onClose={handleCloseEdit}
+                    leagueId={league._id}
+                    aria-labelledby="modal-modal-title"
+                    aria-describedby="modal-modal-description"
+                  >
+                    <Box sx={leaguesStyle.addLeagueModal}>
+                      <Typography id="modal-modal-title" variant="h1" sx={{ mb: 4 }}>
+                        Edit League
+                      </Typography>
+
+                      
+                      <EditLeague 
+                        handleClose={handleCloseEdit} 
+                        leagueId={league._id}
+                      />
+
+                    </Box>
+                  </Modal> */}
+                  {/* END EDIT MODAL */}
+
                   <Button
                     type="submit"
                     onClick={() => handleDeleteLeague(league._id)}
@@ -195,6 +224,7 @@ export default function Leagues() {
                   </Button>
                 </ButtonGroup>
               </Grid>
+
             );
           })}
         </Grid>
@@ -221,8 +251,8 @@ export default function Leagues() {
       {/* Edit League Modal */}
 
       <Modal
-        open={open}
-        onClose={handleClose}
+        open={openEdit}
+        onClose={handleCloseEdit}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
@@ -231,8 +261,12 @@ export default function Leagues() {
             Edit League
           </Typography>
 
-          {/* EDIT LEAGUE FORM */}
-          <EditLeague handleClose={handleClose} />
+          
+          <EditLeague 
+            handleClose={handleCloseEdit} 
+            // leagueId={league._id}
+            // can't grab league._id because not within map
+          />
 
         </Box>
       </Modal>
