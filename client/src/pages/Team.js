@@ -24,7 +24,6 @@ import IconButton from "@mui/material/IconButton";
 import AddIcon from "@mui/icons-material/Add";
 import AddPlayer from "../components/Forms/AddPlayer";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import { LARGE } from "material-ui/utils/withWidth";
 
 //   DATAGRID (EDIT DATA)
 const columns = [

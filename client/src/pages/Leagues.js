@@ -150,46 +150,35 @@ export default function Leagues() {
         <Grid container spacing={{ xs: 4 }}>
           {leagues.map((league) => {
             return (
-              <Grid
-                item
-                key={league._id}
-                xs={6}
-                s={6}
-                md={3}
-                lg={3}
-                sx={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                }}
-              >
-                <Paper elevation={5} sx={leaguesStyle.leaguePaper}>
-                  <img
-                    src={league.leaguePic}
-                    alt="logo"
-                    loading="lazy"
-                    height={100}
-                  />
-                  {/* <Typography
-                    variant="p"
-                    gutterBottom
-                    component="div"
-                    sx={leaguesStyle.leaguePaperText}
-                  >
-                    {league.leagueName}
-                  </Typography> */}
-                  <Link
-                    variant="p"
-                    gutterBottom
-                    sx={leaguesStyle.leaguePaperText}
+              <Grid item key={league._id} xs={6} s={6} md={3} lg={3}>
+                <Link
+                  sx={leaguesStyle.leaguePaperText}
+                  underline="none"
+                  href={`/league/${league._id}`}
+                >
+                  <Paper
+                    elevation={5}
                     underline="none"
                     href={`/league/${league._id}`}
                     color="inherit"
+                    sx={leaguesStyle.leaguePaper}
                   >
-                    {league.leagueName}
-                  </Link>
-                </Paper>
-
+                    <img
+                      src={league.leaguePic}
+                      alt="logo"
+                      loading="lazy"
+                      height={100}
+                    />
+                    <Typography
+                      variant="p"
+                      gutterBottom
+                      component="div"
+                      sx={leaguesStyle.leaguePaperText}
+                    >
+                      {league.leagueName}
+                    </Typography>
+                  </Paper>
+                </Link>
                 {/* Edit | Delete buttons under league cards */}
                 <ButtonGroup
                   variant="text"
@@ -197,14 +186,10 @@ export default function Leagues() {
                   sx={{ pt: 2 }}
                   color="inherit"
                 >
-                  <Button
-                    onClick={handleOpenEdit}
-                  >
-                      Edit
-                  </Button>
+                  <Button onClick={handleOpenEdit}>Edit</Button>
 
                   {/* EDIT MODAL */}
-                  <Modal
+                  {/* <Modal
                     open={openEdit}
                     onClose={handleCloseEdit}
                     leagueId={league._id}
@@ -217,13 +202,13 @@ export default function Leagues() {
                       </Typography>
 
                       
-                      <EditLeague
-                        handleCloseEdit={handleCloseEdit}
+                      <EditLeague 
+                        handleClose={handleCloseEdit} 
                         leagueId={league._id}
                       />
 
                     </Box>
-                  </Modal>
+                  </Modal> */}
                   {/* END EDIT MODAL */}
 
                   <Button
@@ -234,7 +219,6 @@ export default function Leagues() {
                   </Button>
                 </ButtonGroup>
               </Grid>
-
             );
           })}
         </Grid>
@@ -257,10 +241,9 @@ export default function Leagues() {
         </Box>
       </Modal>
 
-
       {/* Edit League Modal */}
 
-      {/* <Modal
+      <Modal
         open={openEdit}
         onClose={handleCloseEdit}
         aria-labelledby="modal-modal-title"
@@ -271,17 +254,13 @@ export default function Leagues() {
             Edit League
           </Typography>
 
-          
-          <EditLeague 
-            handleClose={handleCloseEdit} 
+          <EditLeague
+            handleClose={handleCloseEdit}
             // leagueId={league._id}
             // can't grab league._id because not within map
           />
-
         </Box>
-      </Modal> */}
-
-
+      </Modal>
     </Container>
   );
 }
