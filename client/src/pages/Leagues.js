@@ -194,7 +194,7 @@ export default function Leagues() {
                   </Button>
 
                   {/* EDIT MODAL */}
-                  {/* <Modal
+                  <Modal
                     open={openEdit}
                     onClose={handleCloseEdit}
                     leagueId={league._id}
@@ -207,13 +207,12 @@ export default function Leagues() {
                       </Typography>
 
                       
-                      <EditLeague 
-                        handleClose={handleCloseEdit} 
+                      <EditLeague
                         leagueId={league._id}
                       />
 
                     </Box>
-                  </Modal> */}
+                  </Modal>
                   {/* END EDIT MODAL */}
 
                   <Button
@@ -250,7 +249,7 @@ export default function Leagues() {
 
       {/* Edit League Modal */}
 
-      <Modal
+      {/* <Modal
         open={openEdit}
         onClose={handleCloseEdit}
         aria-labelledby="modal-modal-title"
@@ -269,7 +268,7 @@ export default function Leagues() {
           />
 
         </Box>
-      </Modal>
+      </Modal> */}
 
 
     </Container>

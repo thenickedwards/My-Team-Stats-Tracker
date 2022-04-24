@@ -39,15 +39,15 @@ const leaguesStyle = {
   },
 };
 
-const EditLeague = ( {handleCloseEdit}, {leagueId} ) => {
+const EditLeague = ( {leagueId} ) => {
 
   // Functionality to Adding League via Form
   const [formState, setFormState] = useState({
-    league:{
+    // league:{
       leagueName: "",
       sport:"",
       leaguePic:""
-    },
+    // },
     // sport: "",
     // leaguePic: "",
   });
@@ -87,11 +87,8 @@ const EditLeague = ( {handleCloseEdit}, {leagueId} ) => {
     
     try {
       const { data } = await updateLeague({
-        // variables: { league: {...formState} },
-        variables: { leagueId: {leagueId}, league: {...formState} },
-        // variables: {league: formState}
+        variables: { leagueId: leagueId, league: {...formState} },
       });
-      console.log("second", {...formState});
 
       // setFormState({
       //   league:{
@@ -101,7 +98,8 @@ const EditLeague = ( {handleCloseEdit}, {leagueId} ) => {
       //   },
       // });
 
-      handleCloseEdit();
+      // handleCloseEdit();
+      document.location.reload();
       
     } catch (e) {
       console.error(e);
