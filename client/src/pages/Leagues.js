@@ -1,11 +1,11 @@
 import React from "react";
+import AddLeague from "../components/Forms/AddLeague";
+import EditLeague from "../components/Forms/EditLeague";
 
 // Import Queries and Mutations
 import { useMutation, useQuery } from "@apollo/client";
 import { QUERY_LEAGUES, QUERY_ME } from "../utils/queries";
 import { REMOVE_LEAGUE } from "../utils/mutations";
-import EditLeague from "../components/Forms/EditLeague";
-import AddLeague from "../components/Forms/AddLeague";
 // import Auth from "../utils/auth";
 
 // Material UI Imports
@@ -55,10 +55,13 @@ const leaguesStyle = {
 
 export default function Leagues() {
   //   const token = Auth.loggedIn() ? Auth.getToken() : null;
+
+  // Functionality for Add League Modal
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
+  // Functionality for Edit League Modal
   const [openEdit, setOpenEdit] = React.useState(false);
   const handleOpenEdit = () => setOpenEdit(true);
   const handleCloseEdit = () => setOpenEdit(false);
@@ -68,7 +71,6 @@ export default function Leagues() {
   const leagues = data?.allLeagues || [];
 
   // Handle Delete League
-
   const [removeLeague] = useMutation(REMOVE_LEAGUE, {
     refetchQueries: [QUERY_LEAGUES],
   });

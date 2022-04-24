@@ -1,6 +1,8 @@
 import * as React from "react";
 import AddTeam from "../components/Forms/AddTeam";
+import EditTeam from "../components/Forms/EditTeam";
 
+// Import Queries and Mutations
 import { useMutation, useQuery } from "@apollo/client";
 import { QUERY_SOCCERTEAMS } from "../utils/queries";
 import { REMOVE_SOCCERTEAM } from "../utils/mutations";
@@ -66,12 +68,16 @@ export default function Teams() {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
+   // Functionality for Edit Team Modal
+   const [openEdit, setOpenEdit] = React.useState(false);
+   const handleOpenEdit = () => setOpenEdit(true);
+   const handleCloseEdit = () => setOpenEdit(false);
+
   //Get teams
   const { loading, data } = useQuery(QUERY_SOCCERTEAMS);
   const teams = data?.allSoccerTeams || [];
 
   // Handle Delete Team
-
   const [removeSoccerTeam] = useMutation(REMOVE_SOCCERTEAM, {
     refetchQueries: [QUERY_SOCCERTEAMS],
   });
@@ -218,7 +224,35 @@ export default function Teams() {
                   sx={{ pt: 2 }}
                   color="inherit"
                 >
-                  <Button>Edit</Button>
+                  <Button
+                    onClick={handleOpenEdit}
+                  >
+                    Edit
+                  </Button>
+
+                  {/* EDIT MODAL */}
+                  <Modal
+                    open={openEdit}
+                    onClose={handleCloseEdit}
+                    soccerTeamId={team._id}
+                    aria-labelledby="modal-modal-title"
+                    aria-describedby="modal-modal-description"
+                  >
+                    <Box sx={teamsStyle.addTeamModal}>
+                      <Typography id="modal-modal-title" variant="h1" sx={{ mb: 4 }}>
+                        Edit Team
+                      </Typography>
+
+                      
+                      <EditTeam
+                        handleCloseEdit={handleCloseEdit}
+                        soccerTeamId={team._id}
+                      />
+
+                    </Box>
+                  </Modal>
+                  {/* END EDIT MODAL */}
+
                   <Button
                     type="submit"
                     onClick={() => handleDeleteTeam(team._id)}
