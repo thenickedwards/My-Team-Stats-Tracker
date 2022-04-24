@@ -142,10 +142,19 @@ export default function Leagues() {
         <Grid container spacing={{ xs: 4 }}>
           {leagues.map((league) => {
             return (
-
-              <Grid item key={league._id} xs={6} s={6} md={3} lg={3} sx={{display: "flex", flexDirection: "column", alignItems: "center"}}>
-                
-
+              <Grid
+                item
+                key={league._id}
+                xs={6}
+                s={6}
+                md={3}
+                lg={3}
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                }}
+              >
                 <Paper elevation={5} sx={leaguesStyle.leaguePaper}>
                   <img
                     src={league.leaguePic}
@@ -165,9 +174,8 @@ export default function Leagues() {
                     variant="p"
                     gutterBottom
                     sx={leaguesStyle.leaguePaperText}
-
+                    underline="none"
                     href={`/league/${league._id}`}
-
                     color="inherit"
                   >
                     {league.leagueName}

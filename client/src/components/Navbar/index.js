@@ -1,4 +1,5 @@
 import * as React from "react";
+import Link from "@mui/material/Link";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -72,14 +73,16 @@ const Navbar = () => {
     <AppBar position="static" style={navStyle.navBackground}>
       <Container maxWidth="xl" style={navStyle.navImage} justify="end">
         <Toolbar disableGutters>
-          <Typography
+          <Link
             variant="h2"
             noWrap
-            component="div"
+            underline="none"
+            color="#ffffff"
+            href="/"
             sx={{ mr: 2, display: { xs: "flex", md: "flex" } }}
           >
-            My Team Stats
-          </Typography>
+            MyTeam Stats
+          </Link>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "flex" } }}>
             <IconButton
