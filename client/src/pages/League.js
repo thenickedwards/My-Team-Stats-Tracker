@@ -32,8 +32,8 @@ const columns = [
     headerName: "End", 
     width: 250 },
   {
-    field: "viewScore",
-    headerName: "View Score",
+    field: "viewStats",
+    headerName: "View Stats",
     width: 250,
   }
 ];
