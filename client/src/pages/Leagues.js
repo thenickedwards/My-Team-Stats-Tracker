@@ -161,32 +161,29 @@ export default function Leagues() {
                   alignItems: "center",
                 }}
               >
-                <Paper elevation={5} sx={leaguesStyle.leaguePaper}>
+                <Link
+                  elevation={5}
+                  backgroundColor="#FFFFFF"
+                  underline="none"
+                  href={`/league/${league._id}`}
+                  color="inherit"
+                  sx={leaguesStyle.leaguePaper}
+                >
                   <img
                     src={league.leaguePic}
                     alt="logo"
                     loading="lazy"
                     height={100}
                   />
-                  {/* <Typography
+                  <Typography
                     variant="p"
                     gutterBottom
                     component="div"
                     sx={leaguesStyle.leaguePaperText}
                   >
                     {league.leagueName}
-                  </Typography> */}
-                  <Link
-                    variant="p"
-                    gutterBottom
-                    sx={leaguesStyle.leaguePaperText}
-                    underline="none"
-                    href={`/league/${league._id}`}
-                    color="inherit"
-                  >
-                    {league.leagueName}
-                  </Link>
-                </Paper>
+                  </Typography>
+                </Link>
 
                 {/* Edit | Delete buttons under league cards */}
                 <ButtonGroup
@@ -195,14 +192,10 @@ export default function Leagues() {
                   sx={{ pt: 2 }}
                   color="inherit"
                 >
-                  <Button
-                    onClick={handleOpenEdit}
-                  >
-                      Edit
-                  </Button>
+                  <Button onClick={handleOpenEdit}>Edit</Button>
 
                   {/* EDIT MODAL */}
-                  <Modal
+                  {/* <Modal
                     open={openEdit}
                     onClose={handleCloseEdit}
                     leagueId={league._id}
@@ -215,13 +208,13 @@ export default function Leagues() {
                       </Typography>
 
                       
-                      <EditLeague
-                        handleCloseEdit={handleCloseEdit}
+                      <EditLeague 
+                        handleClose={handleCloseEdit} 
                         leagueId={league._id}
                       />
 
                     </Box>
-                  </Modal>
+                  </Modal> */}
                   {/* END EDIT MODAL */}
 
                   <Button
@@ -232,7 +225,6 @@ export default function Leagues() {
                   </Button>
                 </ButtonGroup>
               </Grid>
-
             );
           })}
         </Grid>
@@ -255,10 +247,9 @@ export default function Leagues() {
         </Box>
       </Modal>
 
-
       {/* Edit League Modal */}
 
-      {/* <Modal
+      <Modal
         open={openEdit}
         onClose={handleCloseEdit}
         aria-labelledby="modal-modal-title"
@@ -269,17 +260,13 @@ export default function Leagues() {
             Edit League
           </Typography>
 
-          
-          <EditLeague 
-            handleClose={handleCloseEdit} 
+          <EditLeague
+            handleClose={handleCloseEdit}
             // leagueId={league._id}
             // can't grab league._id because not within map
           />
-
         </Box>
-      </Modal> */}
-
-
+      </Modal>
     </Container>
   );
 }
