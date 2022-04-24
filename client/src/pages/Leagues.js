@@ -148,43 +148,35 @@ export default function Leagues() {
         <Grid container spacing={{ xs: 4 }}>
           {leagues.map((league) => {
             return (
-              <Grid
-                item
-                key={league._id}
-                xs={6}
-                s={6}
-                md={3}
-                lg={3}
-                sx={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                }}
-              >
+              <Grid item key={league._id} xs={6} s={6} md={3} lg={3}>
                 <Link
-                  elevation={5}
-                  backgroundColor="#FFFFFF"
+                  sx={leaguesStyle.leaguePaperText}
                   underline="none"
                   href={`/league/${league._id}`}
-                  color="inherit"
-                  sx={leaguesStyle.leaguePaper}
                 >
-                  <img
-                    src={league.leaguePic}
-                    alt="logo"
-                    loading="lazy"
-                    height={100}
-                  />
-                  <Typography
-                    variant="p"
-                    gutterBottom
-                    component="div"
-                    sx={leaguesStyle.leaguePaperText}
+                  <Paper
+                    elevation={5}
+                    underline="none"
+                    href={`/league/${league._id}`}
+                    color="inherit"
+                    sx={leaguesStyle.leaguePaper}
                   >
-                    {league.leagueName}
-                  </Typography>
+                    <img
+                      src={league.leaguePic}
+                      alt="logo"
+                      loading="lazy"
+                      height={100}
+                    />
+                    <Typography
+                      variant="p"
+                      gutterBottom
+                      component="div"
+                      sx={leaguesStyle.leaguePaperText}
+                    >
+                      {league.leagueName}
+                    </Typography>
+                  </Paper>
                 </Link>
-
                 {/* Edit | Delete buttons under league cards */}
                 <ButtonGroup
                   variant="text"
