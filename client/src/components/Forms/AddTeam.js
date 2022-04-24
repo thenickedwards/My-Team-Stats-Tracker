@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useMutation } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client';
 import { ColorPicker, createColor } from 'material-ui-color';
 
 // Material UI Imports
@@ -14,7 +14,7 @@ import {
     OutlinedInput,
 } from '@mui/material';
 import { ADD_SOCCERTEAM } from '../../utils/mutations';
-import { QUERY_SOCCERTEAMS } from '../../utils/queries';
+import { QUERY_SEASONS, QUERY_SOCCERTEAMS } from '../../utils/queries';
 
 
 // Temporary Data
@@ -46,6 +46,10 @@ const teamsStyle = {
 
 
 export default function AddTeam( {handleClose} ) {
+
+    // Functionality for Select Team Dropdown
+    const { loading, data } = useQuery(QUERY_SEASONS);
+    const seasons = data?.allSeasons || [];
 
       // Functionality to Adding League via Form
     const [formState, setFormState] = useState({
@@ -102,7 +106,7 @@ export default function AddTeam( {handleClose} ) {
     
         try {
           const { data } = await addTeam({
-            variables: { team: { teamDetails} },
+            variables: { team: teamDetails },
           });
 
     
@@ -159,8 +163,8 @@ export default function AddTeam( {handleClose} ) {
               </MenuItem>
 
               {seasons.map((season) => (
-                <MenuItem key={season} value={season}>
-                  {season}
+                <MenuItem key={season} value={season._id}>
+                  {season.seasonName}
                 </MenuItem>
               ))}
             </Select>
