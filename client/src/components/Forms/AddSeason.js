@@ -146,6 +146,7 @@ export default function AddSeason({ handleClose }) {
             labelId="league"
             id="league"
             name="league"
+            type="text"
             //   multiple
             value={league}
             onChange={handleFormChange}

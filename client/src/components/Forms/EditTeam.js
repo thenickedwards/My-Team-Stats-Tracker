@@ -1,26 +1,21 @@
-import { useState } from 'react'
-import { useMutation, useQuery } from '@apollo/client';
+import { useState } from "react";
+import { useMutation, useQuery } from "@apollo/client";
+import { UPDATE_TEAM } from "../../utils/mutations";
+import { QUERY_SOCCERTEAMS, QUERY_SEASONS } from "../../utils/queries";
 import { ColorPicker, createColor } from 'material-ui-color';
 
-// Material UI Imports
-import { 
-    Button,
-    FormControl,
-    TextField,
-    Typography,
-    InputLabel,
-    Select,
-    MenuItem,
-    OutlinedInput,
-} from '@mui/material';
-import { ADD_SOCCERTEAM } from '../../utils/mutations';
-import { QUERY_SEASONS, QUERY_SOCCERTEAMS } from '../../utils/queries';
+import {
+  Button,
+  FormControl,
+  TextField,
+  Typography,
+  InputLabel,
+  Select,
+  MenuItem,
+  OutlinedInput,
+} from "@mui/material";
 
-
-// // Temporary Data
-// const seasons = ["Spring 2022-2023", "Fall 2022-2023"];
-
-// Add Seasons Modal Multiselect
+// Add Team Modal Multiselect
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
 const MenuProps = {
@@ -32,104 +27,84 @@ const MenuProps = {
   },
 };
 
-
 // Styles
 const teamsStyle = {
-    formButton: { 
-        height: 50, 
-        backgroundColor: "secondary.main",
-        "&:hover": {
-          backgroundColor: "primary.main",
-        },
-    },
-  }
+  formButton: { 
+      height: 50, 
+      backgroundColor: "secondary.main",
+      "&:hover": {
+        backgroundColor: "primary.main",
+      },
+  },
+}
 
 
-export default function AddTeam( {handleClose} ) {
+const EditTeam = ( {soccerTeamId, handleCloseEdit} ) => {
 
-    // Functionality for Select Team Dropdown
+    // Functionality for Select Season Dropdown
     const { loading, data } = useQuery(QUERY_SEASONS);
     const seasons = data?.allSeasons || [];
-
-      // Functionality to Adding League via Form
+  
+    // Functionality to Adding League via Form
     const [formState, setFormState] = useState({
-            teamName: "",
-            // teamColor: "",
-            season: "",
-            teamPic: "",
-        });
+      teamName: "",
+      // teamColor: "",
+      season: "",
+      teamPic: "",
+    });
 
-    // const { teamName, teamColor, season, teamPic } = formState;
     const { teamName, season, teamPic } = formState;
 
     const [color, setColor] = useState(
-        createColor("#000"), 
-        {
-            teamColor: ""
-        }
+      createColor("#000"), 
+      {
+          teamColor: ""
+      }
     );
 
-    const teamColor = color;
+  const teamColor = color;
 
-    const [addTeam, { error }] = useMutation(ADD_SOCCERTEAM, {
-        refetchQueries: [ QUERY_SOCCERTEAMS ]
+
+  const [updateSoccerTeam, { error }] = useMutation(UPDATE_TEAM, {
+    refetchQueries: [ QUERY_SOCCERTEAMS ]
+ });
+
+  const handleColorChange = (value) => {
+    console.log("onChange=", value);
+    console.log("new value", "#" + value.hex)
+    setColor("#" + value.hex);
+
+  }
+  const handleFormChange = (event) => {
+    const { name, value } = event.target;
+
+    setFormState({
+      ...formState,
+      [name]: value,
     });
+  };
 
+  const handleTeamFormSubmit = async (event) => {
+    event.preventDefault();
 
-    // const handleMultipleChanges = (e) => {
-    //     handleColorChange(e)
-    //     handleFormChange()
-    // }
+    const teamDetails = {...formState, teamColor}
+    console.log("Team Details", teamDetails)
+    
+    try {
+      const { data } = await updateSoccerTeam({
+        variables: { soccerTeamId: soccerTeamId, soccerTeam: teamDetails },
+      });
 
-    const handleColorChange = (value) => {
-        console.log("onChange=", value);
-        console.log("new value", "#" + value.hex)
-        setColor("#" + value.hex);
-   
+      handleCloseEdit();
+      
+    } catch (e) {
+      console.error(e);
     }
-
-    const handleFormChange = (event) => {
-        const { name, value } = event.target;
-    
-        setFormState({
-          ...formState,
-          [name]: value,
-        });
-
-      };
-
-      const handleTeamFormSubmit = async (event) => {
-        event.preventDefault();
-
-            const teamDetails = {...formState, teamColor}
-            console.log("Team Details", teamDetails)
-    
-        try {
-          const { data } = await addTeam({
-            variables: { team: teamDetails },
-          });
-
-    
-          setFormState({
-            teamName: "",
-            season: "",
-            teamPic: "",
-          });
-    
-          setColor({
-            teamColor: "",
-          });
-
-          handleClose();
-          
-        } catch (e) {
-          console.error(e);
-        }
-      };   
+  };
 
   return (
-
-    <form onSubmit={handleTeamFormSubmit}>
+    <div>
+      <form onSubmit={handleTeamFormSubmit}>
     <FormControl fullWidth sx={{ gap:4 }}>
 
         <TextField 
@@ -200,11 +175,15 @@ export default function AddTeam( {handleClose} ) {
         fullWidth
         disableElevation
         >
-            <Typography variant="h3">Add Team</Typography>
+            <Typography variant="h3">Edit Team</Typography>
 
         </Button>
 
     </FormControl>
-</form>
-  )
+    </form>
+
+    </div>
+  );
 }
+
+export default EditTeam;

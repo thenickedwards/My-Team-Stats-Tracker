@@ -174,14 +174,22 @@ export const UPDATE_SEASON = gql `
 `;
 
 export const UPDATE_TEAM = gql `
-  mutation updateSoccerTeam($soccerTeamId: ID!, $team: SoccerTeamInput) {
-    updateSoccerTeam(soccerTeamId: $soccerTeamId, soccerTeam: $team) {
-      _id
-      teamName
-      teamColor
-      teamPic
-    }
+  # mutation updateSoccerTeam($soccerTeamId: ID!, $team: SoccerTeamInput) {
+  #   updateSoccerTeam(soccerTeamId: $soccerTeamId, soccerTeam: $team) {
+  #     _id
+  #     teamName
+  #     teamColor
+  #     teamPic
+  #   }
+  # }
+  mutation updateSoccerTeam($soccerTeamId: ID!, $soccerTeam: SoccerTeamInput) {
+  updateSoccerTeam(soccerTeamId: $soccerTeamId, soccerTeam: $soccerTeam) {
+    _id
+    teamName
+    teamColor
+    teamPic
   }
+}
 `;
 
 export const UPDATE_PLAYER = gql `
