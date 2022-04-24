@@ -109,9 +109,10 @@ export default function Team () {
     variables: { soccerTeamId },
   });
 
-  // console.log(data);
   const soccerTeam = data?.soccerTeam || {};
-  console.log(soccerTeam);
+
+  // Create roster
+  let allPlayers = soccerTeam.roster;
 
   // Functionality for Dropdown
   const [season, setSeason] = React.useState("");
@@ -417,26 +418,31 @@ export default function Team () {
               {/* PLAYERS */}
               <Grid container sx={{ display: "flex", flexDirection: "column" }}>
 
+                
+                
                 {/* Player Details. Map over this section. */}
-                <Grid
-                  item
-                  sx={{ display: "flex", flexDirection: "row", mb: 3 }}
-                >
-                  <Box style={teamStyle.teamRoster}>
-                    <img
-                      src="images/player-default-profile.png"
-                      alt="Player Profile Icon"
-                      width="30px"
-                      height="auto"
-                      style={{ padding: "10px 0 0 0" }}
-                    />
-                  </Box>
+                  <Grid
+                    item
+                    sx={{ display: "flex", flexDirection: "row", mb: 3 }}
+                  >
+                    <Box style={teamStyle.teamRoster}>
+                      <img
+                        src="images/player-default-profile.png"
+                        alt="Player Profile Icon"
+                        width="30px"
+                        height="auto"
+                        style={{ padding: "10px 0 0 0" }}
+                      />
+                    </Box>
 
-                  <Box>
-                    <Typography variant="h3">#11</Typography>
-                    <Typography variant="h6">Antonio Sanchez</Typography>
-                  </Box>
-                </Grid>
+                    <Box>
+                      <Typography variant="h3">#11</Typography>
+                      <Typography variant="h6">Antonio Sanchez</Typography>
+                    </Box>
+                  </Grid>
+
+
+
                 {/* End Player Details Mapping. */}
 
                 {/* ----------------------------------------------------- */}
