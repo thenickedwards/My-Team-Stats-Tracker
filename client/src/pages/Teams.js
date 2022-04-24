@@ -201,7 +201,7 @@ export default function Teams() {
                   <Link
                     variant="p"
                     gutterBottom
-                    // component="div"
+                    underline="none"
                     sx={teamsStyle.teamPaperText}
                     href={`/team/${team._id}`}
                     color="inherit"
