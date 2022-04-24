@@ -40,8 +40,6 @@ const columns = [
     headerName: "View Score",
     sortable: false,
     width: 300,
-    valueGetter: (params) =>
-      `${params.row.firstName || ""} ${params.row.lastName || ""}`,
   },
 ];
 
