@@ -208,6 +208,7 @@ export default function Leagues() {
 
                       
                       <EditLeague
+                        handleCloseEdit={handleCloseEdit}
                         leagueId={league._id}
                       />
 
