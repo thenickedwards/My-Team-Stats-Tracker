@@ -294,10 +294,6 @@ export default function Player() {
                 <TabPanel value={value} index={0}>
                   {/* Upcoming Games */}
                   <Box sx={{ width: "100%", mt: 8 }}>
-                    <Typography variant="h1" sx={{ ml: 4, mb: 3 }}>
-                      Games
-                    </Typography>
-
                     <div style={{ height: 400, width: "100%" }}>
                       <DataGrid
                         rows={games.map((game) => ({
