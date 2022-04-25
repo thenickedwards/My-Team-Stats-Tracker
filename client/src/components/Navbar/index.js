@@ -6,7 +6,7 @@ import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
-import Container from "@mui/material/Container";
+import Grid from "@mui/material/Grid";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
@@ -54,6 +54,7 @@ const settings = [
 const Navbar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const [anchorElHamburger, setAnchorHamburger] = React.useState(null);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -63,7 +64,7 @@ const Navbar = () => {
   };
 
   const handleOpenHamburgerMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
+    setAnchorHamburger(event.currentTarget);
   };
 
   const handleCloseNavMenu = () => {
@@ -80,167 +81,188 @@ const Navbar = () => {
 
   return (
     <AppBar position="static" style={navStyle.navBackground}>
-      <Container maxWidth="xl" style={navStyle.navImage} justify="end">
+      <Grid
+        maxWidth={false}
+        container
+        display="flex"
+        style={navStyle.navImage}
+        justify="between"
+      >
         <Toolbar disableGutters>
-          <Link
-            variant="h1"
-            noWrap
-            underline="none"
-            color="#ffffff"
-            href="/"
-            sx={{
-              mr: 2,
-              display: { xs: "flex", sm: "flex", md: "flex", lg: "flex" },
-            }}
-          >
-            MyTeam Stats
-          </Link>
-
-          {/* Hamburger menu displays when screen is XS or S */}
-          <Box>
-            <Tooltip title="Open pages">
-              <MenuIcon
-                onClick={handleOpenHamburgerMenu}
-                sx={{
-                  anchorEl: "right",
-                  display: { xs: "flex", sm: "flex", md: "none", lg: "none" },
+          <Grid item>
+            <Link
+              variant="h1"
+              noWrap
+              underline="none"
+              color="#ffffff"
+              href="/"
+              sx={{
+                mr: 2,
+                display: { xs: "flex", sm: "flex", md: "flex", lg: "flex" },
+              }}
+            >
+              MyTeam Stats
+            </Link>
+          </Grid>
+          <Grid item>
+            <Box
+              sx={{
+                flexGrow: 1,
+                display: { xs: "none", sm: "none", md: "flex", lg: "flex" },
+              }}
+            >
+              {/* User icon appears when logged in, displaying user initials */}
+              <IconButton
+                size="large"
+                aria-label="account of current user"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                onClick={handleOpenNavMenu}
+                color="inherit"
+              ></IconButton>
+              {/* Menu items are displayed when screen is M or bigger */}
+              <Menu
+                id="menu-appbar"
+                anchorEl={anchorElNav}
+                anchorOrigin={{
+                  vertical: "bottom",
+                  horizontal: "right",
                 }}
-              />
-            </Tooltip>
-            <Menu
-              sx={{ mt: "45px" }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: "top",
-                horizontal: "left",
+                keepMounted
+                transformOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                open={Boolean(anchorElNav)}
+                onClose={handleCloseNavMenu}
+                sx={{
+                  display: { xs: "block" },
+                }}
+              >
+                {pages.map((page) => (
+                  <MenuItem key={page.id} onClick={handleCloseNavMenu}>
+                    <Typography textAlign="center">{page.name}</Typography>
+                  </MenuItem>
+                ))}
+              </Menu>
+            </Box>
+          </Grid>
+          <Grid item>
+            <Box
+              sx={{
+                flexGrow: 1,
+                display: { xs: "none", sm: "none", md: "flex", lg: "flex" },
               }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "left",
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseHamburgerMenu}
             >
               {pages.map((page) => (
-                <MenuItem
+                <Button
                   key={page.id}
                   onClick={(e) => {
                     e.preventDefault();
                     window.location.href = `/${page.URL}`;
                   }}
+                  sx={{ my: 2, color: "white", display: "block" }}
                 >
-                  <Typography textAlign="center">{page.name}</Typography>
-                </MenuItem>
+                  <Typography fontSize={20}>{page.name}</Typography>
+                </Button>
               ))}
-            </Menu>
-          </Box>
-          <Box
-            sx={{
-              flexGrow: 1,
-              display: { xs: "none", sm: "none", md: "flex", lg: "flex" },
-            }}
-          >
-            {/* User icon appears when logged in, displaying user initials */}
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color="inherit"
-            ></IconButton>
-            {/* Menu items are displayed when screen is M or bigger */}
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: "bottom",
-                horizontal: "left",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "left",
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{
-                display: { xs: "block" },
-              }}
-            >
-              {pages.map((page) => (
-                <MenuItem key={page.id} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page.name}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box>
-
-          <Box
-            sx={{
-              flexGrow: 1,
-              display: { xs: "none", sm: "none", md: "flex", lg: "flex" },
-            }}
-          >
-            {pages.map((page) => (
-              <Button
-                key={page.id}
-                onClick={(e) => {
-                  e.preventDefault();
-                  window.location.href = `/${page.URL}`;
+            </Box>
+          </Grid>
+          {/* Hamburger menu displays when screen is XS or S */}
+          <Grid item>
+            <Box>
+              <Tooltip title="Open pages">
+                <MenuIcon
+                  onClick={handleOpenHamburgerMenu}
+                  sx={{
+                    anchorEl: "right",
+                    display: {
+                      xs: "flex",
+                      sm: "flex",
+                      md: "none",
+                      lg: "none",
+                    },
+                  }}
+                />
+              </Tooltip>
+              <Menu
+                sx={{ mt: "45px" }}
+                id="small-menu-appbar"
+                anchorEl={anchorElHamburger}
+                anchorOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
                 }}
-                sx={{ my: 2, color: "white", display: "block" }}
+                keepMounted
+                transformOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                open={Boolean(anchorElHamburger)}
+                onClose={handleCloseHamburgerMenu}
               >
-                <Typography fontSize={20}>{page.name}</Typography>
-              </Button>
-            ))}
-          </Box>
+                {pages.map((page) => (
+                  <MenuItem
+                    key={page.id}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      window.location.href = `/${page.URL}`;
+                    }}
+                  >
+                    <Typography textAlign="center">{page.name}</Typography>
+                  </MenuItem>
+                ))}
+              </Menu>
+            </Box>
+          </Grid>
 
-          <Box sx={{ flexGrow: 0 }}>
-            {Auth.loggedIn() ? (
-              <>
-                <Tooltip title="Open settings">
-                  <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                    <Avatar>{userInitials()}</Avatar>
-                  </IconButton>
-                </Tooltip>
-                <Menu
-                  sx={{ mt: "45px" }}
-                  id="menu-appbar"
-                  anchorEl={anchorElUser}
-                  anchorOrigin={{
-                    vertical: "top",
-                    horizontal: "right",
-                  }}
-                  keepMounted
-                  transformOrigin={{
-                    vertical: "top",
-                    horizontal: "right",
-                  }}
-                  open={Boolean(anchorElUser)}
-                  onClose={handleCloseUserMenu}
-                >
-                  {settings.map((setting) => (
-                    <MenuItem
-                      key={setting.id}
-                      onClick={(e) => {
-                        e.preventDefault();
-                        window.location.href = `/${setting.URL}`;
-                      }}
-                    >
-                      <Typography textAlign="center">{setting.name}</Typography>
-                    </MenuItem>
-                  ))}
-                </Menu>
-              </>
-            ) : (
-              <div></div>
-            )}
-          </Box>
+          <Grid item>
+            <Box sx={{ flexGrow: 0 }}>
+              {Auth.loggedIn() ? (
+                <>
+                  <Tooltip title="Open settings">
+                    <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                      <Avatar>{userInitials()}</Avatar>
+                    </IconButton>
+                  </Tooltip>
+                  <Menu
+                    sx={{ mt: "45px" }}
+                    id="menu-appbar"
+                    anchorEl={anchorElUser}
+                    anchorOrigin={{
+                      vertical: "top",
+                      horizontal: "right",
+                    }}
+                    keepMounted
+                    transformOrigin={{
+                      vertical: "top",
+                      horizontal: "right",
+                    }}
+                    open={Boolean(anchorElUser)}
+                    onClose={handleCloseUserMenu}
+                  >
+                    {settings.map((setting) => (
+                      <MenuItem
+                        key={setting.id}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          window.location.href = `/${setting.URL}`;
+                        }}
+                      >
+                        <Typography textAlign="center">
+                          {setting.name}
+                        </Typography>
+                      </MenuItem>
+                    ))}
+                  </Menu>
+                </>
+              ) : (
+                <div></div>
+              )}
+            </Box>
+          </Grid>
         </Toolbar>
-      </Container>
+      </Grid>
     </AppBar>
   );
 };
