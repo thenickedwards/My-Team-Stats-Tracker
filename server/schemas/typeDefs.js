@@ -1,4 +1,4 @@
-const { gql } = require('apollo-server-express');
+const { gql } = require("apollo-server-express");
 
 const typeDefs = gql`
   type User {
@@ -85,7 +85,7 @@ const typeDefs = gql`
     playerFirstName: String!
     playerLastName: String!
     playerPic: String
-    playerNumber: Int
+    playerNumber: String
     goals: [Goal]
     assists: [Assist]
     team: SoccerTeam
@@ -95,7 +95,7 @@ const typeDefs = gql`
     playerFirstName: String!
     playerLastName: String!
     playerPic: String
-    playerNumber: Int
+    playerNumber: String
     team: ID
   }
 
@@ -120,7 +120,6 @@ const typeDefs = gql`
     assistsAway: Int
   }
 
-
   type Query {
     users: [User]
     user(username: String!): User
@@ -140,7 +139,13 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    addUser(username: String!, password: String!, email: String!, userFirstName: String!, userLastName: String!): Auth
+    addUser(
+      username: String!
+      password: String!
+      email: String!
+      userFirstName: String!
+      userLastName: String!
+    ): Auth
     # addUser(username: String!, email: String!, password: String!): Auth
     # login(email: String!, password: String!): Auth
     login(username: String!, password: String!): Auth
@@ -164,7 +169,10 @@ const typeDefs = gql`
     updateLeague(leagueId: ID!, league: LeagueInput): League
     updateSeason(seasonId: ID!, season: SeasonInput): Season
     updateSoccerTeam(soccerTeamId: ID!, soccerTeam: SoccerTeamInput): SoccerTeam
-    updateSoccerPlayer(soccerPlayerId: ID!, soccerPlayer: SoccerPlayerInput): SoccerPlayer
+    updateSoccerPlayer(
+      soccerPlayerId: ID!
+      soccerPlayer: SoccerPlayerInput
+    ): SoccerPlayer
   }
 `;
 
