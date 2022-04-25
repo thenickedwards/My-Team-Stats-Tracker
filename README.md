@@ -2,7 +2,7 @@
 
 ## Description
 
-Welcome to the MyTeam sports stats tracker for youth leagues, adult rec teams, and school sports!
+Welcome to the MyTeam sports stats tracker for youth leagues, adult rec teams, and school sports! Whether you're a coach of a professional team looking to track the teams and players of a whole league, a player/manger corralling of an adult recreation team, a rec league admin building a season of teams, or an enthusiastic parent tracking their young athlete's progression through youth sports, myTeam Stats is the best way to manage anything from players on a team to multiple leagues running multiple seasons.
 
 Check out the readme below and then use the live app via the Heroku button below!
 
