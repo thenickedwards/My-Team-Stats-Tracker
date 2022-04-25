@@ -72,6 +72,10 @@ export default function AddSeason({ handleClose }) {
 
   const [addSeason, { error }] = useMutation(ADD_SEASON);
 
+  if (loading) {
+    return <div>LOADING</div>;
+  }
+
   const handleFormChange = (event) => {
     let { name, value } = event.target;
 
@@ -87,7 +91,7 @@ export default function AddSeason({ handleClose }) {
 
   const handleSeasonFormSubmit = async (event) => {
     event.preventDefault();
-    console.log("Testing", {...formState});
+    console.log("Testing", { ...formState });
 
     try {
       const { data } = await addSeason({
