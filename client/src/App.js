@@ -130,7 +130,7 @@ function App() {
 
               <Route path="/team/:soccerTeamId" element={<Team />} />
 
-              <Route path="/player/:playerId" element={<Player />} />
+              <Route path="/player/" element={<Player />} />
 
               <Route
                 path="/league-season-stats"
