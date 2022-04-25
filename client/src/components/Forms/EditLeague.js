@@ -73,8 +73,8 @@ const EditLeague = ( {leagueId, handleCloseEdit} ) => {
         variables: { leagueId: leagueId, league: {...formState} },
       });
 
-      // handleCloseEdit();
-      document.location.reload();
+      handleCloseEdit();
+      // document.location.reload();
       
     } catch (e) {
       console.error(e);
