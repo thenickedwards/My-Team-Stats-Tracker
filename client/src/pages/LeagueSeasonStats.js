@@ -46,14 +46,14 @@ const columns = [
   {
     field: "win",
     headerName: "W",
-    width: 70,
+    width: 80,
   },
-  { field: "draw", headerName: "D", width:70 },
-  { field: "losses", headerName: "L", width: 70 },
-  { field: "points", headerName: "PTS", width: 100 },
-  { field: "goalsFor", headerName: "GF", width: 70 },
-  { field: "goalsAgainst", headerName: "GA", width: 70 },
-  { field: "goalDifferential", headerName: "GD", width: 70 },
+  { field: "draw", headerName: "D", width:80 },
+  { field: "losses", headerName: "L", width: 80 },
+  { field: "points", headerName: "PTS", width: 120 },
+  { field: "goalsFor", headerName: "GF", width: 90 },
+  { field: "goalsAgainst", headerName: "GA", width: 90 },
+  { field: "goalDifferential", headerName: "GD", width: 90 },
 ];
 
 //   DATAGRID (TEMPORARY DATA) TODO: Map League Seasons (Future Development)

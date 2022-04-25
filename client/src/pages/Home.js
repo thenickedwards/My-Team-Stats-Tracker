@@ -26,6 +26,7 @@ const columns = [
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
+          sortable: false,
           gap: 2,
         }}
       >
@@ -50,6 +51,7 @@ const columns = [
     field: "awayTeam",
     headerName: "Away",
     width: 250, 
+    sortable: false,
     renderCell: (params) => (
       <Box
         sx={{
