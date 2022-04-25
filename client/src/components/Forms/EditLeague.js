@@ -40,7 +40,6 @@ const leaguesStyle = {
 };
 
 const EditLeague = ( {leagueId, handleCloseEdit} ) => {
-
   // Functionality to Adding League via Form
   const [formState, setFormState] = useState({
       leagueName: "",
@@ -74,7 +73,8 @@ const EditLeague = ( {leagueId, handleCloseEdit} ) => {
         variables: { leagueId: leagueId, league: {...formState} },
       });
 
-      handleCloseEdit();
+      // handleCloseEdit();
+      document.location.reload();
       
     } catch (e) {
       console.error(e);

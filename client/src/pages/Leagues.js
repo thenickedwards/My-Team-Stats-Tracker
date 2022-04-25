@@ -216,7 +216,7 @@ export default function Leagues() {
                       />
 
                     </Box>
-                  </Modal> */}
+                  </Modal>
                   {/* END EDIT MODAL */}
 
                   <Button
@@ -249,26 +249,7 @@ export default function Leagues() {
         </Box>
       </Modal>
 
-      {/* Edit League Modal */}
 
-      <Modal
-        open={openEdit}
-        onClose={handleCloseEdit}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box sx={leaguesStyle.addLeagueModal}>
-          <Typography id="modal-modal-title" variant="h1" sx={{ mb: 4 }}>
-            Edit League
-          </Typography>
-
-          <EditLeague
-            handleClose={handleCloseEdit}
-            // leagueId={league._id}
-            // can't grab league._id because not within map
-          />
-        </Box>
-      </Modal>
     </Container>
   );
 }
