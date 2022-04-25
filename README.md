@@ -80,6 +80,6 @@ URL for GitHub repo: [https://github.com/thenickedwards/My-Team-Stats-Tracker](h
 URL for live application deployed on Heroku: [https://myteam-stats.herokuapp.com/](https://myteam-stats.herokuapp.com/)
 
 
-Thank you for reading the readme!
+Thank you for reading the readme! Enjoy an orange slice and Capri-Sun 🍊🧃
 
 [![License: LGPL v3](https://img.shields.io/badge/License-LGPL_v3-brightgreen.svg)](https://www.gnu.org/licenses/lgpl-3.0)
