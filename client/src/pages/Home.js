@@ -1,5 +1,7 @@
 import { QUERY_SOCCERGAMES } from "../utils/queries";
 import { useQuery } from "@apollo/client";
+
+// MUI Imports
 import {
   Box,
   Container,
@@ -11,18 +13,20 @@ import {
 } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 
+
 // Upcoming Games Table - Columns
 const columns = [
   {
     field: "homeTeam",
     headerName: "Home",
-    flex: 1,
+    width: 250, 
     renderCell: (params) => (
       <Box
         sx={{
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
+          sortable: false,
           gap: 2,
         }}
       >
@@ -46,7 +50,8 @@ const columns = [
   {
     field: "awayTeam",
     headerName: "Away",
-    flex: 1,
+    width: 250, 
+    sortable: false,
     renderCell: (params) => (
       <Box
         sx={{
@@ -73,12 +78,15 @@ const columns = [
       </Box>
     ),
   },
-  { field: "gameDate", headerName: "Game Date", width: 200, flex: 1 },
+  { field: "gameDate", 
+    headerName: "Game Date", 
+    width: 250,  
+  },
   {
     field: "viewScore",
     headerName: "View Score",
     sortable: false,
-    flex: 1,
+    width: 250, 
     renderCell: () => (
       <Link href="/game" variant="h3" underline="none">
         View Game
@@ -87,7 +95,7 @@ const columns = [
   },
 ];
 
-// STYLES
+// Styles
 const homeStyle = {
   statsPaper: {
     display: "flex",
@@ -119,27 +127,22 @@ const homeStyle = {
   },
 };
 
+
 const Home = () => {
+
+  // Get All Soccer Games
   const { data } = useQuery(QUERY_SOCCERGAMES);
   const games = data?.allSoccerGames || [];
-
-  console.log("games", games);
 
   return (
     <>
       <CssBaseline />
-      <Container disableGutters justify="center" position="relative">
-        <Box sx={{ position: "absolute", bottom: 0, left: 10 }}>
-          <img
-            src="images/abstract-corner-dots-lines.png"
-            alt="Abstract graphic with dots and lines."
-            width="250px"
-          />
-        </Box>
-
+      <Container disableGutters justify="center">
         <Grid container sx={{ py: 8, px: 5 }}>
+          
           {/* Team Stats */}
           <Grid container spacing={{ xs: 4 }}>
+
             {games.map((game, index) => {
               if (index < 4) {
                 return (
@@ -180,7 +183,9 @@ const Home = () => {
                           />
                           <Typography>{game.awayTeam.teamName}</Typography>
                         </Box>
+
                         <Typography>{game.goalsAway}</Typography>
+
                       </Box>
                     </Paper>
                   </Grid>
@@ -190,6 +195,7 @@ const Home = () => {
 
             {/* Upcoming Games */}
             <Box sx={{ width: "100%", mt: 8 }}>
+
               <Typography variant="h1" sx={{ ml: 4, mb: 3 }}>
                 Upcoming Games
               </Typography>
@@ -233,6 +239,7 @@ const Home = () => {
                       border: "0",
                     },
                   }}
+                  
                 />
               </div>
             </Box>

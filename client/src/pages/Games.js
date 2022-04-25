@@ -1,6 +1,9 @@
 import React from "react";
 import { QUERY_SOCCERGAMES } from "../utils/queries";
 import { useQuery } from "@apollo/client";
+import Auth from "../utils/auth";
+
+// MUI Imports
 import {
   Container,
   CssBaseline,
@@ -22,15 +25,14 @@ import AddIcon from "@mui/icons-material/Add";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-import Auth from "../utils/auth";
 
-// ////////////////////////////////////
-//   DATAGRID (EDIT DATA)
+
+// Columns for Games Table
 const columns = [
   {
     field: "homeTeam",
     headerName: "Home",
-    flex: 1,
+    width: 250, 
     renderCell: (params) => (
       <Box
         sx={{
@@ -61,7 +63,7 @@ const columns = [
   {
     field: "awayTeam",
     headerName: "Away",
-    flex: 1,
+    width: 250, 
     renderCell: (params) => (
       <Box
         sx={{
@@ -89,12 +91,15 @@ const columns = [
       </Box>
     ),
   },
-  { field: "gameDate", headerName: "Game Date", flex: 1 },
+  { field: "gameDate", 
+    headerName: "Game Date", 
+    width: 250,  
+  },
   {
     field: "viewScore",
     headerName: "View Score",
     sortable: false,
-    flex: 1,
+    width: 250, 
     renderCell: () => (
       <Link href="/game" variant="h3" underline="none">
         View Game
@@ -104,23 +109,18 @@ const columns = [
 ];
 
 // Seasons Modal Select Team (TEMPORARY DATA)
-
 const teams = [
-  "Oliver Hansen",
-  "Van Henry",
-  "April Tucker",
-  "Ralph Hubbard",
-  "Omar Alexander",
-  "Carlos Abbott",
-  "Miriam Wagner",
-  "Bradley Wilkerson",
-  "Virginia Andrews",
-  "Kelly Snyder",
+  "Chi Town Tigers",
+  "Galaxy Bees",
+  "Salmon",
+  "Wolves",
+  "Hurricanes",
+  "Blizzard",
+  "Lightning",
+  "Thunder"
 ];
 
-// ////////////////////////////////////
-
-// STYLES
+// Styles
 const gamesStyle = {
   addGameModal: {
     position: "absolute",
@@ -142,7 +142,10 @@ const gamesStyle = {
   },
 };
 
+
 export default function Games() {
+
+  // Get All Socer Games
   const { data } = useQuery(QUERY_SOCCERGAMES);
   const games = data?.allSoccerGames || [];
 
@@ -189,19 +192,14 @@ export default function Games() {
   return (
     <>
       <CssBaseline />
-      <Container disableGutters justify="center" position="relative">
-        {/* CORNER ABSTRACT IMAGE */}
-        <Box sx={{ position: "absolute", bottom: 0, left: 10 }}>
-          <img
-            src="images/abstract-corner-dots-lines.png"
-            alt="Abstract graphic with dots and lines."
-            width="250px"
-          />
-        </Box>
+      <Container disableGutters justify="center">
+
         {/* Outer container allows graphic images to be placed absolute. Also establishes padding. */}
         <Grid container sx={{ py: 8, px: 5 }}>
+          
           {/* Container for the two top columns. */}
           <Grid container alignItems={"center"}>
+            
             {/* PAGE HEADING. Left column. */}
             <Grid item xs={12} sm={12} md={9} lg={9}>
               <Grid container sx={{ display: "flex", flexDirection: "column" }}>
@@ -240,6 +238,7 @@ export default function Games() {
                   ) : (
                     <div></div>
                   )}
+
                 </Grid>
               </Grid>
             </Grid>
@@ -374,14 +373,6 @@ export default function Games() {
                       ))}
                     </Select>
                   </FormControl>
-
-                  {/* <TextField
-                    id="gameDate"
-                    label="Game Date"
-                    variant="outlined"
-                    color="secondary"
-                    InputLabelProps={{ shrink: true }}
-                  /> */}
 
                   <LocalizationProvider dateAdapter={AdapterDateFns}>
                     <DatePicker

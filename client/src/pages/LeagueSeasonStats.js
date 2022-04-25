@@ -1,4 +1,6 @@
 import React from "react";
+
+// MUI Imports
 import {
   Container,
   CssBaseline,
@@ -9,48 +11,102 @@ import {
   MenuItem,
   FormControl,
   Select,
+  Link,
 } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 
-// ////////////////////////////////////
-//   DATAGRID (EDIT DATA)
+
+//   Datagrid
 const columns = [
-  { field: "id", headerName: "ID", width: 70 },
-  { field: "firstName", headerName: "First name", width: 130 },
-  { field: "lastName", headerName: "Last name", width: 130 },
   {
-    field: "age",
-    headerName: "Age",
-    type: "number",
-    width: 90,
+    field: "standings",
+    headerName: "Standings",
+    width: 300,
+    renderCell: (params) => (
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          gap: 2,
+        }}
+      >
+        <img
+          src={params.value.image}
+          alt="Team Logo"
+          height="auto"
+          width="40px"
+        />
+        <Link href="#" variant="p" underline="none" color="inherit">
+          {params.value.team}
+        </Link>
+      </Box>
+    ),
   },
   {
-    field: "fullName",
-    headerName: "Full name",
-    description: "This column has a value getter and is not sortable.",
-    sortable: false,
-    width: 160,
-    valueGetter: (params) =>
-      `${params.row.firstName || ""} ${params.row.lastName || ""}`,
+    field: "win",
+    headerName: "W",
+    width: 80,
   },
+  { field: "draw", headerName: "D", width:80 },
+  { field: "losses", headerName: "L", width: 80 },
+  { field: "points", headerName: "PTS", width: 120 },
+  { field: "goalsFor", headerName: "GF", width: 90 },
+  { field: "goalsAgainst", headerName: "GA", width: 90 },
+  { field: "goalDifferential", headerName: "GD", width: 90 },
 ];
 
-//   DATAGRID (TEMPORARY DATA)
+//   DATAGRID (TEMPORARY DATA) TODO: Map League Seasons (Future Development)
 const rows = [
-  { id: 1, lastName: "Snow", firstName: "Jon", age: 35 },
-  { id: 2, lastName: "Lannister", firstName: "Cersei", age: 42 },
-  { id: 3, lastName: "Lannister", firstName: "Jaime", age: 45 },
-  { id: 4, lastName: "Stark", firstName: "Arya", age: 16 },
-  { id: 5, lastName: "Targaryen", firstName: "Daenerys", age: null },
-  { id: 6, lastName: "Melisandre", firstName: null, age: 150 },
-  { id: 7, lastName: "Clifford", firstName: "Ferrara", age: 44 },
-  { id: 8, lastName: "Frances", firstName: "Rossini", age: 36 },
-  { id: 9, lastName: "Roxie", firstName: "Harvey", age: 65 },
+  {
+    id: 1,
+    standings: { team: "Chi Town Tigers", image: "/images/chicago.png" },
+    win: "5",
+    draw: "2",
+    losses: "1",
+    points: "30",
+    goalsFor: "12",
+    goalsAgainst: "3",
+    goalDifferential: "9",
+  },
+  {
+    id: 2,
+    standings: { team: "Galaxy Bees", image: "/images/la-galaxy.png" },
+    win: "4",
+    draw: "1",
+    losses: "3",
+    points: "20",
+    goalsFor: "10",
+    goalsAgainst: "8",
+    goalDifferential: "2",
+  },
+  {
+    id: 3,
+    standings: { team: "Salmon", image: "/images/jacksonville.png" },
+    win: "3",
+    draw: "2",
+    losses: "5",
+    points: "25",
+    goalsFor: "4",
+    goalsAgainst: "12",
+    goalDifferential: "-8",
+  },
+  {
+    id: 4,
+    standings: { team: "Wolves", image: "/images/new-york-city.png" },
+    win: "1",
+    draw: "3",
+    losses: "7",
+    points: "35",
+    goalsFor: "3",
+    goalsAgainst: "17",
+    goalDifferential: "-14",
+  },
 ];
 
-// ////////////////////////////////////
 
 export default function LeagueSeasonStats() {
+
   // Functionality for Dropdown
   const [season, setSeason] = React.useState("");
   const handleSeasonChange = (event) => {
@@ -60,21 +116,13 @@ export default function LeagueSeasonStats() {
   return (
     <>
       <CssBaseline />
-      <Container disableGutters justify="center" position="relative">
-        
-        {/* CORNER ABSTRACT IMAGE */}
-        <Box sx={{ position: "absolute", bottom: 0, left: 10 }}>
-          <img
-            src="images/abstract-corner-dots-lines.png"
-            alt="Abstract graphic with dots and lines."
-            width="250px"
-          />
-        </Box>
-
+      <Container disableGutters justify="center">
         {/* Outer container allows graphic images to be placed absolute. Also establishes padding. */}
         <Grid container sx={{ py: 8, px: 5 }}>
+          
           {/* Container for the two top columns. */}
           <Grid container alignItems={"center"}>
+            
             {/* LEAGUE HEADING. Left column. */}
             <Grid item xs={12} sm={12} md={9} lg={9}>
               <Grid container sx={{ display: "flex", flexDirection: "column" }}>
@@ -91,18 +139,18 @@ export default function LeagueSeasonStats() {
                   sx={{ gap: "20px", mb: 5 }}
                 >
                   <img
-                    src="images/chicago.png"
+                    src="images/washington-premier-league.png"
                     alt="Chicago Logo"
                     height="70px"
                     width="auto"
                   />
 
-                  <Box mt={{ xs: 0, sm: 4 }}>
+                  <Box mt={{ xs: 0, sm: 0 }}>
                     <Typography variant="h1" color="secondary.contrastText">
-                      Chicago Premiere League
+                      Washington Premiere League
                     </Typography>
                     <Typography variant="h3" color="secondary.contrastText">
-                      Season
+                      Boys U8 Spring
                     </Typography>
                   </Box>
                 </Grid>
@@ -134,9 +182,9 @@ export default function LeagueSeasonStats() {
                   <MenuItem value="">
                     <em>None</em>
                   </MenuItem>
-                  <MenuItem value={10}>Ten</MenuItem>
-                  <MenuItem value={20}>Twenty</MenuItem>
-                  <MenuItem value={30}>Thirty</MenuItem>
+                  <MenuItem value={10}>Adult Coed A - 11v11 Spring</MenuItem>
+                  <MenuItem value={20}>Adult Womens A - 11v11 Spring</MenuItem>
+                  <MenuItem value={30}>Boys U8 Spring</MenuItem>
                 </Select>
               </FormControl>
             </Grid>
@@ -178,6 +226,7 @@ export default function LeagueSeasonStats() {
             </Box>
           </Grid>
           {/* End League Seasons Table -------------*/}
+        
         </Grid>
       </Container>
     </>

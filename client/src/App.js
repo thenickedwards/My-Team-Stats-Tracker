@@ -35,6 +35,8 @@ import Footer from "./components//Footer/Footer";
 import Navbar from "./components/Navbar";
 // import { fontFamily } from "@mui/system";
 
+import AbstractCorner from "./components/Abstract/AbstractCorner";
+
 // Font import here (SEE INDEX.CSS FOR IMPORT)
 const theme = createTheme({
   typography: {
@@ -107,12 +109,12 @@ function App() {
     <ApolloProvider client={client}>
       {
         <ThemeProvider theme={theme}>
-         
-            {location.pathname === "/login" ||
-            location.pathname === "/signup" ? null : (
-              <Navbar />
-            )}
- <main>
+          {location.pathname === "/login" ||
+          location.pathname === "/signup" ? null : (
+            <Navbar />
+          )}
+          <main>
+            <AbstractCorner/>
             <Routes>
               <Route path="/" element={<Home />} />
 
@@ -130,7 +132,7 @@ function App() {
 
               <Route path="/team/:soccerTeamId" element={<Team />} />
 
-              <Route path="/player/" element={<Player />} />
+              <Route path="/player/:playerId" element={<Player />} />
 
               <Route
                 path="/league-season-stats"
@@ -144,15 +146,12 @@ function App() {
               {/* <Route path="/me" element={<Profile />} />
                   <Route path="/profiles/:username" element={<Profile />} /> */}
             </Routes>
+          </main>
 
-            </main>
-
-
-            {location.pathname === "/login" ||
-            location.pathname === "/signup" ? null : (
-              <Footer />
-            )}
-          
+          {location.pathname === "/login" ||
+          location.pathname === "/signup" ? null : (
+            <Footer />
+          )}
         </ThemeProvider>
       }
     </ApolloProvider>

@@ -1,28 +1,28 @@
-const { Schema, model } = require('mongoose');
+const { Schema, model } = require("mongoose");
 
 const soccerGameSchema = new Schema({
   gameDate: {
     required: true,
-    type: String
+    type: String,
+    //POSSIBLE FUTURE DEVELOPMENT
     // type: Date,
     // default: Date.now,
     // get: timestamp => dayjs(timestamp).format('MMM D, YYYY h:mm A')
   },
   homeTeam: {
     type: Schema.Types.ObjectId,
-    ref: 'SoccerTeam',
+    ref: "SoccerTeam",
   },
   awayTeam: {
     type: Schema.Types.ObjectId,
-    ref: 'SoccerTeam',
+    ref: "SoccerTeam",
   },
   goalsHome: Number,
   goalsAway: Number,
   assistsHome: Number,
-  assistsAway: Number
+  assistsAway: Number,
 });
 
-
-const SoccerGame = model('SoccerGame', soccerGameSchema);
+const SoccerGame = model("SoccerGame", soccerGameSchema);
 
 module.exports = SoccerGame;

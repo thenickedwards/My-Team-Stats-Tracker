@@ -1,5 +1,9 @@
 import React from "react";
+import { useParams } from "react-router-dom";
+import { useQuery } from "@apollo/client";
+import { QUERY_SOCCERPLAYER, QUERY_SOCCERGAMES } from "../utils/queries";
 
+// MUI Imports
 import {
   Container,
   CssBaseline,
@@ -9,50 +13,91 @@ import {
   Typography,
   Tabs,
   Tab,
+  Link,
 } from "@mui/material";
 import PropTypes from "prop-types";
 import { DataGrid } from "@mui/x-data-grid";
+import Loading from "../components/Abstract/Loading";
 
-// ////////////////////////////////////
-//   DATAGRID (EDIT DATA)
+// Upcoming Games Table - Columns
 const columns = [
-  { field: "id", headerName: "ID", width: 70 },
-  { field: "firstName", headerName: "First name", width: 130 },
-  { field: "lastName", headerName: "Last name", width: 130 },
   {
-    field: "age",
-    headerName: "Age",
-    type: "number",
-    width: 90,
+    field: "homeTeam",
+    headerName: "Home",
+    width: 250,
+    renderCell: (params) => (
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          sortable: false,
+          gap: 2,
+        }}
+      >
+        <img
+          src={params.value.homeTeamPic}
+          alt="Team Logo"
+          height="auto"
+          width="40px"
+        />
+        <Link
+          href={`/team/${params.value.homeTeamLink}`}
+          variant="p"
+          underline="none"
+          color="inherit"
+        >
+          {params.value.homeTeamName}
+        </Link>
+      </Box>
+    ),
   },
   {
-    field: "fullName",
-    headerName: "Full name",
-    description: "This column has a value getter and is not sortable.",
+    field: "awayTeam",
+    headerName: "Away",
+    width: 250,
     sortable: false,
-    width: 160,
-    valueGetter: (params) =>
-      `${params.row.firstName || ""} ${params.row.lastName || ""}`,
+    renderCell: (params) => (
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          gap: 2,
+        }}
+      >
+        <img
+          src={params.value.awayTeamPic}
+          alt="Team Logo"
+          height="auto"
+          width="40px"
+        />
+        <Link
+          href={`/team/${params.value.awayTeamLink}`}
+          variant="p"
+          underline="none"
+          color="inherit"
+        >
+          {params.value.awayTeamName}
+        </Link>
+      </Box>
+    ),
+  },
+  { field: "gameDate", headerName: "Game Date", width: 250 },
+  {
+    field: "viewScore",
+    headerName: "View Score",
+    sortable: false,
+    width: 250,
+    renderCell: () => (
+      <Link href="/game" variant="h3" underline="none">
+        View Game
+      </Link>
+    ),
   },
 ];
-
-//   DATAGRID (TEMPORARY DATA)
-
-const rows = [
-  { id: 1, lastName: "Snow", firstName: "Jon", age: 35 },
-  { id: 2, lastName: "Lannister", firstName: "Cersei", age: 42 },
-  { id: 3, lastName: "Lannister", firstName: "Jaime", age: 45 },
-  { id: 4, lastName: "Stark", firstName: "Arya", age: 16 },
-  { id: 5, lastName: "Targaryen", firstName: "Daenerys", age: null },
-  { id: 6, lastName: "Melisandre", firstName: null, age: 150 },
-  { id: 7, lastName: "Clifford", firstName: "Ferrara", age: 44 },
-  { id: 8, lastName: "Frances", firstName: "Rossini", age: 36 },
-  { id: 9, lastName: "Roxie", firstName: "Harvey", age: 65 },
-];
-// ////////////////////////////////////
 
 // Styles
-
 const playerStyle = {
   statsPaper: {
     display: "flex",
@@ -73,7 +118,21 @@ const playerStyle = {
   },
 };
 
-export default function Team() {
+
+export default function Player() {
+  // Get All Soccer Games
+  const { data: gameData } = useQuery(QUERY_SOCCERGAMES);
+  const games = gameData?.allSoccerGames || [];
+
+  //Get player ID from URL
+  const { playerId } = useParams();
+
+  // Get player data
+  const { loading, data } = useQuery(QUERY_SOCCERPLAYER, {
+    variables: { soccerPlayerId: playerId },
+  });
+  const player = data?.soccerPlayer || {};
+
   // Functionality for Tabs
   const [value, setValue] = React.useState(0);
 
@@ -82,6 +141,10 @@ export default function Team() {
   };
   function TabPanel(props) {
     const { children, value, index, ...other } = props;
+
+    if (loading) {
+      return <Loading />;
+    }
 
     return (
       <div
@@ -116,17 +179,11 @@ export default function Team() {
   return (
     <>
       <CssBaseline />
-      <Container disableGutters justify="center" position="relative">
-        <Box sx={{ position: "absolute", bottom: 0, left: 10 }}>
-          <img
-            src="images/abstract-corner-dots-lines.png"
-            alt="Abstract graphic with dots and lines."
-            width="250px"
-          />
-        </Box>
 
+      <Container disableGutters justify="center">
         <Grid container spacing={5} sx={{ py: 8, px: 5 }}>
           <Grid item xs={12} s={12} md={8} lg={8}>
+
             {/* Player Heading */}
             <Box
               sx={{
@@ -139,31 +196,34 @@ export default function Team() {
             >
               <Box style={playerStyle.teamRoster}>
                 <img
-                  src="images/player-default-profile.png"
+                  src="/images/player-default-profile.png"
                   alt="Player Profile Icon"
                   width="30px"
                   height="auto"
                   style={{ padding: "10px 0 0 0" }}
                 />
               </Box>
-
               <Typography variant="h1" color="secondary.contrastText">
-                Trevor Smith
+                {player.playerFirstName} {player.playerLastName}
               </Typography>
             </Box>
 
             {/* Player Stats */}
-
             <Grid container spacing={{ xs: 4 }}>
-              {/* Stats Cards. Map over this section. */}
+              
+              {/* Stats Cards. TODO: Map over this section. (Future Development) */}
               <Grid item xs={6} s={6} md={4} lg={4}>
+                
                 <Paper elevation={5} sx={playerStyle.statsPaper}>
+
                   <Typography variant="h1" color="secondary.contrastText">
                     4
                   </Typography>
+
                   <Typography variant="h6" color="secondary.contrastText">
                     Played
                   </Typography>
+
                 </Paper>
               </Grid>
               {/* End Stats Cards mapping. */}
@@ -230,46 +290,92 @@ export default function Team() {
                     <Tab label="Teams" {...a11yProps(3)} />
                   </Tabs>
                 </Box>
-                <TabPanel value={value} index={0}>
-                  {/* Games */}
-                  <div style={{ height: 400, width: "100%" }}>
-                    <DataGrid
-                      rows={rows}
-                      columns={columns}
-                      pageSize={5}
-                      rowsPerPageOptions={[5]}
-                      className={"customDataGrid"}
-                      sx={{
-                        "&.MuiDataGrid-root": {
-                          border: "none",
-                          fontFamily: "Helvetica, sans-serif",
-                        },
-                        "& .MuiDataGrid-iconSeparator": {
-                          display: "none",
-                        },
-                        "& .MuiDataGrid-columnHeaders": {
-                          fontFamily: '"Bebas Neue", Arial, sans-serif',
-                          fontSize: "1.25em",
-                          bgcolor: "secondary.main",
-                          color: "primary.contrastText",
-                        },
-                        "& .MuiDataGrid-cell": {
-                          border: "0",
-                        },
-                      }}
 
-                      // checkboxSelection
-                    />
-                  </div>
+                <TabPanel value={value} index={0}>
+                  {/* Upcoming Games */}
+                  <Box sx={{ width: "100%", mt: 8 }}>
+                    <Typography variant="h1" sx={{ ml: 4, mb: 3 }}>
+                      Games
+                    </Typography>
+
+                    <div style={{ height: 400, width: "100%" }}>
+                      <DataGrid
+                        rows={games.map((game) => ({
+                          id: game._id,
+                          homeTeam: {
+                            homeTeamName: game.homeTeam.teamName,
+                            homeTeamPic: game.homeTeam.teamPic,
+                            homeTeamLink: game.homeTeam._id,
+                          },
+                          awayTeam: {
+                            awayTeamName: game.awayTeam.teamName,
+                            awayTeamPic: game.awayTeam.teamPic,
+                            awayTeamLink: game.awayTeam._id,
+                          },
+                          gameDate: game.gameDate,
+                        }))}
+                        columns={columns}
+                        pageSize={5}
+                        rowsPerPageOptions={[5]}
+                        className={"customDataGrid"}
+                        sx={{
+                          "&.MuiDataGrid-root": {
+                            border: "none",
+                            fontFamily: "Helvetica, sans-serif",
+                            marginLeft: "30px",
+                          },
+                          "& .MuiDataGrid-iconSeparator": {
+                            display: "none",
+                          },
+                          "& .MuiDataGrid-columnHeaders": {
+                            fontFamily: '"Bebas Neue", Arial, sans-serif',
+                            fontSize: "1.25em",
+                            bgcolor: "secondary.main",
+                            color: "primary.contrastText",
+                          },
+                          "& .MuiDataGrid-cell": {
+                            border: "0",
+                          },
+                        }}
+                      />
+                    </div>
+                  </Box>
                 </TabPanel>
                 <TabPanel value={value} index={1}>
-                  COMING SOON
+                  <Paper elevation={5} sx={playerStyle.statsPaper}>
+                    <Typography
+                      variant="p"
+                      gutterBottom
+                      component="div"
+                      sx={playerStyle.statsPaper}
+                    >
+                      SCHEDULE TAB COMING SOON
+                    </Typography>
+                  </Paper>
                 </TabPanel>
                 <TabPanel value={value} index={2}>
-                  COMING SOON
+                  <Paper elevation={5} sx={playerStyle.statsPaper}>
+                    <Typography
+                      variant="p"
+                      gutterBottom
+                      component="div"
+                      sx={playerStyle.statsPaper}
+                    >
+                      STATS TAB COMING SOON
+                    </Typography>
+                  </Paper>
                 </TabPanel>
                 <TabPanel value={value} index={3}>
-                  COMING SOON
+                  <Paper elevation={5} sx={playerStyle.statsPaper}>
+                    <Typography
+                      variant="p"
+                      gutterBottom
+                      component="div"
+                      sx={playerStyle.statsPaper}
+                    >
+                      TEAM TAB COMING SOON
+                    </Typography>
+                  </Paper>
                 </TabPanel>
               </Box>
             </Grid>
@@ -292,14 +398,14 @@ export default function Team() {
           >
             <Box>
               <img
-                src="images/large-triangles.png"
+                src="/images/large-triangles.png"
                 alt="Abstract triangles graphic."
               />
             </Box>
 
             <Box>
               <Typography fontSize={200} color={"secondary.main"}>
-                #23
+                #{player.playerNumber}
               </Typography>
             </Box>
           </Grid>

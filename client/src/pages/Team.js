@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { QUERY_SOCCERTEAM, QUERY_SOCCERGAMES } from "../utils/queries";
 import Auth from "../utils/auth";
+import Loading from "../components/Abstract/Loading";
 
 // MUI Imports
 import {
@@ -33,7 +34,8 @@ const columns = [
   {
     field: "homeTeam",
     headerName: "Home",
-    flex: 1,
+    width: 200,
+    sortable: false,
     renderCell: (params) => (
       <Box
         sx={{
@@ -63,7 +65,8 @@ const columns = [
   {
     field: "awayTeam",
     headerName: "Away",
-    flex: 1,
+    width: 200,
+    sortable: false,
     renderCell: (params) => (
       <Box
         sx={{
@@ -90,12 +93,12 @@ const columns = [
       </Box>
     ),
   },
-  { field: "gameDate", headerName: "Game Date", width: 200, flex: 1 },
+  { field: "gameDate", headerName: "Game Date", width: 200 },
   {
     field: "viewScore",
     headerName: "View Score",
     sortable: false,
-    flex: 1,
+    width: 200,
     renderCell: () => (
       <Link href="/game" variant="h3" underline="none">
         View Game
@@ -105,7 +108,6 @@ const columns = [
 ];
 
 // STYLES
-
 const teamStyle = {
   statsPaper: {
     display: "flex",
@@ -181,7 +183,7 @@ export default function Team() {
   };
 
   if (loading || loadingTeam) {
-    return <div>LOADING</div>;
+    return <Loading />;
   }
 
   function TabPanel(props) {
@@ -220,17 +222,10 @@ export default function Team() {
   return (
     <>
       <CssBaseline />
-      <Container disableGutters justify="center" position="relative">
-        {/* CORNER ABSTRACT IMAGE */}
-        <Box sx={{ position: "absolute", bottom: 0, left: 10 }}>
-          <img
-            src="/images/abstract-corner-dots-lines.png"
-            alt="Abstract graphic with dots and lines."
-            width="250px"
-          />
-        </Box>
+      {/* <Container disableGutters justify="center" position="relative"> */}
+      <Container disableGutters justify="center">
         {/* Outer container allows graphic images to be placed absolute. Also establishes padding. */}
-        <Grid container sx={{ py: 8, px: 5 }} >
+        <Grid container sx={{ py: 8, px: 5 }}>
           {/* Container for the two top columns. */}
           <Grid container alignItems={"center"}>
             {/* LEAGUE HEADING. Left column. */}
@@ -448,6 +443,7 @@ export default function Team() {
               {/* TEAM ROSTER */}
 
               {/* HEADING */}
+
               <Box
                 sx={{
                   display: "flex",
@@ -458,7 +454,7 @@ export default function Team() {
                 }}
               >
                 <Typography variant="h3">Team Roster</Typography>
-                
+
                 {Auth.loggedIn() ? (
                   <IconButton
                     onClick={handleOpen}
@@ -474,12 +470,13 @@ export default function Team() {
                   >
                     <AddIcon fontSize="inherit" sx={{ color: "#ffffff" }} />
                   </IconButton>
-                  ) : (
-                    <div></div>
-                  )}
+                ) : (
+                  <div></div>
+                )}
               </Box>
 
               {/* PLAYERS */}
+
               <Grid container sx={{ display: "flex", flexDirection: "column" }}>
                 {/* Player Details. Map over this section. */}
 
@@ -490,10 +487,16 @@ export default function Team() {
                       sx={{ display: "flex", flexDirection: "row", mb: 3 }}
                     >
                       <Box style={teamStyle.teamRoster}>
-                        <AccountCircleIcon
-                          fontSize="large"
-                          sx={{ color: currentTeamColor }}
-                        ></AccountCircleIcon>
+                        <Link
+                          sx={teamStyle.teamRoster}
+                          underline="none"
+                          href={`/player/${player._id}`}
+                        >
+                          <AccountCircleIcon
+                            fontSize="large"
+                            sx={{ color: currentTeamColor }}
+                          ></AccountCircleIcon>
+                        </Link>
                       </Box>
 
                       <Box>

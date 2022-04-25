@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { QUERY_LEAGUE } from "../utils/queries";
 import Auth from "../utils/auth";
+import Loading from "../components/Abstract/Loading";
 
 // MUI Imports
 import {
@@ -11,14 +12,18 @@ import {
   CssBaseline,
   Modal,
   Grid,
-  Typography
+  Typography,
+  Link,
 } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import IconButton from "@mui/material/IconButton";
 import AddIcon from "@mui/icons-material/Add";
 import AddSeason from "../components/Forms/AddSeason";
 
-//   DATAGRID (EDIT DATA)
+
+// DATAGRID (EDIT DATA)
+// Seasons Table - Columns
+  
 const columns = [
   {
     field: "seasonName",
@@ -39,6 +44,11 @@ const columns = [
     field: "viewStats",
     headerName: "View Stats",
     width: 250,
+    renderCell: () => (
+      <Link href="/league-season-stats" variant="h3" underline="none">
+        View Stats
+      </Link>
+    ),
   },
 ];
 
@@ -54,7 +64,7 @@ const MenuProps = {
   },
 };
 
-// STYLES
+// Styles
 const leagueStyle = {
   addPlayerModal: {
     position: "absolute",
@@ -87,34 +97,19 @@ export default function League() {
   let seasonNames = [];
   if (league.seasons) {
     seasonNames = league.seasons.map((season) => {
-      // return season.seasonName;
       return season;
     });
   }
 
   if (loading) {
-    return <div>LOADING</div>;
+    return <Loading />;
   }
 
   return (
     <>
       <CssBaseline />
-      <Container
-        disableGutters
-        justify="center"
-        position="relative"
-        // maxWidth="false"
-      >
-        <Grid container sx={{ py: 8, px: 5 }} >
-          {/* Corner Abstract Image */}
-          <Box sx={{ position: "absolute", bottom: 0, left: 10 }}>
-            <img
-              src="/images/abstract-corner-dots-lines.png"
-              alt="Abstract graphic with dots and lines."
-              width="250px"
-            />
-          </Box>
-
+      <Container disableGutters justify="center">
+        <Grid container sx={{ py: 8, px: 5 }}>
           {/* League Heading */}
           <Grid container sx={{ display: "flex", flexDirection: "column" }}>
             <Grid
@@ -140,6 +135,8 @@ export default function League() {
                 <Typography variant="h1" color="secondary.contrastText">
                   {league.leagueName}
                 </Typography>
+
+                {/*  TODO: Map Season Names (Future Devlopment) */}
 
                 {/* {seasonNames.map((seasonName) => {
                   return ( */}
@@ -170,7 +167,6 @@ export default function League() {
               ) : (
                 <div></div>
               )}
-
             </Grid>
           </Grid>
 
@@ -178,6 +174,7 @@ export default function League() {
           <Grid container spacing={{ xs: 4 }}>
             <Box sx={{ width: "100%", mt: 8 }}>
               <div style={{ height: 400, width: "100%" }}>
+
                 <DataGrid
                   rows={seasonNames.map((season) => ({
                     id: season._id,
@@ -185,7 +182,6 @@ export default function League() {
                     startYear: season.startYear,
                     endYear: season.endYear,
                   }))}
-                  // rows={rows}
                   columns={columns}
                   pageSize={5}
                   rowsPerPageOptions={[5]}
@@ -226,10 +222,11 @@ export default function League() {
                 Add Season
               </Typography>
 
-              {/* ADD SEASON FORM */}
+              {/* Add Season Form */}
               <AddSeason handleClose={handleClose} />
             </Box>
           </Modal>
+
         </Grid>
       </Container>
     </>
