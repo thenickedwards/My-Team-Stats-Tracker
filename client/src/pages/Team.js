@@ -28,40 +28,79 @@ import AddIcon from "@mui/icons-material/Add";
 import AddPlayer from "../components/Forms/AddPlayer";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
-
 // Upcoming Games Table - Columns
 const columns = [
-  { field: "homeTeam", 
-    headerName: "Home", 
-    flex:1,
+  {
+    field: "homeTeam",
+    headerName: "Home",
+    flex: 1,
     renderCell: (params) => (
-      <Box sx={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 2 }}>
-        <img src={params.value.homeTeamPic} alt="Team Logo" height="auto" width="40px" 
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          gap: 2,
+        }}
+      >
+        <img
+          src={params.value.homeTeamPic}
+          alt="Team Logo"
+          height="auto"
+          width="40px"
         />
-        <Link href={`/team/${params.value.homeTeamLink}`} variant="p" underline="none" color="inherit" >{params.value.homeTeamName}</Link>
+        <Link
+          href={`/team/${params.value.homeTeamLink}`}
+          variant="p"
+          underline="none"
+          color="inherit"
+        >
+          {params.value.homeTeamName}
+        </Link>
       </Box>
-    ) 
+    ),
   },
-  { field: "awayTeam", 
-    headerName: "Away", 
-    flex:1,
+  {
+    field: "awayTeam",
+    headerName: "Away",
+    flex: 1,
     renderCell: (params) => (
-      <Box sx={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 2 }}>
-        <img src={params.value.awayTeamPic} alt="Team Logo" height="auto" width="40px" />
-        <Link href={`/team/${params.value.awayTeamLink}`} variant="p" underline="none" color="inherit">{params.value.awayTeamName}</Link>
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          gap: 2,
+        }}
+      >
+        <img
+          src={params.value.awayTeamPic}
+          alt="Team Logo"
+          height="auto"
+          width="40px"
+        />
+        <Link
+          href={`/team/${params.value.awayTeamLink}`}
+          variant="p"
+          underline="none"
+          color="inherit"
+        >
+          {params.value.awayTeamName}
+        </Link>
       </Box>
-    )  
-  
+    ),
   },
-  { field: "gameDate", headerName: "Game Date", width: 200, flex:1 },
+  { field: "gameDate", headerName: "Game Date", width: 200, flex: 1 },
   {
     field: "viewScore",
     headerName: "View Score",
     sortable: false,
-    flex:1,
+    flex: 1,
     renderCell: () => (
-      <Link href="/game" variant="h3" underline="none">View Game</Link>
-    )
+      <Link href="/game" variant="h3" underline="none">
+        View Game
+      </Link>
+    ),
   },
 ];
 
@@ -141,7 +180,7 @@ export default function Team() {
     setValue(newValue);
   };
 
-  if ( loading || loadingTeam ) {
+  if (loading || loadingTeam) {
     return <div>LOADING</div>;
   }
 
@@ -181,18 +220,17 @@ export default function Team() {
   return (
     <>
       <CssBaseline />
-      <Container disableGutters justify="center">
+      <Container disableGutters justify="center" position="relative">
+        {/* CORNER ABSTRACT IMAGE */}
+        <Box sx={{ position: "absolute", bottom: 0, left: 10 }}>
+          <img
+            src="/images/abstract-corner-dots-lines.png"
+            alt="Abstract graphic with dots and lines."
+            width="250px"
+          />
+        </Box>
         {/* Outer container allows graphic images to be placed absolute. Also establishes padding. */}
-        <Grid container sx={{ py: 8, px: 5 }} position="relative">
-          {/* CORNER ABSTRACT IMAGE */}
-          <Box sx={{ position: "absolute", bottom: 0, left: 0 }}>
-            <img
-              src="images/abstract-corner-dots-lines.png"
-              alt="Abstract graphic with dots and lines."
-              width="250px"
-            />
-          </Box>
-
+        <Grid container sx={{ py: 8, px: 5 }} >
           {/* Container for the two top columns. */}
           <Grid container alignItems={"center"}>
             {/* LEAGUE HEADING. Left column. */}
@@ -267,8 +305,6 @@ export default function Team() {
           <Grid container spacing={5}>
             {/* Left column */}
             <Grid item xs={12} s={12} md={8} lg={8}>
-
-
               {/*   --- TEAM STATS CARDS ---  */}
 
               <Grid container spacing={{ xs: 4 }}>
@@ -321,7 +357,6 @@ export default function Team() {
                   </Paper>
                 </Grid>
 
-
                 {/* Tabs */}
                 <Box sx={{ width: "100%", mt: 5 }}>
                   <Box>
@@ -356,14 +391,21 @@ export default function Team() {
                     </Tabs>
                   </Box>
                   <TabPanel value={value} index={0}>
-
                     {/*  --- UPCOMING GAMES TABLE --- */}
                     <div style={{ height: 400, width: "100%" }}>
                       <DataGrid
                         rows={games.map((game) => ({
                           id: game._id,
-                          homeTeam: {homeTeamName: game.homeTeam.teamName, homeTeamPic: game.homeTeam.teamPic, homeTeamLink: game.homeTeam._id},
-                          awayTeam: {awayTeamName: game.awayTeam.teamName, awayTeamPic: game.awayTeam.teamPic, awayTeamLink: game.awayTeam._id},
+                          homeTeam: {
+                            homeTeamName: game.homeTeam.teamName,
+                            homeTeamPic: game.homeTeam.teamPic,
+                            homeTeamLink: game.homeTeam._id,
+                          },
+                          awayTeam: {
+                            awayTeamName: game.awayTeam.teamName,
+                            awayTeamPic: game.awayTeam.teamPic,
+                            awayTeamLink: game.awayTeam._id,
+                          },
                           gameDate: game.gameDate,
                         }))}
                         columns={columns}
@@ -390,13 +432,12 @@ export default function Team() {
                         }}
                       />
                     </div>
-
                   </TabPanel>
                   <TabPanel value={value} index={1}>
-                    Item Two
+                    COMING SOON
                   </TabPanel>
                   <TabPanel value={value} index={2}>
-                    Item Three
+                    COMING SOON
                   </TabPanel>
                 </Box>
               </Grid>
@@ -470,25 +511,24 @@ export default function Team() {
                 {/* End Player Details Mapping. */}
               </Grid>
             </Grid>
-
-            {/* ADD PLAYER MODAL */}
-            <Modal
-              open={open}
-              onClose={handleClose}
-              aria-labelledby="modal-modal-title"
-              aria-describedby="modal-modal-description"
-            >
-              <Box sx={teamStyle.addPlayerModal}>
-                <Typography id="modal-modal-title" variant="h1" sx={{ mb: 4 }}>
-                  Add Player
-                </Typography>
-
-                {/* ADD PLAYER FORM */}
-                <AddPlayer handleClose={handleClose} />
-              </Box>
-            </Modal>
           </Grid>
         </Grid>
+        {/* ADD PLAYER MODAL */}
+        <Modal
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+        >
+          <Box sx={teamStyle.addPlayerModal}>
+            <Typography id="modal-modal-title" variant="h1" sx={{ mb: 4 }}>
+              Add Player
+            </Typography>
+
+            {/* ADD PLAYER FORM */}
+            <AddPlayer handleClose={handleClose} />
+          </Box>
+        </Modal>
       </Container>
     </>
   );

@@ -1,108 +1,129 @@
-import {useState} from 'react'
-import { useMutation } from "@apollo/client";
+import { useState } from "react";
+import { useMutation, useQuery } from "@apollo/client";
+import { ADD_SOCCERPLAYER } from "../../utils/mutations";
+import { QUERY_SOCCERTEAM, QUERY_SOCCERTEAMS } from "../../utils/queries";
+import { useParams } from "react-router";
 
 import {
-    Typography,
-    FormControl,
-    TextField,
-    Button,
-  } from "@mui/material";
-import { ADD_SOCCERPLAYER } from '../../utils/mutations';
-import { QUERY_SOCCERPLAYERS } from '../../utils/queries';
+  Typography,
+  FormControl,
+  TextField,
+  InputLabel,
+  Select,
+  MenuItem,
+  OutlinedInput,
+  Button,
+} from "@mui/material";
 
-  // STYLES
-
-const teamStyle = {
-    teamRoster: {
-      backgroundColor: "black",
-      borderRadius: "100%",
-      width: "50px",
-      height: "50px",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      marginRight: "15px",
+// Add Seasons Modal Multiselect
+const ITEM_HEIGHT = 48;
+const ITEM_PADDING_TOP = 8;
+const MenuProps = {
+  PaperProps: {
+    style: {
+      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+      width: 250,
     },
-    formButton: {
-      height: 50,
-      backgroundColor: "secondary.main",
-      "&:hover": {
-        backgroundColor: "primary.main",
-      },
-      }
-  }
+  },
+};
 
+// STYLES
+const teamStyle = {
+  teamRoster: {
+    backgroundColor: "black",
+    borderRadius: "100%",
+    width: "50px",
+    height: "50px",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    marginRight: "15px",
+  },
+  formButton: {
+    height: 50,
+    backgroundColor: "secondary.main",
+    "&:hover": {
+      backgroundColor: "primary.main",
+    },
+  },
+};
 
-export default function AddPlayer( {handleClose} ) {
+const AddPlayer = ({ handleClose }) => {
+  const { teamId } = useParams();
+  const { loading, data } = useQuery(QUERY_SOCCERTEAMS);
+  const teams = data?.allSoccerTeams || [];
 
-    ///////////////////
-    // Functionality to Adding League via Form
-    const [formState, setFormState] = useState({
+  console.log(teams);
+
+  // Functionality to Adding League via Form
+  const [formState, setFormState] = useState({
+    playerFirstName: "",
+    playerLastName: "",
+    playerPic: "",
+    playerNumber: "",
+    team: "",
+  });
+
+  const { playerFirstName, playerLastName, playerPic, playerNumber, team } =
+    formState;
+
+  const [addPlayer, { error }] = useMutation(ADD_SOCCERPLAYER, {
+    refetchQueries: [QUERY_SOCCERTEAM],
+  });
+
+  const handleFormChange = (event) => {
+    const { name, value } = event.target;
+
+    setFormState({
+      ...formState,
+      [name]: value,
+    });
+  };
+
+  const handlePlayerFormSubmit = async (event) => {
+    event.preventDefault();
+    console.log(formState);
+
+    try {
+      const { data } = await addPlayer({
+        variables: { roster: { ...formState, teamId } },
+      });
+      console.log(data);
+      console.log("Player Details:", formState);
+
+      setFormState({
         playerFirstName: "",
         playerLastName: "",
         playerPic: "",
-        playerNumber: ""
+        playerNumber: "",
       });
-    
-    
-      const { playerFirstName, playerLastName, playerPic, playerNumber } = formState;
 
-      const [addPlayer, { error }] = useMutation(ADD_SOCCERPLAYER, {
-        refetchQueries: [ QUERY_SOCCERPLAYERS ]
-     });
-    
+      handleClose();
+    } catch (e) {
+      console.error(e);
+    }
+  };
 
-      const handleFormChange = (event) => {
-        const { name, value } = event.target;
-    
-        setFormState({
-          ...formState,
-          [name]: value,
-        });
-      };
-    
-      const handlePlayerFormSubmit = async (event) => {
-        event.preventDefault();
-        console.log(formState);
-
-    
-        try {
-          const { data } = await addPlayer({
-            variables: { roster: {...formState} },
-          });
-
-        console.log("Player Details:", formState)
-    
-          setFormState({
-            playerFirstName: "",
-            playerLastName: "",
-            playerPic: "",
-            playerNumber: ""
-          });
-
-          handleClose();
-          
-        } catch (e) {
-          console.error(e);
-        }
-      };
-
+  if (loading) {
+    return <div>LOADING</div>;
+  }
 
   return (
-    <form onSubmit={handlePlayerFormSubmit}>
+    <div>
+      <form onSubmit={handlePlayerFormSubmit}>
         <FormControl fullWidth sx={{ gap: 4 }}>
-            <TextField
+          <TextField
             id="playerFirstName"
-            name='playerFirstName'
+            name="playerFirstName"
             label="First Name"
             variant="outlined"
             color="secondary"
             value={playerFirstName}
             onChange={handleFormChange}
             InputLabelProps={{ shrink: true }}
-            />
+          />
 
-            <TextField
+          <TextField
             id="playerLastName"
             name="playerLastName"
             label="Last Name"
@@ -111,41 +132,72 @@ export default function AddPlayer( {handleClose} ) {
             value={playerLastName}
             onChange={handleFormChange}
             InputLabelProps={{ shrink: true }}
-            />
+          />
 
-            <TextField
+          <TextField
             id="playerNumber"
-            name='playerNumber'
+            name="playerNumber"
             label="Player Number"
             variant="outlined"
             color="secondary"
             value={playerNumber}
             onChange={handleFormChange}
             InputLabelProps={{ shrink: true }}
-            />
+          />
 
-            {/* IMAGE UPLOAD PLACEHOLDER */}
-            <TextField
+          {/* IMAGE UPLOAD PLACEHOLDER */}
+          <TextField
             id="playerPic"
-            name='playerPic'
+            name="playerPic"
             label="Player Photo"
             variant="outlined"
             color="secondary"
             value={playerPic}
             onChange={handleFormChange}
             InputLabelProps={{ shrink: true }}
-            />
+          />
+          <FormControl>
+            <InputLabel id="team">Team</InputLabel>
+            <Select
+              //   displayEmpty
+              labelId="team"
+              id="team"
+              name="team"
+              type="text"
+              //   multiple
+              value={team}
+              onChange={handleFormChange}
+              input={<OutlinedInput label="Team" />}
+              MenuProps={MenuProps}
+            >
+              <MenuItem disabled value="">
+                <em>Select Team</em>
+              </MenuItem>
 
-            <Button
+              {teams.map((team) => (
+                <MenuItem key={team} value={team._id}>
+                  {team.teamName}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+
+          <Button
             variant="contained"
             type="submit"
             sx={teamStyle.formButton}
             fullWidth
             disableElevation
-            >
+          >
             <Typography variant="h3">Add Player</Typography>
-            </Button>
+            <Typography variant="p" color="secondary.contrastText">
+              {error && <div>{error.message}</div>}
+            </Typography>
+          </Button>
         </FormControl>
-    </form>
-  )
-}
+      </form>
+    </div>
+  );
+};
+
+export default AddPlayer;

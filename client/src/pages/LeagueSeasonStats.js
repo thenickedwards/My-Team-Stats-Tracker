@@ -60,25 +60,21 @@ export default function LeagueSeasonStats() {
   return (
     <>
       <CssBaseline />
-      <Container
-        disableGutters
-        justify="center"
-      >
+      <Container disableGutters justify="center" position="relative">
+        
+        {/* CORNER ABSTRACT IMAGE */}
+        <Box sx={{ position: "absolute", bottom: 0, left: 10 }}>
+          <img
+            src="images/abstract-corner-dots-lines.png"
+            alt="Abstract graphic with dots and lines."
+            width="250px"
+          />
+        </Box>
+
         {/* Outer container allows graphic images to be placed absolute. Also establishes padding. */}
-        <Grid container sx={{ py: 8, px: 5 }} position="relative">
-
-          {/* CORNER ABSTRACT IMAGE */}
-          <Box sx={{ position: "absolute", bottom: 0, left: 0 }}>
-            <img
-              src="images/abstract-corner-dots-lines.png"
-              alt="Abstract graphic with dots and lines."
-              width="250px"
-            />
-          </Box>
-
+        <Grid container sx={{ py: 8, px: 5 }}>
           {/* Container for the two top columns. */}
           <Grid container alignItems={"center"}>
-
             {/* LEAGUE HEADING. Left column. */}
             <Grid item xs={12} sm={12} md={9} lg={9}>
               <Grid container sx={{ display: "flex", flexDirection: "column" }}>
@@ -112,7 +108,6 @@ export default function LeagueSeasonStats() {
                 </Grid>
               </Grid>
             </Grid>
-
 
             {/* DROPDOWN SEASON SELECT. Right column. */}
             <Grid item xs={12} sm={12} md={3} lg={3}>
@@ -183,7 +178,6 @@ export default function LeagueSeasonStats() {
             </Box>
           </Grid>
           {/* End League Seasons Table -------------*/}
-
         </Grid>
       </Container>
     </>

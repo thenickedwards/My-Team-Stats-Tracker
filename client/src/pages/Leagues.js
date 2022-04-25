@@ -100,7 +100,7 @@ export default function Leagues() {
   }
 
   return (
-    <Container alignItems="center" justifyContent="center">
+    <Container disableGutters justify="center" position="relative">
       {/* Page styling */}
       <Box sx={{ position: "absolute", top: 100, right: 15 }}>
         <img
@@ -110,7 +110,7 @@ export default function Leagues() {
         />
       </Box>
 
-      <Box sx={{ position: "absolute", bottom: 40, left: 40 }}>
+      <Box sx={{ position: "absolute", bottom: 0, left: 10 }}>
         <img
           src="images/abstract-corner-dots-lines.png"
           alt="Abstract graphic with dots and lines."
@@ -118,7 +118,7 @@ export default function Leagues() {
         />
       </Box>
 
-      <Grid container sx={{ py: 8, px: 5 }} position="relative">
+      <Grid container sx={{ py: 8, px: 5 }} >
         {/* Header and "Add" button */}
         <Box
           sx={{
@@ -154,7 +154,6 @@ export default function Leagues() {
         {/* League Cards - Map Over Seeds */}
         <Grid container spacing={{ xs: 4 }}>
           {leagues.map((league) => {
-
             return (
               <Grid item key={league._id} xs={6} s={6} md={3} lg={3}>
                 <Link
@@ -195,33 +194,32 @@ export default function Leagues() {
                   sx={{ pt: 2 }}
                   color="inherit"
                 >
-                  <Button
-                    onClick={() => handleOpenEdit(league._id)}
-                  >
-                      Edit
+                  <Button onClick={() => handleOpenEdit(league._id)}>
+                    Edit
                   </Button>
 
                   {/* EDIT MODAL */}
                   <Modal
                     // open={openEdit}
                     open={openEdit === league._id}
-
                     onClose={handleCloseEdit}
                     leagueId={league._id}
                     aria-labelledby="modal-modal-title"
                     aria-describedby="modal-modal-description"
                   >
                     <Box sx={leaguesStyle.addLeagueModal}>
-                      <Typography id="modal-modal-title" variant="h1" sx={{ mb: 4 }}>
+                      <Typography
+                        id="modal-modal-title"
+                        variant="h1"
+                        sx={{ mb: 4 }}
+                      >
                         Edit League
                       </Typography>
 
-                      
-                      <EditLeague 
-                        handleCloseEdit={handleCloseEdit} 
+                      <EditLeague
+                        handleCloseEdit={handleCloseEdit}
                         leagueId={league._id}
                       />
-
                     </Box>
                   </Modal>
                   {/* END EDIT MODAL */}
@@ -258,8 +256,6 @@ export default function Leagues() {
           <AddLeague handleClose={handleClose} />
         </Box>
       </Modal>
-
-
     </Container>
   );
 }

@@ -107,12 +107,12 @@ function App() {
     <ApolloProvider client={client}>
       {
         <ThemeProvider theme={theme}>
-          <main>
+         
             {location.pathname === "/login" ||
             location.pathname === "/signup" ? null : (
               <Navbar />
             )}
-
+ <main>
             <Routes>
               <Route path="/" element={<Home />} />
 
@@ -130,7 +130,7 @@ function App() {
 
               <Route path="/team/:soccerTeamId" element={<Team />} />
 
-              <Route path="/player/:playerId" element={<Player />} />
+              <Route path="/player/" element={<Player />} />
 
               <Route
                 path="/league-season-stats"
@@ -145,11 +145,14 @@ function App() {
                   <Route path="/profiles/:username" element={<Profile />} /> */}
             </Routes>
 
+            </main>
+
+
             {location.pathname === "/login" ||
             location.pathname === "/signup" ? null : (
               <Footer />
             )}
-          </main>
+          
         </ThemeProvider>
       }
     </ApolloProvider>

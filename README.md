@@ -4,6 +4,10 @@
 
 Welcome to the MyTeam sports stats tracker for youth leagues, adult rec teams, and school sports!
 
+Check out the readme below and then use the live app using the Heroku button below!
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://myteam-stats.herokuapp.com/)
+
 ## Table of Contents
 
 1. [Installation](#installation)
@@ -24,7 +28,7 @@ Never lose track of your team stats again! Users can view their favorite leagues
 
 ## Contributing
 
-This application was built by Juanita Samborski, Christina Bohn. Nick Edwards, and Chandra Holt.
+This application was built by Juanita Samborski, Christina Bohn, Nick Edwards, and Chandra Holt.
 
 ## User Story
 
@@ -49,10 +53,22 @@ SO THAT I can enjoy the season while watching my team advance
 ![Screenshot2](./planning/diagram1.png)
 ![Screenshot3](./planning/diagram2.svg)
 ![Screenshot4](./planning/model-structure.png)
+![Screenshot5](./planning/asana-inprogress.png)
+![Screenshot6](./planning/design-draft.png)
+![Screenshot7](./planning/design-final.png)
 
 ### GitHub
+[URL for GitHub repo: https://github.com/thenickedwards/My-Team-Stats-Tracker](https://github.com/thenickedwards/My-Team-Stats-Tracker)
 
 [Juanita's GitHub](https://www.github.com/jsamborski310),
 [Nick's GitHub](https://www.github.com/thenickedwards),
 [Christina's GitHub](https://www.github.com/ChristinaBohn),  
 [Chandra's GitHub](https://www.github.com/chandrapanda)
+
+## Heroku
+[URL for live application deployed on Heroku: https://myteam-stats.herokuapp.com/](https://myteam-stats.herokuapp.com/)
+
+
+Thank you for reading the readme!
+
+[![License: LGPL v3](https://img.shields.io/badge/License-LGPL_v3-brightgreen.svg)](https://www.gnu.org/licenses/lgpl-3.0)
