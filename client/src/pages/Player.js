@@ -393,7 +393,7 @@ export default function Player() {
           >
             <Box>
               <img
-                src="images/large-triangles.png"
+                src="/images/large-triangles.png"
                 alt="Abstract triangles graphic."
               />
             </Box>
