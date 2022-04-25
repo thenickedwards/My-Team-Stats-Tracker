@@ -1,13 +1,10 @@
-// require('dotenv').config();
 const jwt = require("jsonwebtoken");
-
 const secret = `${process.env.STATSSECRET}`;
 const expiration = "2h";
 
 module.exports = {
   authMiddleware: function ({ req }) {
     let token = req.body.token || req.query.token || req.headers.authorization;
-    // let token = req.query.token || req.headers.authorization;
 
     if (req.headers.authorization) {
       token = token.split(" ").pop().trim();
@@ -26,10 +23,6 @@ module.exports = {
 
     return req;
   },
-  // signToken: function ({ email, username, _id }) {
-  //   const payload = { email, username, _id };
-  //   return jwt.sign({ data: payload }, secret, { expiresIn: expiration });
-  // },
   signToken: function ({ username, _id, userFirstName, userLastName }) {
     const payload = { username, _id, userFirstName, userLastName };
     return jwt.sign({ data: payload }, secret, { expiresIn: expiration });

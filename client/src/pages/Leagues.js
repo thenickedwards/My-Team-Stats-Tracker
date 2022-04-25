@@ -4,7 +4,7 @@ import EditLeague from "../components/Forms/EditLeague";
 
 // Import Queries and Mutations
 import { useMutation, useQuery } from "@apollo/client";
-import { QUERY_LEAGUES, QUERY_ME } from "../utils/queries";
+import { QUERY_LEAGUES } from "../utils/queries";
 import { REMOVE_LEAGUE } from "../utils/mutations";
 import Auth from "../utils/auth";
 
@@ -20,7 +20,7 @@ import {
   Modal,
   Paper,
   Typography,
-  CssBaseline
+  CssBaseline,
 } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import Loading from "../components/Abstract/Loading";
@@ -90,11 +90,12 @@ export default function Leagues() {
   };
 
   if (loading) {
-    return <Loading/>;
+    return <Loading />;
   }
 
   return (
     <>
+
     <CssBaseline />
     <Container disableGutters justify="center" position="relative">
 
@@ -120,132 +121,147 @@ export default function Leagues() {
         >
           <Typography variant="h1">Leagues</Typography>
 
-          {Auth.loggedIn() ? (
-          <IconButton
-            onClick={handleOpen}
-            aria-label="Add League"
-            size="medium"
+        <Grid container sx={{ py: 8, px: 5 }}>
+          {/* Header and "Add" button */}
+          <Box
             sx={{
-              backgroundColor: "secondary.accent",
-              borderRadius: 10,
-              "&:hover": {
-                backgroundColor: "primary.main",
-              },
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+              gap: "20px",
+              mb: 5,
             }}
           >
-            <AddIcon fontSize="inherit" sx={{ color: "#ffffff" }} />
-          </IconButton>
-          ) : (
-            <div></div>
-          )}
-        </Box>
+            <Typography variant="h1">Leagues</Typography>
 
-        {/* League Cards - Map Over Seeds */}
-        <Grid container spacing={{ xs: 4 }}>
-          {leagues.map((league) => {
-            return (
-              <Grid item key={league._id} xs={6} s={6} md={3} lg={3}>
-                <Link
-                  sx={leaguesStyle.leaguePaperText}
-                  underline="none"
-                  href={`/league/${league._id}`}
-                >
-                  <Paper
-                    elevation={5}
+            {Auth.loggedIn() ? (
+              <IconButton
+                onClick={handleOpen}
+                aria-label="Add League"
+                size="medium"
+                sx={{
+                  backgroundColor: "secondary.accent",
+                  borderRadius: 10,
+                  "&:hover": {
+                    backgroundColor: "primary.main",
+                  },
+                }}
+              >
+                <AddIcon fontSize="inherit" sx={{ color: "#ffffff" }} />
+              </IconButton>
+            ) : (
+              <div></div>
+            )}
+          </Box>
+
+          {/* League Cards - Map Over Seeds */}
+          <Grid container spacing={{ xs: 4 }}>
+            {leagues.map((league) => {
+              return (
+                <Grid item key={league._id} xs={6} s={6} md={3} lg={3}>
+                  <Link
+                    sx={leaguesStyle.leaguePaperText}
                     underline="none"
                     href={`/league/${league._id}`}
-                    color="inherit"
-                    sx={leaguesStyle.leaguePaper}
                   >
-                    <img
-                      src={league.leaguePic}
-                      alt="logo"
-                      loading="lazy"
-                      height={100}
-                    />
-                    <Typography
-                      variant="p"
-                      gutterBottom
-                      component="div"
-                      sx={leaguesStyle.leaguePaperText}
+                    <Paper
+                      elevation={5}
+                      underline="none"
+                      href={`/league/${league._id}`}
+                      color="inherit"
+                      sx={leaguesStyle.leaguePaper}
                     >
-                      {league.leagueName}
-                    </Typography>
-                  </Paper>
-                </Link>
-
-                {/* Edit | Delete buttons under league cards */}
-                {Auth.loggedIn() ? (
-                <ButtonGroup
-                  variant="text"
-                  aria-label="text button group"
-                  sx={{ pt: 2 }}
-                  color="inherit"
-                >
-                  <Button onClick={() => handleOpenEdit(league._id)}>
-                    Edit
-                  </Button>
-
-                  {/* EDIT MODAL */}
-                  <Modal
-                    // open={openEdit}
-                    open={openEdit === league._id}
-                    onClose={handleCloseEdit}
-                    leagueId={league._id}
-                    aria-labelledby="modal-modal-title"
-                    aria-describedby="modal-modal-description"
-                  >
-                    <Box sx={leaguesStyle.addLeagueModal}>
-                      <Typography
-                        id="modal-modal-title"
-                        variant="h1"
-                        sx={{ mb: 4 }}
-                      >
-                        Edit League
-                      </Typography>
-
-                      <EditLeague
-                        handleCloseEdit={handleCloseEdit}
-                        leagueId={league._id}
+                      <img
+                        src={league.leaguePic}
+                        alt="logo"
+                        loading="lazy"
+                        height={100}
                       />
-                    </Box>
-                  </Modal>
-                  {/* END EDIT MODAL */}
 
-                  <Button
-                    type="submit"
-                    onClick={() => handleDeleteLeague(league._id)}
-                  >
-                    Delete
-                  </Button>
-                </ButtonGroup>
-              ) : (
-                <div></div>
-              )}
-              </Grid>
-            );
-          })}
+                      <Typography
+                        variant="p"
+                        gutterBottom
+                        component="div"
+                        sx={leaguesStyle.leaguePaperText}
+                      >
+                        {league.leagueName}
+                      </Typography>
+                    </Paper>
+                  </Link>
+
+                  {/* Edit | Delete buttons under league cards */}
+
+                  {Auth.loggedIn() ? (
+                    <ButtonGroup
+                      variant="text"
+                      aria-label="text button group"
+                      sx={{ pt: 2 }}
+                      color="inherit"
+                    >
+                      <Button onClick={() => handleOpenEdit(league._id)}>
+                        Edit
+                      </Button>
+
+                      {/* EDIT MODAL */}
+                      <Modal
+                        // open={openEdit}
+                        open={openEdit === league._id}
+                        onClose={handleCloseEdit}
+                        leagueId={league._id}
+                        aria-labelledby="modal-modal-title"
+                        aria-describedby="modal-modal-description"
+                      >
+                        <Box sx={leaguesStyle.addLeagueModal}>
+                          <Typography
+                            id="modal-modal-title"
+                            variant="h1"
+                            sx={{ mb: 4 }}
+                          >
+                            Edit League
+                          </Typography>
+
+                          <EditLeague
+                            handleCloseEdit={handleCloseEdit}
+                            leagueId={league._id}
+                          />
+                        </Box>
+                      </Modal>
+                      {/* END EDIT MODAL */}
+
+                      <Button
+                        type="submit"
+                        onClick={() => handleDeleteLeague(league._id)}
+                      >
+                        Delete
+                      </Button>
+                    </ButtonGroup>
+                  ) : (
+                    <div></div>
+                  )}
+                </Grid>
+              );
+            })}
+          </Grid>
         </Grid>
-      </Grid>
 
-      {/* Add League Modal */}
-      <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box sx={leaguesStyle.addLeagueModal}>
-          <Typography id="modal-modal-title" variant="h1" sx={{ mb: 4 }}>
-            Add League
-          </Typography>
+        {/* Add League Modal */}
+        <Modal
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+        >
+          <Box sx={leaguesStyle.addLeagueModal}>
+            <Typography id="modal-modal-title" variant="h1" sx={{ mb: 4 }}>
+              Add League
+            </Typography>
 
-          {/* Add League Form */}
-          <AddLeague handleClose={handleClose} />
-          
-        </Box>
-      </Modal>
-    </Container>
+            {/* ADD LEAGUE FORM */}
+            <AddLeague handleClose={handleClose} />
+          </Box>
+        </Modal>
+      </Container>
+
     </>
   );
 }
