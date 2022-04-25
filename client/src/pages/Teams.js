@@ -6,7 +6,7 @@ import EditTeam from "../components/Forms/EditTeam";
 import { useMutation, useQuery } from "@apollo/client";
 import { QUERY_SOCCERTEAMS } from "../utils/queries";
 import { REMOVE_SOCCERTEAM } from "../utils/mutations";
-// import Auth from "../utils/auth";
+import Auth from "../utils/auth";
 
 // Material UI Imports
 import {
@@ -142,20 +142,26 @@ export default function Teams() {
                   Teams
                 </Typography>
 
-                <IconButton
-                  onClick={handleOpen}
-                  aria-label="Add Game"
-                  size="medium"
-                  sx={{
-                    backgroundColor: "secondary.accent",
-                    borderRadius: 10,
-                    "&:hover": {
-                      backgroundColor: "primary.main",
-                    },
-                  }}
-                >
-                  <AddIcon fontSize="inherit" sx={{ color: "#ffffff" }} />
-                </IconButton>
+                {/* Add Player Button */}
+                {Auth.loggedIn() ? (
+                  <IconButton
+                    onClick={handleOpen}
+                    aria-label="Add Game"
+                    size="medium"
+                    sx={{
+                      backgroundColor: "secondary.accent",
+                      borderRadius: 10,
+                      "&:hover": {
+                        backgroundColor: "primary.main",
+                      },
+                    }}
+                  >
+                    <AddIcon fontSize="inherit" sx={{ color: "#ffffff" }} />
+                  </IconButton>
+                ) : (
+                  <div></div>
+                )}
+
               </Grid>
             </Grid>
           </Grid>
@@ -185,9 +191,9 @@ export default function Teams() {
                 <MenuItem value="">
                   <em>None</em>
                 </MenuItem>
-                <MenuItem value={10}>Ten</MenuItem>
-                <MenuItem value={20}>Twenty</MenuItem>
-                <MenuItem value={30}>Thirty</MenuItem>
+                <MenuItem value={10}>Washington Premier League</MenuItem>
+                <MenuItem value={20}>Washington Soccer Academy</MenuItem>
+                <MenuItem value={30}>Greater Seattle Soccer League</MenuItem>
               </Select>
             </FormControl>
           </Grid>
@@ -224,49 +230,54 @@ export default function Teams() {
 
                 {/* Edit | Delete buttons under team cards */}
 
-                <ButtonGroup
-                  variant="text"
-                  aria-label="text button group"
-                  sx={{ pt: 2 }}
-                  color="inherit"
-                >
-                  <Button
-                    onClick={() => handleOpenEdit(team._id)}
+                {Auth.loggedIn() ? (
+                  <ButtonGroup
+                    variant="text"
+                    aria-label="text button group"
+                    sx={{ pt: 2 }}
+                    color="inherit"
                   >
-                    Edit
-                  </Button>
+                    <Button
+                      onClick={() => handleOpenEdit(team._id)}
+                    >
+                      Edit
+                    </Button>
 
-                  {/* EDIT MODAL */}
-                  <Modal
-                    // open={openEdit}
-                    open={openEdit === team._id}
-                    onClose={handleCloseEdit}
-                    soccerTeamId={team._id}
-                    aria-labelledby="modal-modal-title"
-                    aria-describedby="modal-modal-description"
-                  >
-                    <Box sx={teamsStyle.addTeamModal}>
-                      <Typography id="modal-modal-title" variant="h1" sx={{ mb: 4 }}>
-                        Edit Team
-                      </Typography>
+                    {/* EDIT MODAL */}
+                    <Modal
+                      // open={openEdit}
+                      open={openEdit === team._id}
+                      onClose={handleCloseEdit}
+                      soccerTeamId={team._id}
+                      aria-labelledby="modal-modal-title"
+                      aria-describedby="modal-modal-description"
+                    >
+                      <Box sx={teamsStyle.addTeamModal}>
+                        <Typography id="modal-modal-title" variant="h1" sx={{ mb: 4 }}>
+                          Edit Team
+                        </Typography>
 
-                      
-                      <EditTeam
-                        handleCloseEdit={handleCloseEdit}
-                        soccerTeamId={team._id}
-                      />
+                        
+                        <EditTeam
+                          handleCloseEdit={handleCloseEdit}
+                          soccerTeamId={team._id}
+                        />
 
-                    </Box>
-                  </Modal>
-                  {/* END EDIT MODAL */}
+                      </Box>
+                    </Modal>
+                    {/* END EDIT MODAL */}
 
-                  <Button
-                    type="submit"
-                    onClick={() => handleDeleteTeam(team._id)}
-                  >
-                    Delete
-                  </Button>
-                </ButtonGroup>
+                    <Button
+                      type="submit"
+                      onClick={() => handleDeleteTeam(team._id)}
+                    >
+                      Delete
+                    </Button>
+                  </ButtonGroup>
+                ) : (
+                  <div></div>
+                )}
+
               </Grid>
             );
           })}

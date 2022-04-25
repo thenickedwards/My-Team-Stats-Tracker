@@ -22,6 +22,7 @@ import AddIcon from "@mui/icons-material/Add";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import Auth from "../utils/auth";
 
 // ////////////////////////////////////
 //   DATAGRID (EDIT DATA)
@@ -220,20 +221,25 @@ export default function Games() {
                     Upcoming Games
                   </Typography>
 
-                  <IconButton
-                    onClick={handleOpen}
-                    aria-label="Add Game"
-                    size="medium"
-                    sx={{
-                      backgroundColor: "secondary.accent",
-                      borderRadius: 10,
-                      "&:hover": {
-                        backgroundColor: "primary.main",
-                      },
-                    }}
-                  >
-                    <AddIcon fontSize="inherit" sx={{ color: "#ffffff" }} />
-                  </IconButton>
+                  {/* Add Game Button */}
+                  {Auth.loggedIn() ? (
+                    <IconButton
+                      onClick={handleOpen}
+                      aria-label="Add Game"
+                      size="medium"
+                      sx={{
+                        backgroundColor: "secondary.accent",
+                        borderRadius: 10,
+                        "&:hover": {
+                          backgroundColor: "primary.main",
+                        },
+                      }}
+                    >
+                      <AddIcon fontSize="inherit" sx={{ color: "#ffffff" }} />
+                    </IconButton>
+                  ) : (
+                    <div></div>
+                  )}
                 </Grid>
               </Grid>
             </Grid>
