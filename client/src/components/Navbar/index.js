@@ -1,20 +1,25 @@
 import * as React from "react";
-import Link from "@mui/material/Link";
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
-import Menu from "@mui/material/Menu";
-import Grid from "@mui/material/Grid";
-import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
-import Tooltip from "@mui/material/Tooltip";
-import MenuItem from "@mui/material/MenuItem";
-import MenuIcon from "@mui/icons-material/Menu";
-
 import Auth from "../../utils/auth";
 
+// MUI Imports
+import {
+  AppBar,
+  Avatar,
+  Box,
+  Button,
+  Grid,
+  IconButton,
+  Link,
+  Menu,
+  MenuItem,
+  Toolbar,
+  Tooltip,
+  Typography
+} from "@mui/material";
+import MenuIcon from "@mui/icons-material/Menu";
+
+
+// User's Initials in User Icon
 let userInitials = () => {
   const token = Auth.loggedIn() ? Auth.getProfile() : null;
   if (token) {
@@ -120,6 +125,7 @@ const Navbar = () => {
                 onClick={handleOpenNavMenu}
                 color="inherit"
               ></IconButton>
+
               {/* Menu items are displayed when screen is M or bigger */}
               <Menu
                 id="menu-appbar"
@@ -168,6 +174,7 @@ const Navbar = () => {
               ))}
             </Box>
           </Grid>
+
           {/* Hamburger menu displays when screen is XS or S */}
           <Grid item>
             <Box>
