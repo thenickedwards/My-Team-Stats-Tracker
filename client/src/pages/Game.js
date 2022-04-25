@@ -1,19 +1,21 @@
 import React from "react";
+import Auth from "../utils/auth";
 
+// MUI Imports
 import {
+  Box,
+  Button,
   Container,
   CssBaseline,
-  Grid,
-  Box,
-  Paper,
-  Typography,
   FormControl,
-  Modal,
-  TextField,
-  Button,
-  Select,
-  MenuItem,
+  Grid,
   InputLabel,
+  MenuItem,
+  Modal,
+  Paper,
+  Select,
+  TextField,
+  Typography,
 } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import AddIcon from "@mui/icons-material/Add";
@@ -166,20 +168,26 @@ export default function Game() {
                   }}
                 >
                   <Typography variant="h3">LA Galaxy</Typography>
-                  <IconButton
-                    onClick={handleOpen}
-                    aria-label="Add Player"
-                    size="medium"
-                    sx={{
-                      backgroundColor: "secondary.accent",
-                      borderRadius: 10,
-                      "&:hover": {
-                        backgroundColor: "primary.main",
-                      },
-                    }}
-                  >
-                    <AddIcon fontSize="small" sx={{ color: "#ffffff" }} />
-                  </IconButton>
+
+                  {/* Add Player Button */}
+                  {Auth.loggedIn() ? (
+                    <IconButton
+                      onClick={handleOpen}
+                      aria-label="Add Player"
+                      size="medium"
+                      sx={{
+                        backgroundColor: "secondary.accent",
+                        borderRadius: 10,
+                        "&:hover": {
+                          backgroundColor: "primary.main",
+                        },
+                      }}
+                    >
+                      <AddIcon fontSize="small" sx={{ color: "#ffffff" }} />
+                    </IconButton>
+                  ) : (
+                    <div></div>
+                  )}
                 </Box>
               </Box>
 
@@ -400,20 +408,26 @@ export default function Game() {
                   }}
                 >
                   <Typography variant="h3">Chicago Fire</Typography>
-                  <IconButton
-                    onClick={handleOpen}
-                    aria-label="Add Player"
-                    size="medium"
-                    sx={{
-                      backgroundColor: "secondary.accent",
-                      borderRadius: 10,
-                      "&:hover": {
-                        backgroundColor: "primary.main",
-                      },
-                    }}
-                  >
-                    <AddIcon fontSize="small" sx={{ color: "#ffffff" }} />
-                  </IconButton>
+
+                  {/* Add Player Button */}
+                  {Auth.loggedIn() ? (
+                    <IconButton
+                      onClick={handleOpen}
+                      aria-label="Add Player"
+                      size="medium"
+                      sx={{
+                        backgroundColor: "secondary.accent",
+                        borderRadius: 10,
+                        "&:hover": {
+                          backgroundColor: "primary.main",
+                        },
+                      }}
+                    >
+                      <AddIcon fontSize="small" sx={{ color: "#ffffff" }} />
+                    </IconButton>
+                  ) : (
+                    <div></div>
+                  )}
                 </Box>
               </Box>
 
