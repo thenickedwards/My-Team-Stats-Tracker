@@ -55,8 +55,8 @@ const leaguesStyle = {
   },
 };
 
+
 export default function Leagues() {
-  //   const token = Auth.loggedIn() ? Auth.getToken() : null;
 
   // Functionality for Add League Modal
   const [open, setOpen] = React.useState(false);
@@ -65,7 +65,6 @@ export default function Leagues() {
 
   // Functionality for Edit League Modal
   const [openEdit, setOpenEdit] = React.useState(false);
-  // const handleOpenEdit = () => setOpenEdit(true);
   const handleOpenEdit = (leagueId) => setOpenEdit(leagueId);
   const handleCloseEdit = () => setOpenEdit(false);
 
@@ -79,19 +78,12 @@ export default function Leagues() {
   });
 
   const handleDeleteLeague = async (leagueId) => {
-    // const token = Auth.loggedIn() ? Auth.getToken() : null;
 
-    // if (!token) {
-    //   return false;
-    // }
-    console.log(leagueId);
     try {
       await removeLeague({
         variables: { leagueId },
       });
 
-      //if successful, remove league by id
-      // removeLeague(leagueId);
     } catch (err) {
       console.error(err);
     }
@@ -105,6 +97,7 @@ export default function Leagues() {
     <>
     <CssBaseline />
     <Container disableGutters justify="center" position="relative">
+
       {/* Page styling */}
       <Box sx={{ position: "absolute", top: 100, right: 15 }}>
         <img
@@ -182,7 +175,6 @@ export default function Leagues() {
                 </Link>
 
                 {/* Edit | Delete buttons under league cards */}
-                
                 {Auth.loggedIn() ? (
                 <ButtonGroup
                   variant="text"
@@ -248,8 +240,9 @@ export default function Leagues() {
             Add League
           </Typography>
 
-          {/* ADD LEAGUE FORM */}
+          {/* Add League Form */}
           <AddLeague handleClose={handleClose} />
+          
         </Box>
       </Modal>
     </Container>

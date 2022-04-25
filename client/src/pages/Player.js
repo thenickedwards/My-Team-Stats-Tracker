@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { QUERY_SOCCERPLAYER, QUERY_SOCCERGAMES } from "../utils/queries";
 
-//MUI
+// MUI Imports
 import {
   Container,
   CssBaseline,
@@ -98,7 +98,6 @@ const columns = [
 ];
 
 // Styles
-
 const playerStyle = {
   statsPaper: {
     display: "flex",
@@ -118,6 +117,7 @@ const playerStyle = {
     marginRight: "15px",
   },
 };
+
 
 export default function Player() {
   // Get All Soccer Games
@@ -183,6 +183,7 @@ export default function Player() {
       <Container disableGutters justify="center">
         <Grid container spacing={5} sx={{ py: 8, px: 5 }}>
           <Grid item xs={12} s={12} md={8} lg={8}>
+
             {/* Player Heading */}
             <Box
               sx={{
@@ -202,24 +203,27 @@ export default function Player() {
                   style={{ padding: "10px 0 0 0" }}
                 />
               </Box>
-
               <Typography variant="h1" color="secondary.contrastText">
                 {player.playerFirstName} {player.playerLastName}
               </Typography>
             </Box>
 
             {/* Player Stats */}
-
             <Grid container spacing={{ xs: 4 }}>
-              {/* Stats Cards. Map over this section. */}
+              
+              {/* Stats Cards. TODO: Map over this section. (Future Development) */}
               <Grid item xs={6} s={6} md={4} lg={4}>
+                
                 <Paper elevation={5} sx={playerStyle.statsPaper}>
+
                   <Typography variant="h1" color="secondary.contrastText">
                     4
                   </Typography>
+
                   <Typography variant="h6" color="secondary.contrastText">
                     Played
                   </Typography>
+
                 </Paper>
               </Grid>
               {/* End Stats Cards mapping. */}
@@ -286,6 +290,7 @@ export default function Player() {
                     <Tab label="Teams" {...a11yProps(3)} />
                   </Tabs>
                 </Box>
+
                 <TabPanel value={value} index={0}>
                   {/* Upcoming Games */}
                   <Box sx={{ width: "100%", mt: 8 }}>
