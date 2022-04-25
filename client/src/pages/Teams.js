@@ -27,6 +27,7 @@ import {
   CssBaseline
 } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
+import Loading from "../components/Abstract/Loading";
 
 // Styles
 const teamsStyle = {
@@ -104,7 +105,7 @@ export default function Teams() {
   };
 
   if (loading) {
-    return <div>LOADING</div>;
+    return <Loading/>;
   }
 
   return (

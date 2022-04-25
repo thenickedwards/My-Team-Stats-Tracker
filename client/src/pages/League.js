@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { QUERY_LEAGUE } from "../utils/queries";
 import Auth from "../utils/auth";
+import Loading from "../components/Abstract/Loading";
 
 // MUI Imports
 import {
@@ -93,7 +94,7 @@ export default function League() {
   }
 
   if (loading) {
-    return <div>LOADING</div>;
+    return <Loading/>;
   }
 
   return (

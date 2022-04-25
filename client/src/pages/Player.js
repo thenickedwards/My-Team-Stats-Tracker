@@ -16,6 +16,7 @@ import {
 } from "@mui/material";
 import PropTypes from "prop-types";
 import { DataGrid } from "@mui/x-data-grid";
+import Loading from "../components/Abstract/Loading";
 
 //   DATAGRID (EDIT DATA)
 const columns = [
@@ -96,7 +97,7 @@ export default function Player() {
     const { children, value, index, ...other } = props;
 
     if (loading) {
-      return <div>LOADING</div>;
+      return <Loading/>;
     }
 
     return (

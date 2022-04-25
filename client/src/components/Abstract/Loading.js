@@ -10,7 +10,8 @@ export default function Loading() {
         minHeight: '100vh', 
         backgroundColor: 'primary.light',
     }}>
-      <CircularProgress />
+      
+      <CircularProgress/>
     </Box>
   );
 }
