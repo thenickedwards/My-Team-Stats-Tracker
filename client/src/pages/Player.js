@@ -79,14 +79,12 @@ const playerStyle = {
 export default function Player() {
   //Get player ID from URL
   const { playerId } = useParams();
-  console.log(playerId);
 
   // Get player data
   const { loading, data } = useQuery(QUERY_SOCCERPLAYER, {
     variables: { soccerPlayerId: playerId },
   });
   const player = data?.soccerPlayer || {};
-  console.log(player);
 
   // Functionality for Tabs
   const [value, setValue] = React.useState(0);
@@ -322,7 +320,7 @@ export default function Player() {
 
             <Box>
               <Typography fontSize={200} color={"secondary.main"}>
-                #23
+                #{player.playerNumber}
               </Typography>
             </Box>
           </Grid>
