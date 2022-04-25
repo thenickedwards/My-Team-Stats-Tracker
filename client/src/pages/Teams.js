@@ -68,10 +68,11 @@ export default function Teams() {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-   // Functionality for Edit Team Modal
-   const [openEdit, setOpenEdit] = React.useState(false);
-   const handleOpenEdit = () => setOpenEdit(true);
-   const handleCloseEdit = () => setOpenEdit(false);
+  // Functionality for Edit Team Modal
+  const [openEdit, setOpenEdit] = React.useState(false);
+  //  const handleOpenEdit = () => setOpenEdit(true);
+  const handleOpenEdit = (soccerTeamId) => setOpenEdit(soccerTeamId);
+  const handleCloseEdit = () => setOpenEdit(false);
 
   //Get teams
   const { loading, data } = useQuery(QUERY_SOCCERTEAMS);
@@ -225,14 +226,15 @@ export default function Teams() {
                   color="inherit"
                 >
                   <Button
-                    onClick={handleOpenEdit}
+                    onClick={() => handleOpenEdit(team._id)}
                   >
                     Edit
                   </Button>
 
                   {/* EDIT MODAL */}
                   <Modal
-                    open={openEdit}
+                    // open={openEdit}
+                    open={openEdit === team._id}
                     onClose={handleCloseEdit}
                     soccerTeamId={team._id}
                     aria-labelledby="modal-modal-title"
