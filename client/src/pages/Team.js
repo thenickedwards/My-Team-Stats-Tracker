@@ -20,6 +20,7 @@ import {
   Typography,
   Tabs,
   Tab,
+  CircularProgress
 } from "@mui/material";
 import PropTypes from "prop-types";
 import { DataGrid } from "@mui/x-data-grid";
@@ -181,7 +182,9 @@ export default function Team() {
   };
 
   if (loading || loadingTeam) {
-    return <div>LOADING</div>;
+    return <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+    <CircularProgress />
+    </Box>;
   }
 
   function TabPanel(props) {
