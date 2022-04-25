@@ -77,13 +77,13 @@ const playerStyle = {
 };
 
 export default function Player() {
-  //Get player ID
+  //Get player ID from URL
   const { playerId } = useParams();
   console.log(playerId);
 
   // Get player data
   const { loading, data } = useQuery(QUERY_SOCCERPLAYER, {
-    variables: { playerId },
+    variables: { soccerPlayerId: playerId },
   });
   const player = data?.soccerPlayer || {};
   console.log(player);
