@@ -13,13 +13,12 @@ import {
   Modal,
   Grid,
   Typography,
-  Link
+  Link,
 } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import IconButton from "@mui/material/IconButton";
 import AddIcon from "@mui/icons-material/Add";
 import AddSeason from "../components/Forms/AddSeason";
-
 
 //   DATAGRID (EDIT DATA)
 const columns = [
@@ -77,7 +76,6 @@ const leagueStyle = {
   },
 };
 
-
 export default function League() {
   const { leagueId } = useParams();
 
@@ -101,18 +99,14 @@ export default function League() {
   }
 
   if (loading) {
-    return <Loading/>;
+    return <Loading />;
   }
 
   return (
     <>
       <CssBaseline />
-      <Container
-        disableGutters
-        justify="center"
-      >
-        <Grid container sx={{ py: 8, px: 5 }} >
-         
+      <Container disableGutters justify="center">
+        <Grid container sx={{ py: 8, px: 5 }}>
           {/* League Heading */}
           <Grid container sx={{ display: "flex", flexDirection: "column" }}>
             <Grid
@@ -139,7 +133,7 @@ export default function League() {
                   {league.leagueName}
                 </Typography>
 
-                {/*  TODO: Map Season Names (Future Devlopment) */ }
+                {/*  TODO: Map Season Names (Future Devlopment) */}
 
                 {/* {seasonNames.map((seasonName) => {
                   return ( */}
@@ -170,7 +164,6 @@ export default function League() {
               ) : (
                 <div></div>
               )}
-
             </Grid>
           </Grid>
 
@@ -221,14 +214,12 @@ export default function League() {
             aria-describedby="modal-modal-description"
           >
             <Box sx={leagueStyle.addPlayerModal}>
-
               <Typography id="modal-modal-title" variant="h1" sx={{ mb: 4 }}>
                 Add Season
               </Typography>
 
               {/* ADD SEASON FORM */}
               <AddSeason handleClose={handleClose} />
-            
             </Box>
           </Modal>
         </Grid>

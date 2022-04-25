@@ -1,8 +1,8 @@
-require('dotenv').config();
-const express = require('express');
-const { ApolloServer } = require('apollo-server-express');
-const path = require('path');
-const { authMiddleware } = require('./utils/auth');
+require("dotenv").config();
+const express = require("express");
+const { ApolloServer } = require("apollo-server-express");
+const path = require("path");
+const { authMiddleware } = require("./utils/auth");
 
 const { typeDefs, resolvers } = require("./schemas");
 const db = require("./config/connection");
@@ -16,7 +16,6 @@ const server = new ApolloServer({
 });
 
 app.use(express.urlencoded({ extended: false }));
-// app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 if (process.env.NODE_ENV === "production") {
@@ -32,7 +31,6 @@ const startApolloServer = async (typeDefs, resolvers) => {
     app.get("*", (req, res) => {
       res.sendFile(path.join(__dirname, "../client/build/index.html"));
     });
-    // app.use(express.static(path.join(__dirname, '../client/build')));
   }
 
   db.once("open", () => {

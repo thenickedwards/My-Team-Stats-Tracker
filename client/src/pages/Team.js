@@ -5,7 +5,6 @@ import { QUERY_SOCCERTEAM, QUERY_SOCCERGAMES } from "../utils/queries";
 import Auth from "../utils/auth";
 import Loading from "../components/Abstract/Loading";
 
-
 // MUI Imports
 import {
   Box,
@@ -22,7 +21,6 @@ import {
   Typography,
   Tabs,
   Tab,
-  CircularProgress
 } from "@mui/material";
 import PropTypes from "prop-types";
 import { DataGrid } from "@mui/x-data-grid";
@@ -36,7 +34,7 @@ const columns = [
   {
     field: "homeTeam",
     headerName: "Home",
-    width: 200, 
+    width: 200,
     sortable: false,
     renderCell: (params) => (
       <Box
@@ -67,7 +65,7 @@ const columns = [
   {
     field: "awayTeam",
     headerName: "Away",
-    width: 200, 
+    width: 200,
     sortable: false,
     renderCell: (params) => (
       <Box
@@ -95,15 +93,12 @@ const columns = [
       </Box>
     ),
   },
-  { field: "gameDate", 
-    headerName: "Game Date", 
-    width: 200, 
-  },
+  { field: "gameDate", headerName: "Game Date", width: 200 },
   {
     field: "viewScore",
     headerName: "View Score",
     sortable: false,
-    width: 200, 
+    width: 200,
     renderCell: () => (
       <Link href="/game" variant="h3" underline="none">
         View Game
@@ -188,7 +183,7 @@ export default function Team() {
   };
 
   if (loading || loadingTeam) {
-    return <Loading />
+    return <Loading />;
   }
 
   function TabPanel(props) {
@@ -228,10 +223,9 @@ export default function Team() {
     <>
       <CssBaseline />
       {/* <Container disableGutters justify="center" position="relative"> */}
-      <Container disableGutters justify="center" >
-        
+      <Container disableGutters justify="center">
         {/* Outer container allows graphic images to be placed absolute. Also establishes padding. */}
-        <Grid container sx={{ py: 8, px: 5 }}  >
+        <Grid container sx={{ py: 8, px: 5 }}>
           {/* Container for the two top columns. */}
           <Grid container alignItems={"center"}>
             {/* LEAGUE HEADING. Left column. */}
@@ -460,7 +454,7 @@ export default function Team() {
                 }}
               >
                 <Typography variant="h3">Team Roster</Typography>
-                
+
                 {Auth.loggedIn() ? (
                   <IconButton
                     onClick={handleOpen}
@@ -476,9 +470,9 @@ export default function Team() {
                   >
                     <AddIcon fontSize="inherit" sx={{ color: "#ffffff" }} />
                   </IconButton>
-                  ) : (
-                    <div></div>
-                  )}
+                ) : (
+                  <div></div>
+                )}
               </Box>
 
               {/* PLAYERS */}

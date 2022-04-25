@@ -124,8 +124,6 @@ const typeDefs = gql`
     users: [User]
     user(username: String!): User
     me: User
-    # Above preloaded with React boilerplate
-    # league: League
     league(leagueId: ID!): League
     allLeagues: [League]
     season(seasonId: ID!): Season
@@ -146,11 +144,8 @@ const typeDefs = gql`
       userFirstName: String!
       userLastName: String!
     ): Auth
-    # addUser(username: String!, email: String!, password: String!): Auth
-    # login(email: String!, password: String!): Auth
     login(username: String!, password: String!): Auth
-    # Above preloaded with React boilerplate
-    # Below custom mutations
+
     # Create mutations
     addLeague(league: LeagueInput): League
     addSeason(season: SeasonInput): Season

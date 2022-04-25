@@ -48,13 +48,14 @@ SO THAT I can enjoy the season while watching my team advance
 ![Screenshot10](./planning/add.png)
 
 ## Planning
+
 Once the team settled on an idea for an application Nick volunteered to be begin planning the data structure. First drafts of the models and page contents were sketched out with pen and paper.
 ![Screenshot1](./planning/models-data_doodles.jpg)
 
 With rough ideas on paper, Nick set to work creating wireframes and user workflows in a drawio to share with the team. The data was beginning to take shape and with it somoe of the UX! You can view Nick's initial drawio at [https://drive.google.com/file/d/1nBEIIPUQKrH8zzbBEtpmvnY23NpBL6GU/view?usp=sharing](https://drive.google.com/file/d/1nBEIIPUQKrH8zzbBEtpmvnY23NpBL6GU/view?usp=sharing)
 
 ![Screenshot2](./planning/diagram1.png)
-![Screenshot3](./planning/diagram2.svg) 
+![Screenshot3](./planning/diagram2.svg)
 ![Screenshot4](./planning/model-structure.png)
 
 Juanita took all these backend ideas and began to craft a rich, styled, intuitive user expereince.
@@ -67,7 +68,9 @@ Asana was critical to our project managment process. Tasks were frontloaded and 
 A glimpse of Juanita's final design.
 ![Screenshot7](./planning/design-final.png)
 More available at [https://xd.adobe.com/view/e81ef607-7c65-445b-a38a-b2e1b48b1d4b-bd4d/grid](https://xd.adobe.com/view/e81ef607-7c65-445b-a38a-b2e1b48b1d4b-bd4d/grid).
+
 ### GitHub
+
 URL for GitHub repo: [https://github.com/thenickedwards/My-Team-Stats-Tracker](https://github.com/thenickedwards/My-Team-Stats-Tracker)
 
 [Juanita's GitHub](https://www.github.com/jsamborski310),
@@ -76,8 +79,8 @@ URL for GitHub repo: [https://github.com/thenickedwards/My-Team-Stats-Tracker](h
 [Chandra's GitHub](https://www.github.com/chandrapanda)
 
 ## Heroku
-URL for live application deployed on Heroku: [https://myteam-stats.herokuapp.com/](https://myteam-stats.herokuapp.com/)
 
+URL for live application deployed on Heroku: [https://myteam-stats.herokuapp.com/](https://myteam-stats.herokuapp.com/)
 
 Thank you for reading the readme!
 
