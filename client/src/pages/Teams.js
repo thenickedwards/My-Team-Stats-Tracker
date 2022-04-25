@@ -27,6 +27,7 @@ import {
   CssBaseline
 } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
+import Loading from "../components/Abstract/Loading";
 
 // Styles
 const teamsStyle = {
@@ -104,7 +105,7 @@ export default function Teams() {
   };
 
   if (loading) {
-    return <div>LOADING</div>;
+    return <Loading/>;
   }
 
   return (
@@ -117,14 +118,6 @@ export default function Teams() {
           src="images/abstract-up-arrows.png"
           alt="Abstract graphic with arrows."
           width="60px"
-        />
-      </Box>
-
-      <Box sx={{ position: "absolute", bottom: 0, left: 10 }}>
-        <img
-          src="images/abstract-corner-dots-lines.png"
-          alt="Abstract graphic with dots and lines."
-          width="250px"
         />
       </Box>
 

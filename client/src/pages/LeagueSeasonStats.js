@@ -60,17 +60,8 @@ export default function LeagueSeasonStats() {
   return (
     <>
       <CssBaseline />
-      <Container disableGutters justify="center" position="relative">
+      <Container disableGutters justify="center">
         
-        {/* CORNER ABSTRACT IMAGE */}
-        <Box sx={{ position: "absolute", bottom: 0, left: 10 }}>
-          <img
-            src="images/abstract-corner-dots-lines.png"
-            alt="Abstract graphic with dots and lines."
-            width="250px"
-          />
-        </Box>
-
         {/* Outer container allows graphic images to be placed absolute. Also establishes padding. */}
         <Grid container sx={{ py: 8, px: 5 }}>
           {/* Container for the two top columns. */}

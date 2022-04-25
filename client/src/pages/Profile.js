@@ -5,6 +5,7 @@ import { useQuery } from '@apollo/client';
 import { QUERY_USER, QUERY_ME } from '../utils/queries';
 
 import Auth from '../utils/auth';
+import Loading from '../components/Abstract/Loading';
 
 const Profile = () => {
   const { username: userParam } = useParams();
@@ -20,7 +21,7 @@ const Profile = () => {
   }
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <Loading/>;
   }
 
   if (!user?.username) {

@@ -74,7 +74,7 @@ const Navbar = () => {
       <Container maxWidth="xl" style={navStyle.navImage} justify="end">
         <Toolbar disableGutters>
           <Link
-            variant="h2"
+            variant="h1"
             noWrap
             underline="none"
             color="#ffffff"
@@ -129,8 +129,11 @@ const Navbar = () => {
                 }}
                 sx={{ my: 2, color: "white", display: "block" }}
               >
-                {page.name}
+                <Typography fontSize={20}>
+                  {page.name} 
+                </Typography>
               </Button>
+             
             ))}
           </Box>
 

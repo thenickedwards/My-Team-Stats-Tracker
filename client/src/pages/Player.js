@@ -16,6 +16,7 @@ import {
 } from "@mui/material";
 import PropTypes from "prop-types";
 import { DataGrid } from "@mui/x-data-grid";
+import Loading from "../components/Abstract/Loading";
 
 //   DATAGRID (EDIT DATA)
 const columns = [
@@ -96,7 +97,7 @@ export default function Player() {
     const { children, value, index, ...other } = props;
 
     if (loading) {
-      return <div>LOADING</div>;
+      return <Loading/>;
     }
 
     return (
@@ -133,15 +134,8 @@ export default function Player() {
     <>
       <CssBaseline />
 
-      <Container disableGutters justify="center" position="relative">
-        <Box sx={{ position: "absolute", bottom: 0, left: 10 }}>
-          <img
-            src="images/abstract-corner-dots-lines.png"
-            alt="Abstract graphic with dots and lines."
-            width="250px"
-          />
-        </Box>
-
+      <Container disableGutters justify="center">
+       
         <Grid container spacing={5} sx={{ py: 8, px: 5 }}>
 
           <Grid item xs={12} s={12} md={8} lg={8}>
