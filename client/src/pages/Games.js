@@ -269,9 +269,9 @@ export default function Games() {
                   <MenuItem value="">
                     <em>None</em>
                   </MenuItem>
-                  <MenuItem value={10}>Ten</MenuItem>
-                  <MenuItem value={20}>Twenty</MenuItem>
-                  <MenuItem value={30}>Thirty</MenuItem>
+                  <MenuItem value={10}>Washington Premier League</MenuItem>
+                  <MenuItem value={20}>Washington Soccer Academy</MenuItem>
+                  <MenuItem value={30}>Greater Seattle Soccer League</MenuItem>
                 </Select>
               </FormControl>
             </Grid>
