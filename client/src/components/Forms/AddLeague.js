@@ -3,6 +3,7 @@ import { useMutation } from "@apollo/client";
 import { ADD_LEAGUE } from "../../utils/mutations";
 import { QUERY_LEAGUES } from "../../utils/queries";
 
+// MUI Imports
 import {
   Button,
   FormControl,
@@ -14,6 +15,8 @@ import {
   OutlinedInput,
 } from "@mui/material";
 
+
+// Sport Options
 const sports = ["Soccer"];
 
 // Add Seasons Modal Multiselect
@@ -39,7 +42,9 @@ const leaguesStyle = {
   },
 };
 
+
 const AddLeague = ({ handleClose }) => {
+
   // Functionality to Adding League via Form
   const [formState, setFormState] = useState({
     leagueName: "",
@@ -49,7 +54,6 @@ const AddLeague = ({ handleClose }) => {
 
   const { leagueName, sport, leaguePic } = formState;
 
-  // const [addLeague, { error, data }] = useMutation(ADD_LEAGUE);
   const [addLeague, { error }] = useMutation(ADD_LEAGUE, {
     refetchQueries: [QUERY_LEAGUES],
   });
@@ -60,7 +64,6 @@ const AddLeague = ({ handleClose }) => {
     setFormState({
       ...formState,
       [name]: value,
-      //  typeof value === "string" ? value.split(",") : value
     });
   };
 
@@ -105,7 +108,6 @@ const AddLeague = ({ handleClose }) => {
           <FormControl>
             <InputLabel id="sport">Sport</InputLabel>
             <Select
-              // displayEmpty
               labelId="sport"
               id="sport"
               name="sport"
@@ -139,7 +141,7 @@ const AddLeague = ({ handleClose }) => {
             InputLabelProps={{ shrink: true }}
           />
 
-          {/* TODO: Add Upload Photo Field */}
+          {/* TODO: Add Upload Photo Field (Future Development) */}
 
           <Button
             variant="contained"
