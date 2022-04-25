@@ -20,6 +20,7 @@ import {
   Modal,
   Paper,
   Typography,
+  CssBaseline
 } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 
@@ -100,6 +101,8 @@ export default function Leagues() {
   }
 
   return (
+    <>
+    <CssBaseline />
     <Container disableGutters justify="center" position="relative">
       {/* Page styling */}
       <Box sx={{ position: "absolute", top: 100, right: 15 }}>
@@ -257,5 +260,6 @@ export default function Leagues() {
         </Box>
       </Modal>
     </Container>
+    </>
   );
 }

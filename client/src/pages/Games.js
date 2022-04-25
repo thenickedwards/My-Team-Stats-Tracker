@@ -30,7 +30,7 @@ const columns = [
   {
     field: "homeTeam",
     headerName: "Home",
-    flex: 1,
+    width: 250, 
     renderCell: (params) => (
       <Box
         sx={{
@@ -61,7 +61,7 @@ const columns = [
   {
     field: "awayTeam",
     headerName: "Away",
-    flex: 1,
+    width: 250, 
     renderCell: (params) => (
       <Box
         sx={{
@@ -89,12 +89,15 @@ const columns = [
       </Box>
     ),
   },
-  { field: "gameDate", headerName: "Game Date", flex: 1 },
+  { field: "gameDate", 
+    headerName: "Game Date", 
+    width: 250,  
+  },
   {
     field: "viewScore",
     headerName: "View Score",
     sortable: false,
-    flex: 1,
+    width: 250, 
     renderCell: () => (
       <Link href="/game" variant="h3" underline="none">
         View Game
@@ -106,16 +109,14 @@ const columns = [
 // Seasons Modal Select Team (TEMPORARY DATA)
 
 const teams = [
-  "Oliver Hansen",
-  "Van Henry",
-  "April Tucker",
-  "Ralph Hubbard",
-  "Omar Alexander",
-  "Carlos Abbott",
-  "Miriam Wagner",
-  "Bradley Wilkerson",
-  "Virginia Andrews",
-  "Kelly Snyder",
+  "Chi Town Tigers",
+  "Galaxy Bees",
+  "Salmon",
+  "Wolves",
+  "Hurricanes",
+  "Blizzard",
+  "Lightning",
+  "Thunder"
 ];
 
 // ////////////////////////////////////
