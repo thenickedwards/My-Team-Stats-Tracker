@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { QUERY_SOCCERTEAM, QUERY_SOCCERGAMES } from "../utils/queries";
 import Auth from "../utils/auth";
+import Loading from "../components/Abstract/Loading";
+
 
 // MUI Imports
 import {
@@ -185,9 +187,7 @@ export default function Team() {
   };
 
   if (loading || loadingTeam) {
-    return <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-    <CircularProgress />
-    </Box>;
+    return <Loading />
   }
 
   function TabPanel(props) {
@@ -226,17 +226,11 @@ export default function Team() {
   return (
     <>
       <CssBaseline />
-      <Container disableGutters justify="center" position="relative">
-        {/* CORNER ABSTRACT IMAGE */}
-        <Box sx={{ position: "absolute", bottom: 0, left: 10 }}>
-          <img
-            src="/images/abstract-corner-dots-lines.png"
-            alt="Abstract graphic with dots and lines."
-            width="250px"
-          />
-        </Box>
+      {/* <Container disableGutters justify="center" position="relative"> */}
+      <Container disableGutters justify="center" >
+        
         {/* Outer container allows graphic images to be placed absolute. Also establishes padding. */}
-        <Grid container sx={{ py: 8, px: 5 }} >
+        <Grid container sx={{ py: 8, px: 5 }}  >
           {/* Container for the two top columns. */}
           <Grid container alignItems={"center"}>
             {/* LEAGUE HEADING. Left column. */}

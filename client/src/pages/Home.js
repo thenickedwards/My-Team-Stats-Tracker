@@ -131,15 +131,8 @@ const Home = () => {
   return (
     <>
       <CssBaseline />
-      <Container disableGutters justify="center" position="relative">
-        <Box sx={{ position: "absolute", bottom: 0, left: 10 }}>
-          <img
-            src="images/abstract-corner-dots-lines.png"
-            alt="Abstract graphic with dots and lines."
-            width="250px"
-          />
-        </Box>
-
+      <Container disableGutters justify="center">
+        
         <Grid container sx={{ py: 8, px: 5 }}>
           {/* Team Stats */}
           <Grid container spacing={{ xs: 4 }}>

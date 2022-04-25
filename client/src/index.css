@@ -17,6 +17,8 @@ main {
   background-color: #ECF6FC;
   min-height: 100vh;
   overflow-x: hidden;
+  position:relative;
+  padding-bottom: 50px;
 }
 
 

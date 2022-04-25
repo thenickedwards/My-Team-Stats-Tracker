@@ -35,6 +35,8 @@ import Footer from "./components//Footer/Footer";
 import Navbar from "./components/Navbar";
 // import { fontFamily } from "@mui/system";
 
+import AbstractCorner from "./components/Abstract/AbstractCorner";
+
 // Font import here (SEE INDEX.CSS FOR IMPORT)
 const theme = createTheme({
   typography: {
@@ -112,6 +114,7 @@ function App() {
             <Navbar />
           )}
           <main>
+            <AbstractCorner/>
             <Routes>
               <Route path="/" element={<Home />} />
 

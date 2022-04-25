@@ -113,14 +113,6 @@ export default function Leagues() {
         />
       </Box>
 
-      <Box sx={{ position: "absolute", bottom: 0, left: 10 }}>
-        <img
-          src="images/abstract-corner-dots-lines.png"
-          alt="Abstract graphic with dots and lines."
-          width="250px"
-        />
-      </Box>
-
       <Grid container sx={{ py: 8, px: 5 }} >
         {/* Header and "Add" button */}
         <Box
