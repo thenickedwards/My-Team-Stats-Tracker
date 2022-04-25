@@ -1,16 +1,17 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
-
 import { QUERY_LEAGUE } from "../utils/queries";
+import Auth from "../utils/auth";
 
+// MUI Imports
 import {
+  Box,
   Container,
   CssBaseline,
-  Grid,
-  Box,
-  Typography,
   Modal,
+  Grid,
+  Typography
 } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import IconButton from "@mui/material/IconButton";
@@ -70,7 +71,6 @@ const leagueStyle = {
 
 export default function League() {
   const { leagueId } = useParams();
-  // console.log(leagueId);
 
   const { loading, data } = useQuery(QUERY_LEAGUE, {
     // pass URL parameter
@@ -78,7 +78,6 @@ export default function League() {
   });
 
   const league = data?.league || {};
-  // console.log(league);
 
   // Functionality for Add Season Modal
   const [open, setOpen] = React.useState(false);
@@ -103,17 +102,18 @@ export default function League() {
       <Container
         disableGutters
         justify="center"
+        position="relative"
         // maxWidth="false"
       >
-        <Grid container sx={{ py: 8, px: 5 }} position="relative">
+        <Grid container sx={{ py: 8, px: 5 }} >
           {/* Corner Abstract Image */}
-          {/* <Box sx={{ position: "absolute", bottom: 0, left: 0 }}>
+          <Box sx={{ position: "absolute", bottom: 0, left: 10 }}>
             <img
-              src="images/abstract-corner-dots-lines.png"
+              src="/images/abstract-corner-dots-lines.png"
               alt="Abstract graphic with dots and lines."
               width="250px"
             />
-          </Box> */}
+          </Box>
 
           {/* League Heading */}
           <Grid container sx={{ display: "flex", flexDirection: "column" }}>
@@ -151,20 +151,26 @@ export default function League() {
                 })} */}
               </Box>
 
-              <IconButton
-                onClick={handleOpen}
-                aria-label="Add Season"
-                size="medium"
-                sx={{
-                  backgroundColor: "secondary.accent",
-                  borderRadius: 10,
-                  "&:hover": {
-                    backgroundColor: "primary.main",
-                  },
-                }}
-              >
-                <AddIcon fontSize="inherit" sx={{ color: "#ffffff" }} />
-              </IconButton>
+              {/* Add Season Button */}
+              {Auth.loggedIn() ? (
+                <IconButton
+                  onClick={handleOpen}
+                  aria-label="Add Season"
+                  size="medium"
+                  sx={{
+                    backgroundColor: "secondary.accent",
+                    borderRadius: 10,
+                    "&:hover": {
+                      backgroundColor: "primary.main",
+                    },
+                  }}
+                >
+                  <AddIcon fontSize="inherit" sx={{ color: "#ffffff" }} />
+                </IconButton>
+              ) : (
+                <div></div>
+              )}
+
             </Grid>
           </Grid>
 

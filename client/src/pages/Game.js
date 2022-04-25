@@ -13,7 +13,7 @@ import {
   Button,
   Select,
   MenuItem,
-  InputLabel
+  InputLabel,
 } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import AddIcon from "@mui/icons-material/Add";
@@ -22,16 +22,14 @@ import AddIcon from "@mui/icons-material/Add";
 // Seasons Modal Select Team (TEMPORARY DATA)
 
 const teams = [
-  "Oliver Hansen",
-  "Van Henry",
-  "April Tucker",
-  "Ralph Hubbard",
-  "Omar Alexander",
-  "Carlos Abbott",
-  "Miriam Wagner",
-  "Bradley Wilkerson",
-  "Virginia Andrews",
-  "Kelly Snyder",
+  "Chi Town Tigers",
+  "Galaxy Bees",
+  "Salmon",
+  "Wolves",
+  "Hurricanes",
+  "Blizzard",
+  "Lightning",
+  "Thunder"
 ];
 // ////////////////////////////////////
 
@@ -45,8 +43,18 @@ const gameStyle = {
     p: 0,
     borderRadius: 4,
   },
-  teamRoster: {
-    backgroundColor: "black",
+  teamRosterHome: {
+    backgroundColor: "#F5E410",
+    borderRadius: "100%",
+    width: "50px",
+    height: "50px",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    marginRight: "15px",
+  },
+  teamRosterAway: {
+    backgroundColor: "#168BE2",
     borderRadius: "100%",
     width: "50px",
     height: "50px",
@@ -75,7 +83,7 @@ const gameStyle = {
   },
   submitButton: {
     height: 50,
-    borderRadius: ' 10px 10px 0 0',
+    borderRadius: " 10px 10px 0 0",
     backgroundColor: "secondary.main",
     "&:hover": {
       backgroundColor: "primary.main",
@@ -84,68 +92,68 @@ const gameStyle = {
 };
 
 export default function Game() {
-
   // Functionality for Add Score Modal
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-// Functionality for Select Goal Dropdown
-const [goal, setGoal] = React.useState([]);
+  // Functionality for Select Goal Dropdown
+  const [goal, setGoal] = React.useState([]);
 
-const handleGoalChange = (event) => {
-  const {
-    target: { value },
-  } = event;
-  setGoal(
-    // On autofill we get a stringified value.
-    typeof value === "string" ? value.split(",") : value
-  );
-};
+  const handleGoalChange = (event) => {
+    const {
+      target: { value },
+    } = event;
+    setGoal(
+      // On autofill we get a stringified value.
+      typeof value === "string" ? value.split(",") : value
+    );
+  };
 
-// Functionality for Select Assist Dropdown
-const [assist, setAssist] = React.useState([]);
+  // Functionality for Select Assist Dropdown
+  const [assist, setAssist] = React.useState([]);
 
-const handleAssistChange = (event) => {
-  const {
-    target: { value },
-  } = event;
-  setAssist(
-    // On autofill we get a stringified value.
-    typeof value === "string" ? value.split(",") : value
-  );
-};
-
-
+  const handleAssistChange = (event) => {
+    const {
+      target: { value },
+    } = event;
+    setAssist(
+      // On autofill we get a stringified value.
+      typeof value === "string" ? value.split(",") : value
+    );
+  };
 
   return (
     <>
       <CssBaseline />
-      <Container disableGutters justify="center">
+      <Container disableGutters justify="center" position="relative">
+        {/* CORNER ABSTRACT IMAGE */}
+        <Box sx={{ position: "absolute", bottom: 0, left: 10 }}>
+          <img
+            src="images/abstract-corner-dots-lines.png"
+            alt="Abstract graphic with dots and lines."
+            width="250px"
+          />
+        </Box>
         {/* Outer container allows graphic images to be placed absolute. Also establishes padding. */}
-        <Grid container sx={{ py: 8, px: 5 }} position="relative">
-          {/* CORNER ABSTRACT IMAGE */}
-          <Box sx={{ position: "absolute", bottom: 0, left: 0 }}>
-            <img
-              src="images/abstract-corner-dots-lines.png"
-              alt="Abstract graphic with dots and lines."
-              width="250px"
-            />
-          </Box>
-
+        
+        <Grid container sx={{ py: 8, px: 5 }}>
           {/* Creates container around two columns. Adds space between columns. */}
-          
           <Grid container spacing={5}>
             {/* Left Column */}
-            <Grid item 
-              xs={12} s={12} md={4} lg={4}
+            <Grid
+              item
+              xs={12}
+              s={12}
+              md={4}
+              lg={4}
               order={{ xs: 2, sm: 2, md: 1, lg: 1 }}
             >
               {/* TEAM ROSTER */}
 
               {/* HEADING */}
               <Box>
-                <img src="images/chicago.png" alt="Team Logo" width="50px" />
+                <img src="images/la-galaxy.png" alt="Team Logo" width="50px" />
 
                 <Box
                   sx={{
@@ -157,7 +165,7 @@ const handleAssistChange = (event) => {
                     mt: -1,
                   }}
                 >
-                  <Typography variant="h3">Chicago Fire</Typography>
+                  <Typography variant="h3">LA Galaxy</Typography>
                   <IconButton
                     onClick={handleOpen}
                     aria-label="Add Player"
@@ -182,9 +190,9 @@ const handleAssistChange = (event) => {
                   item
                   sx={{ display: "flex", flexDirection: "row", mb: 3 }}
                 >
-                  <Box style={gameStyle.teamRoster}>
+                  <Box style={gameStyle.teamRosterHome}>
                     <img
-                      src="images/player-default-profile.png"
+                      src="/images/player-default-profile.png"
                       alt="Player Profile Icon"
                       width="30px"
                       height="auto"
@@ -193,8 +201,8 @@ const handleAssistChange = (event) => {
                   </Box>
 
                   <Box>
-                    <Typography variant="h3">#11</Typography>
-                    <Typography variant="h6">Antonio Sanchez</Typography>
+                    <Typography variant="h3">#9</Typography>
+                    <Typography variant="h6">Raul Ruidaz</Typography>
                   </Box>
                 </Grid>
                 {/* End Player Details Mapping. */}
@@ -205,7 +213,7 @@ const handleAssistChange = (event) => {
                   item
                   sx={{ display: "flex", flexDirection: "row", mb: 3 }}
                 >
-                  <Box style={gameStyle.teamRoster}>
+                  <Box style={gameStyle.teamRosterHome}>
                     <img
                       src="images/player-default-profile.png"
                       alt="Player Profile Icon"
@@ -216,8 +224,8 @@ const handleAssistChange = (event) => {
                   </Box>
 
                   <Box>
-                    <Typography variant="h3">#11</Typography>
-                    <Typography variant="h6">Antonio Sanchez</Typography>
+                    <Typography variant="h3">#14</Typography>
+                    <Typography variant="h6">Chad Marshall</Typography>
                   </Box>
                 </Grid>
 
@@ -225,7 +233,7 @@ const handleAssistChange = (event) => {
                   item
                   sx={{ display: "flex", flexDirection: "row", mb: 3 }}
                 >
-                  <Box style={gameStyle.teamRoster}>
+                  <Box style={gameStyle.teamRosterHome}>
                     <img
                       src="images/player-default-profile.png"
                       alt="Player Profile Icon"
@@ -236,8 +244,8 @@ const handleAssistChange = (event) => {
                   </Box>
 
                   <Box>
-                    <Typography variant="h3">#11</Typography>
-                    <Typography variant="h6">Antonio Sanchez</Typography>
+                    <Typography variant="h3">#17</Typography>
+                    <Typography variant="h6">Tjeert Van't Land</Typography>
                   </Box>
                 </Grid>
 
@@ -245,7 +253,7 @@ const handleAssistChange = (event) => {
                   item
                   sx={{ display: "flex", flexDirection: "row", mb: 3 }}
                 >
-                  <Box style={gameStyle.teamRoster}>
+                  <Box style={gameStyle.teamRosterHome}>
                     <img
                       src="images/player-default-profile.png"
                       alt="Player Profile Icon"
@@ -256,8 +264,8 @@ const handleAssistChange = (event) => {
                   </Box>
 
                   <Box>
-                    <Typography variant="h3">#11</Typography>
-                    <Typography variant="h6">Antonio Sanchez</Typography>
+                    <Typography variant="h3">#25</Typography>
+                    <Typography variant="h6">Brian Schmetzer</Typography>
                   </Box>
                 </Grid>
 
@@ -265,7 +273,7 @@ const handleAssistChange = (event) => {
                   item
                   sx={{ display: "flex", flexDirection: "row", mb: 3 }}
                 >
-                  <Box style={gameStyle.teamRoster}>
+                  <Box style={gameStyle.teamRosterHome}>
                     <img
                       src="images/player-default-profile.png"
                       alt="Player Profile Icon"
@@ -276,8 +284,8 @@ const handleAssistChange = (event) => {
                   </Box>
 
                   <Box>
-                    <Typography variant="h3">#11</Typography>
-                    <Typography variant="h6">Antonio Sanchez</Typography>
+                    <Typography variant="h3">#10</Typography>
+                    <Typography variant="h6">Mickey Cave</Typography>
                   </Box>
                 </Grid>
 
@@ -287,8 +295,12 @@ const handleAssistChange = (event) => {
             </Grid>
 
             {/* Middle column */}
-            <Grid item 
-              xs={12} s={12} md={4} lg={4}
+            <Grid
+              item
+              xs={12}
+              s={12}
+              md={4}
+              lg={4}
               order={{ xs: 1, sm: 1, md: 2, lg: 2 }}
             >
               {/* TEAM STATS */}
@@ -363,8 +375,12 @@ const handleAssistChange = (event) => {
             {/* ----------------------------------------------------- */}
 
             {/* Right Column */}
-            <Grid item 
-              xs={12} s={12} md={4} lg={4}
+            <Grid
+              item
+              xs={12}
+              s={12}
+              md={4}
+              lg={4}
               order={{ xs: 3, sm: 3, md: 3, lg: 3 }}
             >
               {/* TEAM ROSTER */}
@@ -408,7 +424,7 @@ const handleAssistChange = (event) => {
                   item
                   sx={{ display: "flex", flexDirection: "row", mb: 3 }}
                 >
-                  <Box style={gameStyle.teamRoster}>
+                  <Box style={gameStyle.teamRosterAway}>
                     <img
                       src="images/player-default-profile.png"
                       alt="Player Profile Icon"
@@ -419,8 +435,8 @@ const handleAssistChange = (event) => {
                   </Box>
 
                   <Box>
-                    <Typography variant="h3">#11</Typography>
-                    <Typography variant="h6">Antonio Sanchez</Typography>
+                    <Typography variant="h3">#6</Typography>
+                    <Typography variant="h6">Mike Ivanow</Typography>
                   </Box>
                 </Grid>
                 {/* End Player Details Mapping. */}
@@ -431,7 +447,7 @@ const handleAssistChange = (event) => {
                   item
                   sx={{ display: "flex", flexDirection: "row", mb: 3 }}
                 >
-                  <Box style={gameStyle.teamRoster}>
+                  <Box style={gameStyle.teamRosterAway}>
                     <img
                       src="images/player-default-profile.png"
                       alt="Player Profile Icon"
@@ -442,8 +458,8 @@ const handleAssistChange = (event) => {
                   </Box>
 
                   <Box>
-                    <Typography variant="h3">#11</Typography>
-                    <Typography variant="h6">Antonio Sanchez</Typography>
+                    <Typography variant="h3">#4</Typography>
+                    <Typography variant="h6">Greg Makowski</Typography>
                   </Box>
                 </Grid>
 
@@ -451,7 +467,7 @@ const handleAssistChange = (event) => {
                   item
                   sx={{ display: "flex", flexDirection: "row", mb: 3 }}
                 >
-                  <Box style={gameStyle.teamRoster}>
+                  <Box style={gameStyle.teamRosterAway}>
                     <img
                       src="images/player-default-profile.png"
                       alt="Player Profile Icon"
@@ -462,8 +478,8 @@ const handleAssistChange = (event) => {
                   </Box>
 
                   <Box>
-                    <Typography variant="h3">#11</Typography>
-                    <Typography variant="h6">Antonio Sanchez</Typography>
+                    <Typography variant="h3">#2</Typography>
+                    <Typography variant="h6">Yeferson Soteldo</Typography>
                   </Box>
                 </Grid>
 
@@ -471,7 +487,7 @@ const handleAssistChange = (event) => {
                   item
                   sx={{ display: "flex", flexDirection: "row", mb: 3 }}
                 >
-                  <Box style={gameStyle.teamRoster}>
+                  <Box style={gameStyle.teamRosterAway}>
                     <img
                       src="images/player-default-profile.png"
                       alt="Player Profile Icon"
@@ -482,8 +498,8 @@ const handleAssistChange = (event) => {
                   </Box>
 
                   <Box>
-                    <Typography variant="h3">#11</Typography>
-                    <Typography variant="h6">Antonio Sanchez</Typography>
+                    <Typography variant="h3">#3</Typography>
+                    <Typography variant="h6">Andre-Pierre Gignac</Typography>
                   </Box>
                 </Grid>
 
@@ -491,7 +507,7 @@ const handleAssistChange = (event) => {
                   item
                   sx={{ display: "flex", flexDirection: "row", mb: 3 }}
                 >
-                  <Box style={gameStyle.teamRoster}>
+                  <Box style={gameStyle.teamRosterAway}>
                     <img
                       src="images/player-default-profile.png"
                       alt="Player Profile Icon"
@@ -502,8 +518,8 @@ const handleAssistChange = (event) => {
                   </Box>
 
                   <Box>
-                    <Typography variant="h3">#11</Typography>
-                    <Typography variant="h6">Antonio Sanchez</Typography>
+                    <Typography variant="h3">#41</Typography>
+                    <Typography variant="h6">Florian Thauvin</Typography>
                   </Box>
                 </Grid>
 
@@ -525,66 +541,65 @@ const handleAssistChange = (event) => {
                 </Typography>
 
                 <form>
-                <FormControl fullWidth sx={{ gap: 4 }}>
-                  <FormControl>
-                    <InputLabel id="select-player-goal">Home Team</InputLabel>
-                    <Select                     
-                      labelId="select-player-goal"
-                      id="goal"
-                      value={goal}
-                      onChange={handleGoalChange}
-                      label="Home Team"
+                  <FormControl fullWidth sx={{ gap: 4 }}>
+                    <FormControl>
+                      <InputLabel id="select-player-goal">Home Team</InputLabel>
+                      <Select
+                        labelId="select-player-goal"
+                        id="goal"
+                        value={goal}
+                        onChange={handleGoalChange}
+                        label="Home Team"
+                      >
+                        {teams.map((team) => (
+                          <MenuItem key={team} value={team}>
+                            {team}
+                          </MenuItem>
+                        ))}
+                      </Select>
+                    </FormControl>
+
+                    <FormControl>
+                      <InputLabel id="select-player-assist">
+                        Away Team
+                      </InputLabel>
+                      <Select
+                        labelId="select-player-assist"
+                        id="assist"
+                        value={assist}
+                        onChange={handleAssistChange}
+                        label="Away Team"
+                      >
+                        {teams.map((team) => (
+                          <MenuItem key={team} value={team}>
+                            {team}
+                          </MenuItem>
+                        ))}
+                      </Select>
+                    </FormControl>
+
+                    <TextField
+                      id="minute"
+                      label="Minute"
+                      variant="outlined"
+                      color="secondary"
+                      InputLabelProps={{ shrink: true }}
+                    />
+
+                    <Button
+                      variant="contained"
+                      type="submit"
+                      sx={gameStyle.formButton}
+                      fullWidth
+                      disableElevation
                     >
-               
-                      {teams.map((team) => (
-                        <MenuItem key={team} value={team}>
-                          {team}
-                        </MenuItem>
-                      ))}
-                    </Select>
+                      <Typography variant="h3">Add Score</Typography>
+                    </Button>
                   </FormControl>
-
-                  <FormControl>
-                    <InputLabel id="select-player-assist">Away Team</InputLabel>
-                    <Select
-                      labelId="select-player-assist"
-                      id="assist"
-                      value={assist}
-                      onChange={handleAssistChange}
-                      label="Away Team"
-                    >
-
-                      {teams.map((team) => (
-                        <MenuItem key={team} value={team}>
-                          {team}
-                        </MenuItem>
-                      ))}
-                    </Select>
-                  </FormControl>
-
-                  <TextField
-                    id="minute"
-                    label="Minute"
-                    variant="outlined"
-                    color="secondary"
-                    InputLabelProps={{ shrink: true }}
-                  />
-
-                  <Button
-                    variant="contained"
-                    type="submit"
-                    sx={gameStyle.formButton}
-                    fullWidth
-                    disableElevation
-                  >
-                    <Typography variant="h3">Add Score</Typography>
-                  </Button>
-                </FormControl>
                 </form>
               </Box>
             </Modal>
           </Grid>
-         
         </Grid>
       </Container>
     </>

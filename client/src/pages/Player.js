@@ -132,20 +132,17 @@ export default function Player() {
   return (
     <>
       <CssBaseline />
-      <Container
-        disableGutters
-        // alignItems="center"
-        justify="center"
-        // maxWidth="false"
-      >
-        <Grid container spacing={5} sx={{ py: 8, px: 5 }} position="relative">
-          <Box sx={{ position: "absolute", bottom: 0, left: 0 }}>
-            <img
-              src="/images/abstract-corner-dots-lines.png"
-              alt="Abstract graphic with dots and lines."
-              width="250px"
-            />
-          </Box>
+
+      <Container disableGutters justify="center" position="relative">
+        <Box sx={{ position: "absolute", bottom: 0, left: 10 }}>
+          <img
+            src="images/abstract-corner-dots-lines.png"
+            alt="Abstract graphic with dots and lines."
+            width="250px"
+          />
+        </Box>
+
+        <Grid container spacing={5} sx={{ py: 8, px: 5 }}>
 
           <Grid item xs={12} s={12} md={8} lg={8}>
             {/* Player Heading */}
@@ -160,6 +157,7 @@ export default function Player() {
             >
               <Box style={playerStyle.teamRoster}>
                 <img
+
                   src="/images/player-default-profile.png"
                   alt="Player Profile Icon"
                   width="30px"
@@ -169,7 +167,9 @@ export default function Player() {
               </Box>
 
               <Typography variant="h1" color="secondary.contrastText">
+
                 {player.playerFirstName} {player.playerLastName}
+
               </Typography>
             </Box>
 
@@ -284,13 +284,13 @@ export default function Player() {
                   </div>
                 </TabPanel>
                 <TabPanel value={value} index={1}>
-                  Item Two
+                  COMING SOON
                 </TabPanel>
                 <TabPanel value={value} index={2}>
-                  Item Three
+                  COMING SOON
                 </TabPanel>
                 <TabPanel value={value} index={3}>
-                  Item Four
+                  COMING SOON
                 </TabPanel>
               </Box>
             </Grid>
@@ -320,7 +320,9 @@ export default function Player() {
 
             <Box>
               <Typography fontSize={200} color={"secondary.main"}>
+
                 #{player.playerNumber}
+
               </Typography>
             </Box>
           </Grid>

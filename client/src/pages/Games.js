@@ -14,7 +14,7 @@ import {
   Button,
   TextField,
   Modal,
-  Link
+  Link,
 } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import IconButton from "@mui/material/IconButton";
@@ -22,44 +22,86 @@ import AddIcon from "@mui/icons-material/Add";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import Auth from "../utils/auth";
 
 // ////////////////////////////////////
 //   DATAGRID (EDIT DATA)
 const columns = [
-  { field: "homeTeam", 
-    headerName: "Home", 
-    flex:1,
+  {
+    field: "homeTeam",
+    headerName: "Home",
+    flex: 1,
     renderCell: (params) => (
-      <Box sx={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 2 }}>
-        <img src={params.value.homeTeamPic} alt="Team Logo" height="auto" width="40px" objectFit="contain" />
-        <Link href={`/team/${params.value.homeTeamLink}`} variant="p" underline="none" color="inherit" >{params.value.homeTeamName}</Link>
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          gap: 2,
+        }}
+      >
+        <img
+          src={params.value.homeTeamPic}
+          alt="Team Logo"
+          height="auto"
+          width="40px"
+          objectFit="contain"
+        />
+        <Link
+          href={`/team/${params.value.homeTeamLink}`}
+          variant="p"
+          underline="none"
+          color="inherit"
+        >
+          {params.value.homeTeamName}
+        </Link>
       </Box>
-    ) 
+    ),
   },
-  { field: "awayTeam", 
-    headerName: "Away", 
-    flex:1,
+  {
+    field: "awayTeam",
+    headerName: "Away",
+    flex: 1,
     renderCell: (params) => (
-      <Box sx={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 2 }}>
-        <img src={params.value.awayTeamPic} alt="Team Logo" height="auto" width="40px" objectFit="contain" />
-        <Link href={`/team/${params.value.awayTeamLink}`} variant="p" underline="none" color="inherit">{params.value.awayTeamName}</Link>
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          gap: 2,
+        }}
+      >
+        <img
+          src={params.value.awayTeamPic}
+          alt="Team Logo"
+          height="auto"
+          width="40px"
+          objectFit="contain"
+        />
+        <Link
+          href={`/team/${params.value.awayTeamLink}`}
+          variant="p"
+          underline="none"
+          color="inherit"
+        >
+          {params.value.awayTeamName}
+        </Link>
       </Box>
-    )  
-  
+    ),
   },
-  { field: "gameDate", headerName: "Game Date", flex:1 },
+  { field: "gameDate", headerName: "Game Date", flex: 1 },
   {
     field: "viewScore",
     headerName: "View Score",
     sortable: false,
-    flex:1,
+    flex: 1,
     renderCell: () => (
-      <Link href="/game" variant="h3" underline="none">View Game</Link>
-    )
+      <Link href="/game" variant="h3" underline="none">
+        View Game
+      </Link>
+    ),
   },
 ];
-
-
 
 // Seasons Modal Select Team (TEMPORARY DATA)
 
@@ -101,7 +143,6 @@ const gamesStyle = {
 };
 
 export default function Games() {
-
   const { data } = useQuery(QUERY_SOCCERGAMES);
   const games = data?.allSoccerGames || [];
 
@@ -148,18 +189,17 @@ export default function Games() {
   return (
     <>
       <CssBaseline />
-      <Container disableGutters justify="center">
+      <Container disableGutters justify="center" position="relative">
+        {/* CORNER ABSTRACT IMAGE */}
+        <Box sx={{ position: "absolute", bottom: 0, left: 10 }}>
+          <img
+            src="images/abstract-corner-dots-lines.png"
+            alt="Abstract graphic with dots and lines."
+            width="250px"
+          />
+        </Box>
         {/* Outer container allows graphic images to be placed absolute. Also establishes padding. */}
-        <Grid container sx={{ py: 8, px: 5 }} position="relative">
-          {/* CORNER ABSTRACT IMAGE */}
-          <Box sx={{ position: "absolute", bottom: 0, left: 0 }}>
-            <img
-              src="images/abstract-corner-dots-lines.png"
-              alt="Abstract graphic with dots and lines."
-              width="250px"
-            />
-          </Box>
-
+        <Grid container sx={{ py: 8, px: 5 }}>
           {/* Container for the two top columns. */}
           <Grid container alignItems={"center"}>
             {/* PAGE HEADING. Left column. */}
@@ -181,20 +221,25 @@ export default function Games() {
                     Upcoming Games
                   </Typography>
 
-                  <IconButton
-                    onClick={handleOpen}
-                    aria-label="Add Game"
-                    size="medium"
-                    sx={{
-                      backgroundColor: "secondary.accent",
-                      borderRadius: 10,
-                      "&:hover": {
-                        backgroundColor: "primary.main",
-                      },
-                    }}
-                  >
-                    <AddIcon fontSize="inherit" sx={{ color: "#ffffff" }} />
-                  </IconButton>
+                  {/* Add Game Button */}
+                  {Auth.loggedIn() ? (
+                    <IconButton
+                      onClick={handleOpen}
+                      aria-label="Add Game"
+                      size="medium"
+                      sx={{
+                        backgroundColor: "secondary.accent",
+                        borderRadius: 10,
+                        "&:hover": {
+                          backgroundColor: "primary.main",
+                        },
+                      }}
+                    >
+                      <AddIcon fontSize="inherit" sx={{ color: "#ffffff" }} />
+                    </IconButton>
+                  ) : (
+                    <div></div>
+                  )}
                 </Grid>
               </Grid>
             </Grid>
@@ -224,9 +269,9 @@ export default function Games() {
                   <MenuItem value="">
                     <em>None</em>
                   </MenuItem>
-                  <MenuItem value={10}>Ten</MenuItem>
-                  <MenuItem value={20}>Twenty</MenuItem>
-                  <MenuItem value={30}>Thirty</MenuItem>
+                  <MenuItem value={10}>Washington Premier League</MenuItem>
+                  <MenuItem value={20}>Washington Soccer Academy</MenuItem>
+                  <MenuItem value={30}>Greater Seattle Soccer League</MenuItem>
                 </Select>
               </FormControl>
             </Grid>
@@ -239,10 +284,18 @@ export default function Games() {
             <Box sx={{ width: "100%", mt: 8 }}>
               <div style={{ height: 400, width: "100%" }}>
                 <DataGrid
-                    rows={games.map((game) => ({
+                  rows={games.map((game) => ({
                     id: game._id,
-                    homeTeam: {homeTeamName: game.homeTeam.teamName, homeTeamPic: game.homeTeam.teamPic, homeTeamLink: game.homeTeam._id},
-                    awayTeam: {awayTeamName: game.awayTeam.teamName, awayTeamPic: game.awayTeam.teamPic, awayTeamLink: game.awayTeam._id},
+                    homeTeam: {
+                      homeTeamName: game.homeTeam.teamName,
+                      homeTeamPic: game.homeTeam.teamPic,
+                      homeTeamLink: game.homeTeam._id,
+                    },
+                    awayTeam: {
+                      awayTeamName: game.awayTeam.teamName,
+                      awayTeamPic: game.awayTeam.teamPic,
+                      awayTeamLink: game.awayTeam._id,
+                    },
                     gameDate: game.gameDate,
                   }))}
                   columns={columns}

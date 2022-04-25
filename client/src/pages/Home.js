@@ -7,47 +7,85 @@ import {
   Grid,
   Link,
   Paper,
-  Typography
+  Typography,
 } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 
-
 // Upcoming Games Table - Columns
 const columns = [
-  { field: "homeTeam", 
-    headerName: "Home", 
-    flex:1,
+  {
+    field: "homeTeam",
+    headerName: "Home",
+    flex: 1,
     renderCell: (params) => (
-      <Box sx={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 2 }}>
-        <img src={params.value.homeTeamPic} alt="Team Logo" height="auto" width="40px" 
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          gap: 2,
+        }}
+      >
+        <img
+          src={params.value.homeTeamPic}
+          alt="Team Logo"
+          height="auto"
+          width="40px"
         />
-        <Link href={`/team/${params.value.homeTeamLink}`} variant="p" underline="none" color="inherit" >{params.value.homeTeamName}</Link>
+        <Link
+          href={`/team/${params.value.homeTeamLink}`}
+          variant="p"
+          underline="none"
+          color="inherit"
+        >
+          {params.value.homeTeamName}
+        </Link>
       </Box>
-    ) 
+    ),
   },
-  { field: "awayTeam", 
-    headerName: "Away", 
-    flex:1,
+  {
+    field: "awayTeam",
+    headerName: "Away",
+    flex: 1,
     renderCell: (params) => (
-      <Box sx={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 2 }}>
-        <img src={params.value.awayTeamPic} alt="Team Logo" height="auto" width="40px" />
-        <Link href={`/team/${params.value.awayTeamLink}`} variant="p" underline="none" color="inherit">{params.value.awayTeamName}</Link>
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          gap: 2,
+        }}
+      >
+        <img
+          src={params.value.awayTeamPic}
+          alt="Team Logo"
+          height="auto"
+          width="40px"
+        />
+        <Link
+          href={`/team/${params.value.awayTeamLink}`}
+          variant="p"
+          underline="none"
+          color="inherit"
+        >
+          {params.value.awayTeamName}
+        </Link>
       </Box>
-    )  
-  
+    ),
   },
-  { field: "gameDate", headerName: "Game Date", width: 200, flex:1 },
+  { field: "gameDate", headerName: "Game Date", width: 200, flex: 1 },
   {
     field: "viewScore",
     headerName: "View Score",
     sortable: false,
-    flex:1,
+    flex: 1,
     renderCell: () => (
-      <Link href="/game" variant="h3" underline="none">View Game</Link>
-    )
+      <Link href="/game" variant="h3" underline="none">
+        View Game
+      </Link>
+    ),
   },
 ];
-
 
 // STYLES
 const homeStyle = {
@@ -72,7 +110,7 @@ const homeStyle = {
     justifyContent: "space-between",
     alignItems: "center",
     padding: "5px 40px",
-    height: "40px"
+    height: "40px",
   },
   statsTeamDetails: {
     display: "flex",
@@ -90,75 +128,65 @@ const Home = () => {
   return (
     <>
       <CssBaseline />
-      <Container
-        disableGutters
-        justify="center"
-      >
-        <Grid
-          container
-          sx={{ py: 8, px: 5 }}
-          position="relative"
-        >
-          <Box sx={{ position: "absolute", bottom: 0, left: 0 }}>
-            <img
-              src="images/abstract-corner-dots-lines.png"
-              alt="Abstract graphic with dots and lines."
-              width="250px"
-            />
-          </Box>
+      <Container disableGutters justify="center" position="relative">
+        <Box sx={{ position: "absolute", bottom: 0, left: 10 }}>
+          <img
+            src="images/abstract-corner-dots-lines.png"
+            alt="Abstract graphic with dots and lines."
+            width="250px"
+          />
+        </Box>
 
+        <Grid container sx={{ py: 8, px: 5 }}>
           {/* Team Stats */}
           <Grid container spacing={{ xs: 4 }}>
             {games.map((game, index) => {
-              if(index < 4) {
-
-              return (
-                <Grid item xs={12} s={12} md={3} lg={3}>
-                  <Paper elevation={5} sx={homeStyle.statsPaper}>
-                    
-                    {/* Header */}
-                    <Box sx={homeStyle.statsHeader} className="statsBox">
-                      <Typography variant="p" fontSize={13}>
-                        League Name
-                      </Typography>
-                      <Typography variant="p" fontSize={13}>
-                        4/9 @ 8:00pm
-                      </Typography>
-                    </Box>
-
-                    {/* Team 1 */}
-                    <Box sx={homeStyle.statsTeams}>
-                      <Box sx={homeStyle.statsTeamDetails}>
-                        <img
-                          src={game.homeTeam.teamPic}
-                          alt="Team Logo"
-                          width="30px"
-                          height="auto"
-                        />
-                        <Typography>{game.homeTeam.teamName}</Typography>
+              if (index < 4) {
+                return (
+                  <Grid item xs={12} s={12} md={3} lg={3}>
+                    <Paper elevation={5} sx={homeStyle.statsPaper}>
+                      {/* Header */}
+                      <Box sx={homeStyle.statsHeader} className="statsBox">
+                        <Typography variant="p" fontSize={13}>
+                          League Name
+                        </Typography>
+                        <Typography variant="p" fontSize={13}>
+                          4/9 @ 8:00pm
+                        </Typography>
                       </Box>
-                      <Typography>{game.goalsHome}</Typography>
-                    </Box>
 
-                    {/* Team 2 */}
-                    <Box sx={homeStyle.statsTeams}>
-                      <Box sx={homeStyle.statsTeamDetails}>
-                        <img
-                          src={game.awayTeam.teamPic}
-                          alt="Team Logo"
-                          width="30px"
-                          height="auto"
-                        />
-                        <Typography>{game.awayTeam.teamName}</Typography>
+                      {/* Team 1 */}
+                      <Box sx={homeStyle.statsTeams}>
+                        <Box sx={homeStyle.statsTeamDetails}>
+                          <img
+                            src={game.homeTeam.teamPic}
+                            alt="Team Logo"
+                            width="30px"
+                            height="auto"
+                          />
+                          <Typography>{game.homeTeam.teamName}</Typography>
+                        </Box>
+                        <Typography>{game.goalsHome}</Typography>
                       </Box>
-                      <Typography>{game.goalsAway}</Typography>
-                    </Box>
-                  </Paper>
-                </Grid>
-              )
-            }
-          })}
 
+                      {/* Team 2 */}
+                      <Box sx={homeStyle.statsTeams}>
+                        <Box sx={homeStyle.statsTeamDetails}>
+                          <img
+                            src={game.awayTeam.teamPic}
+                            alt="Team Logo"
+                            width="30px"
+                            height="auto"
+                          />
+                          <Typography>{game.awayTeam.teamName}</Typography>
+                        </Box>
+                        <Typography>{game.goalsAway}</Typography>
+                      </Box>
+                    </Paper>
+                  </Grid>
+                );
+              }
+            })}
 
             {/* Upcoming Games */}
             <Box sx={{ width: "100%", mt: 8 }}>
@@ -170,8 +198,16 @@ const Home = () => {
                 <DataGrid
                   rows={games.map((game) => ({
                     id: game._id,
-                    homeTeam: {homeTeamName: game.homeTeam.teamName, homeTeamPic: game.homeTeam.teamPic, homeTeamLink: game.homeTeam._id},
-                    awayTeam: {awayTeamName: game.awayTeam.teamName, awayTeamPic: game.awayTeam.teamPic, awayTeamLink: game.awayTeam._id},
+                    homeTeam: {
+                      homeTeamName: game.homeTeam.teamName,
+                      homeTeamPic: game.homeTeam.teamPic,
+                      homeTeamLink: game.homeTeam._id,
+                    },
+                    awayTeam: {
+                      awayTeamName: game.awayTeam.teamName,
+                      awayTeamPic: game.awayTeam.teamPic,
+                      awayTeamLink: game.awayTeam._id,
+                    },
                     gameDate: game.gameDate,
                   }))}
                   columns={columns}

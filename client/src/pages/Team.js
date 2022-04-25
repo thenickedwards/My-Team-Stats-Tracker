@@ -2,6 +2,7 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { QUERY_SOCCERTEAM, QUERY_SOCCERGAMES } from "../utils/queries";
+import Auth from "../utils/auth";
 
 // MUI Imports
 import {
@@ -219,18 +220,17 @@ export default function Team() {
   return (
     <>
       <CssBaseline />
-      <Container disableGutters justify="center">
+      <Container disableGutters justify="center" position="relative">
+        {/* CORNER ABSTRACT IMAGE */}
+        <Box sx={{ position: "absolute", bottom: 0, left: 10 }}>
+          <img
+            src="/images/abstract-corner-dots-lines.png"
+            alt="Abstract graphic with dots and lines."
+            width="250px"
+          />
+        </Box>
         {/* Outer container allows graphic images to be placed absolute. Also establishes padding. */}
-        <Grid container sx={{ py: 8, px: 5 }} position="relative">
-          {/* CORNER ABSTRACT IMAGE */}
-          <Box sx={{ position: "absolute", bottom: 0, left: 0 }}>
-            <img
-              src="images/abstract-corner-dots-lines.png"
-              alt="Abstract graphic with dots and lines."
-              width="250px"
-            />
-          </Box>
-
+        <Grid container sx={{ py: 8, px: 5 }} >
           {/* Container for the two top columns. */}
           <Grid container alignItems={"center"}>
             {/* LEAGUE HEADING. Left column. */}
@@ -287,9 +287,13 @@ export default function Team() {
                   <MenuItem value="">
                     <em>None</em>
                   </MenuItem>
-                  <MenuItem value={10}>Ten</MenuItem>
-                  <MenuItem value={20}>Twenty</MenuItem>
-                  <MenuItem value={30}>Thirty</MenuItem>
+                  <MenuItem value={10}>Adult Coed A - 11v11 Spring</MenuItem>
+                  <MenuItem value={20}>Adult Womens A - 11v11 Spring</MenuItem>
+                  <MenuItem value={30}>Adult Mens A - 11v11 Spring</MenuItem>
+                  <MenuItem value={40}>Boys U8 Spring</MenuItem>
+                  <MenuItem value={50}>Girls U8 Spring</MenuItem>
+                  <MenuItem value={60}>Ballard Womens Rec Summer</MenuItem>
+                  <MenuItem value={60}>Tukwila Mens Rec Fall</MenuItem>
                 </Select>
               </FormControl>
             </Grid>
@@ -430,10 +434,10 @@ export default function Team() {
                     </div>
                   </TabPanel>
                   <TabPanel value={value} index={1}>
-                    Item Two
+                    COMING SOON
                   </TabPanel>
                   <TabPanel value={value} index={2}>
-                    Item Three
+                    COMING SOON
                   </TabPanel>
                 </Box>
               </Grid>
@@ -455,20 +459,25 @@ export default function Team() {
                 }}
               >
                 <Typography variant="h3">Team Roster</Typography>
-                <IconButton
-                  onClick={handleOpen}
-                  aria-label="Add Player"
-                  size="medium"
-                  sx={{
-                    backgroundColor: "secondary.accent",
-                    borderRadius: 10,
-                    "&:hover": {
-                      backgroundColor: "primary.main",
-                    },
-                  }}
-                >
-                  <AddIcon fontSize="inherit" sx={{ color: "#ffffff" }} />
-                </IconButton>
+                
+                {Auth.loggedIn() ? (
+                  <IconButton
+                    onClick={handleOpen}
+                    aria-label="Add Player"
+                    size="medium"
+                    sx={{
+                      backgroundColor: "secondary.accent",
+                      borderRadius: 10,
+                      "&:hover": {
+                        backgroundColor: "primary.main",
+                      },
+                    }}
+                  >
+                    <AddIcon fontSize="inherit" sx={{ color: "#ffffff" }} />
+                  </IconButton>
+                  ) : (
+                    <div></div>
+                  )}
               </Box>
 
               {/* PLAYERS */}

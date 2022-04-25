@@ -6,7 +6,7 @@ import EditLeague from "../components/Forms/EditLeague";
 import { useMutation, useQuery } from "@apollo/client";
 import { QUERY_LEAGUES, QUERY_ME } from "../utils/queries";
 import { REMOVE_LEAGUE } from "../utils/mutations";
-// import Auth from "../utils/auth";
+import Auth from "../utils/auth";
 
 // Material UI Imports
 import {
@@ -100,7 +100,7 @@ export default function Leagues() {
   }
 
   return (
-    <Container alignItems="center" justifyContent="center">
+    <Container disableGutters justify="center" position="relative">
       {/* Page styling */}
       <Box sx={{ position: "absolute", top: 100, right: 15 }}>
         <img
@@ -110,7 +110,7 @@ export default function Leagues() {
         />
       </Box>
 
-      <Box sx={{ position: "absolute", bottom: 40, left: 40 }}>
+      <Box sx={{ position: "absolute", bottom: 0, left: 10 }}>
         <img
           src="images/abstract-corner-dots-lines.png"
           alt="Abstract graphic with dots and lines."
@@ -118,7 +118,7 @@ export default function Leagues() {
         />
       </Box>
 
-      <Grid container sx={{ py: 8, px: 5 }} position="relative">
+      <Grid container sx={{ py: 8, px: 5 }} >
         {/* Header and "Add" button */}
         <Box
           sx={{
@@ -131,6 +131,7 @@ export default function Leagues() {
         >
           <Typography variant="h1">Leagues</Typography>
 
+          {Auth.loggedIn() ? (
           <IconButton
             onClick={handleOpen}
             aria-label="Add League"
@@ -145,6 +146,9 @@ export default function Leagues() {
           >
             <AddIcon fontSize="inherit" sx={{ color: "#ffffff" }} />
           </IconButton>
+          ) : (
+            <div></div>
+          )}
         </Box>
 
         {/* League Cards - Map Over Seeds */}
@@ -180,7 +184,10 @@ export default function Leagues() {
                     </Typography>
                   </Paper>
                 </Link>
+
                 {/* Edit | Delete buttons under league cards */}
+                
+                {Auth.loggedIn() ? (
                 <ButtonGroup
                   variant="text"
                   aria-label="text button group"
@@ -224,6 +231,9 @@ export default function Leagues() {
                     Delete
                   </Button>
                 </ButtonGroup>
+              ) : (
+                <div></div>
+              )}
               </Grid>
             );
           })}
