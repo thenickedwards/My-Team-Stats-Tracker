@@ -13,7 +13,8 @@ const Logout = async (res) => {
 
 const logoutPage = () => {
   Logout();
-  // if user's internet is slow, this page will render in interim of logout
+
+  // If user's internet is slow, this page will render in interim of logout
   return (
     <>
       <Container maxWidth="sm">

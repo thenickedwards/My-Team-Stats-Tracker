@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { QUERY_SOCCERPLAYER } from "../utils/queries";
 
-//MUI
+// MUI Imports
 import {
   Container,
   CssBaseline,
@@ -18,7 +18,8 @@ import PropTypes from "prop-types";
 import { DataGrid } from "@mui/x-data-grid";
 import Loading from "../components/Abstract/Loading";
 
-//   DATAGRID (EDIT DATA)
+
+// Game Table Columns
 const columns = [
   { field: "id", headerName: "ID", width: 70 },
   { field: "firstName", headerName: "First name", width: 130 },
@@ -40,8 +41,7 @@ const columns = [
   },
 ];
 
-//   DATAGRID (TEMPORARY DATA)
-
+// Game Table Rows
 const rows = [
   { id: 1, lastName: "Snow", firstName: "Jon", age: 35 },
   { id: 2, lastName: "Lannister", firstName: "Cersei", age: 42 },
@@ -53,10 +53,8 @@ const rows = [
   { id: 8, lastName: "Frances", firstName: "Rossini", age: 36 },
   { id: 9, lastName: "Roxie", firstName: "Harvey", age: 65 },
 ];
-// ////////////////////////////////////
 
 // Styles
-
 const playerStyle = {
   statsPaper: {
     display: "flex",
@@ -77,7 +75,9 @@ const playerStyle = {
   },
 };
 
+
 export default function Player() {
+  
   //Get player ID from URL
   const { playerId } = useParams();
 
@@ -135,10 +135,9 @@ export default function Player() {
       <CssBaseline />
 
       <Container disableGutters justify="center">
-       
         <Grid container spacing={5} sx={{ py: 8, px: 5 }}>
-
           <Grid item xs={12} s={12} md={8} lg={8}>
+
             {/* Player Heading */}
             <Box
               sx={{
@@ -151,7 +150,6 @@ export default function Player() {
             >
               <Box style={playerStyle.teamRoster}>
                 <img
-
                   src="/images/player-default-profile.png"
                   alt="Player Profile Icon"
                   width="30px"
@@ -159,7 +157,6 @@ export default function Player() {
                   style={{ padding: "10px 0 0 0" }}
                 />
               </Box>
-
               <Typography variant="h1" color="secondary.contrastText">
 
                 {player.playerFirstName} {player.playerLastName}
@@ -168,17 +165,21 @@ export default function Player() {
             </Box>
 
             {/* Player Stats */}
-
             <Grid container spacing={{ xs: 4 }}>
-              {/* Stats Cards. Map over this section. */}
+              
+              {/* Stats Cards. TODO: Map over this section. (Future Development) */}
               <Grid item xs={6} s={6} md={4} lg={4}>
+                
                 <Paper elevation={5} sx={playerStyle.statsPaper}>
+
                   <Typography variant="h1" color="secondary.contrastText">
                     4
                   </Typography>
+
                   <Typography variant="h6" color="secondary.contrastText">
                     Played
                   </Typography>
+
                 </Paper>
               </Grid>
               {/* End Stats Cards mapping. */}
@@ -245,8 +246,10 @@ export default function Player() {
                     <Tab label="Teams" {...a11yProps(3)} />
                   </Tabs>
                 </Box>
+
                 <TabPanel value={value} index={0}>
-                  {/* Games */}
+
+                  {/* Games Table */}
                   <div style={{ height: 400, width: "100%" }}>
                     <DataGrid
                       rows={rows}
@@ -273,7 +276,6 @@ export default function Player() {
                         },
                       }}
 
-                      // checkboxSelection
                     />
                   </div>
                 </TabPanel>
