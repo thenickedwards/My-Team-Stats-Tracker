@@ -2,6 +2,8 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { QUERY_SOCCERPLAYER } from "../utils/queries";
+
+//MUI
 import {
   Container,
   CssBaseline,
@@ -76,15 +78,15 @@ const playerStyle = {
 
 export default function Player() {
   //Get player ID
-  const { soccerPlayerId } = useParams();
-  console.log(soccerPlayerId);
+  const { playerId } = useParams();
+  console.log(playerId);
 
   // Get player data
   const { loading, data } = useQuery(QUERY_SOCCERPLAYER, {
-    variables: { soccerPlayerId },
+    variables: { playerId },
   });
   const player = data?.soccerPlayer || {};
-  console.log(data);
+  console.log(player);
 
   // Functionality for Tabs
   const [value, setValue] = React.useState(0);
