@@ -1,5 +1,9 @@
 import React from "react";
+import { useParams } from "react-router-dom";
+import { useQuery } from "@apollo/client";
+import { QUERY_SOCCERPLAYER } from "../utils/queries";
 
+//MUI
 import {
   Container,
   CssBaseline,
@@ -13,7 +17,6 @@ import {
 import PropTypes from "prop-types";
 import { DataGrid } from "@mui/x-data-grid";
 
-// ////////////////////////////////////
 //   DATAGRID (EDIT DATA)
 const columns = [
   { field: "id", headerName: "ID", width: 70 },
@@ -73,7 +76,16 @@ const playerStyle = {
   },
 };
 
-export default function Team() {
+export default function Player() {
+  //Get player ID from URL
+  const { playerId } = useParams();
+
+  // Get player data
+  const { loading, data } = useQuery(QUERY_SOCCERPLAYER, {
+    variables: { soccerPlayerId: playerId },
+  });
+  const player = data?.soccerPlayer || {};
+
   // Functionality for Tabs
   const [value, setValue] = React.useState(0);
 
@@ -82,6 +94,10 @@ export default function Team() {
   };
   function TabPanel(props) {
     const { children, value, index, ...other } = props;
+
+    if (loading) {
+      return <div>LOADING</div>;
+    }
 
     return (
       <div
@@ -116,6 +132,7 @@ export default function Team() {
   return (
     <>
       <CssBaseline />
+
       <Container disableGutters justify="center" position="relative">
         <Box sx={{ position: "absolute", bottom: 0, left: 10 }}>
           <img
@@ -126,6 +143,7 @@ export default function Team() {
         </Box>
 
         <Grid container spacing={5} sx={{ py: 8, px: 5 }}>
+
           <Grid item xs={12} s={12} md={8} lg={8}>
             {/* Player Heading */}
             <Box
@@ -139,7 +157,8 @@ export default function Team() {
             >
               <Box style={playerStyle.teamRoster}>
                 <img
-                  src="images/player-default-profile.png"
+
+                  src="/images/player-default-profile.png"
                   alt="Player Profile Icon"
                   width="30px"
                   height="auto"
@@ -148,7 +167,9 @@ export default function Team() {
               </Box>
 
               <Typography variant="h1" color="secondary.contrastText">
-                Trevor Smith
+
+                {player.playerFirstName} {player.playerLastName}
+
               </Typography>
             </Box>
 
@@ -299,7 +320,9 @@ export default function Team() {
 
             <Box>
               <Typography fontSize={200} color={"secondary.main"}>
-                #23
+
+                #{player.playerNumber}
+
               </Typography>
             </Box>
           </Grid>
