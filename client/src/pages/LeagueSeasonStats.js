@@ -1,4 +1,6 @@
 import React from "react";
+
+// MUI Imports
 import {
   Container,
   CssBaseline,
@@ -12,8 +14,8 @@ import {
 } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 
-// ////////////////////////////////////
-//   DATAGRID (EDIT DATA)
+
+//   Datagrid
 const columns = [
   { field: "id", headerName: "ID", width: 70 },
   { field: "firstName", headerName: "First name", width: 130 },
@@ -35,7 +37,7 @@ const columns = [
   },
 ];
 
-//   DATAGRID (TEMPORARY DATA)
+//   DATAGRID (TEMPORARY DATA) TODO: Map League Seasons (Future Development)
 const rows = [
   { id: 1, lastName: "Snow", firstName: "Jon", age: 35 },
   { id: 2, lastName: "Lannister", firstName: "Cersei", age: 42 },
@@ -48,9 +50,9 @@ const rows = [
   { id: 9, lastName: "Roxie", firstName: "Harvey", age: 65 },
 ];
 
-// ////////////////////////////////////
 
 export default function LeagueSeasonStats() {
+
   // Functionality for Dropdown
   const [season, setSeason] = React.useState("");
   const handleSeasonChange = (event) => {
@@ -64,8 +66,10 @@ export default function LeagueSeasonStats() {
         
         {/* Outer container allows graphic images to be placed absolute. Also establishes padding. */}
         <Grid container sx={{ py: 8, px: 5 }}>
+          
           {/* Container for the two top columns. */}
           <Grid container alignItems={"center"}>
+            
             {/* LEAGUE HEADING. Left column. */}
             <Grid item xs={12} sm={12} md={9} lg={9}>
               <Grid container sx={{ display: "flex", flexDirection: "column" }}>
@@ -169,6 +173,7 @@ export default function LeagueSeasonStats() {
             </Box>
           </Grid>
           {/* End League Seasons Table -------------*/}
+        
         </Grid>
       </Container>
     </>

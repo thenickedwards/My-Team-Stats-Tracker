@@ -19,6 +19,7 @@ import IconButton from "@mui/material/IconButton";
 import AddIcon from "@mui/icons-material/Add";
 import AddSeason from "../components/Forms/AddSeason";
 
+
 //   DATAGRID (EDIT DATA)
 const columns = [
   {
@@ -55,7 +56,7 @@ const MenuProps = {
   },
 };
 
-// STYLES
+// Styles
 const leagueStyle = {
   addPlayerModal: {
     position: "absolute",
@@ -69,6 +70,7 @@ const leagueStyle = {
     p: 4,
   },
 };
+
 
 export default function League() {
   const { leagueId } = useParams();
@@ -88,7 +90,6 @@ export default function League() {
   let seasonNames = [];
   if (league.seasons) {
     seasonNames = league.seasons.map((season) => {
-      // return season.seasonName;
       return season;
     });
   }
@@ -131,6 +132,8 @@ export default function League() {
                 <Typography variant="h1" color="secondary.contrastText">
                   {league.leagueName}
                 </Typography>
+
+                {/*  TODO: Map Season Names (Future Devlopment) */ }
 
                 {/* {seasonNames.map((seasonName) => {
                   return ( */}
@@ -176,7 +179,6 @@ export default function League() {
                     startYear: season.startYear,
                     endYear: season.endYear,
                   }))}
-                  // rows={rows}
                   columns={columns}
                   pageSize={5}
                   rowsPerPageOptions={[5]}
@@ -213,12 +215,14 @@ export default function League() {
             aria-describedby="modal-modal-description"
           >
             <Box sx={leagueStyle.addPlayerModal}>
+
               <Typography id="modal-modal-title" variant="h1" sx={{ mb: 4 }}>
                 Add Season
               </Typography>
 
               {/* ADD SEASON FORM */}
               <AddSeason handleClose={handleClose} />
+            
             </Box>
           </Modal>
         </Grid>
