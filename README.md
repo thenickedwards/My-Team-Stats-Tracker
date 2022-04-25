@@ -55,6 +55,7 @@ With rough ideas on paper, Nick set to work creating wireframes and user workflo
 
 ![Screenshot2](./planning/diagram1.png)
 ![Screenshot3](./planning/diagram2.svg) 
+You can explore how the data works in this shared collectionof queries and mutations using Apollo: [https://studio.apollographql.com/graph/myTeam-Stats/explorer?collectionId=f0823736-7450-4877-91da-ad219e6d224e&focusCollectionId=f0823736-7450-4877-91da-ad219e6d224e&overlay=view-collection-details&variant=current](https://studio.apollographql.com/graph/myTeam-Stats/explorer?collectionId=f0823736-7450-4877-91da-ad219e6d224e&focusCollectionId=f0823736-7450-4877-91da-ad219e6d224e&overlay=view-collection-details&variant=current)
 ![Screenshot4](./planning/model-structure.png)
 
 Juanita took all these backend ideas and began to craft a rich, styled, intuitive user expereince.
