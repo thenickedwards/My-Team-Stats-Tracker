@@ -11,6 +11,7 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
+import MenuIcon from "@mui/icons-material/Menu";
 
 import Auth from "../../utils/auth";
 
@@ -79,12 +80,28 @@ const Navbar = () => {
             underline="none"
             color="#ffffff"
             href="/"
-            sx={{ mr: 2, display: { xs: "flex", md: "flex" } }}
+            sx={{
+              mr: 2,
+              display: { xs: "flex", sm: "flex", md: "flex", lg: "flex" },
+            }}
           >
             MyTeam Stats
           </Link>
 
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "flex" } }}>
+          <MenuIcon
+            sx={{
+              anchorEl: "right",
+              display: { xs: "flex", sm: "flex", md: "none", lg: "none" },
+            }}
+          />
+
+          <Box
+            sx={{
+              flexGrow: 1,
+              display: { xs: "none", sm: "none", md: "flex", lg: "flex" },
+            }}
+          >
+            {/* User icon appears when logged in, displaying user initials */}
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -119,7 +136,12 @@ const Navbar = () => {
             </Menu>
           </Box>
 
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "flex" } }}>
+          <Box
+            sx={{
+              flexGrow: 1,
+              display: { xs: "none", sm: "none", md: "flex", lg: "flex" },
+            }}
+          >
             {pages.map((page) => (
               <Button
                 key={page.id}
@@ -129,11 +151,8 @@ const Navbar = () => {
                 }}
                 sx={{ my: 2, color: "white", display: "block" }}
               >
-                <Typography fontSize={20}>
-                  {page.name} 
-                </Typography>
+                <Typography fontSize={20}>{page.name}</Typography>
               </Button>
-             
             ))}
           </Box>
 
