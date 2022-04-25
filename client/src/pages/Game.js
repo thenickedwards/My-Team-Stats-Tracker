@@ -22,16 +22,14 @@ import AddIcon from "@mui/icons-material/Add";
 // Seasons Modal Select Team (TEMPORARY DATA)
 
 const teams = [
-  "Oliver Hansen",
-  "Van Henry",
-  "April Tucker",
-  "Ralph Hubbard",
-  "Omar Alexander",
-  "Carlos Abbott",
-  "Miriam Wagner",
-  "Bradley Wilkerson",
-  "Virginia Andrews",
-  "Kelly Snyder",
+  "Chi Town Tigers",
+  "Galaxy Bees",
+  "Salmon",
+  "Wolves",
+  "Hurricanes",
+  "Blizzard",
+  "Lightning",
+  "Thunder"
 ];
 // ////////////////////////////////////
 
@@ -45,8 +43,18 @@ const gameStyle = {
     p: 0,
     borderRadius: 4,
   },
-  teamRoster: {
-    backgroundColor: "black",
+  teamRosterHome: {
+    backgroundColor: "#F5E410",
+    borderRadius: "100%",
+    width: "50px",
+    height: "50px",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    marginRight: "15px",
+  },
+  teamRosterAway: {
+    backgroundColor: "#168BE2",
     borderRadius: "100%",
     width: "50px",
     height: "50px",
@@ -145,7 +153,7 @@ export default function Game() {
 
               {/* HEADING */}
               <Box>
-                <img src="images/chicago.png" alt="Team Logo" width="50px" />
+                <img src="images/la-galaxy.png" alt="Team Logo" width="50px" />
 
                 <Box
                   sx={{
@@ -157,7 +165,7 @@ export default function Game() {
                     mt: -1,
                   }}
                 >
-                  <Typography variant="h3">Chicago Fire</Typography>
+                  <Typography variant="h3">LA Galaxy</Typography>
                   <IconButton
                     onClick={handleOpen}
                     aria-label="Add Player"
@@ -182,9 +190,9 @@ export default function Game() {
                   item
                   sx={{ display: "flex", flexDirection: "row", mb: 3 }}
                 >
-                  <Box style={gameStyle.teamRoster}>
+                  <Box style={gameStyle.teamRosterHome}>
                     <img
-                      src="images/player-default-profile.png"
+                      src="/images/player-default-profile.png"
                       alt="Player Profile Icon"
                       width="30px"
                       height="auto"
@@ -193,8 +201,8 @@ export default function Game() {
                   </Box>
 
                   <Box>
-                    <Typography variant="h3">#11</Typography>
-                    <Typography variant="h6">Antonio Sanchez</Typography>
+                    <Typography variant="h3">#9</Typography>
+                    <Typography variant="h6">Raul Ruidaz</Typography>
                   </Box>
                 </Grid>
                 {/* End Player Details Mapping. */}
@@ -205,7 +213,7 @@ export default function Game() {
                   item
                   sx={{ display: "flex", flexDirection: "row", mb: 3 }}
                 >
-                  <Box style={gameStyle.teamRoster}>
+                  <Box style={gameStyle.teamRosterHome}>
                     <img
                       src="images/player-default-profile.png"
                       alt="Player Profile Icon"
@@ -216,8 +224,8 @@ export default function Game() {
                   </Box>
 
                   <Box>
-                    <Typography variant="h3">#11</Typography>
-                    <Typography variant="h6">Antonio Sanchez</Typography>
+                    <Typography variant="h3">#14</Typography>
+                    <Typography variant="h6">Chad Marshall</Typography>
                   </Box>
                 </Grid>
 
@@ -225,7 +233,7 @@ export default function Game() {
                   item
                   sx={{ display: "flex", flexDirection: "row", mb: 3 }}
                 >
-                  <Box style={gameStyle.teamRoster}>
+                  <Box style={gameStyle.teamRosterHome}>
                     <img
                       src="images/player-default-profile.png"
                       alt="Player Profile Icon"
@@ -236,8 +244,8 @@ export default function Game() {
                   </Box>
 
                   <Box>
-                    <Typography variant="h3">#11</Typography>
-                    <Typography variant="h6">Antonio Sanchez</Typography>
+                    <Typography variant="h3">#17</Typography>
+                    <Typography variant="h6">Tjeert Van't Land</Typography>
                   </Box>
                 </Grid>
 
@@ -245,7 +253,7 @@ export default function Game() {
                   item
                   sx={{ display: "flex", flexDirection: "row", mb: 3 }}
                 >
-                  <Box style={gameStyle.teamRoster}>
+                  <Box style={gameStyle.teamRosterHome}>
                     <img
                       src="images/player-default-profile.png"
                       alt="Player Profile Icon"
@@ -256,8 +264,8 @@ export default function Game() {
                   </Box>
 
                   <Box>
-                    <Typography variant="h3">#11</Typography>
-                    <Typography variant="h6">Antonio Sanchez</Typography>
+                    <Typography variant="h3">#25</Typography>
+                    <Typography variant="h6">Brian Schmetzer</Typography>
                   </Box>
                 </Grid>
 
@@ -265,7 +273,7 @@ export default function Game() {
                   item
                   sx={{ display: "flex", flexDirection: "row", mb: 3 }}
                 >
-                  <Box style={gameStyle.teamRoster}>
+                  <Box style={gameStyle.teamRosterHome}>
                     <img
                       src="images/player-default-profile.png"
                       alt="Player Profile Icon"
@@ -276,8 +284,8 @@ export default function Game() {
                   </Box>
 
                   <Box>
-                    <Typography variant="h3">#11</Typography>
-                    <Typography variant="h6">Antonio Sanchez</Typography>
+                    <Typography variant="h3">#10</Typography>
+                    <Typography variant="h6">Mickey Cave</Typography>
                   </Box>
                 </Grid>
 
@@ -416,7 +424,7 @@ export default function Game() {
                   item
                   sx={{ display: "flex", flexDirection: "row", mb: 3 }}
                 >
-                  <Box style={gameStyle.teamRoster}>
+                  <Box style={gameStyle.teamRosterAway}>
                     <img
                       src="images/player-default-profile.png"
                       alt="Player Profile Icon"
@@ -427,8 +435,8 @@ export default function Game() {
                   </Box>
 
                   <Box>
-                    <Typography variant="h3">#11</Typography>
-                    <Typography variant="h6">Antonio Sanchez</Typography>
+                    <Typography variant="h3">#6</Typography>
+                    <Typography variant="h6">Mike Ivanow</Typography>
                   </Box>
                 </Grid>
                 {/* End Player Details Mapping. */}
@@ -439,7 +447,7 @@ export default function Game() {
                   item
                   sx={{ display: "flex", flexDirection: "row", mb: 3 }}
                 >
-                  <Box style={gameStyle.teamRoster}>
+                  <Box style={gameStyle.teamRosterAway}>
                     <img
                       src="images/player-default-profile.png"
                       alt="Player Profile Icon"
@@ -450,8 +458,8 @@ export default function Game() {
                   </Box>
 
                   <Box>
-                    <Typography variant="h3">#11</Typography>
-                    <Typography variant="h6">Antonio Sanchez</Typography>
+                    <Typography variant="h3">#4</Typography>
+                    <Typography variant="h6">Greg Makowski</Typography>
                   </Box>
                 </Grid>
 
@@ -459,7 +467,7 @@ export default function Game() {
                   item
                   sx={{ display: "flex", flexDirection: "row", mb: 3 }}
                 >
-                  <Box style={gameStyle.teamRoster}>
+                  <Box style={gameStyle.teamRosterAway}>
                     <img
                       src="images/player-default-profile.png"
                       alt="Player Profile Icon"
@@ -470,8 +478,8 @@ export default function Game() {
                   </Box>
 
                   <Box>
-                    <Typography variant="h3">#11</Typography>
-                    <Typography variant="h6">Antonio Sanchez</Typography>
+                    <Typography variant="h3">#2</Typography>
+                    <Typography variant="h6">Yeferson Soteldo</Typography>
                   </Box>
                 </Grid>
 
@@ -479,7 +487,7 @@ export default function Game() {
                   item
                   sx={{ display: "flex", flexDirection: "row", mb: 3 }}
                 >
-                  <Box style={gameStyle.teamRoster}>
+                  <Box style={gameStyle.teamRosterAway}>
                     <img
                       src="images/player-default-profile.png"
                       alt="Player Profile Icon"
@@ -490,8 +498,8 @@ export default function Game() {
                   </Box>
 
                   <Box>
-                    <Typography variant="h3">#11</Typography>
-                    <Typography variant="h6">Antonio Sanchez</Typography>
+                    <Typography variant="h3">#3</Typography>
+                    <Typography variant="h6">Andre-Pierre Gignac</Typography>
                   </Box>
                 </Grid>
 
@@ -499,7 +507,7 @@ export default function Game() {
                   item
                   sx={{ display: "flex", flexDirection: "row", mb: 3 }}
                 >
-                  <Box style={gameStyle.teamRoster}>
+                  <Box style={gameStyle.teamRosterAway}>
                     <img
                       src="images/player-default-profile.png"
                       alt="Player Profile Icon"
@@ -510,8 +518,8 @@ export default function Game() {
                   </Box>
 
                   <Box>
-                    <Typography variant="h3">#11</Typography>
-                    <Typography variant="h6">Antonio Sanchez</Typography>
+                    <Typography variant="h3">#41</Typography>
+                    <Typography variant="h6">Florian Thauvin</Typography>
                   </Box>
                 </Grid>
 
