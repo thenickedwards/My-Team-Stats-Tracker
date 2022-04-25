@@ -24,6 +24,7 @@ import {
   Paper,
   Select,
   Typography,
+  CssBaseline
 } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 
@@ -107,6 +108,8 @@ export default function Teams() {
   }
 
   return (
+    <>
+    <CssBaseline />
     <Container disableGutters justify="center" position="relative">
       {/* Abstract Images */}
       <Box sx={{ position: "absolute", top: 100, right: 15 }}>
@@ -301,5 +304,6 @@ export default function Teams() {
         </Modal>
       </Grid>
     </Container>
+    </>
   );
 }
