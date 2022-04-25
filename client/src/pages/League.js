@@ -20,7 +20,10 @@ import IconButton from "@mui/material/IconButton";
 import AddIcon from "@mui/icons-material/Add";
 import AddSeason from "../components/Forms/AddSeason";
 
-//   DATAGRID (EDIT DATA)
+
+// DATAGRID (EDIT DATA)
+// Seasons Table - Columns
+  
 const columns = [
   {
     field: "seasonName",
@@ -171,6 +174,7 @@ export default function League() {
           <Grid container spacing={{ xs: 4 }}>
             <Box sx={{ width: "100%", mt: 8 }}>
               <div style={{ height: 400, width: "100%" }}>
+
                 <DataGrid
                   rows={seasonNames.map((season) => ({
                     id: season._id,
@@ -218,10 +222,11 @@ export default function League() {
                 Add Season
               </Typography>
 
-              {/* ADD SEASON FORM */}
+              {/* Add Season Form */}
               <AddSeason handleClose={handleClose} />
             </Box>
           </Modal>
+
         </Grid>
       </Container>
     </>
