@@ -113,7 +113,6 @@ const columns = [
 ];
 
 // STYLES
-
 const teamStyle = {
   statsPaper: {
     display: "flex",
