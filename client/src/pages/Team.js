@@ -37,6 +37,7 @@ const columns = [
     field: "homeTeam",
     headerName: "Home",
     width: 200, 
+    sortable: false,
     renderCell: (params) => (
       <Box
         sx={{
@@ -67,6 +68,7 @@ const columns = [
     field: "awayTeam",
     headerName: "Away",
     width: 200, 
+    sortable: false,
     renderCell: (params) => (
       <Box
         sx={{
