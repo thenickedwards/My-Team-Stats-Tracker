@@ -1,18 +1,18 @@
 import { QUERY_SOCCERGAMES } from "../utils/queries";
 import { useQuery } from "@apollo/client";
 import {
+  Box,
   Container,
   CssBaseline,
   Grid,
-  Box,
+  Link,
   Paper,
-  Typography,
-  Link
-  // Button
+  Typography
 } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 
 
+// Upcoming Games Table - Columns
 const columns = [
   { field: "homeTeam", 
     headerName: "Home", 

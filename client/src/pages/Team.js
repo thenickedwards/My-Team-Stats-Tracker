@@ -1,22 +1,24 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
-import { QUERY_SOCCERTEAM } from "../utils/queries";
+import { QUERY_SOCCERTEAM, QUERY_SOCCERGAMES } from "../utils/queries";
 
+// MUI Imports
 import {
+  Box,
   Container,
   CssBaseline,
+  FormControl,
   Grid,
-  Box,
+  InputLabel,
+  Link,
+  MenuItem,
+  Modal,
   Paper,
+  Select,
   Typography,
   Tabs,
   Tab,
-  InputLabel,
-  MenuItem,
-  FormControl,
-  Select,
-  Modal,
 } from "@mui/material";
 import PropTypes from "prop-types";
 import { DataGrid } from "@mui/x-data-grid";
@@ -25,41 +27,42 @@ import AddIcon from "@mui/icons-material/Add";
 import AddPlayer from "../components/Forms/AddPlayer";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
-//   DATAGRID (EDIT DATA)
-const columns = [
-  { field: "id", headerName: "ID", width: 70 },
-  { field: "firstName", headerName: "First name", width: 130 },
-  { field: "lastName", headerName: "Last name", width: 130 },
-  {
-    field: "age",
-    headerName: "Age",
-    type: "number",
-    width: 90,
-  },
-  {
-    field: "fullName",
-    headerName: "Full name",
-    description: "This column has a value getter and is not sortable.",
-    sortable: false,
-    width: 160,
-    valueGetter: (params) =>
-      `${params.row.firstName || ""} ${params.row.lastName || ""}`,
-  },
-];
 
-//   DATAGRID (TEMPORARY DATA)
-const rows = [
-  { id: 1, lastName: "Snow", firstName: "Jon", age: 35 },
-  { id: 2, lastName: "Lannister", firstName: "Cersei", age: 42 },
-  { id: 3, lastName: "Lannister", firstName: "Jaime", age: 45 },
-  { id: 4, lastName: "Stark", firstName: "Arya", age: 16 },
-  { id: 5, lastName: "Targaryen", firstName: "Daenerys", age: null },
-  { id: 6, lastName: "Melisandre", firstName: null, age: 150 },
-  { id: 7, lastName: "Clifford", firstName: "Ferrara", age: 44 },
-  { id: 8, lastName: "Frances", firstName: "Rossini", age: 36 },
-  { id: 9, lastName: "Roxie", firstName: "Harvey", age: 65 },
+// Upcoming Games Table - Columns
+const columns = [
+  { field: "homeTeam", 
+    headerName: "Home", 
+    flex:1,
+    renderCell: (params) => (
+      <Box sx={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 2 }}>
+        <img src={params.value.homeTeamPic} alt="Team Logo" height="auto" width="40px" 
+        />
+        <Link href={`/team/${params.value.homeTeamLink}`} variant="p" underline="none" color="inherit" >{params.value.homeTeamName}</Link>
+      </Box>
+    ) 
+  },
+  { field: "awayTeam", 
+    headerName: "Away", 
+    flex:1,
+    renderCell: (params) => (
+      <Box sx={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 2 }}>
+        <img src={params.value.awayTeamPic} alt="Team Logo" height="auto" width="40px" />
+        <Link href={`/team/${params.value.awayTeamLink}`} variant="p" underline="none" color="inherit">{params.value.awayTeamName}</Link>
+      </Box>
+    )  
+  
+  },
+  { field: "gameDate", headerName: "Game Date", width: 200, flex:1 },
+  {
+    field: "viewScore",
+    headerName: "View Score",
+    sortable: false,
+    flex:1,
+    renderCell: () => (
+      <Link href="/game" variant="h3" underline="none">View Game</Link>
+    )
+  },
 ];
-// ////////////////////////////////////
 
 // STYLES
 
@@ -101,21 +104,23 @@ const teamStyle = {
 };
 
 export default function Team() {
-  //Grab team ID
+  //Get Team ID
   const { soccerTeamId } = useParams();
 
-  //Query Team
-  const { loading, data } = useQuery(QUERY_SOCCERTEAM, {
-    // pass URL parameter
+  // Get Game Data
+  const { loading, data } = useQuery(QUERY_SOCCERGAMES);
+  const games = data?.allSoccerGames || [];
+
+  // Get Team Data
+  const { loading: loadingTeam, data: dataTeam } = useQuery(QUERY_SOCCERTEAM, {
     variables: { soccerTeamId },
   });
+  const soccerTeam = dataTeam?.soccerTeam || {};
 
-  const soccerTeam = data?.soccerTeam || {};
-
-  // Pull roster
+  // Get Roster
   const allPlayers = soccerTeam.roster;
 
-  // Pull team color
+  // Get Team Color
   const currentTeamColor = soccerTeam.teamColor;
 
   // Functionality for Dropdown
@@ -135,9 +140,10 @@ export default function Team() {
     setValue(newValue);
   };
 
-  if (loading) {
+  if ( loading || loadingTeam ) {
     return <div>LOADING</div>;
   }
+
   function TabPanel(props) {
     const { children, value, index, ...other } = props;
 
@@ -256,7 +262,10 @@ export default function Team() {
           <Grid container spacing={5}>
             {/* Left column */}
             <Grid item xs={12} s={12} md={8} lg={8}>
-              {/* TEAM STATS */}
+
+
+              {/*   --- TEAM STATS CARDS ---  */}
+
               <Grid container spacing={{ xs: 4 }}>
                 {/* Stats Cards. Map over this section. */}
 
@@ -274,8 +283,6 @@ export default function Team() {
                 </Grid> */}
                 {/* End Stats Cards mapping. */}
 
-                {/* ----------------------------------------------------- */}
-                {/* Temporary Data. Delete */}
                 <Grid item xs={6} s={6} md={3} lg={3}>
                   <Paper elevation={5} sx={teamStyle.statsPaper}>
                     <Typography variant="h1" color="secondary.contrastText">
@@ -308,8 +315,7 @@ export default function Team() {
                     </Typography>
                   </Paper>
                 </Grid>
-                {/* End Temporary Data. */}
-                {/* ----------------------------------------------------- */}
+
 
                 {/* Tabs */}
                 <Box sx={{ width: "100%", mt: 5 }}>
@@ -345,10 +351,16 @@ export default function Team() {
                     </Tabs>
                   </Box>
                   <TabPanel value={value} index={0}>
-                    {/* GAMES */}
+
+                    {/*  --- UPCOMING GAMES TABLE --- */}
                     <div style={{ height: 400, width: "100%" }}>
                       <DataGrid
-                        rows={rows}
+                        rows={games.map((game) => ({
+                          id: game._id,
+                          homeTeam: {homeTeamName: game.homeTeam.teamName, homeTeamPic: game.homeTeam.teamPic, homeTeamLink: game.homeTeam._id},
+                          awayTeam: {awayTeamName: game.awayTeam.teamName, awayTeamPic: game.awayTeam.teamPic, awayTeamLink: game.awayTeam._id},
+                          gameDate: game.gameDate,
+                        }))}
                         columns={columns}
                         pageSize={5}
                         rowsPerPageOptions={[5]}
@@ -373,6 +385,7 @@ export default function Team() {
                         }}
                       />
                     </div>
+
                   </TabPanel>
                   <TabPanel value={value} index={1}>
                     Item Two
