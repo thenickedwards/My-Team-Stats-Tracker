@@ -1,296 +1,297 @@
 [
-  {
-    "playerFirstName": "Raul",
-    "playerLastName": "Ruidiaz",
-    "playerPic": "rruidiaz.jpg",
-    "playerNumber": 9,
-    "team": "626202fae2194997c7e76e86"
-  },
-  {
-    "playerFirstName": "Chad",
-    "playerLastName": "Marshall",
-    "playerPic": "air-marsh.jpg",
-    "playerNumber": 14,
-    "team": "626202fae2194997c7e76e86"
-  },
-  {
-    "playerFirstName": "Tjeert",
-    "playerLastName": "Van't Land",
-    "playerPic": "TjeertVantLand.png",
-    "playerNumber": 17,
-    "team": "626202fae2194997c7e76e86"
-  },
-  {
-    "playerFirstName": "Brian",
-    "playerLastName": "Schmetzer",
-    "playerPic": "schmetz.jpg",
-    "playerNumber": 25,
-    "team": "626202fae2194997c7e76e86"
-  },
-  {
-    "playerFirstName": "Reine",
-    "playerLastName": "Almqvist",
-    "playerPic": "RAlmqvist.pdf",
-    "playerNumber": 3,
-    "team": "626202fae2194997c7e76e86"
-  },
-  {
-    "playerFirstName": "Mickey",
-    "playerLastName": "Cave",
-    "playerPic": "NoCave.jpg",
-    "playerNumber": 10,
-    "team": "626202fae2194997c7e76e86"
-  },
-  {
-    "playerFirstName": "Mike",
-    "playerLastName": "Ivanow",
-    "playerPic": "Mike-pic.jpg",
-    "playerNumber": 6,
-    "team": "626202fae2194997c7e76e86"
-  },
-  {
-    "playerFirstName": "Greg",
-    "playerLastName": "Makowski",
-    "playerPic": "Makowsk.png",
-    "playerNumber": 4,
-    "team": "626202fae2194997c7e76e86"
-  },
-  {
-    "playerFirstName": "Yeferson",
-    "playerLastName": "Soteldo",
-    "playerPic": "YSoteldo.jpg",
-    "playerNumber": 2,
-    "team": "626202fae2194997c7e76e89"
-  },
-  {
-    "playerFirstName": "Andre-Pierre",
-    "playerLastName": "Gignac",
-    "playerPic": "Andre-PierreGignac.jpg",
-    "playerNumber": 3,
-    "team": "626202fae2194997c7e76e89"
-  },
-  {
-    "playerFirstName": "Florian",
-    "playerLastName": "Thauvin",
-    "playerPic": "FThauvin.png",
-    "playerNumber": 41,
-    "team": "626202fae2194997c7e76e89"
-  },
-  {
-    "playerFirstName": "Igor",
-    "playerLastName": "Lichnovsky",
-    "playerPic": "Igor_Lichnovsky.jpg",
-    "playerNumber": 5,
-    "team": "626202fae2194997c7e76e89"
-  },
-  {
-    "playerFirstName": "Sebastian",
-    "playerLastName": "Cordova",
-    "playerPic": "SebCordova.pdf",
-    "playerNumber": 7,
-    "team": "626202fae2194997c7e76e89"
-  },
-  {
-    "playerFirstName": "David",
-    "playerLastName": "Raya",
-    "playerPic": "RayaDavid.jpg",
-    "playerNumber": 8,
-    "team": "626202fae2194997c7e76e8c"
-  },
-  {
-    "playerFirstName": "Matthew",
-    "playerLastName": "Cox",
-    "playerPic": "MCox.jpg",
-    "playerNumber": 16,
-    "team": "626202fae2194997c7e76e8c"
-  },
-  {
-    "playerFirstName": "Charlie",
-    "playerLastName": "Goode",
-    "playerPic": "CharlieGoode_pic.png",
-    "playerNumber": 11,
-    "team": "626202fae2194997c7e76e8c"
-  },
-  {
-    "playerFirstName": "Luka",
-    "playerLastName": "Racic",
-    "playerPic": "LuRacicka.jpg",
-    "playerNumber": 19,
-    "team": "626202fae2194997c7e76e8c"
-  },
-  {
-    "playerFirstName": "Daniel",
-    "playerLastName": "Oyegoke",
-    "playerPic": "D_yegoke.png",
-    "playerNumber": 44,
-    "team": "626202fae2194997c7e76e8c"
-  },
-  {
-    "playerFirstName": "Chris",
-    "playerLastName": "Bartels",
-    "playerPic": "CBarts.bmp",
-    "playerNumber": 9,
-    "team": "626202fae2194997c7e76e8f"
-  },
-  {
-    "playerFirstName": "Ballan",
-    "playerLastName": "Campeau",
-    "playerPic": "Ballan.jpg",
-    "playerNumber": 11,
-    "team": "626202fae2194997c7e76e8f"
-  },
-  {
-    "playerFirstName": "Otey",
-    "playerLastName": "Cannon",
-    "playerPic": "Otey2.jpeg",
-    "playerNumber": 12,
-    "team": "626202fae2194997c7e76e8f"
-  },
-  {
-    "playerFirstName": "Cirilio Fernandez",
-    "playerLastName": "Fernandez",
-    "playerPic": "FernandezC.png",
-    "playerNumber": 99,
-    "team": "626202fae2194997c7e76e8f"
-  },
-  {
-    "playerFirstName": "Melissa",
-    "playerLastName": "Dagenais",
-    "playerPic": "MDagenais.jpg",
-    "playerNumber": 8,
-    "team": "626202fae2194997c7e76e8f"
-  },
-  {
-    "playerFirstName": "Mia",
-    "playerLastName": "Atrio",
-    "playerPic": "MAtrio_1.jpg",
-    "playerNumber": 1,
-    "team": "626202fae2194997c7e76e8f"
-  },
-  {
-    "playerFirstName": "Mikayla",
-    "playerLastName": "Tupper",
-    "playerPic": "Tupps-pic.jpg",
-    "playerNumber": 3,
-    "team": "626202fae2194997c7e76e92"
-  },
-  {
-    "playerFirstName": "Emma",
-    "playerLastName": "Tucker",
-    "playerPic": "Emma_Tucker.png",
-    "playerNumber": 5,
-    "team": "626202fae2194997c7e76e92"
-  },
-  {
-    "playerFirstName": "Johanna",
-    "playerLastName": "Barth",
-    "playerPic": "Barth-2022.jpg",
-    "playerNumber": 22,
-    "team": "626202fae2194997c7e76e92"
-  },
-  {
-    "playerFirstName": "Cece",
-    "playerLastName": "Kizer",
-    "playerPic": "Cece-Kizer.jpg",
-    "playerNumber": 7,
-    "team": "626202fae2194997c7e76e92"
-  },
-  {
-    "playerFirstName": "Savannah",
-    "playerLastName": "DeMelo",
-    "playerPic": "DeMelo2.jpg",
-    "playerNumber": 19,
-    "team": "626202fae2194997c7e76e92"
-  },
-  {
-    "playerFirstName": "Cheyna",
-    "playerLastName": "Matthews",
-    "playerPic": "MatthewsC.png",
-    "playerNumber": 18,
-    "team": "626202fae2194997c7e76e92"
-  },
-  {
-    "playerFirstName": "Ebony",
-    "playerLastName": "Salmon",
-    "playerPic": "ESalmon.jpg",
-    "playerNumber": 9,
-    "team": "626202fae2194997c7e76e92"
-  },
-  {
-    "playerFirstName": "Freja",
-    "playerLastName": "Olofsson",
-    "playerPic": "OlofssonFreja.jpg",
-    "playerNumber": 35,
-    "team": "626202fae2194997c7e76e95"
-  },
-  {
-    "playerFirstName": "Mila",
-    "playerLastName": "Cardet",
-    "playerPic": "CardetMi.png",
-    "playerNumber": 22,
-    "team": "626202fae2194997c7e76e95"
-  },
-  {
-    "playerFirstName": "Teagin",
-    "playerLastName": "Freiner",
-    "playerPic": "Freiner_T2019.jpg",
-    "playerNumber": 7,
-    "team": "626202fae2194997c7e76e95"
-  },
-  {
-    "playerFirstName": "Ava",
-    "playerLastName": "Winzeler",
-    "playerPic": "AWinzeler_2021.jpg",
-    "playerNumber": 23,
-    "team": "626202fae2194997c7e76e95"
-  },
-  {
-    "playerFirstName": "Samantha",
-    "playerLastName": "Feather",
-    "playerPic": "FeatherS.jpg",
-    "playerNumber": 89,
-    "team": "626202fae2194997c7e76e98"
-  },
-  {
-    "playerFirstName": "Isla",
-    "playerLastName": "Garber",
-    "playerPic": "IslaGarber.pdf",
-    "playerNumber": 74,
-    "team": "626202fae2194997c7e76e98"
-  },
-  {
-    "playerFirstName": "Serena",
-    "playerLastName": "Lewis",
-    "playerPic": "SerenaLewis_pic.jpg",
-    "playerNumber": 9,
-    "team": "626202fae2194997c7e76e98"
-  },
-  {
-    "playerFirstName": "Reilly",
-    "playerLastName": "Furr",
-    "playerPic": "FurrR.png",
-    "playerNumber": 26,
-    "team": "626202fae2194997c7e76e98"
-  },
-  {
-    "playerFirstName": "India",
-    "playerLastName": "Fortner",
-    "playerPic": "FortnerI.jpg",
-    "playerNumber": 19,
-    "team": "626202fae2194997c7e76e9b"
-  },
-  {
-    "playerFirstName": "Aisling",
-    "playerLastName": "Spillane",
-    "playerPic": "Spillane09.jpg",
-    "playerNumber": 9,
-    "team": "626202fae2194997c7e76e9b"
-  },
-  {
-    "playerFirstName": "Lashanti",
-    "playerLastName": "Williams",
-    "playerPic": "WilliamsL.png",
-    "playerNumber": 10,
-    "team": "626202fae2194997c7e76e9b"
-  }
-]
+    {
+      "playerFirstName": "Raul",
+      "playerLastName": "Ruidiaz",
+      "playerPic": "rruidiaz.jpg",
+      "playerNumber": 9,
+      "team": "626202fae2194997c7e76e86"
+    },
+    {
+      "playerFirstName": "Chad",
+      "playerLastName": "Marshall",
+      "playerPic": "air-marsh.jpg",
+      "playerNumber": 14,
+      "team": "626202fae2194997c7e76e86"
+    },
+    {
+        "playerFirstName": "Tjeert",
+        "playerLastName": "Van't Land",
+        "playerPic": "TjeertVantLand.png",
+        "playerNumber": 17,
+        "team": "626202fae2194997c7e76e86"
+    },
+    {
+        "playerFirstName": "Brian",
+        "playerLastName": "Schmetzer",
+        "playerPic": "schmetz.jpg",
+        "playerNumber": 25,
+        "team": "626202fae2194997c7e76e86"
+    },
+    {
+        "playerFirstName": "Reine",
+        "playerLastName": "Almqvist",
+        "playerPic": "RAlmqvist.pdf",
+        "playerNumber": 3,
+        "team": "626202fae2194997c7e76e86"
+    },
+    {
+        "playerFirstName": "Mickey",
+        "playerLastName": "Cave",
+        "playerPic": "NoCave.jpg",
+        "playerNumber": 10,
+        "team": "626202fae2194997c7e76e86"
+    },
+    {
+        "playerFirstName": "Mike",
+        "playerLastName": "Ivanow",
+        "playerPic": "Mike-pic.jpg",
+        "playerNumber": 6,
+        "team": "626202fae2194997c7e76e86"
+    },
+    {
+        "playerFirstName": "Greg",
+        "playerLastName": "Makowski",
+        "playerPic": "Makowsk.png",
+        "playerNumber": 4,
+        "team": "626202fae2194997c7e76e86"
+    },
+    {
+      "playerFirstName": "Yeferson",
+      "playerLastName": "Soteldo",
+      "playerPic": "YSoteldo.jpg",
+      "playerNumber": 2,
+      "team": "626202fae2194997c7e76e89"
+    },
+    {
+        "playerFirstName": "Andre-Pierre",
+        "playerLastName": "Gignac",
+        "playerPic": "Andre-PierreGignac.jpg",
+        "playerNumber": 3,
+        "team": "626202fae2194997c7e76e89"
+    },
+    {
+        "playerFirstName": "Florian",
+        "playerLastName": "Thauvin",
+        "playerPic": "FThauvin.png",
+        "playerNumber": 41,
+        "team": "626202fae2194997c7e76e89"
+    },
+    {
+        "playerFirstName": "Igor",
+        "playerLastName": "Lichnovsky",
+        "playerPic": "Igor_Lichnovsky.jpg",
+        "playerNumber": 5,
+        "team": "626202fae2194997c7e76e89"
+    },
+    {
+        "playerFirstName": "Sebastian",
+        "playerLastName": "Cordova",
+        "playerPic": "SebCordova.pdf",
+        "playerNumber": 7,
+        "team": "626202fae2194997c7e76e89"
+    },
+    {
+        "playerFirstName": "David",
+        "playerLastName": "Raya",
+        "playerPic": "RayaDavid.jpg",
+        "playerNumber": 8,
+        "team": "626202fae2194997c7e76e8c"
+    },
+    {
+        "playerFirstName": "Matthew",
+        "playerLastName": "Cox",
+        "playerPic": "MCox.jpg",
+        "playerNumber": 16,
+        "team": "626202fae2194997c7e76e8c"
+    },
+    {
+        "playerFirstName": "Charlie",
+        "playerLastName": "Goode",
+        "playerPic": "CharlieGoode_pic.png",
+        "playerNumber": 11,
+        "team": "626202fae2194997c7e76e8c"
+    },
+    {
+        "playerFirstName": "Luka",
+        "playerLastName": "Racic",
+        "playerPic": "LuRacicka.jpg",
+        "playerNumber": 19,
+        "team": "626202fae2194997c7e76e8c"
+    },
+    {
+        "playerFirstName": "Daniel",
+        "playerLastName": "Oyegoke",
+        "playerPic": "D_yegoke.png",
+        "playerNumber": 44,
+        "team": "626202fae2194997c7e76e8c"
+    },
+    {
+        "playerFirstName": "Chris",
+        "playerLastName": "Bartels",
+        "playerPic": "CBarts.bmp",
+        "playerNumber": 9,
+        "team": "626202fae2194997c7e76e8f"
+    },
+    {
+        "playerFirstName": "Ballan",
+        "playerLastName": "Campeau",
+        "playerPic": "Ballan.jpg",
+        "playerNumber": 11,
+        "team": "626202fae2194997c7e76e8f"
+    },
+    {
+        "playerFirstName": "Otey",
+        "playerLastName": "Cannon",
+        "playerPic": "Otey2.jpeg",
+        "playerNumber": 12,
+        "team": "626202fae2194997c7e76e8f"
+    },
+    {
+        "playerFirstName": "Cirilio Fernandez",
+        "playerLastName": "Fernandez",
+        "playerPic": "FernandezC.png",
+        "playerNumber": 99,
+        "team": "626202fae2194997c7e76e8f"
+    },
+    {
+        "playerFirstName": "Melissa",
+        "playerLastName": "Dagenais",
+        "playerPic": "MDagenais.jpg",
+        "playerNumber": 8,
+        "team": "626202fae2194997c7e76e8f"
+    },
+    {
+        "playerFirstName": "Mia",
+        "playerLastName": "Atrio",
+        "playerPic": "MAtrio_1.jpg",
+        "playerNumber": 1,
+        "team": "626202fae2194997c7e76e8f"
+    },
+    {
+        "playerFirstName": "Mikayla",
+        "playerLastName": "Tupper",
+        "playerPic": "Tupps-pic.jpg",
+        "playerNumber": 3,
+        "team": "626202fae2194997c7e76e92"
+    },
+    {
+        "playerFirstName": "Emma",
+        "playerLastName": "Tucker",
+        "playerPic": "Emma_Tucker.png",
+        "playerNumber": 5,
+        "team": "626202fae2194997c7e76e92"
+    },
+    {
+        "playerFirstName": "Johanna",
+        "playerLastName": "Barth",
+        "playerPic": "Barth-2022.jpg",
+        "playerNumber": 22,
+        "team": "626202fae2194997c7e76e92"
+    },
+    {
+        "playerFirstName": "Cece",
+        "playerLastName": "Kizer",
+        "playerPic": "Cece-Kizer.jpg",
+        "playerNumber": 7,
+        "team": "626202fae2194997c7e76e92"
+    },
+    {
+        "playerFirstName": "Savannah",
+        "playerLastName": "DeMelo",
+        "playerPic": "DeMelo2.jpg",
+        "playerNumber": 19,
+        "team": "626202fae2194997c7e76e92"
+    },
+    {
+        "playerFirstName": "Cheyna",
+        "playerLastName": "Matthews",
+        "playerPic": "MatthewsC.png",
+        "playerNumber": 18,
+        "team": "626202fae2194997c7e76e92"
+    },
+    {
+        "playerFirstName": "Ebony",
+        "playerLastName": "Salmon",
+        "playerPic": "ESalmon.jpg",
+        "playerNumber": 9,
+        "team": "626202fae2194997c7e76e92"
+    },
+    {
+        "playerFirstName": "Freja",
+        "playerLastName": "Olofsson",
+        "playerPic": "OlofssonFreja.jpg",
+        "playerNumber": 35,
+        "team": "626202fae2194997c7e76e95"
+    },
+    {
+        "playerFirstName": "Mila",
+        "playerLastName": "Cardet",
+        "playerPic": "CardetMi.png",
+        "playerNumber": 22,
+        "team": "626202fae2194997c7e76e95"
+    },
+    {
+        "playerFirstName": "Teagin",
+        "playerLastName": "Freiner",
+        "playerPic": "Freiner_T2019.jpg",
+        "playerNumber": 7,
+        "team": "626202fae2194997c7e76e95"
+    }
+    ,
+    {
+        "playerFirstName": "Ava",
+        "playerLastName": "Winzeler",
+        "playerPic": "AWinzeler_2021.jpg",
+        "playerNumber": 23,
+        "team": "626202fae2194997c7e76e95"
+    },
+    {
+        "playerFirstName": "Samantha",
+        "playerLastName": "Feather",
+        "playerPic": "FeatherS.jpg",
+        "playerNumber": 89,
+        "team": "626202fae2194997c7e76e98"
+    },
+    {
+        "playerFirstName": "Isla",
+        "playerLastName": "Garber",
+        "playerPic": "IslaGarber.pdf",
+        "playerNumber": 74,
+        "team": "626202fae2194997c7e76e98"
+    },
+    {
+        "playerFirstName": "Serena",
+        "playerLastName": "Lewis",
+        "playerPic": "SerenaLewis_pic.jpg",
+        "playerNumber": 9,
+        "team": "626202fae2194997c7e76e98"
+    },
+    {
+        "playerFirstName": "Reilly",
+        "playerLastName": "Furr",
+        "playerPic": "FurrR.png",
+        "playerNumber": 26,
+        "team": "626202fae2194997c7e76e98"
+    },
+    {
+        "playerFirstName": "India",
+        "playerLastName": "Fortner",
+        "playerPic": "FortnerI.jpg",
+        "playerNumber": 19,
+        "team": "626202fae2194997c7e76e9b"
+    },
+    {
+        "playerFirstName": "Aisling",
+        "playerLastName": "Spillane",
+        "playerPic": "Spillane09.jpg",
+        "playerNumber": 9,
+        "team": "626202fae2194997c7e76e9b"
+    },
+    {
+        "playerFirstName": "Lashanti",
+        "playerLastName": "Williams",
+        "playerPic": "WilliamsL.png",
+        "playerNumber": 10,
+        "team": "626202fae2194997c7e76e9b"
+    }
+  ]

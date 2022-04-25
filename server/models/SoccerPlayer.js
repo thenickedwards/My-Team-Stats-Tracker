@@ -1,64 +1,68 @@
-const { Schema, model } = require("mongoose");
+const { Schema, model } = require('mongoose');
+const SoccerGame = require('./SoccerGame');
 
+// GOAL SCHEMA
 const goalSchema = new Schema({
   game: {
     type: Schema.Types.ObjectId,
-    ref: "SoccerGame",
+    ref: 'SoccerGame',
   },
-  minute: Number,
-});
+  minute: Number
+})
 
+// ASSIST SCHEMA
 const assistSchema = new Schema({
   game: {
     type: Schema.Types.ObjectId,
-    ref: "SoccerGame",
+    ref: 'SoccerGame',
   },
-  minute: Number,
-});
+  minute: Number
+})
 
-const soccerPlayerSchema = new Schema(
-  {
-    playerFirstName: {
-      type: String,
-      required: true,
-      trim: true,
-    },
-    playerLastName: {
-      type: String,
-      required: true,
-      trim: true,
-    },
-    playerPic: {
-      type: String,
-      trim: true,
-    },
-    playerNumber: Number,
-    goals: [goalSchema],
-    assists: [assistSchema],
-    team: {
-      type: Schema.Types.ObjectId,
-      ref: "SoccerTeam",
-    },
+// SOCCER PLAYER SCHEMA
+const soccerPlayerSchema = new Schema({
+  playerFirstName: {
+    type: String,
+    required: true,
+    trim: true,
   },
-  {
-    toJSON: {
-      virtuals: true,
-      getters: true,
-    },
-    id: false,
+  playerLastName: {
+    type: String,
+    required: true,
+    trim: true,
+  },
+  playerPic: {
+    type: String,
+    trim: true,
+  },
+  playerNumber: Number,
+  goals: [goalSchema],
+  assists: [assistSchema],
+  team: {
+    type: Schema.Types.ObjectId,
+    ref: 'SoccerTeam',
   }
+},
+{
+  toJSON: {
+    virtuals: true,
+    getters: true
+  },
+  id: false,
+}
 );
 
 // Virutal to sum all goals
-soccerPlayerSchema.virtual("careerGoals").get(function () {
+soccerPlayerSchema.virtual('careerGoals').get(function () {
   return this.goals.length;
 });
 
 // Virutal to sum all assists
-soccerPlayerSchema.virtual("careerAssists").get(function () {
+soccerPlayerSchema.virtual('careerAssists').get(function () {
   return this.assists.length;
 });
 
-const SoccerPlayer = model("SoccerPlayer", soccerPlayerSchema);
+
+const SoccerPlayer = model('SoccerPlayer', soccerPlayerSchema);
 
 module.exports = SoccerPlayer;

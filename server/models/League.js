@@ -1,13 +1,15 @@
-const { Schema, model } = require("mongoose");
+const { Schema, model } = require('mongoose');
 
 const leagueSchema = new Schema({
   leagueName: {
     type: String,
-    required: [true, "League name is required"],
+    // required: true,
+    required: [true, 'League name is required']
   },
   sport: {
     type: String,
-    required: [true, "Sport is required"],
+    // required: true,
+    required: [true, 'Sport is required']
   },
   leaguePic: {
     type: String,
@@ -15,12 +17,13 @@ const leagueSchema = new Schema({
   },
   seasons: [
     {
-      type: Schema.Types.ObjectId,
-      ref: "Season",
-    },
-  ],
+    type: Schema.Types.ObjectId,
+    ref: 'Season',
+    }
+  ]
 });
 
-const League = model("League", leagueSchema);
+
+const League = model('League', leagueSchema);
 
 module.exports = League;

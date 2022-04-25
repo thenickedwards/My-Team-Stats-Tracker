@@ -1,4 +1,4 @@
-const { Schema, model } = require("mongoose");
+const { Schema, model } = require('mongoose');
 
 const seasonSchema = new Schema({
   seasonName: {
@@ -9,25 +9,27 @@ const seasonSchema = new Schema({
   startYear: {
     type: String,
     required: true,
-    match: [/^\d\d\d\d$/, "Must be 4 digit year!"],
+    match: [/^\d\d\d\d$/, 'Must be 4 digit year!'],
   },
   endYear: {
     type: String,
     trim: true,
-    match: [/^\d\d\d\d$/, "Must be 4 digit year!"],
+    match: [/^\d\d\d\d$/, 'Must be 4 digit year!'],
   },
-  league: {
-    type: Schema.Types.ObjectId,
-    ref: "League",
+  league:
+  {
+  type: Schema.Types.ObjectId,
+  ref: 'League',
   },
   teams: [
     {
-      type: Schema.Types.ObjectId,
-      ref: "SoccerTeam",
-    },
-  ],
+    type: Schema.Types.ObjectId,
+    ref: 'SoccerTeam',
+    }
+  ]
 });
 
-const Season = model("Season", seasonSchema);
+
+const Season = model('Season', seasonSchema);
 
 module.exports = Season;

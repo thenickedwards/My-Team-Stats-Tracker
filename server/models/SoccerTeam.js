@@ -1,4 +1,4 @@
-const { Schema, model } = require("mongoose");
+const { Schema, model } = require('mongoose');
 
 const soccerTeamSchema = new Schema({
   teamName: {
@@ -12,30 +12,32 @@ const soccerTeamSchema = new Schema({
     type: String,
     trim: true,
   },
-  season: {
+  season:
+    {
     type: Schema.Types.ObjectId,
-    ref: "Season",
-  },
+    ref: 'Season',
+    },
   games: [
     {
-      type: Schema.Types.ObjectId,
-      ref: "SoccerGame",
-    },
+    type: Schema.Types.ObjectId,
+    ref: 'SoccerGame',
+    }
   ],
   roster: [
     {
-      type: Schema.Types.ObjectId,
-      ref: "SoccerPlayer",
-    },
+    type: Schema.Types.ObjectId,
+    ref: 'SoccerPlayer',
+    }
   ],
   wins: Number,
   draws: Number,
   losses: Number,
   goalsFor: Number,
   goalsAgainst: Number,
-  goalDifferential: Number,
+  goalDifferential: Number
 });
 
-const SoccerTeam = model("SoccerTeam", soccerTeamSchema);
+
+const SoccerTeam = model('SoccerTeam', soccerTeamSchema);
 
 module.exports = SoccerTeam;
