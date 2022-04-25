@@ -5,6 +5,7 @@
 Welcome to the MyTeam sports stats tracker for youth leagues, adult rec teams, and school sports!
 
 Check out the readme below and then use the live app using the Heroku button below!
+
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://myteam-stats.herokuapp.com/)
 
 ## Table of Contents
@@ -52,6 +53,9 @@ SO THAT I can enjoy the season while watching my team advance
 ![Screenshot2](./planning/diagram1.png)
 ![Screenshot3](./planning/diagram2.svg)
 ![Screenshot4](./planning/model-structure.png)
+![Screenshot5](./planning/asana-inprogress.png)
+![Screenshot6](./planning/design-draft.png)
+![Screenshot7](./planning/design-final.png)
 
 ### GitHub
 [URL for GitHub repo: https://github.com/thenickedwards/My-Team-Stats-Tracker](https://github.com/thenickedwards/My-Team-Stats-Tracker)
