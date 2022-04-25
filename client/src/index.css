@@ -40,3 +40,15 @@ main {
   border-top-right-radius: 10px;
 }
 
+/* Table Sort */
+/* .css-1pe4mpk-MuiButtonBase-root-MuiIconButton-root {
+  margin-left: 10px;
+} */
+.css-1pe4mpk-MuiButtonBase-root-MuiIconButton-root:hover {
+  background-color: transparent;
+  color: white;
+}
+.css-lbda50-MuiDataGrid-root .MuiDataGrid-columnHeaderTitleContainerContent:hover {
+  background-color: transparent;
+}
+
