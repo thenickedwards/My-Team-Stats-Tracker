@@ -30,7 +30,8 @@ import Game from "./pages/Game";
 // import Profile from "./pages/Profile";
 
 // import Header from "./components/Header";
-import Footer from "./components/Footer";
+// import Footer from "./components/Footer";
+import Footer from "./components//Footer/Footer";
 import Navbar from "./components/Navbar";
 // import { fontFamily } from "@mui/system";
 
@@ -127,7 +128,7 @@ function App() {
 
               <Route path="/teams" element={<Teams />} />
 
-              <Route path="/team/:teamId" element={<Team />} />
+              <Route path="/team/:soccerTeamId" element={<Team />} />
 
               <Route path="/player/:playerId" element={<Player />} />
 

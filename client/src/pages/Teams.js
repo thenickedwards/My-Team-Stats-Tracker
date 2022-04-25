@@ -197,24 +197,29 @@ export default function Teams() {
           {teams.map((team) => {
             return (
               <Grid item key={team._id} xs={6} s={6} md={3} lg={3}>
-                <Paper elevation={5} sx={teamsStyle.teamPaper}>
-                  <img
-                    src={team.teamPic}
-                    alt="logo"
-                    loading="lazy"
-                    height={100}
-                  />
-                  <Link
-                    variant="p"
-                    gutterBottom
-                    underline="none"
-                    sx={teamsStyle.teamPaperText}
-                    href={`/team/${team._id}`}
-                    color="inherit"
-                  >
-                    {team.teamName}
-                  </Link>
-                </Paper>
+                <Link
+                  underline="none"
+                  sx={teamsStyle.teamPaperText}
+                  href={`/team/${team._id}`}
+                  color="inherit"
+                >
+                  <Paper elevation={5} sx={teamsStyle.teamPaper}>
+                    <img
+                      src={team.teamPic}
+                      alt="logo"
+                      loading="lazy"
+                      height={100}
+                    />
+                    <Typography
+                      variant="p"
+                      gutterBottom
+                      component="div"
+                      sx={teamsStyle.teamPaperText}
+                    >
+                      {team.teamName}
+                    </Typography>
+                  </Paper>
+                </Link>
 
                 {/* Edit | Delete buttons under team cards */}
 
