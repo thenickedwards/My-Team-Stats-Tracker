@@ -62,12 +62,20 @@ const Navbar = () => {
     setAnchorElUser(event.currentTarget);
   };
 
+  const handleOpenHamburgerMenu = (event) => {
+    setAnchorElUser(event.currentTarget);
+  };
+
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
 
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
+  };
+
+  const handleCloseHamburgerMenu = () => {
+    setAnchorElNav(null);
   };
 
   return (
@@ -88,13 +96,46 @@ const Navbar = () => {
             MyTeam Stats
           </Link>
 
-          <MenuIcon
-            sx={{
-              anchorEl: "right",
-              display: { xs: "flex", sm: "flex", md: "none", lg: "none" },
-            }}
-          />
-
+          {/* Hamburger menu displays when screen is XS or S */}
+          <Box>
+            <Tooltip title="Open pages">
+              <MenuIcon
+                onClick={handleOpenHamburgerMenu}
+                sx={{
+                  anchorEl: "right",
+                  display: { xs: "flex", sm: "flex", md: "none", lg: "none" },
+                }}
+              />
+            </Tooltip>
+            <Menu
+              sx={{ mt: "45px" }}
+              id="menu-appbar"
+              anchorEl={anchorElUser}
+              anchorOrigin={{
+                vertical: "top",
+                horizontal: "left",
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: "top",
+                horizontal: "left",
+              }}
+              open={Boolean(anchorElUser)}
+              onClose={handleCloseHamburgerMenu}
+            >
+              {pages.map((page) => (
+                <MenuItem
+                  key={page.id}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    window.location.href = `/${page.URL}`;
+                  }}
+                >
+                  <Typography textAlign="center">{page.name}</Typography>
+                </MenuItem>
+              ))}
+            </Menu>
+          </Box>
           <Box
             sx={{
               flexGrow: 1,
@@ -110,6 +151,7 @@ const Navbar = () => {
               onClick={handleOpenNavMenu}
               color="inherit"
             ></IconButton>
+            {/* Menu items are displayed when screen is M or bigger */}
             <Menu
               id="menu-appbar"
               anchorEl={anchorElNav}
