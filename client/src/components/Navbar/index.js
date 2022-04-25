@@ -1,25 +1,23 @@
 import * as React from "react";
-import Auth from "../../utils/auth";
-
-// MUI Imports
 import {
-  AppBar,
-  Avatar,
-  Box,
-  Button,
-  Grid,
-  IconButton,
   Link,
-  Menu,
-  MenuItem,
+  AppBar,
+  Box,
   Toolbar,
+  IconButton,
+  Typography,
+  Menu,
+  Grid,
+  Avatar,
+  Button,
   Tooltip,
-  Typography
-} from "@mui/material";
+  MenuItem
+}
+from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 
+import Auth from "../../utils/auth";
 
-// User's Initials in User Icon
 let userInitials = () => {
   const token = Auth.loggedIn() ? Auth.getProfile() : null;
   if (token) {
@@ -30,17 +28,6 @@ let userInitials = () => {
   } else return "NO USER";
 };
 
-const navStyle = {
-  navImage: {
-    backgroundImage: 'url("/images/menu-stripes.png")',
-    backgroundRepeat: "no-repeat",
-    backgroundSize: "40%",
-    backgroundPosition: "right",
-  },
-  navBackground: {
-    backgroundColor: "#062740",
-  },
-};
 
 const pages = [
   { id: 1, name: "Games", URL: "games" },
@@ -85,15 +72,30 @@ const Navbar = () => {
   };
 
   return (
-    <AppBar position="static" style={navStyle.navBackground}>
+    <AppBar position="static" sx={{backgroundColor: 'secondary.main'}}>
       <Grid
-        maxWidth={false}
         container
-        display="flex"
-        style={navStyle.navImage}
-        justify="between"
+        position="relative"
+        sx={{
+          display: "contents",
+          flexDirection: "row",
+          width: "100%",
+          justifyContent: "space-between",
+        }}
       >
-        <Toolbar disableGutters>
+        {/* Abstract Background Image */}
+        <Box sx={{ position: "absolute", right: 0 }}>
+          <img
+            src="/images/menu-stripes.png"
+            alt="Abstract graphic with dots and lines."
+            height="120px"
+            width="auto"
+          />
+        </Box>
+
+        <Toolbar disableGutters sx={{ p: 2 }}>
+
+          {/* PAGE NAME. Left Side. */}
           <Grid item>
             <Link
               variant="h1"
@@ -109,23 +111,14 @@ const Navbar = () => {
               MyTeam Stats
             </Link>
           </Grid>
-          <Grid item>
-            <Box
-              sx={{
-                flexGrow: 1,
-                display: { xs: "none", sm: "none", md: "flex", lg: "flex" },
-              }}
-            >
-              {/* User icon appears when logged in, displaying user initials */}
-              <IconButton
-                size="large"
-                aria-label="account of current user"
-                aria-controls="menu-appbar"
-                aria-haspopup="true"
-                onClick={handleOpenNavMenu}
-                color="inherit"
-              ></IconButton>
 
+
+          {/* Right Side. */}
+          <Grid container sx={{ justifyContent: "end" }}>
+
+            {/* MENU */}
+            <Grid item>
+              {/* MENU NON-COLLAPSED*/}
               {/* Menu items are displayed when screen is M or bigger */}
               <Menu
                 id="menu-appbar"
@@ -151,123 +144,142 @@ const Navbar = () => {
                   </MenuItem>
                 ))}
               </Menu>
-            </Box>
-          </Grid>
-          <Grid item>
-            <Box
-              sx={{
-                flexGrow: 1,
-                display: { xs: "none", sm: "none", md: "flex", lg: "flex" },
-              }}
-            >
-              {pages.map((page) => (
-                <Button
-                  key={page.id}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    window.location.href = `/${page.URL}`;
-                  }}
-                  sx={{ my: 2, color: "white", display: "block" }}
-                >
-                  <Typography fontSize={20}>{page.name}</Typography>
-                </Button>
-              ))}
-            </Box>
-          </Grid>
 
-          {/* Hamburger menu displays when screen is XS or S */}
-          <Grid item>
-            <Box>
-              <Tooltip title="Open pages">
-                <MenuIcon
-                  onClick={handleOpenHamburgerMenu}
-                  sx={{
-                    anchorEl: "right",
-                    display: {
-                      xs: "flex",
-                      sm: "flex",
-                      md: "none",
-                      lg: "none",
-                    },
-                  }}
-                />
-              </Tooltip>
-              <Menu
-                sx={{ mt: "45px" }}
-                id="small-menu-appbar"
-                anchorEl={anchorElHamburger}
-                anchorOrigin={{
-                  vertical: "top",
-                  horizontal: "right",
+              {/* Second Menu Part */}
+              <Box
+                sx={{
+                  flexGrow: 1,
+                  display: { xs: "none", sm: "none", md: "flex", lg: "flex" },
                 }}
-                keepMounted
-                transformOrigin={{
-                  vertical: "top",
-                  horizontal: "right",
-                }}
-                open={Boolean(anchorElHamburger)}
-                onClose={handleCloseHamburgerMenu}
               >
                 {pages.map((page) => (
-                  <MenuItem
+                  <Button
                     key={page.id}
                     onClick={(e) => {
                       e.preventDefault();
                       window.location.href = `/${page.URL}`;
                     }}
+                    sx={{ my: 2, color: "white", display: "block" }}
                   >
-                    <Typography textAlign="center">{page.name}</Typography>
-                  </MenuItem>
+                    <Typography fontSize={20}>{page.name}</Typography>
+                  </Button>
                 ))}
-              </Menu>
-            </Box>
+              </Box>
+            </Grid>
+
+            {/* AVATAR ICON */}
+            <Grid item>
+              <Box
+                sx={{
+                  flexGrow: 1,
+                  display: { xs: "none", sm: "none", md: "flex", lg: "flex" },
+                }}
+              >
+                {/* User icon appears when logged in, displaying user initials */}
+                <IconButton
+                  size="large"
+                  aria-label="account of current user"
+                  aria-controls="menu-appbar"
+                  aria-haspopup="true"
+                  onClick={handleOpenNavMenu}
+                  color="inherit"
+                ></IconButton>
+              </Box>
+            </Grid>
           </Grid>
 
-          <Grid item>
-            <Box sx={{ flexGrow: 0 }}>
-              {Auth.loggedIn() ? (
-                <>
-                  <Tooltip title="Open settings">
-                    <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                      <Avatar>{userInitials()}</Avatar>
-                    </IconButton>
-                  </Tooltip>
-                  <Menu
-                    sx={{ mt: "45px" }}
-                    id="menu-appbar"
-                    anchorEl={anchorElUser}
-                    anchorOrigin={{
-                      vertical: "top",
-                      horizontal: "right",
-                    }}
-                    keepMounted
-                    transformOrigin={{
-                      vertical: "top",
-                      horizontal: "right",
-                    }}
-                    open={Boolean(anchorElUser)}
-                    onClose={handleCloseUserMenu}
-                  >
-                    {settings.map((setting) => (
-                      <MenuItem
-                        key={setting.id}
-                        onClick={(e) => {
-                          e.preventDefault();
-                          window.location.href = `/${setting.URL}`;
-                        }}
-                      >
-                        <Typography textAlign="center">
-                          {setting.name}
-                        </Typography>
-                      </MenuItem>
-                    ))}
-                  </Menu>
-                </>
-              ) : (
-                <div></div>
-              )}
-            </Box>
-          </Grid>
+
+          {/* MOBILE MENU*/}
+          {/* Hamburger menu displays when screen is XS or S */}
+          <Box>
+            <Tooltip title="Open pages">
+              <MenuIcon
+                onClick={handleOpenHamburgerMenu}
+                sx={{
+                  anchorEl: "right",
+                  mr: 1,
+                  display: {
+                    xs: "flex",
+                    sm: "flex",
+                    md: "none",
+                    lg: "none",
+                  },
+                }}
+              />
+            </Tooltip>
+            <Menu
+              sx={{ mt: "45px" }}
+              id="small-menu-appbar"
+              anchorEl={anchorElHamburger}
+              anchorOrigin={{
+                vertical: "top",
+                horizontal: "right",
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: "top",
+                horizontal: "right",
+              }}
+              open={Boolean(anchorElHamburger)}
+              onClose={handleCloseHamburgerMenu}
+            >
+              {pages.map((page) => (
+                <MenuItem
+                  key={page.id}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    window.location.href = `/${page.URL}`;
+                  }}
+                >
+                  <Typography textAlign="center">{page.name}</Typography>
+                </MenuItem>
+              ))}
+            </Menu>
+          </Box>
+
+
+          {/* AVATAR DROPDOWN */}
+          <Box sx={{ flexGrow: 0 }}>
+            {Auth.loggedIn() ? (
+              <>
+                <Tooltip title="Open settings">
+                  <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                    <Avatar>{userInitials()}</Avatar>
+                  </IconButton>
+                </Tooltip>
+                <Menu
+                  sx={{ mt: "45px" }}
+                  id="menu-appbar"
+                  anchorEl={anchorElUser}
+                  anchorOrigin={{
+                    vertical: "top",
+                    horizontal: "right",
+                  }}
+                  keepMounted
+                  transformOrigin={{
+                    vertical: "top",
+                    horizontal: "right",
+                  }}
+                  open={Boolean(anchorElUser)}
+                  onClose={handleCloseUserMenu}
+                >
+                  {settings.map((setting) => (
+                    <MenuItem
+                      key={setting.id}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        window.location.href = `/${setting.URL}`;
+                      }}
+                    >
+                      <Typography textAlign="center">{setting.name}</Typography>
+                    </MenuItem>
+                  ))}
+                </Menu>
+              </>
+            ) : (
+              <div></div>
+            )}
+          </Box>
         </Toolbar>
       </Grid>
     </AppBar>
