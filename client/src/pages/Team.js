@@ -444,6 +444,7 @@ export default function Team() {
               {/* TEAM ROSTER */}
 
               {/* HEADING */}
+
               <Box
                 sx={{
                   display: "flex",
@@ -471,6 +472,7 @@ export default function Team() {
               </Box>
 
               {/* PLAYERS */}
+
               <Grid container sx={{ display: "flex", flexDirection: "column" }}>
                 {/* Player Details. Map over this section. */}
 
@@ -481,10 +483,16 @@ export default function Team() {
                       sx={{ display: "flex", flexDirection: "row", mb: 3 }}
                     >
                       <Box style={teamStyle.teamRoster}>
-                        <AccountCircleIcon
-                          fontSize="large"
-                          sx={{ color: currentTeamColor }}
-                        ></AccountCircleIcon>
+                        <Link
+                          sx={teamStyle.teamRoster}
+                          underline="none"
+                          href={`/player/${player._id}`}
+                        >
+                          <AccountCircleIcon
+                            fontSize="large"
+                            sx={{ color: currentTeamColor }}
+                          ></AccountCircleIcon>
+                        </Link>
                       </Box>
 
                       <Box>
