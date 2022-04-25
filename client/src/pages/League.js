@@ -12,7 +12,8 @@ import {
   CssBaseline,
   Modal,
   Grid,
-  Typography
+  Typography,
+  Link
 } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import IconButton from "@mui/material/IconButton";
@@ -40,6 +41,11 @@ const columns = [
     field: "viewStats",
     headerName: "View Stats",
     width: 250,
+    renderCell: () => (
+      <Link href="/league-season-stats" variant="h3" underline="none">
+        View Stats
+      </Link>
+    ),
   },
 ];
 
