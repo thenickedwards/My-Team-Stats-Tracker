@@ -55,8 +55,8 @@ const leaguesStyle = {
   },
 };
 
-
 export default function Leagues() {
+  //   const token = Auth.loggedIn() ? Auth.getToken() : null;
 
   // Functionality for Add League Modal
   const [open, setOpen] = React.useState(false);
@@ -65,6 +65,7 @@ export default function Leagues() {
 
   // Functionality for Edit League Modal
   const [openEdit, setOpenEdit] = React.useState(false);
+  // const handleOpenEdit = () => setOpenEdit(true);
   const handleOpenEdit = (leagueId) => setOpenEdit(leagueId);
   const handleCloseEdit = () => setOpenEdit(false);
 
@@ -78,12 +79,19 @@ export default function Leagues() {
   });
 
   const handleDeleteLeague = async (leagueId) => {
+    // const token = Auth.loggedIn() ? Auth.getToken() : null;
 
+    // if (!token) {
+    //   return false;
+    // }
+    console.log(leagueId);
     try {
       await removeLeague({
         variables: { leagueId },
       });
 
+      //if successful, remove league by id
+      // removeLeague(leagueId);
     } catch (err) {
       console.error(err);
     }
@@ -95,31 +103,16 @@ export default function Leagues() {
 
   return (
     <>
-
-    <CssBaseline />
-    <Container disableGutters justify="center" position="relative">
-
-      {/* Page styling */}
-      <Box sx={{ position: "absolute", top: 100, right: 15 }}>
-        <img
-          src="images/abstract-up-arrows.png"
-          alt="Abstract graphic with arrows."
-          width="60px"
-        />
-      </Box>
-
-      <Grid container sx={{ py: 8, px: 5 }} >
-        {/* Header and "Add" button */}
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "row",
-            alignItems: "center",
-            gap: "20px",
-            mb: 5,
-          }}
-        >
-          <Typography variant="h1">Leagues</Typography>
+      <CssBaseline />
+      <Container disableGutters justify="center" position="relative">
+        {/* Page styling */}
+        <Box sx={{ position: "absolute", top: 100, right: 15 }}>
+          <img
+            src="images/abstract-up-arrows.png"
+            alt="Abstract graphic with arrows."
+            width="60px"
+          />
+        </Box>
 
         <Grid container sx={{ py: 8, px: 5 }}>
           {/* Header and "Add" button */}
@@ -177,7 +170,6 @@ export default function Leagues() {
                         loading="lazy"
                         height={100}
                       />
-
                       <Typography
                         variant="p"
                         gutterBottom
@@ -261,7 +253,6 @@ export default function Leagues() {
           </Box>
         </Modal>
       </Container>
-
     </>
   );
 }
