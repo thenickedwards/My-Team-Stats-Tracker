@@ -1,11 +1,9 @@
 import { useState } from "react";
-// import { Link } from 'react-router-dom';
 import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from "../utils/mutations";
-
 import Auth from "../utils/auth";
 
-// MATERIALS
+// MUI Imports
 import {
   CssBaseline,
   Container,
@@ -17,8 +15,8 @@ import {
   Link,
 } from "@mui/material";
 
-///////////////////
 
+// Styles
 const loginStyle = {
   background: {
     height: "100vh",
@@ -47,7 +45,7 @@ const Login = (props) => {
 
   const [login, { error, data }] = useMutation(LOGIN_USER);
 
-  // update state based on form input changes
+  // Update State based on form input changes
   const handleChange = (event) => {
     const { name, value } = event.target;
 
@@ -57,7 +55,7 @@ const Login = (props) => {
     });
   };
 
-  // submit form
+  // Submit Form
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     console.log(formState);
@@ -71,9 +69,8 @@ const Login = (props) => {
       console.error(e);
     }
 
-    // clear form values
+    // Clear form values
     setFormState({
-      // email: "",
       username: "",
       password: "",
     });

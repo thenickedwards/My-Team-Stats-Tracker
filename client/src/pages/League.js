@@ -12,7 +12,8 @@ import {
   CssBaseline,
   Modal,
   Grid,
-  Typography
+  Typography,
+  Link
 } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import IconButton from "@mui/material/IconButton";
@@ -40,6 +41,11 @@ const columns = [
     field: "viewStats",
     headerName: "View Stats",
     width: 250,
+    renderCell: () => (
+      <Link href="/league-season-stats" variant="h3" underline="none">
+        View Stats
+      </Link>
+    ),
   },
 ];
 
@@ -132,7 +138,8 @@ export default function League() {
                   {league.leagueName}
                 </Typography>
 
-                {/* TODO: Map here */}
+                {/*  TODO: Map Season Names (Future Devlopment) */ }
+
                 {/* {seasonNames.map((seasonName) => {
                   return ( */}
                 <Typography variant="h3" color="secondary.contrastText">
@@ -214,6 +221,7 @@ export default function League() {
             aria-describedby="modal-modal-description"
           >
             <Box sx={leagueStyle.addPlayerModal}>
+
               <Typography id="modal-modal-title" variant="h1" sx={{ mb: 4 }}>
                 Add Season
               </Typography>

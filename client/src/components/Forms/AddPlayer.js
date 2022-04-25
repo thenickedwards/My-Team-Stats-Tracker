@@ -4,6 +4,7 @@ import { ADD_SOCCERPLAYER } from "../../utils/mutations";
 import { QUERY_SOCCERTEAM, QUERY_SOCCERTEAMS } from "../../utils/queries";
 import { useParams } from "react-router";
 
+// MUI Imports
 import {
   Typography,
   FormControl,
@@ -14,6 +15,7 @@ import {
   OutlinedInput,
   Button,
 } from "@mui/material";
+
 
 // Add Seasons Modal Multiselect
 const ITEM_HEIGHT = 48;
@@ -27,7 +29,7 @@ const MenuProps = {
   },
 };
 
-// STYLES
+// Styles
 const teamStyle = {
   teamRoster: {
     backgroundColor: "black",
@@ -47,6 +49,7 @@ const teamStyle = {
     },
   },
 };
+
 
 const AddPlayer = ({ handleClose }) => {
   const { teamId } = useParams();
@@ -145,7 +148,8 @@ const AddPlayer = ({ handleClose }) => {
             InputLabelProps={{ shrink: true }}
           />
 
-          {/* IMAGE UPLOAD PLACEHOLDER */}
+          {/* TODO: Add Upload Photo Field (Future Development) */}
+
           <TextField
             id="playerPic"
             name="playerPic"
@@ -156,6 +160,7 @@ const AddPlayer = ({ handleClose }) => {
             onChange={handleFormChange}
             InputLabelProps={{ shrink: true }}
           />
+
           <FormControl>
             <InputLabel id="team">Team</InputLabel>
             <Select
@@ -190,9 +195,11 @@ const AddPlayer = ({ handleClose }) => {
             disableElevation
           >
             <Typography variant="h3">Add Player</Typography>
+
             <Typography variant="p" color="secondary.contrastText">
               {error && <div>{error.message}</div>}
             </Typography>
+            
           </Button>
         </FormControl>
       </form>

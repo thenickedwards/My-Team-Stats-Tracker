@@ -1,5 +1,7 @@
 import { QUERY_SOCCERGAMES } from "../utils/queries";
 import { useQuery } from "@apollo/client";
+
+// MUI Imports
 import {
   Box,
   Container,
@@ -10,6 +12,7 @@ import {
   Typography,
 } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
+
 
 // Upcoming Games Table - Columns
 const columns = [
@@ -23,6 +26,7 @@ const columns = [
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
+          sortable: false,
           gap: 2,
         }}
       >
@@ -47,6 +51,7 @@ const columns = [
     field: "awayTeam",
     headerName: "Away",
     width: 250, 
+    sortable: false,
     renderCell: (params) => (
       <Box
         sx={{
@@ -90,7 +95,7 @@ const columns = [
   },
 ];
 
-// STYLES
+// Styles
 const homeStyle = {
   statsPaper: {
     display: "flex",
@@ -122,20 +127,22 @@ const homeStyle = {
   },
 };
 
+
 const Home = () => {
+
+  // Get All Soccer Games
   const { data } = useQuery(QUERY_SOCCERGAMES);
   const games = data?.allSoccerGames || [];
-
-  console.log("games", games);
 
   return (
     <>
       <CssBaseline />
       <Container disableGutters justify="center">
-        
         <Grid container sx={{ py: 8, px: 5 }}>
+          
           {/* Team Stats */}
           <Grid container spacing={{ xs: 4 }}>
+
             {games.map((game, index) => {
               if (index < 4) {
                 return (
@@ -176,7 +183,9 @@ const Home = () => {
                           />
                           <Typography>{game.awayTeam.teamName}</Typography>
                         </Box>
+
                         <Typography>{game.goalsAway}</Typography>
+
                       </Box>
                     </Paper>
                   </Grid>
@@ -186,6 +195,7 @@ const Home = () => {
 
             {/* Upcoming Games */}
             <Box sx={{ width: "100%", mt: 8 }}>
+
               <Typography variant="h1" sx={{ ml: 4, mb: 3 }}>
                 Upcoming Games
               </Typography>
@@ -229,6 +239,7 @@ const Home = () => {
                       border: "0",
                     },
                   }}
+                  
                 />
               </div>
             </Box>

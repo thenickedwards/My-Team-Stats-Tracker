@@ -1,4 +1,6 @@
 import * as React from "react";
+
+// MUI Imports
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
@@ -8,12 +10,6 @@ import AdminPanelSettingsIcon from "@mui/icons-material/AdminPanelSettings";
 import AddModeratorIcon from "@mui/icons-material/AddModerator";
 import HomeIcon from "@mui/icons-material/Home";
 
-// const footerStyle = {
-//   footerComponents: {
-//     backgroundColor: "#062740",
-//     color: "#FFFFFF",
-//   },
-// };
 
 const Footer = () => {
   const [value, setValue] = React.useState(0);
@@ -29,13 +25,13 @@ const Footer = () => {
     >
       <Box>
         <BottomNavigation
-          // style={footerStyle.footerComponents}
           showLabels
           value={value}
           onChange={(event, newValue) => {
             setValue(newValue);
           }}
         >
+
           <BottomNavigationAction
             label="Homepage"
             href="/"
@@ -51,6 +47,7 @@ const Footer = () => {
             href="signup"
             icon={<AddModeratorIcon />}
           />
+          
         </BottomNavigation>
       </Box>
       <Box
