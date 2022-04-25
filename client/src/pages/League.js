@@ -103,17 +103,18 @@ export default function League() {
       <Container
         disableGutters
         justify="center"
+        position="relative"
         // maxWidth="false"
       >
-        <Grid container sx={{ py: 8, px: 5 }} position="relative">
+        <Grid container sx={{ py: 8, px: 5 }} >
           {/* Corner Abstract Image */}
-          {/* <Box sx={{ position: "absolute", bottom: 0, left: 0 }}>
+          <Box sx={{ position: "absolute", bottom: 0, left: 10 }}>
             <img
-              src="images/abstract-corner-dots-lines.png"
+              src="/images/abstract-corner-dots-lines.png"
               alt="Abstract graphic with dots and lines."
               width="250px"
             />
-          </Box> */}
+          </Box>
 
           {/* League Heading */}
           <Grid container sx={{ display: "flex", flexDirection: "column" }}>

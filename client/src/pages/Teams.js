@@ -107,7 +107,7 @@ export default function Teams() {
   }
 
   return (
-    <Container alignItems="center" justifyContent="center">
+    <Container disableGutters justify="center" position="relative">
       {/* Abstract Images */}
       <Box sx={{ position: "absolute", top: 100, right: 15 }}>
         <img
@@ -117,7 +117,7 @@ export default function Teams() {
         />
       </Box>
 
-      <Box sx={{ position: "absolute", bottom: 40, left: 40 }}>
+      <Box sx={{ position: "absolute", bottom: 0, left: 10 }}>
         <img
           src="images/abstract-corner-dots-lines.png"
           alt="Abstract graphic with dots and lines."
@@ -125,7 +125,7 @@ export default function Teams() {
         />
       </Box>
 
-      <Grid container sx={{ py: 8, px: 5 }} position="relative">
+      <Grid container sx={{ py: 8, px: 5 }} >
         {/* Container for the two top columns. */}
         <Grid container alignItems={"center"}>
           {/* PAGE HEADING. Left column. */}

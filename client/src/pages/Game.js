@@ -13,7 +13,7 @@ import {
   Button,
   Select,
   MenuItem,
-  InputLabel
+  InputLabel,
 } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import AddIcon from "@mui/icons-material/Add";
@@ -75,7 +75,7 @@ const gameStyle = {
   },
   submitButton: {
     height: 50,
-    borderRadius: ' 10px 10px 0 0',
+    borderRadius: " 10px 10px 0 0",
     backgroundColor: "secondary.main",
     "&:hover": {
       backgroundColor: "primary.main",
@@ -84,61 +84,61 @@ const gameStyle = {
 };
 
 export default function Game() {
-
   // Functionality for Add Score Modal
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-// Functionality for Select Goal Dropdown
-const [goal, setGoal] = React.useState([]);
+  // Functionality for Select Goal Dropdown
+  const [goal, setGoal] = React.useState([]);
 
-const handleGoalChange = (event) => {
-  const {
-    target: { value },
-  } = event;
-  setGoal(
-    // On autofill we get a stringified value.
-    typeof value === "string" ? value.split(",") : value
-  );
-};
+  const handleGoalChange = (event) => {
+    const {
+      target: { value },
+    } = event;
+    setGoal(
+      // On autofill we get a stringified value.
+      typeof value === "string" ? value.split(",") : value
+    );
+  };
 
-// Functionality for Select Assist Dropdown
-const [assist, setAssist] = React.useState([]);
+  // Functionality for Select Assist Dropdown
+  const [assist, setAssist] = React.useState([]);
 
-const handleAssistChange = (event) => {
-  const {
-    target: { value },
-  } = event;
-  setAssist(
-    // On autofill we get a stringified value.
-    typeof value === "string" ? value.split(",") : value
-  );
-};
-
-
+  const handleAssistChange = (event) => {
+    const {
+      target: { value },
+    } = event;
+    setAssist(
+      // On autofill we get a stringified value.
+      typeof value === "string" ? value.split(",") : value
+    );
+  };
 
   return (
     <>
       <CssBaseline />
-      <Container disableGutters justify="center">
+      <Container disableGutters justify="center" position="relative">
+        {/* CORNER ABSTRACT IMAGE */}
+        <Box sx={{ position: "absolute", bottom: 0, left: 10 }}>
+          <img
+            src="images/abstract-corner-dots-lines.png"
+            alt="Abstract graphic with dots and lines."
+            width="250px"
+          />
+        </Box>
         {/* Outer container allows graphic images to be placed absolute. Also establishes padding. */}
-        <Grid container sx={{ py: 8, px: 5 }} position="relative">
-          {/* CORNER ABSTRACT IMAGE */}
-          <Box sx={{ position: "absolute", bottom: 0, left: 0 }}>
-            <img
-              src="images/abstract-corner-dots-lines.png"
-              alt="Abstract graphic with dots and lines."
-              width="250px"
-            />
-          </Box>
-
+        
+        <Grid container sx={{ py: 8, px: 5 }}>
           {/* Creates container around two columns. Adds space between columns. */}
-          
           <Grid container spacing={5}>
             {/* Left Column */}
-            <Grid item 
-              xs={12} s={12} md={4} lg={4}
+            <Grid
+              item
+              xs={12}
+              s={12}
+              md={4}
+              lg={4}
               order={{ xs: 2, sm: 2, md: 1, lg: 1 }}
             >
               {/* TEAM ROSTER */}
@@ -287,8 +287,12 @@ const handleAssistChange = (event) => {
             </Grid>
 
             {/* Middle column */}
-            <Grid item 
-              xs={12} s={12} md={4} lg={4}
+            <Grid
+              item
+              xs={12}
+              s={12}
+              md={4}
+              lg={4}
               order={{ xs: 1, sm: 1, md: 2, lg: 2 }}
             >
               {/* TEAM STATS */}
@@ -363,8 +367,12 @@ const handleAssistChange = (event) => {
             {/* ----------------------------------------------------- */}
 
             {/* Right Column */}
-            <Grid item 
-              xs={12} s={12} md={4} lg={4}
+            <Grid
+              item
+              xs={12}
+              s={12}
+              md={4}
+              lg={4}
               order={{ xs: 3, sm: 3, md: 3, lg: 3 }}
             >
               {/* TEAM ROSTER */}
@@ -525,66 +533,65 @@ const handleAssistChange = (event) => {
                 </Typography>
 
                 <form>
-                <FormControl fullWidth sx={{ gap: 4 }}>
-                  <FormControl>
-                    <InputLabel id="select-player-goal">Home Team</InputLabel>
-                    <Select                     
-                      labelId="select-player-goal"
-                      id="goal"
-                      value={goal}
-                      onChange={handleGoalChange}
-                      label="Home Team"
+                  <FormControl fullWidth sx={{ gap: 4 }}>
+                    <FormControl>
+                      <InputLabel id="select-player-goal">Home Team</InputLabel>
+                      <Select
+                        labelId="select-player-goal"
+                        id="goal"
+                        value={goal}
+                        onChange={handleGoalChange}
+                        label="Home Team"
+                      >
+                        {teams.map((team) => (
+                          <MenuItem key={team} value={team}>
+                            {team}
+                          </MenuItem>
+                        ))}
+                      </Select>
+                    </FormControl>
+
+                    <FormControl>
+                      <InputLabel id="select-player-assist">
+                        Away Team
+                      </InputLabel>
+                      <Select
+                        labelId="select-player-assist"
+                        id="assist"
+                        value={assist}
+                        onChange={handleAssistChange}
+                        label="Away Team"
+                      >
+                        {teams.map((team) => (
+                          <MenuItem key={team} value={team}>
+                            {team}
+                          </MenuItem>
+                        ))}
+                      </Select>
+                    </FormControl>
+
+                    <TextField
+                      id="minute"
+                      label="Minute"
+                      variant="outlined"
+                      color="secondary"
+                      InputLabelProps={{ shrink: true }}
+                    />
+
+                    <Button
+                      variant="contained"
+                      type="submit"
+                      sx={gameStyle.formButton}
+                      fullWidth
+                      disableElevation
                     >
-               
-                      {teams.map((team) => (
-                        <MenuItem key={team} value={team}>
-                          {team}
-                        </MenuItem>
-                      ))}
-                    </Select>
+                      <Typography variant="h3">Add Score</Typography>
+                    </Button>
                   </FormControl>
-
-                  <FormControl>
-                    <InputLabel id="select-player-assist">Away Team</InputLabel>
-                    <Select
-                      labelId="select-player-assist"
-                      id="assist"
-                      value={assist}
-                      onChange={handleAssistChange}
-                      label="Away Team"
-                    >
-
-                      {teams.map((team) => (
-                        <MenuItem key={team} value={team}>
-                          {team}
-                        </MenuItem>
-                      ))}
-                    </Select>
-                  </FormControl>
-
-                  <TextField
-                    id="minute"
-                    label="Minute"
-                    variant="outlined"
-                    color="secondary"
-                    InputLabelProps={{ shrink: true }}
-                  />
-
-                  <Button
-                    variant="contained"
-                    type="submit"
-                    sx={gameStyle.formButton}
-                    fullWidth
-                    disableElevation
-                  >
-                    <Typography variant="h3">Add Score</Typography>
-                  </Button>
-                </FormControl>
                 </form>
               </Box>
             </Modal>
           </Grid>
-         
         </Grid>
       </Container>
     </>

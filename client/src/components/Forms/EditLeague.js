@@ -32,6 +32,7 @@ const MenuProps = {
 const leaguesStyle = {
   formButton: {
     height: 50,
+    color: 'primary.contrastText',
     backgroundColor: "secondary.main",
     "&:hover": {
       backgroundColor: "primary.main",

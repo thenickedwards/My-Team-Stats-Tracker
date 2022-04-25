@@ -219,18 +219,17 @@ export default function Team() {
   return (
     <>
       <CssBaseline />
-      <Container disableGutters justify="center">
+      <Container disableGutters justify="center" position="relative">
+        {/* CORNER ABSTRACT IMAGE */}
+        <Box sx={{ position: "absolute", bottom: 0, left: 10 }}>
+          <img
+            src="/images/abstract-corner-dots-lines.png"
+            alt="Abstract graphic with dots and lines."
+            width="250px"
+          />
+        </Box>
         {/* Outer container allows graphic images to be placed absolute. Also establishes padding. */}
-        <Grid container sx={{ py: 8, px: 5 }} position="relative">
-          {/* CORNER ABSTRACT IMAGE */}
-          <Box sx={{ position: "absolute", bottom: 0, left: 0 }}>
-            <img
-              src="images/abstract-corner-dots-lines.png"
-              alt="Abstract graphic with dots and lines."
-              width="250px"
-            />
-          </Box>
-
+        <Grid container sx={{ py: 8, px: 5 }} >
           {/* Container for the two top columns. */}
           <Grid container alignItems={"center"}>
             {/* LEAGUE HEADING. Left column. */}
@@ -430,10 +429,10 @@ export default function Team() {
                     </div>
                   </TabPanel>
                   <TabPanel value={value} index={1}>
-                    Item Two
+                    COMING SOON
                   </TabPanel>
                   <TabPanel value={value} index={2}>
-                    Item Three
+                    COMING SOON
                   </TabPanel>
                 </Box>
               </Grid>
