@@ -63,7 +63,8 @@ export default function Leagues() {
 
   // Functionality for Edit League Modal
   const [openEdit, setOpenEdit] = React.useState(false);
-  const handleOpenEdit = () => setOpenEdit(true);
+  // const handleOpenEdit = () => setOpenEdit(true);
+  const handleOpenEdit = (leagueId) => setOpenEdit(leagueId);
   const handleCloseEdit = () => setOpenEdit(false);
 
   // Get leagues
@@ -149,6 +150,7 @@ export default function Leagues() {
         {/* League Cards - Map Over Seeds */}
         <Grid container spacing={{ xs: 4 }}>
           {leagues.map((league) => {
+
             return (
               <Grid
                 item
@@ -198,14 +200,15 @@ export default function Leagues() {
                   color="inherit"
                 >
                   <Button
-                    onClick={handleOpenEdit}
+                    onClick={() => handleOpenEdit(league._id)}
                   >
                       Edit
                   </Button>
 
                   {/* EDIT MODAL */}
                   <Modal
-                    open={openEdit}
+                    // open={openEdit}
+                    open={openEdit === league._id}
                     onClose={handleCloseEdit}
                     leagueId={league._id}
                     aria-labelledby="modal-modal-title"
