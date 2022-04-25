@@ -1,4 +1,6 @@
 import * as React from "react";
+
+// MUI Imports
 import {
   Container,
   Box,
@@ -20,15 +22,10 @@ const footerStyle = {
     fontFamily: "Helvetica, sans-serif",
     lineHeight: '1.6em',
     fontWeight: 100
-  },
-  // footerComponents: {
-  //   backgroundColor: "#062740",
-  //   color: "#FFFFFF",
-  // },
+  }
 };
 
 const Footer = () => {
-
 
   return (
     <Container sx={footerStyle.container} maxWidth={false}>
@@ -37,26 +34,24 @@ const Footer = () => {
         <Grid item xs={12} sm={12} md={6} lg={6} >
           <Box>
 
-
-          <Typography variant="h1" color="primary.contrastText" s>
-            MyTeam Stats
-          </Typography>
-          <Typography variant="p" color="primary.contrastText" sx={footerStyle.listText}>
-          Never lose track of your team stats again! Users can view their favorite leagues, teams, and players. Signup to be an admin of your own league so you can add players, teams, leagues, and select the season. Add games to keep score and see where your team stands in the running!
-          </Typography>
+            <Typography variant="h1" color="primary.contrastText" s>
+              MyTeam Stats
+            </Typography>
+            <Typography variant="p" color="primary.contrastText" sx={footerStyle.listText}>
+              Never lose track of your team stats again! Users can view their favorite leagues, teams, and players. Signup to be an admin of your own league so you can add players, teams, leagues, and select the season. Add games to keep score and see where your team stands in the running!
+            </Typography>
 
           </Box>
         </Grid>
 
         <Grid item xs={6} sm={6} md={3} lg={3}>
-        <Typography variant="h3" color="primary.contrastText">
+          <Typography variant="h3" color="primary.contrastText">
             Meet the Team
           </Typography>
 
           <List>
             <Link
               href="https://github.com/jsamborski310"
-              // passhref
               sx={footerStyle.listText}
               rel="noopener noreferrer"
               target="_blank"
@@ -68,7 +63,6 @@ const Footer = () => {
 
             <Link
               href="https://github.com/thenickedwards"
-              // passhref
               sx={footerStyle.listText}
               rel="noopener noreferrer"
               target="_blank"
@@ -80,7 +74,6 @@ const Footer = () => {
 
             <Link
               href="https://github.com/ChristinaBohn"
-              // passhref
               sx={footerStyle.listText}
               rel="noopener noreferrer"
               target="_blank"
@@ -92,7 +85,6 @@ const Footer = () => {
 
             <Link
               href="https://github.com/chandrapanda"
-              // passhref
               sx={footerStyle.listText}
               rel="noopener noreferrer"
               target="_blank"
@@ -108,7 +100,7 @@ const Footer = () => {
         {/* QUICK LINKS */}
         <Grid item xs={6} sm={6} md={3} lg={3}>
           <Typography variant="h3" color="primary.contrastText">
-           Quick Links
+            Quick Links
           </Typography>
 
           <List>

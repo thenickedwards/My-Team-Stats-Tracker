@@ -3,6 +3,7 @@ import { useMutation } from "@apollo/client";
 import { UPDATE_LEAGUE } from "../../utils/mutations";
 import { QUERY_LEAGUES } from "../../utils/queries";
 
+// MUI Imports
 import {
   Button,
   FormControl,
@@ -13,6 +14,7 @@ import {
   MenuItem,
   OutlinedInput,
 } from "@mui/material";
+
 
 const sports = ["Soccer"];
 
@@ -40,14 +42,15 @@ const leaguesStyle = {
   },
 };
 
+
 const EditLeague = ( {leagueId, handleCloseEdit} ) => {
-  // Functionality to Adding League via Form
+
+  // Functionality for Adding League via Form
   const [formState, setFormState] = useState({
       leagueName: "",
       sport:"",
       leaguePic:""
   });
-
 
   const { leagueName, sport, leaguePic } = formState;
 
@@ -69,13 +72,11 @@ const EditLeague = ( {leagueId, handleCloseEdit} ) => {
     event.preventDefault();
     
     try {
-      // const { data } = 
       await updateLeague({
         variables: { leagueId: leagueId, league: {...formState} },
       });
 
       handleCloseEdit();
-      // document.location.reload();
       
     } catch (e) {
       console.error(e);
@@ -101,7 +102,6 @@ const EditLeague = ( {leagueId, handleCloseEdit} ) => {
           <FormControl>
             <InputLabel id="sport">Sport</InputLabel>
             <Select
-              // displayEmpty
               labelId="sport"
               id="sport"
               name="sport"
@@ -135,7 +135,7 @@ const EditLeague = ( {leagueId, handleCloseEdit} ) => {
             InputLabelProps={{ shrink: true }}
           />
 
-          {/* TODO: Add Upload Photo Field */}
+          {/* TODO: Add Upload Photo Field (Future Development) */}
 
           <Button
             variant="contained"
@@ -148,15 +148,11 @@ const EditLeague = ( {leagueId, handleCloseEdit} ) => {
           </Button>
         </FormControl>
 
-
-
         <Typography variant="p" color="secondary.contrastText">
           {error && <div>{error.message}</div>}
         </Typography>
               
-
       </form>
-
     </div>
   );
 }

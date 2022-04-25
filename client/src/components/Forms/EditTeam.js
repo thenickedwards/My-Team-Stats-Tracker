@@ -4,6 +4,7 @@ import { UPDATE_TEAM } from "../../utils/mutations";
 import { QUERY_SOCCERTEAMS, QUERY_SEASONS } from "../../utils/queries";
 import { ColorPicker, createColor } from 'material-ui-color';
 
+// MUI Imports
 import {
   Button,
   FormControl,
@@ -14,6 +15,7 @@ import {
   MenuItem,
   OutlinedInput,
 } from "@mui/material";
+
 
 // Add Team Modal Multiselect
 const ITEM_HEIGHT = 48;
@@ -49,7 +51,6 @@ const EditTeam = ( {soccerTeamId, handleCloseEdit} ) => {
     // Functionality to Adding League via Form
     const [formState, setFormState] = useState({
       teamName: "",
-      // teamColor: "",
       season: "",
       teamPic: "",
     });
@@ -64,7 +65,6 @@ const EditTeam = ( {soccerTeamId, handleCloseEdit} ) => {
     );
 
   const teamColor = color;
-
 
   const [updateSoccerTeam, { error }] = useMutation(UPDATE_TEAM, {
     refetchQueries: [ QUERY_SOCCERTEAMS ]
@@ -106,88 +106,84 @@ const EditTeam = ( {soccerTeamId, handleCloseEdit} ) => {
   return (
     <div>
       <form onSubmit={handleTeamFormSubmit}>
-    <FormControl fullWidth sx={{ gap:4 }}>
+        <FormControl fullWidth sx={{ gap:4 }}>
 
-        <TextField 
-            id="teamName" 
-            name="teamName"
-            label="Team Name"
-            type="text" 
-            variant="outlined" 
-            color="secondary"
-            value={teamName}
-            onChange={handleFormChange}
-            InputLabelProps={{ shrink: true }} 
-        />
-        
+            <TextField 
+                id="teamName" 
+                name="teamName"
+                label="Team Name"
+                type="text" 
+                variant="outlined" 
+                color="secondary"
+                value={teamName}
+                onChange={handleFormChange}
+                InputLabelProps={{ shrink: true }} 
+            />
 
-        <FormControl>
-            <InputLabel id="season">Season</InputLabel>
-            <Select
-              // displayEmpty
-              labelId="season"
-              id="season"
-              name="season"
-              type="text"
-              value={season}
-              onChange={handleFormChange}
-              input={<OutlinedInput label="Season" />}
-              MenuProps={MenuProps}
+            <FormControl>
+                <InputLabel id="season">Season</InputLabel>
+                <Select
+                  labelId="season"
+                  id="season"
+                  name="season"
+                  type="text"
+                  value={season}
+                  onChange={handleFormChange}
+                  input={<OutlinedInput label="Season" />}
+                  MenuProps={MenuProps}
+                >
+                  <MenuItem disabled value="">
+                    <em>Select Season</em>
+                  </MenuItem>
+
+                  {seasons.map((season) => (
+                    <MenuItem key={season} value={season._id}>
+                      {season.seasonName}
+                    </MenuItem>
+                  ))}
+
+                </Select>
+              </FormControl>
+
+            {/* TODO: Add Upload Photo Field (Future Development) */}
+
+            <TextField 
+                id="teamPic" 
+                name="teamPic"
+                label="Team Photo" 
+                variant="outlined" 
+                color="secondary"
+                value={teamPic}
+                onChange={handleFormChange}
+                InputLabelProps={{ shrink: true }} 
+            />
+
+            <ColorPicker
+                id="teamColor"
+                name="teamColor"
+                label="Team Color"
+                defaultValue="#000"
+                value={teamColor}
+                onChange={handleColorChange}
+            />
+
+            <Button
+            variant="contained"
+            type="submit"
+            sx={teamsStyle.formButton}
+            fullWidth
+            disableElevation
             >
-              <MenuItem disabled value="">
-                <em>Select Season</em>
-              </MenuItem>
+              <Typography variant="h3">Edit Team</Typography>
 
-              {seasons.map((season) => (
-                <MenuItem key={season} value={season._id}>
-                  {season.seasonName}
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
+            </Button>
+        </FormControl>
 
-  
+        <Typography variant="p" color="secondary.contrastText">
+          {error && <div>{error.message}</div>}
+        </Typography>
 
-    {/* TODO: Add Upload Photo Field */}
-        <TextField 
-            id="teamPic" 
-            name="teamPic"
-            label="Team Photo" 
-            variant="outlined" 
-            color="secondary"
-            value={teamPic}
-            onChange={handleFormChange}
-            InputLabelProps={{ shrink: true }} 
-        />
-
-        <ColorPicker
-            id="teamColor"
-            name="teamColor"
-            label="Team Color"
-            defaultValue="#000"
-            value={teamColor}
-            onChange={handleColorChange}
-         />
-
-        <Button
-        variant="contained"
-        type="submit"
-        sx={teamsStyle.formButton}
-        fullWidth
-        disableElevation
-        >
-            <Typography variant="h3">Edit Team</Typography>
-
-        </Button>
-
-    </FormControl>
-
-    <Typography variant="p" color="secondary.contrastText">
-      {error && <div>{error.message}</div>}
-    </Typography>
-
-    </form>
-
+      </form>
     </div>
   );
 }

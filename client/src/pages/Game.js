@@ -20,9 +20,8 @@ import {
 import IconButton from "@mui/material/IconButton";
 import AddIcon from "@mui/icons-material/Add";
 
-// ////////////////////////////////////
-// Seasons Modal Select Team (TEMPORARY DATA)
 
+// Team Options
 const teams = [
   "Chi Town Tigers",
   "Galaxy Bees",
@@ -33,10 +32,8 @@ const teams = [
   "Lightning",
   "Thunder"
 ];
-// ////////////////////////////////////
 
-// STYLES
-
+// Styles
 const gameStyle = {
   statsPaper: {
     display: "flex",
@@ -93,7 +90,9 @@ const gameStyle = {
   },
 };
 
+
 export default function Game() {
+
   // Functionality for Add Score Modal
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
@@ -106,6 +105,7 @@ export default function Game() {
     const {
       target: { value },
     } = event;
+
     setGoal(
       // On autofill we get a stringified value.
       typeof value === "string" ? value.split(",") : value
@@ -119,6 +119,7 @@ export default function Game() {
     const {
       target: { value },
     } = event;
+
     setAssist(
       // On autofill we get a stringified value.
       typeof value === "string" ? value.split(",") : value
@@ -129,12 +130,13 @@ export default function Game() {
     <>
       <CssBaseline />
       <Container disableGutters justify="center">
-       
+
         {/* Outer container allows graphic images to be placed absolute. Also establishes padding. */}
-        
         <Grid container sx={{ py: 8, px: 5 }}>
+
           {/* Creates container around two columns. Adds space between columns. */}
           <Grid container spacing={5}>
+
             {/* Left Column */}
             <Grid
               item
@@ -146,7 +148,7 @@ export default function Game() {
             >
               {/* TEAM ROSTER */}
 
-              {/* HEADING */}
+              {/* Heading */}
               <Box>
                 <img src="images/la-galaxy.png" alt="Team Logo" width="50px" />
 
@@ -181,12 +183,15 @@ export default function Game() {
                   ) : (
                     <div></div>
                   )}
+
                 </Box>
               </Box>
 
               {/* PLAYERS */}
+
               <Grid container sx={{ display: "flex", flexDirection: "column" }}>
-                {/* Player Details. Map over this section. */}
+                
+                {/* Player Details. TODO: Map over this section. (Future Development) */}
                 <Grid
                   item
                   sx={{ display: "flex", flexDirection: "row", mb: 3 }}
@@ -209,7 +214,7 @@ export default function Game() {
                 {/* End Player Details Mapping. */}
 
                 {/* ----------------------------------------------------- */}
-                {/* Temporary Data. Delete */}
+                {/* Begin Temporary Data. Delete */}
                 <Grid
                   item
                   sx={{ display: "flex", flexDirection: "row", mb: 3 }}
@@ -290,7 +295,7 @@ export default function Game() {
                   </Box>
                 </Grid>
 
-                {/* Temporary Data. Delete */}
+                {/* End Temporary Data. Delete */}
                 {/* ----------------------------------------------------- */}
               </Grid>
             </Grid>
@@ -306,7 +311,7 @@ export default function Game() {
             >
               {/* TEAM STATS */}
 
-              {/* GAME CARD. */}
+              {/* Game Card */}
               <Typography variant="h1" color="secondary.contrastText">
                 Game Card
               </Typography>
@@ -373,8 +378,6 @@ export default function Game() {
               </Box>
             </Grid>
 
-            {/* ----------------------------------------------------- */}
-
             {/* Right Column */}
             <Grid
               item
@@ -386,7 +389,7 @@ export default function Game() {
             >
               {/* TEAM ROSTER */}
 
-              {/* HEADING */}
+              {/* Heading */}
               <Box>
                 <img src="images/chicago.png" alt="Team Logo" width="50px" />
 
@@ -425,8 +428,10 @@ export default function Game() {
               </Box>
 
               {/* PLAYERS */}
+
               <Grid container sx={{ display: "flex", flexDirection: "column" }}>
-                {/* Player Details. Map over this section. */}
+                {/* Player Details. TODO: Map over this section. (Future Development) */}
+
                 <Grid
                   item
                   sx={{ display: "flex", flexDirection: "row", mb: 3 }}
@@ -449,7 +454,7 @@ export default function Game() {
                 {/* End Player Details Mapping. */}
 
                 {/* ----------------------------------------------------- */}
-                {/* Temporary Data. Delete */}
+                {/* Begin Temporary Data. Delete */}
                 <Grid
                   item
                   sx={{ display: "flex", flexDirection: "row", mb: 3 }}
@@ -530,12 +535,13 @@ export default function Game() {
                   </Box>
                 </Grid>
 
-                {/* Temporary Data. Delete */}
+                {/* End Temporary Data. Delete */}
                 {/* ----------------------------------------------------- */}
               </Grid>
             </Grid>
 
             {/* ADD SCORE MODAL */}
+
             <Modal
               open={open}
               onClose={handleClose}
@@ -563,6 +569,7 @@ export default function Game() {
                             {team}
                           </MenuItem>
                         ))}
+
                       </Select>
                     </FormControl>
 
@@ -602,6 +609,7 @@ export default function Game() {
                     >
                       <Typography variant="h3">Add Score</Typography>
                     </Button>
+                    
                   </FormControl>
                 </form>
               </Box>

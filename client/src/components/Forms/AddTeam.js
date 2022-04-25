@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useMutation, useQuery } from '@apollo/client';
 import { ColorPicker, createColor } from 'material-ui-color';
 
-// Material UI Imports
+// MUI Imports
 import { 
     Button,
     FormControl,
@@ -17,9 +17,6 @@ import { ADD_SOCCERTEAM } from '../../utils/mutations';
 import { QUERY_SEASONS, QUERY_SOCCERTEAMS } from '../../utils/queries';
 
 
-// // Temporary Data
-// const seasons = ["Spring 2022-2023", "Fall 2022-2023"];
-
 // Add Seasons Modal Multiselect
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -31,7 +28,6 @@ const MenuProps = {
     },
   },
 };
-
 
 // Styles
 const teamsStyle = {
@@ -51,15 +47,13 @@ export default function AddTeam( {handleClose} ) {
     const { loading, data } = useQuery(QUERY_SEASONS);
     const seasons = data?.allSeasons || [];
 
-      // Functionality to Adding League via Form
+      // Functionality for Adding League via Form
     const [formState, setFormState] = useState({
             teamName: "",
-            // teamColor: "",
             season: "",
             teamPic: "",
         });
 
-    // const { teamName, teamColor, season, teamPic } = formState;
     const { teamName, season, teamPic } = formState;
 
     const [color, setColor] = useState(
@@ -75,17 +69,10 @@ export default function AddTeam( {handleClose} ) {
         refetchQueries: [ QUERY_SOCCERTEAMS ]
     });
 
-
-    // const handleMultipleChanges = (e) => {
-    //     handleColorChange(e)
-    //     handleFormChange()
-    // }
-
     const handleColorChange = (value) => {
         console.log("onChange=", value);
         console.log("new value", "#" + value.hex)
         setColor("#" + value.hex);
-   
     }
 
     const handleFormChange = (event) => {
@@ -95,7 +82,6 @@ export default function AddTeam( {handleClose} ) {
           ...formState,
           [name]: value,
         });
-
       };
 
       const handleTeamFormSubmit = async (event) => {
@@ -109,7 +95,6 @@ export default function AddTeam( {handleClose} ) {
             variables: { team: teamDetails },
           });
 
-    
           setFormState({
             teamName: "",
             season: "",
@@ -144,7 +129,6 @@ export default function AddTeam( {handleClose} ) {
             InputLabelProps={{ shrink: true }} 
         />
         
-
         <FormControl>
             <InputLabel id="season">Season</InputLabel>
             <Select
@@ -170,9 +154,8 @@ export default function AddTeam( {handleClose} ) {
             </Select>
           </FormControl>
 
-  
+    {/* TODO: Add Upload Photo Field (Future Development) */}
 
-    {/* TODO: Add Upload Photo Field */}
         <TextField 
             id="teamPic" 
             name="teamPic"

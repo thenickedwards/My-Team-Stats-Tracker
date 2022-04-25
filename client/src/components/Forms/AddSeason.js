@@ -4,8 +4,7 @@ import { useMutation, useQuery } from "@apollo/client";
 import { ADD_SEASON } from "../../utils/mutations";
 import { QUERY_LEAGUES } from "../../utils/queries";
 
-// import { QUERY_LEAGUES, QUERY_SEASONS } from "../../utils/queries";
-
+// MUI Imports
 import {
   Typography,
   Button,
@@ -17,7 +16,6 @@ import {
   InputLabel,
 } from "@mui/material";
 
-// ////////////////////////////////////
 
 // Add Seasons Modal Multiselect
 const ITEM_HEIGHT = 48;
@@ -31,7 +29,7 @@ const MenuProps = {
   },
 };
 
-// STYLES
+// Styles
 const leagueStyle = {
   formButton: {
     height: 50,
@@ -42,14 +40,14 @@ const leagueStyle = {
   },
 };
 
-export default function AddSeason({ handleClose }) {
-  // Functionality for Select Team Dropdown
 
+export default function AddSeason({ handleClose }) {
+
+  // Get All League data
   const { loading, data } = useQuery(QUERY_LEAGUES);
   const leagues = data?.allLeagues || [];
 
-  ///////////////////
-  // Functionality to Adding League via Form
+  // Functionality for Adding League via Form
   const [formState, setFormState] = useState({
     seasonName: "",
     startYear: "",
@@ -58,17 +56,6 @@ export default function AddSeason({ handleClose }) {
   });
 
   const { seasonName, startYear, endYear, league } = formState;
-
-  // TESTING REFETCH QUERIES
-  //   const [addSeason, { error }] = useMutation(ADD_SEASON, {
-  //     refetchQueries: [ QUERY_SEASONS ],
-  //  });
-
-  // const [addSeason, { error }] = useMutation(ADD_SEASON, {
-  //   refetchQueries: [ {query: QUERY_SEASONS} ],
-  //   awaitRefetchQueries: true
-  // });
-  // ////////////////////////
 
   const [addSeason, { error }] = useMutation(ADD_SEASON);
 
@@ -146,12 +133,10 @@ export default function AddSeason({ handleClose }) {
         <FormControl>
           <InputLabel id="league">League</InputLabel>
           <Select
-            //   displayEmpty
             labelId="league"
             id="league"
             name="league"
             type="text"
-            //   multiple
             value={league}
             onChange={handleFormChange}
             input={<OutlinedInput label="League" />}
@@ -166,6 +151,7 @@ export default function AddSeason({ handleClose }) {
                 {league.leagueName}
               </MenuItem>
             ))}
+            
           </Select>
         </FormControl>
 
