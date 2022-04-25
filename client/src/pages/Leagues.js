@@ -150,7 +150,6 @@ export default function Leagues() {
         {/* League Cards - Map Over Seeds */}
         <Grid container spacing={{ xs: 4 }}>
           {leagues.map((league) => {
-
             return (
               <Grid item key={league._id} xs={6} s={6} md={3} lg={3}>
                 <Link
@@ -188,33 +187,32 @@ export default function Leagues() {
                   sx={{ pt: 2 }}
                   color="inherit"
                 >
-                  <Button
-                    onClick={() => handleOpenEdit(league._id)}
-                  >
-                      Edit
+                  <Button onClick={() => handleOpenEdit(league._id)}>
+                    Edit
                   </Button>
 
                   {/* EDIT MODAL */}
                   <Modal
                     // open={openEdit}
                     open={openEdit === league._id}
-
                     onClose={handleCloseEdit}
                     leagueId={league._id}
                     aria-labelledby="modal-modal-title"
                     aria-describedby="modal-modal-description"
                   >
                     <Box sx={leaguesStyle.addLeagueModal}>
-                      <Typography id="modal-modal-title" variant="h1" sx={{ mb: 4 }}>
+                      <Typography
+                        id="modal-modal-title"
+                        variant="h1"
+                        sx={{ mb: 4 }}
+                      >
                         Edit League
                       </Typography>
 
-                      
-                      <EditLeague 
-                        handleCloseEdit={handleCloseEdit} 
+                      <EditLeague
+                        handleCloseEdit={handleCloseEdit}
                         leagueId={league._id}
                       />
-
                     </Box>
                   </Modal>
                   {/* END EDIT MODAL */}
@@ -248,8 +246,6 @@ export default function Leagues() {
           <AddLeague handleClose={handleClose} />
         </Box>
       </Modal>
-
-
     </Container>
   );
 }

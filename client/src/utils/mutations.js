@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
 
 // USER LOGIN & SIGNUP
 export const LOGIN_USER = gql`
@@ -15,19 +15,19 @@ export const LOGIN_USER = gql`
 
 export const ADD_USER = gql`
   mutation addUser(
-    $username: String!,
+    $username: String!
     $password: String!
-    $email: String!,
-    $userFirstName: String!,
+    $email: String!
+    $userFirstName: String!
     $userLastName: String!
-    ) {
+  ) {
     addUser(
-      username: $username,
-      password: $password,
-      email: $email,
-      userFirstName: $userFirstName,
+      username: $username
+      password: $password
+      email: $email
+      userFirstName: $userFirstName
       userLastName: $userLastName
-      ) {
+    ) {
       token
       user {
         _id
@@ -44,15 +44,14 @@ export const ADD_USER = gql`
 
 export const ADD_LEAGUE = gql`
   mutation addLeague($league: LeagueInput) {
-  addLeague(league: $league) {
-    _id
-    leagueName
-    sport
-    leaguePic
+    addLeague(league: $league) {
+      _id
+      leagueName
+      sport
+      leaguePic
+    }
   }
-}
 `;
-
 
 export const ADD_SEASON = gql`
   mutation addSeason($season: SeasonInput) {
@@ -77,8 +76,8 @@ export const ADD_SOCCERTEAM = gql`
         _id
       }
     }
-  }`;
-
+  }
+`;
 
 export const ADD_SOCCERPLAYER = gql`
   mutation addPlayer($roster: SoccerPlayerInput) {
@@ -94,21 +93,21 @@ export const ADD_SOCCERPLAYER = gql`
 
 export const ADD_SOCCERGAME = gql`
   mutation addGame(
-    $gameDate: String!,
-    $homeTeam: [SoccerTeam],
-    $awayTeam: [SoccerTeam],
-    $goalsHome: Int,
-    $goalsAway: Int,
-    $assistsHome: Int,
-    $assistsAway: Int,
+    $gameDate: String!
+    $homeTeam: [SoccerTeam]
+    $awayTeam: [SoccerTeam]
+    $goalsHome: Int
+    $goalsAway: Int
+    $assistsHome: Int
+    $assistsAway: Int
   ) {
     addGame(
-      gameDate: $gameDate,
-      homeTeam: $homeTeam,
-      awayTeam: $awayTeam,
-      goalsHome: $goalsHome,
-      goalsAway: $goalsAway,
-      assistsHome: $assistsHome,
+      gameDate: $gameDate
+      homeTeam: $homeTeam
+      awayTeam: $awayTeam
+      goalsHome: $goalsHome
+      goalsAway: $goalsAway
+      assistsHome: $assistsHome
       assistsAway: $assistsAway
     ) {
       soccerGame {
@@ -162,7 +161,7 @@ export const UPDATE_LEAGUE = gql`
   }
 `;
 
-export const UPDATE_SEASON = gql `
+export const UPDATE_SEASON = gql`
   mutation updateSeason($seasonId: ID!, $season: SeasonInput) {
     updateSeason(seasonId: $seasonId, season: $season) {
       _id
@@ -173,7 +172,7 @@ export const UPDATE_SEASON = gql `
   }
 `;
 
-export const UPDATE_TEAM = gql `
+export const UPDATE_TEAM = gql`
   # mutation updateSoccerTeam($soccerTeamId: ID!, $team: SoccerTeamInput) {
   #   updateSoccerTeam(soccerTeamId: $soccerTeamId, soccerTeam: $team) {
   #     _id
@@ -183,16 +182,16 @@ export const UPDATE_TEAM = gql `
   #   }
   # }
   mutation updateSoccerTeam($soccerTeamId: ID!, $soccerTeam: SoccerTeamInput) {
-  updateSoccerTeam(soccerTeamId: $soccerTeamId, soccerTeam: $soccerTeam) {
-    _id
-    teamName
-    teamColor
-    teamPic
+    updateSoccerTeam(soccerTeamId: $soccerTeamId, soccerTeam: $soccerTeam) {
+      _id
+      teamName
+      teamColor
+      teamPic
+    }
   }
-}
 `;
 
-export const UPDATE_PLAYER = gql `
+export const UPDATE_PLAYER = gql`
   mutation updateSoccerPlayer($soccerPlayerId: ID!, $team: SoccerPlayerInput) {
     updateSoccerPlayer(soccerPlayerId: $soccerPlayerId, team: $team) {
       _id
@@ -201,12 +200,10 @@ export const UPDATE_PLAYER = gql `
       playerPic
       playerNumber
     }
-}
+  }
 `;
 
-
 // UPDATE GAME??
-
 
 //// Delete Mutations
 
@@ -259,4 +256,3 @@ export const REMOVE_ASSIST = gql`
     removeAssist(assist: $assist)
   }
 `;
-

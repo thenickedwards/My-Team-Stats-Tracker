@@ -39,8 +39,7 @@ const leaguesStyle = {
   },
 };
 
-const AddLeague = ( {handleClose}) => {
-
+const AddLeague = ({ handleClose }) => {
   // Functionality to Adding League via Form
   const [formState, setFormState] = useState({
     leagueName: "",
@@ -48,13 +47,12 @@ const AddLeague = ( {handleClose}) => {
     leaguePic: "",
   });
 
-
   const { leagueName, sport, leaguePic } = formState;
 
   // const [addLeague, { error, data }] = useMutation(ADD_LEAGUE);
   const [addLeague, { error }] = useMutation(ADD_LEAGUE, {
-    refetchQueries: [ QUERY_LEAGUES ]
- });
+    refetchQueries: [QUERY_LEAGUES],
+  });
 
   const handleFormChange = (event) => {
     const { name, value } = event.target;
@@ -72,7 +70,7 @@ const AddLeague = ( {handleClose}) => {
 
     try {
       const { data } = await addLeague({
-        variables: { league: {...formState} },
+        variables: { league: { ...formState } },
       });
       console.log("second", formState);
 
@@ -83,7 +81,6 @@ const AddLeague = ( {handleClose}) => {
       });
 
       handleClose();
-      
     } catch (e) {
       console.error(e);
     }
@@ -155,19 +152,12 @@ const AddLeague = ( {handleClose}) => {
           </Button>
         </FormControl>
 
-
-
         <Typography variant="p" color="secondary.contrastText">
-                {error && <div>{error.message}</div>}
-              </Typography>
-              
-           
-
-
+          {error && <div>{error.message}</div>}
+        </Typography>
       </form>
-
     </div>
   );
-}
+};
 
 export default AddLeague;

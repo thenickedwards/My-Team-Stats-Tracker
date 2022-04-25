@@ -19,25 +19,27 @@ import AddSeason from "../components/Forms/AddSeason";
 
 //   DATAGRID (EDIT DATA)
 const columns = [
-  { 
-    field: "seasonName", 
-    headerName: "Season Name", 
-    width: 250 },
-  { 
-    field: "startYear", 
-    headerName: "Start", 
-    width: 250 },
-  { 
-    field: "endYear", 
-    headerName: "End", 
-    width: 250 },
+  {
+    field: "seasonName",
+    headerName: "Season Name",
+    width: 250,
+  },
+  {
+    field: "startYear",
+    headerName: "Start",
+    width: 250,
+  },
+  {
+    field: "endYear",
+    headerName: "End",
+    width: 250,
+  },
   {
     field: "viewStats",
     headerName: "View Stats",
     width: 250,
-  }
+  },
 ];
-
 
 // Add Seasons Modal Multiselect
 const ITEM_HEIGHT = 48;
@@ -88,7 +90,6 @@ export default function League() {
     seasonNames = league.seasons.map((season) => {
       // return season.seasonName;
       return season;
-      
     });
   }
 
@@ -142,11 +143,11 @@ export default function League() {
 
                 {/* {seasonNames.map((seasonName) => {
                   return ( */}
-                    <Typography variant="h3" color="secondary.contrastText">
-                      Seasons
-                      {/* {seasonName} */}
-                    </Typography>
-                  {/* );
+                <Typography variant="h3" color="secondary.contrastText">
+                  Seasons
+                  {/* {seasonName} */}
+                </Typography>
+                {/* );
                 })} */}
               </Box>
 
@@ -172,15 +173,12 @@ export default function League() {
             <Box sx={{ width: "100%", mt: 8 }}>
               <div style={{ height: 400, width: "100%" }}>
                 <DataGrid
-
-                rows={seasonNames.map((season) => (
-                  {
+                  rows={seasonNames.map((season) => ({
                     id: season._id,
                     seasonName: season.seasonName,
                     startYear: season.startYear,
-                    endYear: season.endYear
+                    endYear: season.endYear,
                   }))}
-
                   // rows={rows}
                   columns={columns}
                   pageSize={5}
@@ -210,7 +208,7 @@ export default function League() {
             </Box>
           </Grid>
 
-          {/* Add Player Modal */}
+          {/* Add Season Modal */}
           <Modal
             open={open}
             onClose={handleClose}
