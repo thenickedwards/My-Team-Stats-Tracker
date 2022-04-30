@@ -35,7 +35,7 @@ const Footer = () => {
           <Box>
 
             <Typography variant="h1" color="primary.contrastText" s>
-              MyTeam Stats
+              myTeam Stats
             </Typography>
             <Typography variant="p" color="primary.contrastText" sx={footerStyle.listText}>
               Never lose track of your team stats again! Users can view their favorite leagues, teams, and players. Signup to be an admin of your own league so you can add players, teams, leagues, and select the season. Add games to keep score and see where your team stands in the running!
@@ -130,7 +130,7 @@ const Footer = () => {
               sx={footerStyle.listText}
             >
               <ListItem button component="a" disableGutters>
-                Signup
+                Sign-Up
               </ListItem>
             </Link>
 
