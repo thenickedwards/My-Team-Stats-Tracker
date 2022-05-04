@@ -171,7 +171,7 @@ export default function AddTeam( {handleClose} ) {
             id="teamColor"
             name="teamColor"
             label="Team Color"
-            defaultValue="#000"
+            defaultValue="#000000"
             value={teamColor}
             onChange={handleColorChange}
          />

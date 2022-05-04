@@ -108,7 +108,7 @@ const Navbar = () => {
                 display: { xs: "flex", sm: "flex", md: "flex", lg: "flex" },
               }}
             >
-              MyTeam Stats
+              myTeam Stats
             </Link>
           </Grid>
 
