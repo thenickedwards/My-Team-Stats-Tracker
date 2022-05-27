@@ -30,6 +30,32 @@ const userSchema = new Schema({
     trim: true,
   },
   //POSSIBLE FUTURE DEVELOPMENT: myLeagues , mySeasons, mySoccerTeams, mySoccerPlayers, mySoccerGames
+  myLeagues: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "League",
+    },
+  ],
+  mySeasons: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Season",
+    },
+  ],
+  // update to myTeams?
+  mySoccerTeams: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "SoccerTeam",
+    },
+  ],
+  // update to myPlayers?
+  mySoccerPlayers: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "SoccerPlayer",
+    },
+  ],
 });
 
 userSchema.pre("save", async function (next) {
