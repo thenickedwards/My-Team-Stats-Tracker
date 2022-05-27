@@ -42,15 +42,15 @@ const userSchema = new Schema({
       ref: "Season",
     },
   ],
-  // update to myTeams?
-  mySoccerTeams: [
+  // update to mySoccerTeams?
+  myTeams: [
     {
       type: Schema.Types.ObjectId,
       ref: "SoccerTeam",
     },
   ],
-  // update to myPlayers?
-  mySoccerPlayers: [
+  // update to mySoccerPlayers?
+  myPlayers: [
     {
       type: Schema.Types.ObjectId,
       ref: "SoccerPlayer",
