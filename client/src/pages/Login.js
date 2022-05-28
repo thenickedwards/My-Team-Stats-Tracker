@@ -157,7 +157,7 @@ const Login = (props) => {
                       type="text"
                       margin="normal"
                       style={loginStyle.textField}
-                      value={username}
+                      value={username.toLowerCase()}
                       onChange={handleChange}
                     />
 

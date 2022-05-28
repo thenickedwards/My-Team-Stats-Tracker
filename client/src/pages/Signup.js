@@ -29,6 +29,12 @@ import {
       borderRadius: "5px",
       border: "none",
     },
+    textFieldLowerCase: {
+      backgroundColor: "white",
+      borderRadius: "5px",
+      border: "none",
+      textTransform: 'lowercase',
+    },
     formButton: {
       backgroundColor: "primary.main",
       "&:hover": {
@@ -155,7 +161,6 @@ const [addUser, { error, data }] = useMutation(ADD_USER);
                       id="userFirstName"
                       name="userFirstName"
                       placeholder="First Name"
-                      // type="username"
                       type="text"
                       margin="normal"
                       style={signupStyle.textField}
@@ -168,7 +173,6 @@ const [addUser, { error, data }] = useMutation(ADD_USER);
                       id="userLastName"
                       name="userLastName"
                       placeholder="Last Name"
-                      // type="username"
                       type="text"
                       margin="normal"
                       style={signupStyle.textField}
@@ -181,7 +185,6 @@ const [addUser, { error, data }] = useMutation(ADD_USER);
                       id="email"
                       name="email"
                       placeholder="Email"
-                      // type="username"
                       type="text"
                       margin="normal"
                       style={signupStyle.textField}
@@ -194,11 +197,12 @@ const [addUser, { error, data }] = useMutation(ADD_USER);
                       id="username"
                       name="username"
                       placeholder="Username"
-                      // type="username"
                       type="text"
                       margin="normal"
-                      style={signupStyle.textField}
-                      value={username}
+                      style={signupStyle.textField} 
+                      // style={signupStyle.textFieldLowerCase}
+                      // normalize={value => (value || '').toLowerCase()}
+                      value={username.toLowerCase()}
                       onChange={handleChange}
                     />
 
@@ -209,7 +213,7 @@ const [addUser, { error, data }] = useMutation(ADD_USER);
                       placeholder="Password"
                       type="password"
                       margin="normal"
-                      style={signupStyle.textField}
+                      style={signupStyle.textField} 
                       value={password}
                       onChange={handleChange}
                     />
