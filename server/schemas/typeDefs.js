@@ -8,6 +8,10 @@ const typeDefs = gql`
     password: String!
     userFirstName: String!
     userLastName: String!
+    myLeagues: [League]
+    mySeasons: [Season]
+    myTeams: [SoccerTeam]
+    myPlayers: [SoccerPlayer]
   }
 
   type Auth {

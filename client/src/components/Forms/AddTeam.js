@@ -57,7 +57,7 @@ export default function AddTeam( {handleClose} ) {
     const { teamName, season, teamPic } = formState;
 
     const [color, setColor] = useState(
-        createColor("#000"), 
+        createColor("#000000"), 
         {
             teamColor: ""
         }
@@ -171,7 +171,7 @@ export default function AddTeam( {handleClose} ) {
             id="teamColor"
             name="teamColor"
             label="Team Color"
-            defaultValue="#000"
+            defaultValue="#000000"
             value={teamColor}
             onChange={handleColorChange}
          />

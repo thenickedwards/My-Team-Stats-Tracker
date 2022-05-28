@@ -151,7 +151,6 @@ const Signup = () => {
                       id="userFirstName"
                       name="userFirstName"
                       placeholder="First Name"
-                      // type="username"
                       type="text"
                       margin="normal"
                       style={signupStyle.textField}
@@ -164,7 +163,6 @@ const Signup = () => {
                       id="userLastName"
                       name="userLastName"
                       placeholder="Last Name"
-                      // type="username"
                       type="text"
                       margin="normal"
                       style={signupStyle.textField}
@@ -177,7 +175,6 @@ const Signup = () => {
                       id="email"
                       name="email"
                       placeholder="Email"
-                      // type="username"
                       type="text"
                       margin="normal"
                       style={signupStyle.textField}
@@ -190,11 +187,11 @@ const Signup = () => {
                       id="username"
                       name="username"
                       placeholder="Username"
-                      // type="username"
                       type="text"
                       margin="normal"
-                      style={signupStyle.textField}
-                      value={username}
+                      style={signupStyle.textField} 
+                      inputProps={{ style: { textTransform: "lowercase" } }}
+                      value={username.toLowerCase()}
                       onChange={handleChange}
                     />
 
@@ -205,7 +202,7 @@ const Signup = () => {
                       placeholder="Password"
                       type="password"
                       margin="normal"
-                      style={signupStyle.textField}
+                      style={signupStyle.textField} 
                       value={password}
                       onChange={handleChange}
                     />

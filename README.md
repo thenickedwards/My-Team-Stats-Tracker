@@ -2,7 +2,7 @@
 
 ## Description
 
-Welcome to the MyTeam sports stats tracker for youth leagues, adult rec teams, and school sports! Whether you're a coach of a professional team looking to track the teams and players of a whole league, a player/manger corralling of an adult recreation team, a rec league admin building a season of teams, or an enthusiastic parent tracking their young athlete's progression through youth sports, myTeam Stats is the best way to manage anything from players on a team to multiple leagues running multiple seasons.
+Welcome to the myTeam Stats sports stats tracker for youth leagues, adult recreation teams, and school sports! Whether you're a coach of a professional team looking to track the teams and players of a whole league, a player/manager corralling an adult rec team, a rec league admin building a season of teams, or an enthusiastic parent tracking their young athlete's progression through youth sports, myTeam Stats is the best way to manage anything from players on a team to multiple leagues running multiple seasons.
 
 Check out the readme below and then use the live app via the Heroku button below!
 
@@ -52,12 +52,12 @@ SO THAT I can enjoy the season while watching my team advance
 Once the team settled on an idea for an application Nick volunteered to be begin planning the data structure. First drafts of the models and page contents were sketched out with pen and paper.
 ![Screenshot1](./planning/models-data_doodles.jpg)
 
-With rough ideas on paper, Nick set to work creating wireframes and user workflows in a drawio to share with the team. The data was beginning to take shape and with it somoe of the UX! You can view Nick's initial drawio at [https://drive.google.com/file/d/1nBEIIPUQKrH8zzbBEtpmvnY23NpBL6GU/view?usp=sharing](https://drive.google.com/file/d/1nBEIIPUQKrH8zzbBEtpmvnY23NpBL6GU/view?usp=sharing)
+With rough ideas on paper, Nick set to work creating wireframes and user workflows in a drawio to share with the team. The data was beginning to take shape and with it some of the UX! You can view Nick's initial drawio at [https://drive.google.com/file/d/1nBEIIPUQKrH8zzbBEtpmvnY23NpBL6GU/view?usp=sharing](https://drive.google.com/file/d/1nBEIIPUQKrH8zzbBEtpmvnY23NpBL6GU/view?usp=sharing)
 
 ![Screenshot2](./planning/diagram1.png)
 
 ![Screenshot3](./planning/diagram2.svg) 
-You can explore how the data works in this shared collectionof queries and mutations using Apollo: [https://studio.apollographql.com/graph/myTeam-Stats/explorer?collectionId=f0823736-7450-4877-91da-ad219e6d224e&focusCollectionId=f0823736-7450-4877-91da-ad219e6d224e&overlay=view-collection-details&variant=current](https://studio.apollographql.com/graph/myTeam-Stats/explorer?collectionId=f0823736-7450-4877-91da-ad219e6d224e&focusCollectionId=f0823736-7450-4877-91da-ad219e6d224e&overlay=view-collection-details&variant=current)
+You can explore how the data works in this shared collection of queries and mutations using Apollo: [https://studio.apollographql.com/graph/myTeam-Stats/explorer?collectionId=f0823736-7450-4877-91da-ad219e6d224e&focusCollectionId=f0823736-7450-4877-91da-ad219e6d224e&overlay=view-collection-details&variant=current](https://studio.apollographql.com/graph/myTeam-Stats/explorer?collectionId=f0823736-7450-4877-91da-ad219e6d224e&focusCollectionId=f0823736-7450-4877-91da-ad219e6d224e&overlay=view-collection-details&variant=current)
 
 ![Screenshot4](./planning/model-structure.png)
 
