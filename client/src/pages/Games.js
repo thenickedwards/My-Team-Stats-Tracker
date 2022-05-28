@@ -1,5 +1,7 @@
 import React from "react";
 import { QUERY_SOCCERGAMES } from "../utils/queries";
+import { QUERY_SOCCERTEAMS } from "../utils/queries";
+import { QUERY_LEAGUES } from "../utils/queries";
 import { useQuery } from "@apollo/client";
 import Auth from "../utils/auth";
 
@@ -14,6 +16,7 @@ import {
   MenuItem,
   FormControl,
   Select,
+  OutlinedInput,
   Button,
   TextField,
   Modal,
@@ -26,13 +29,12 @@ import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 
-
 // Columns for Games Table
 const columns = [
   {
     field: "homeTeam",
-    headerName: "Home",
-    width: 250, 
+    headerName: "Home Team",
+    width: 250,
     renderCell: (params) => (
       <Box
         sx={{
@@ -62,8 +64,8 @@ const columns = [
   },
   {
     field: "awayTeam",
-    headerName: "Away",
-    width: 250, 
+    headerName: "Away Team",
+    width: 250,
     renderCell: (params) => (
       <Box
         sx={{
@@ -91,33 +93,18 @@ const columns = [
       </Box>
     ),
   },
-  { field: "gameDate", 
-    headerName: "Game Date", 
-    width: 250,  
-  },
+  { field: "gameDate", headerName: "Game Date", width: 250 },
   {
     field: "viewScore",
     headerName: "View Score",
     sortable: false,
-    width: 250, 
+    width: 250,
     renderCell: () => (
       <Link href="/game" variant="h3" underline="none">
         View Game
       </Link>
     ),
   },
-];
-
-// Seasons Modal Select Team (TEMPORARY DATA)
-const teams = [
-  "Chi Town Tigers",
-  "Galaxy Bees",
-  "Salmon",
-  "Wolves",
-  "Hurricanes",
-  "Blizzard",
-  "Lightning",
-  "Thunder"
 ];
 
 // Styles
@@ -142,16 +129,27 @@ const gamesStyle = {
   },
 };
 
-
 export default function Games() {
-
-  // Get All Socer Games
+  // Get all soccer Games
   const { data } = useQuery(QUERY_SOCCERGAMES);
   const games = data?.allSoccerGames || [];
 
+  //Get all teams for modal
+  const { data: teamData } = useQuery(QUERY_SOCCERTEAMS);
+  const teams = teamData?.allSoccerTeams || [];
+
+  // Get All League data for modal
+  const { data: leagueData } = useQuery(QUERY_LEAGUES);
+  const leagues = leagueData?.allLeagues || [];
+
+  console.log(data);
+  console.log(leagueData);
+  console.log(teamData);
+  // console.log(leagues)
+
   // Functionality for Dropdown
   const [league, setLeague] = React.useState("");
-  const handleSeasonChange = (event) => {
+  const handleLeagueChange = (event) => {
     setLeague(event.target.value);
   };
 
@@ -193,13 +191,10 @@ export default function Games() {
     <>
       <CssBaseline />
       <Container disableGutters justify="center">
-
         {/* Outer container allows graphic images to be placed absolute. Also establishes padding. */}
         <Grid container sx={{ py: 8, px: 5 }}>
-          
           {/* Container for the two top columns. */}
           <Grid container alignItems={"center"}>
-            
             {/* PAGE HEADING. Left column. */}
             <Grid item xs={12} sm={12} md={9} lg={9}>
               <Grid container sx={{ display: "flex", flexDirection: "column" }}>
@@ -238,7 +233,6 @@ export default function Games() {
                   ) : (
                     <div></div>
                   )}
-
                 </Grid>
               </Grid>
             </Grid>
@@ -257,20 +251,24 @@ export default function Games() {
                   },
                 }}
               >
-                <InputLabel id="select-league">League</InputLabel>
+                <InputLabel id="league">League</InputLabel>
                 <Select
-                  labelId="select-league"
-                  id="select-league"
+                  labelId="league"
+                  id="league"
+                  name="league"
+                  type="text"
                   value={league}
-                  label="League"
-                  onChange={handleSeasonChange}
+                  onChange={handleLeagueChange}
+                  input={<OutlinedInput label="League" />}
                 >
-                  <MenuItem value="">
-                    <em>None</em>
+                  <MenuItem disabled value="">
+                    <em>Select League</em>
                   </MenuItem>
-                  <MenuItem value={10}>Washington Premier League</MenuItem>
-                  <MenuItem value={20}>Washington Soccer Academy</MenuItem>
-                  <MenuItem value={30}>Greater Seattle Soccer League</MenuItem>
+                  {leagues.map((league) => (
+                    <MenuItem key={league} value={league._id}>
+                      {league.leagueName}
+                    </MenuItem>
+                  ))}
                 </Select>
               </FormControl>
             </Grid>
@@ -350,8 +348,8 @@ export default function Games() {
                       label="Home Team"
                     >
                       {teams.map((team) => (
-                        <MenuItem key={team} value={team}>
-                          {team}
+                        <MenuItem key={team._id} value={team}>
+                          {team.teamName}
                         </MenuItem>
                       ))}
                     </Select>
@@ -367,8 +365,8 @@ export default function Games() {
                       label="Away Team"
                     >
                       {teams.map((team) => (
-                        <MenuItem key={team} value={team}>
-                          {team}
+                        <MenuItem key={team._id} value={team}>
+                          {team.teamName}
                         </MenuItem>
                       ))}
                     </Select>
