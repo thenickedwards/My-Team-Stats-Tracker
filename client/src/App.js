@@ -40,7 +40,7 @@ import AbstractCorner from "./components/Abstract/AbstractCorner";
 // Font import here (SEE INDEX.CSS FOR IMPORT)
 const theme = createTheme({
   typography: {
-    fontFamily: '"Bebas Neue", Arial, sans-serif',
+    fontFamily: '"Bebas Neue", "PT Sans", Arial, sans-serif',
     h1: {
       fontSize: "3em",
       textTransform: "uppercase",

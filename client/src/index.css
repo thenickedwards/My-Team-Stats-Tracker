@@ -1,4 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+/* Font for Form Field Inputs */
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans:wght@700&display=swap');
+
 
 *,
 *::before,
@@ -20,8 +23,9 @@ main {
   position:relative;
   padding-bottom: 50px;
 }
-
-
+input {
+  font-family: PT Sans, Arial, Helvetica, sans-serif !important;
+}
 /* DataGrid Styles */
 
 .customDataGrid .MuiDataGrid-main {

@@ -29,12 +29,6 @@ import {
       borderRadius: "5px",
       border: "none",
     },
-    textFieldLowerCase: {
-      backgroundColor: "white",
-      borderRadius: "5px",
-      border: "none",
-      textTransform: 'lowercase',
-    },
     formButton: {
       backgroundColor: "primary.main",
       "&:hover": {
@@ -200,8 +194,7 @@ const [addUser, { error, data }] = useMutation(ADD_USER);
                       type="text"
                       margin="normal"
                       style={signupStyle.textField} 
-                      // style={signupStyle.textFieldLowerCase}
-                      // normalize={value => (value || '').toLowerCase()}
+                      inputProps={{ style: { textTransform: "lowercase" } }}
                       value={username.toLowerCase()}
                       onChange={handleChange}
                     />
