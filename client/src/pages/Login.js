@@ -153,11 +153,11 @@ const Login = (props) => {
                       id="username"
                       name="username"
                       placeholder="Username"
-                      // type="username"
                       type="text"
                       margin="normal"
                       style={loginStyle.textField}
-                      value={username}
+                      inputProps={{ style: { textTransform: "lowercase" } }}
+                      value={username.toLowerCase()}
                       onChange={handleChange}
                     />
 
