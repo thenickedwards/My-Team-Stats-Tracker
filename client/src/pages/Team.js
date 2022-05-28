@@ -461,7 +461,7 @@ export default function Team() {
                     aria-label="Add Player"
                     size="medium"
                     sx={{
-                      backgroundColor: "secondary.accent",
+                      backgroundColor: currentTeamColor,
                       borderRadius: 10,
                       "&:hover": {
                         backgroundColor: "primary.main",
