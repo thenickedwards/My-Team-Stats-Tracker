@@ -1,54 +1,54 @@
-import { useState } from 'react';
-import { useMutation } from '@apollo/client';
-import { ADD_USER } from '../utils/mutations';
-import Auth from '../utils/auth';
+import { useState } from "react";
+import { useMutation } from "@apollo/client";
+import { ADD_USER } from "../utils/mutations";
+import Auth from "../utils/auth";
 
 // MATERIALS
 import {
-    CssBaseline,
-    Container,
-    Grid,
-    Box,
-    TextField,
-    Button,
-    Typography,
-    Link,
-  } from "@mui/material";
-  
-  ///////////////////
+  CssBaseline,
+  Container,
+  Grid,
+  Box,
+  TextField,
+  Button,
+  Typography,
+  Link,
+} from "@mui/material";
 
-  const signupStyle = {
-    background: {
-      height: "100vh",
-      backgroundImage: 'url("/images/login-background.png")',
-      backgroundRepeat: "no-repeat",
-      backgroundSize: "cover",
+///////////////////
+
+const signupStyle = {
+  background: {
+    height: "100vh",
+    backgroundImage: 'url("/images/login-background.png")',
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "cover",
+  },
+  textField: {
+    backgroundColor: "white",
+    borderRadius: "5px",
+    border: "none",
+  },
+  formButton: {
+    backgroundColor: "primary.main",
+    "&:hover": {
+      backgroundColor: "secondary.main",
     },
-    textField: {
-      backgroundColor: "white",
-      borderRadius: "5px",
-      border: "none",
-    },
-    formButton: {
-      backgroundColor: "primary.main",
-      "&:hover": {
-        backgroundColor: "secondary.main",
-      },
-    }
-  };
+  },
+};
 
 const Signup = () => {
   const [formState, setFormState] = useState({
-    userFirstName: '',
-    userLastName: '',
-    username: '',
-    email: '',
-    password: '',
+    userFirstName: "",
+    userLastName: "",
+    username: "",
+    email: "",
+    password: "",
   });
 
   const { userFirstName, userLastName, username, email, password } = formState;
 
-const [addUser, { error, data }] = useMutation(ADD_USER);
+  const [addUser, { error, data }] = useMutation(ADD_USER);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -121,7 +121,6 @@ const [addUser, { error, data }] = useMutation(ADD_USER);
               justify="center"
               sx={{ display: "flex", gap: "25px" }}
             >
-
               <Link
                 variant="h1"
                 href="/login"
@@ -136,8 +135,6 @@ const [addUser, { error, data }] = useMutation(ADD_USER);
               <Typography variant="h1" color="primary.contrastText">
                 Signup
               </Typography>
-
-
             </Box>
 
             <Box>
@@ -149,7 +146,6 @@ const [addUser, { error, data }] = useMutation(ADD_USER);
                   </p>
                 ) : (
                   <form onSubmit={handleFormSubmit}>
-
                     <TextField
                       fullWidth
                       id="userFirstName"
@@ -160,7 +156,7 @@ const [addUser, { error, data }] = useMutation(ADD_USER);
                       style={signupStyle.textField}
                       value={userFirstName}
                       onChange={handleChange}
-                    />  
+                    />
 
                     <TextField
                       fullWidth
@@ -172,7 +168,7 @@ const [addUser, { error, data }] = useMutation(ADD_USER);
                       style={signupStyle.textField}
                       value={userLastName}
                       onChange={handleChange}
-                    />  
+                    />
 
                     <TextField
                       fullWidth
@@ -214,7 +210,7 @@ const [addUser, { error, data }] = useMutation(ADD_USER);
                     <Button
                       variant="contained"
                       type="submit"
-                      sx={{ mt: 2, height: 50}}
+                      sx={{ mt: 2, height: 50 }}
                       style={signupStyle.formButton}
                       fullWidth
                       disableElevation
@@ -224,9 +220,9 @@ const [addUser, { error, data }] = useMutation(ADD_USER);
                   </form>
                 )}
 
-              <Typography variant="p" color="primary.contrastText">
-                {error && <div>{error.message}</div>}
-              </Typography>
+                <Typography variant="p" color="primary.contrastText">
+                  {error && <div>{error.message}</div>}
+                </Typography>
               </div>
             </Box>
 
@@ -241,6 +237,5 @@ const [addUser, { error, data }] = useMutation(ADD_USER);
     </>
   );
 };
-
 
 export default Signup;

@@ -9,7 +9,7 @@
   box-sizing: border-box;
 }
 :root {
-  margin:0;
+  margin: 0;
 }
 html,
 body {
@@ -17,25 +17,26 @@ body {
   padding: 0;
 }
 main {
-  background-color: #ECF6FC;
+  background-color: #ecf6fc;
   min-height: 100vh;
   overflow-x: hidden;
-  position:relative;
+  position: relative;
   padding-bottom: 50px;
 }
+
 input {
   font-family: PT Sans, Arial, Helvetica, sans-serif !important;
 }
+
 /* DataGrid Styles */
 
 .customDataGrid .MuiDataGrid-main {
   background-color: #ffffff;
   border-radius: 15px;
   box-shadow: 0 6px 15px #06274035;
-  
 }
-.MuiDataGrid-row:nth-child(even){
-  background-color: #ECF6FC;
+.MuiDataGrid-row:nth-child(even) {
+  background-color: #ecf6fc;
 }
 
 /* Home Page Stats Box */
@@ -52,7 +53,7 @@ input {
   background-color: transparent;
   color: white;
 }
-.css-lbda50-MuiDataGrid-root .MuiDataGrid-columnHeaderTitleContainerContent:hover {
+.css-lbda50-MuiDataGrid-root
+  .MuiDataGrid-columnHeaderTitleContainerContent:hover {
   background-color: transparent;
 }
-
