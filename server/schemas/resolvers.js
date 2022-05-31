@@ -210,6 +210,14 @@ const resolvers = {
         { league: leagueId },
         { $pull: { leagues: leagueId } }
       );
+      if (context.user) {
+        // const updatedUser = 
+        await User.findOneAndUpdate(
+            { _id: context.user._id },
+            { $pull: { myLeagues: leagueId } },
+        );
+        // return updatedUser
+    }
       return league;
     },
 
@@ -240,6 +248,15 @@ const resolvers = {
         { _id: seasonId.season },
         { $pull: { teams: { soccerTeamId } } }
       );
+
+      if (context.user) {
+        // const updatedUser = 
+        await User.findOneAndUpdate(
+            { _id: context.user._id },
+            { $pull: { myTeams: soccerTeamId } },
+        );
+        // return updatedUser
+    }
 
       const team = await SoccerTeam.findOneAndDelete({
         _id: soccerTeamId,
