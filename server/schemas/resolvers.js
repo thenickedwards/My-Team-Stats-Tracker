@@ -93,9 +93,24 @@ const resolvers = {
       return { token, user };
     },
 
+    // CREATE MUTATIONS
     // Add league
     addLeague: async (parent, { league }, context) => {
       const newLeague = await League.create({ ...league });
+
+      if (context.user) {
+          // const updatedUser = 
+          await User.findOneAndUpdate(
+              { _id: context.user._id },
+              { $addToSet: {myLeagues: newLeague._id} },
+              {
+                  new: true,
+                  runValidators: true
+              }
+          );
+          // return updatedUser
+      }
+
       return newLeague;
     },
 
@@ -119,6 +134,20 @@ const resolvers = {
         { $addToSet: { teams: newTeam._id } },
         { new: true, runValidators: true }
       );
+
+      if (context.user) {
+        // const updatedUser = 
+        await User.findOneAndUpdate(
+            { _id: context.user._id },
+            { $addToSet: {myTeams: newTeam._id} },
+            {
+                new: true,
+                runValidators: true
+            }
+        );
+        // return updatedUser
+      }
+
       return newTeam;
     },
 
@@ -134,6 +163,7 @@ const resolvers = {
       return newPlayer;
     },
 
+    // UPDATE MUTATIONS
     // Update league
     updateLeague: async (parent, { leagueId, league }) => {
       return await League.findOneAndUpdate(
@@ -170,6 +200,7 @@ const resolvers = {
       );
     },
 
+    // DELETE MUTATIONS
     // Delete League
     removeLeague: async (parent, { leagueId }, context) => {
       const league = await League.findOneAndDelete({
