@@ -215,6 +215,7 @@ const resolvers = {
         await User.findOneAndUpdate(
             { _id: context.user._id },
             { $pull: { myLeagues: leagueId } },
+            { new: true }
         );
         // return updatedUser
     }
@@ -254,6 +255,7 @@ const resolvers = {
         await User.findOneAndUpdate(
             { _id: context.user._id },
             { $pull: { myTeams: soccerTeamId } },
+            { new: true }
         );
         // return updatedUser
     }
