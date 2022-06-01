@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useMutation, useQuery } from "@apollo/client";
 import { ADD_SEASON } from "../../utils/mutations";
 import { QUERY_LEAGUES } from "../../utils/queries";
+import { useParams } from 'react-router-dom'
 
 // MUI Imports
 import {
@@ -15,6 +16,7 @@ import {
   MenuItem,
   InputLabel,
 } from "@mui/material";
+import { isNonEmptyArray } from "@apollo/client/utilities";
 
 
 // Add Seasons Modal Multiselect
@@ -33,6 +35,7 @@ const MenuProps = {
 const leagueStyle = {
   formButton: {
     height: 50,
+    marginTop: "-30px",
     backgroundColor: "secondary.main",
     "&:hover": {
       backgroundColor: "primary.main",
@@ -41,18 +44,25 @@ const leagueStyle = {
 };
 
 
+
+
 export default function AddSeason({ handleClose }) {
 
   // Get All League data
   const { loading, data } = useQuery(QUERY_LEAGUES);
-  const leagues = data?.allLeagues || [];
+
+  // This is needed only if we re-activate the select, to allow user to select the League.
+  // const leagues = data?.allLeagues || [];
+
+  const { leagueId } = useParams();
 
   // Functionality for Adding League via Form
   const [formState, setFormState] = useState({
     seasonName: "",
     startYear: "",
     endYear: "",
-    league: "",
+    // league: "",
+    league: leagueId,
   });
 
   const { seasonName, startYear, endYear, league } = formState;
@@ -130,19 +140,34 @@ export default function AddSeason({ handleClose }) {
           InputLabelProps={{ shrink: true }}
         />
 
-        <FormControl>
-          <InputLabel id="league">League</InputLabel>
-          <Select
+        {/* Hidden field gets value from leagueId in URL */}
+        <TextField
+            hiddenLabel
+            type="hidden"
             labelId="league"
             id="league"
             name="league"
-            type="text"
+            value={league}
+            onChange={handleFormChange}
+            variant="standard"
+            InputProps={{
+              disableUnderline: true,
+            }}
+        />
+
+        {/* <FormControl>
+          <InputLabel id="league">League</InputLabel>
+          <Select
+            type="hidden"
+            labelId="league"
+            id="league"
+            name="league"
             value={league}
             onChange={handleFormChange}
             input={<OutlinedInput label="League" />}
             MenuProps={MenuProps}
-          >
-            <MenuItem disabled value="">
+          > */}
+            {/* <MenuItem disabled value="">
               <em>Select League</em>
             </MenuItem>
 
@@ -150,10 +175,10 @@ export default function AddSeason({ handleClose }) {
               <MenuItem key={league} value={league._id}>
                 {league.leagueName}
               </MenuItem>
-            ))}
+            ))} */}
             
-          </Select>
-        </FormControl>
+          {/* </Select>
+        </FormControl> */}
 
         <Button
           variant="contained"
