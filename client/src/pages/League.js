@@ -80,6 +80,7 @@ const leagueStyle = {
 };
 
 export default function League() {
+  
   const { leagueId } = useParams();
 
   const { loading, data } = useQuery(QUERY_LEAGUE, {
