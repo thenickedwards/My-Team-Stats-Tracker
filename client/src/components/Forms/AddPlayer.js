@@ -2,17 +2,17 @@ import { useState } from "react";
 import { useMutation, useQuery } from "@apollo/client";
 import { ADD_SOCCERPLAYER } from "../../utils/mutations";
 import { QUERY_SOCCERTEAM, QUERY_SOCCERTEAMS } from "../../utils/queries";
-import { useParams } from "react-router";
+import { useParams } from "react-router-dom";
 
 // MUI Imports
 import {
   Typography,
   FormControl,
   TextField,
-  InputLabel,
-  Select,
-  MenuItem,
-  OutlinedInput,
+  // InputLabel,
+  // Select,
+  // MenuItem,
+  // OutlinedInput,
   Button,
 } from "@mui/material";
 
@@ -43,6 +43,7 @@ const teamStyle = {
   },
   formButton: {
     height: 50,
+    marginTop: "-30px",
     backgroundColor: "secondary.main",
     "&:hover": {
       backgroundColor: "primary.main",
@@ -53,6 +54,7 @@ const teamStyle = {
 
 const AddPlayer = ({ handleClose }) => {
   const { teamId } = useParams();
+  const { soccerTeamId } = useParams();
   const { loading, data } = useQuery(QUERY_SOCCERTEAMS);
   const teams = data?.allSoccerTeams || [];
 
@@ -64,7 +66,7 @@ const AddPlayer = ({ handleClose }) => {
     playerLastName: "",
     playerPic: "",
     playerNumber: "",
-    team: "",
+    team: soccerTeamId,
   });
 
   const { playerFirstName, playerLastName, playerPic, playerNumber, team } =
@@ -92,6 +94,7 @@ const AddPlayer = ({ handleClose }) => {
         variables: { roster: { ...formState, teamId } },
       });
       console.log(data);
+
       console.log("Player Details:", formState);
 
       setFormState({
@@ -99,6 +102,7 @@ const AddPlayer = ({ handleClose }) => {
         playerLastName: "",
         playerPic: "",
         playerNumber: "",
+
       });
 
       handleClose();
@@ -110,6 +114,7 @@ const AddPlayer = ({ handleClose }) => {
   if (loading) {
     return <div>LOADING</div>;
   }
+
 
   return (
     <div>
@@ -161,7 +166,22 @@ const AddPlayer = ({ handleClose }) => {
             InputLabelProps={{ shrink: true }}
           />
 
-          <FormControl>
+        {/* Hidden field gets value from leagueId in URL */}
+        <TextField
+            hiddenLabel
+            type="hidden"
+            labelId="team"
+            id="team"
+            name="team"
+            value={team}
+            onChange={handleFormChange}
+            variant="standard"
+            InputProps={{
+              disableUnderline: true,
+            }}
+        />
+
+          {/* <FormControl>
             <InputLabel id="team">Team</InputLabel>
             <Select
               //   displayEmpty
@@ -185,7 +205,7 @@ const AddPlayer = ({ handleClose }) => {
                 </MenuItem>
               ))}
             </Select>
-          </FormControl>
+          </FormControl> */}
 
           <Button
             variant="contained"
