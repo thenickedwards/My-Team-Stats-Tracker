@@ -73,7 +73,7 @@ const gameStyle = {
       backgroundColor: "primary.main",
     },
   },
-  submitButton: {
+  cardHeader: {
     height: 50,
     borderRadius: " 10px 10px 0 0",
     backgroundColor: "secondary.main",
@@ -86,6 +86,8 @@ const gameStyle = {
 export default function Game() {
   //Get Game ID
   const { soccerGameId } = useParams();
+
+  console.log(soccerGameId);
 
   // Get Game Data
   const { loading, data } = useQuery(QUERY_SOCCERGAME, {
@@ -410,11 +412,11 @@ export default function Game() {
                   <Button
                     variant="contained"
                     type="submit"
-                    sx={gameStyle.submitButton}
+                    sx={gameStyle.cardHeader}
                     fullWidth
                     disableElevation
                   >
-                    <Typography variant="h3">Submit Game</Typography>
+                    <Typography variant="h3">{game.gameDate}</Typography>
                   </Button>
 
                   <Box sx={{ p: 3 }}>
@@ -428,13 +430,13 @@ export default function Game() {
                       }}
                     >
                       <Typography fontSize={100} color="secondary.contrastText">
-                        3
+                        {game.goalsHome}
                       </Typography>
                       <Typography variant="h3" color="secondary.contrastText">
                         vs
                       </Typography>
                       <Typography fontSize={100} color="secondary.contrastText">
-                        2
+                        {game.goalsAway}
                       </Typography>
                     </Grid>
 
