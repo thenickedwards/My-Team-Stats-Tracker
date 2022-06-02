@@ -166,7 +166,7 @@ export default function Game() {
     {
       field: "goal",
       headerName: "Goal",
-      width: 300,
+      width: 90,
       renderCell: (params) => (
         <Box
           sx={{
@@ -182,18 +182,17 @@ export default function Game() {
             height="auto"
             width="40px"
           />
-          <Link href="#" variant="p" underline="none" color="inherit">
+          {/* <Link href="#" variant="p" underline="none" color="inherit">
             {params.value.team}
-          </Link>
+          </Link> */}
         </Box>
       ),
     },
-    { field: "team", headerName: "Team", width: 120 },
     { field: "scorer", headerName: "Scorer", width: 80 },
     { field: "assister", headerName: "Assister", width: 80 },
   ];
 
-  //   DATAGRID (TEMPORARY DATA) TODO: Map Scored Goals (Future Development)
+  //   DATAGRID (TEMPORARY DATA) TODO: Map Scored Goals when seeds are ready (Future Development)
   const rows = [
     {
       id: 1,
@@ -212,8 +211,8 @@ export default function Game() {
     {
       id: 3,
       goal: { team: "Salmon", image: "/images/jacksonville.png" },
-      scorer: "ASDF",
-      assister: "QWERTY",
+      scorer: "Juanita",
+      assister: "Chris",
       minute: "51",
     },
   ];
@@ -507,7 +506,7 @@ export default function Game() {
                 <form>
                   <FormControl fullWidth sx={{ gap: 4 }}>
                     <FormControl>
-                      <InputLabel id="select-player-goal">Home Team</InputLabel>
+                      <InputLabel id="select-player-goal">Scored by</InputLabel>
                       <Select
                         labelId="select-player-goal"
                         id="goal"
@@ -525,7 +524,7 @@ export default function Game() {
 
                     <FormControl>
                       <InputLabel id="select-player-assist">
-                        Away Team
+                        Assisted by
                       </InputLabel>
                       <Select
                         labelId="select-player-assist"
