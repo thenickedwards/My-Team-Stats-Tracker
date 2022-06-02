@@ -20,9 +20,11 @@ import {
   Select,
   TextField,
   Typography,
+  Link,
 } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import AddIcon from "@mui/icons-material/Add";
+import { DataGrid } from "@mui/x-data-grid";
 
 // Styles
 const gameStyle = {
@@ -104,6 +106,7 @@ export default function Game() {
   const homeTeamPlayers = homeTeam.roster || [];
   const homeTeamColor = homeTeam.teamColor;
   const homeTeamPic = homeTeam.teamPic;
+  console.log(homeTeamColor);
 
   // Get Away Team Data
   const { loading: awayTeamLoading, data: awayTeamData } = useQuery(
@@ -152,6 +155,63 @@ export default function Game() {
       typeof value === "string" ? value.split(",") : value
     );
   };
+
+  //   Datagrid
+  const columns = [
+    {
+      field: "goal",
+      headerName: "Goal",
+      width: 300,
+      renderCell: (params) => (
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: 2,
+          }}
+        >
+          <img
+            src={params.value.image}
+            alt="Team Logo"
+            height="auto"
+            width="40px"
+          />
+          <Link href="#" variant="p" underline="none" color="inherit">
+            {params.value.team}
+          </Link>
+        </Box>
+      ),
+    },
+    { field: "team", headerName: "Team", width: 120 },
+    { field: "scorer", headerName: "Scorer", width: 80 },
+    { field: "assister", headerName: "Assister", width: 80 },
+  ];
+
+  //   DATAGRID (TEMPORARY DATA) TODO: Map League Seasons (Future Development)
+  const rows = [
+    {
+      id: 1,
+      goal: { team: "Chi Town Tigers", image: "/images/chicago.png" },
+      scorer: "Bob",
+      assister: "Sally",
+      minute: "11",
+    },
+    {
+      id: 2,
+      goal: { team: "Galaxy Bees", image: "/images/la-galaxy.png" },
+      scorer: "TJ",
+      assister: "Aria",
+      minute: "37",
+    },
+    {
+      id: 3,
+      goal: { team: "Salmon", image: "/images/jacksonville.png" },
+      scorer: "ASDF",
+      assister: "QWERTY",
+      minute: "51",
+    },
+  ];
 
   if ((loading, homeTeamLoading, awayTeamLoading)) {
     return <Loading />;
@@ -402,8 +462,44 @@ export default function Game() {
                   </Box>
                 </Paper>
               </Box>
+               {/* LEAGUE SEASONS TABLE */}
+            <Grid container spacing={{ xs: 4 }}>
+              <Box sx={{ width: "100%", mt: 8 }}>
+                <div style={{ height: 400, width: "100%" }}>
+                  <DataGrid
+                    rows={rows}
+                    columns={columns}
+                    pageSize={5}
+                    rowsPerPageOptions={[5]}
+                    className={"customDataGrid"}
+                    sx={{
+                      "&.MuiDataGrid-root": {
+                        border: "none",
+                        fontFamily: "Helvetica, sans-serif",
+                        marginLeft: "30px",
+                      },
+                      "& .MuiDataGrid-iconSeparator": {
+                        display: "none",
+                      },
+                      "& .MuiDataGrid-columnHeaders": {
+                        fontFamily: '"Bebas Neue", Arial, sans-serif',
+                        fontSize: "1.25em",
+                        bgcolor: "secondary.main",
+                        color: "primary.contrastText",
+                      },
+                      "& .MuiDataGrid-cell": {
+                        border: "0",
+                      },
+                    }}
+                  />
+                </div>
+              </Box>
+            </Grid>
+            {/* End League Seasons Table -------------*/}
+
             </Grid>
 
+           
             {/* Right Column */}
             <Grid
               item
