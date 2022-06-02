@@ -92,6 +92,9 @@ export default function Game() {
     variables: { soccerGameId },
   });
   const game = data?.soccerGame || {};
+
+  console.log(game);
+
   const homeTeamId = game.homeTeam;
   const awayTeamId = game.awayTeam;
 
@@ -462,44 +465,42 @@ export default function Game() {
                   </Box>
                 </Paper>
               </Box>
-               {/* LEAGUE SEASONS TABLE */}
-            <Grid container spacing={{ xs: 4 }}>
-              <Box sx={{ width: "100%", mt: 8 }}>
-                <div style={{ height: 400, width: "100%" }}>
-                  <DataGrid
-                    rows={rows}
-                    columns={columns}
-                    pageSize={5}
-                    rowsPerPageOptions={[5]}
-                    className={"customDataGrid"}
-                    sx={{
-                      "&.MuiDataGrid-root": {
-                        border: "none",
-                        fontFamily: "Helvetica, sans-serif",
-                        marginLeft: "30px",
-                      },
-                      "& .MuiDataGrid-iconSeparator": {
-                        display: "none",
-                      },
-                      "& .MuiDataGrid-columnHeaders": {
-                        fontFamily: '"Bebas Neue", Arial, sans-serif',
-                        fontSize: "1.25em",
-                        bgcolor: "secondary.main",
-                        color: "primary.contrastText",
-                      },
-                      "& .MuiDataGrid-cell": {
-                        border: "0",
-                      },
-                    }}
-                  />
-                </div>
-              </Box>
+              {/* LEAGUE SEASONS TABLE */}
+              <Grid container spacing={{ xs: 4 }}>
+                <Box sx={{ width: "100%", mt: 8 }}>
+                  <div style={{ height: 400, width: "100%" }}>
+                    <DataGrid
+                      rows={rows}
+                      columns={columns}
+                      pageSize={5}
+                      rowsPerPageOptions={[5]}
+                      className={"customDataGrid"}
+                      sx={{
+                        "&.MuiDataGrid-root": {
+                          border: "none",
+                          fontFamily: "Helvetica, sans-serif",
+                          marginLeft: "30px",
+                        },
+                        "& .MuiDataGrid-iconSeparator": {
+                          display: "none",
+                        },
+                        "& .MuiDataGrid-columnHeaders": {
+                          fontFamily: '"Bebas Neue", Arial, sans-serif',
+                          fontSize: "1.25em",
+                          bgcolor: "secondary.main",
+                          color: "primary.contrastText",
+                        },
+                        "& .MuiDataGrid-cell": {
+                          border: "0",
+                        },
+                      }}
+                    />
+                  </div>
+                </Box>
+              </Grid>
+              {/* End League Seasons Table -------------*/}
             </Grid>
-            {/* End League Seasons Table -------------*/}
 
-            </Grid>
-
-           
             {/* Right Column */}
             <Grid
               item
