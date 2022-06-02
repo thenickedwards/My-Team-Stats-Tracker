@@ -142,11 +142,6 @@ export default function Games() {
   const { data: leagueData } = useQuery(QUERY_LEAGUES);
   const leagues = leagueData?.allLeagues || [];
 
-  console.log(data);
-  console.log(leagueData);
-  console.log(teamData);
-  console.log(leagues);
-
   // Functionality for Dropdown
   const [league, setLeague] = React.useState("");
   const handleLeagueChange = (event) => {

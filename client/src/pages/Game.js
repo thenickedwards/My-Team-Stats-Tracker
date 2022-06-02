@@ -126,6 +126,7 @@ export default function Game() {
 
   // Set variable for ALL PLAYERS for modal access
   const allPlayers = homeTeamPlayers.concat(awayTeamPlayers);
+  console.log(allPlayers);
 
   // Functionality for Add Score Modal
   const [open, setOpen] = React.useState(false);
@@ -500,13 +501,13 @@ export default function Game() {
             >
               <Box sx={gameStyle.addScoreModal}>
                 <Typography id="modal-modal-title" variant="h1" sx={{ mb: 4 }}>
-                  Add Score
+                  Add Goal
                 </Typography>
 
                 <form>
                   <FormControl fullWidth sx={{ gap: 4 }}>
                     <FormControl>
-                      <InputLabel id="select-player-goal">Scored by</InputLabel>
+                      <InputLabel id="select-player-goal">Home Team</InputLabel>
                       <Select
                         labelId="select-player-goal"
                         id="goal"
@@ -515,8 +516,8 @@ export default function Game() {
                         label="Home Team"
                       >
                         {allPlayers.map((player) => (
-                          <MenuItem key={player} value={player}>
-                            {player}
+                          <MenuItem key={player._id} value={player._id}>
+                            {player.playerFirstName} {player.playerLastName}
                           </MenuItem>
                         ))}
                       </Select>
@@ -524,7 +525,7 @@ export default function Game() {
 
                     <FormControl>
                       <InputLabel id="select-player-assist">
-                        Assisted by
+                        Away Team
                       </InputLabel>
                       <Select
                         labelId="select-player-assist"
@@ -534,8 +535,8 @@ export default function Game() {
                         label="Away Team"
                       >
                         {allPlayers.map((player) => (
-                          <MenuItem key={player} value={player}>
-                            {player}
+                          <MenuItem key={player._id} value={player._id}>
+                            {player.playerFirstName} {player.playerLastName}
                           </MenuItem>
                         ))}
                       </Select>
