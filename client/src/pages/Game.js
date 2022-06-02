@@ -191,7 +191,7 @@ export default function Game() {
     { field: "assister", headerName: "Assister", width: 80 },
   ];
 
-  //   DATAGRID (TEMPORARY DATA) TODO: Map League Seasons (Future Development)
+  //   DATAGRID (TEMPORARY DATA) TODO: Map Goals (Future Development)
   const rows = [
     {
       id: 1,

@@ -114,7 +114,7 @@ function App() {
             <Navbar />
           )}
           <main>
-            <AbstractCorner/>
+            <AbstractCorner />
             <Routes>
               <Route path="/" element={<Home />} />
 
@@ -141,7 +141,7 @@ function App() {
 
               <Route path="/games" element={<Games />} />
 
-              <Route path="/game" element={<Game />} />
+              <Route path="/game/:gameId" element={<Game />} />
 
               {/* <Route path="/me" element={<Profile />} />
                   <Route path="/profiles/:username" element={<Profile />} /> */}

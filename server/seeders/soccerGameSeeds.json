@@ -1,5 +1,6 @@
 [
   {
+    "_id": "62980e7df04090628360f2ee",
     "gameDate": "Apr 19, 2022 6:09 PM",
     "homeTeam": {
       "_id": "626202fae2194997c7e76e86",
@@ -23,6 +24,7 @@
     "assistsAway": 2
   },
   {
+    "_id": "62980e7df04090628360f2ef",
     "gameDate": "Apr 20, 2022 7:30 PM",
     "homeTeam": {
       "_id": "626202fae2194997c7e76e92",
@@ -46,6 +48,7 @@
     "assistsAway": 1
   },
   {
+    "_id": "62980e7df04090628360f2f0",
     "gameDate": "Apr 21, 2022 10:35 AM",
     "homeTeam": {
       "_id": "626202fae2194997c7e76e95",
