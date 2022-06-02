@@ -25,6 +25,7 @@ import {
 import IconButton from "@mui/material/IconButton";
 import AddIcon from "@mui/icons-material/Add";
 import { DataGrid } from "@mui/x-data-grid";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
 // Styles
 const gameStyle = {
@@ -36,7 +37,6 @@ const gameStyle = {
     borderRadius: 4,
   },
   teamRosterHome: {
-    backgroundColor: "#F5E410",
     borderRadius: "100%",
     width: "50px",
     height: "50px",
@@ -46,7 +46,6 @@ const gameStyle = {
     marginRight: "15px",
   },
   teamRosterAway: {
-    backgroundColor: "#168BE2",
     borderRadius: "100%",
     width: "50px",
     height: "50px",
@@ -95,10 +94,10 @@ export default function Game() {
 
   console.log(game);
 
-  const homeTeamId = game.homeTeam._id;
-  const awayTeamId = game.awayTeam._id;
+  const homeTeamId = game?.homeTeam?._id;
+  const awayTeamId = game?.awayTeam?._id;
 
-  console.log(game.homeTeam._id);
+  console.log(game?.homeTeam?._id);
   console.log(homeTeamId);
 
   // Get Home Team Data
@@ -109,11 +108,9 @@ export default function Game() {
     }
   );
   const homeTeam = homeTeamData?.soccerTeam || {};
-
-  const homeTeamPlayers = homeTeam.roster || [];
-  const homeTeamColor = homeTeam.teamColor;
-  const homeTeamPic = homeTeam.teamPic;
-  console.log(homeTeam);
+  const homeTeamPlayers = homeTeam?.roster || [];
+  const homeTeamColor = homeTeam?.teamColor;
+  const homeTeamPic = homeTeam?.teamPic;
 
   // Get Away Team Data
   const { loading: awayTeamLoading, data: awayTeamData } = useQuery(
@@ -123,9 +120,9 @@ export default function Game() {
     }
   );
   const awayTeam = awayTeamData?.soccerTeam || {};
-  const awayTeamPlayers = awayTeam.roster || [];
-  const awayTeamColor = awayTeam.teamColor;
-  const awayTeamPic = awayTeam.teamPic;
+  const awayTeamPlayers = awayTeam?.roster || [];
+  const awayTeamColor = awayTeam?.teamColor;
+  const awayTeamPic = awayTeam?.teamPic;
 
   // Set variable for ALL PLAYERS for modal access
   const allPlayers = homeTeamPlayers.concat(awayTeamPlayers);
@@ -195,7 +192,7 @@ export default function Game() {
     { field: "assister", headerName: "Assister", width: 80 },
   ];
 
-  //   DATAGRID (TEMPORARY DATA) TODO: Map Goals (Future Development)
+  //   DATAGRID (TEMPORARY DATA) TODO: Map Scored Goals (Future Development)
   const rows = [
     {
       id: 1,
@@ -241,11 +238,9 @@ export default function Game() {
               lg={4}
               order={{ xs: 2, sm: 2, md: 1, lg: 1 }}
             >
-              {/* TEAM ROSTER */}
-
-              {/* Heading */}
+              {/* HOME TEAM ROSTER */}
               <Box>
-                <img src="images/la-galaxy.png" alt="Team Logo" width="50px" />
+                <img src={homeTeamPic} alt="logo" height="70px" width="auto" />
 
                 <Box
                   sx={{
@@ -257,7 +252,7 @@ export default function Game() {
                     mt: -1,
                   }}
                 >
-                  <Typography variant="h3">LA Galaxy</Typography>
+                  <Typography variant="h3">{homeTeam.teamName}</Typography>
 
                   {/* Add Player Button */}
                   {Auth.loggedIn() ? (
@@ -281,115 +276,35 @@ export default function Game() {
                 </Box>
               </Box>
 
-              {/* PLAYERS */}
+              {/* HOME TEAM PLAYERS */}
 
               <Grid container sx={{ display: "flex", flexDirection: "column" }}>
-                {/* Player Details. TODO: Map over this section. (Future Development) */}
-                <Grid
-                  item
-                  sx={{ display: "flex", flexDirection: "row", mb: 3 }}
-                >
-                  <Box style={gameStyle.teamRosterHome}>
-                    <img
-                      src="/images/player-default-profile.png"
-                      alt="Player Profile Icon"
-                      width="30px"
-                      height="auto"
-                      style={{ padding: "10px 0 0 0" }}
-                    />
-                  </Box>
-
-                  <Box>
-                    <Typography variant="h3">#9</Typography>
-                    <Typography variant="h6">Raul Ruidaz</Typography>
-                  </Box>
-                </Grid>
-                {/* End Player Details Mapping. */}
-
-                {/* ----------------------------------------------------- */}
-                {/* Begin Temporary Data. Delete */}
-                <Grid
-                  item
-                  sx={{ display: "flex", flexDirection: "row", mb: 3 }}
-                >
-                  <Box style={gameStyle.teamRosterHome}>
-                    <img
-                      src="images/player-default-profile.png"
-                      alt="Player Profile Icon"
-                      width="30px"
-                      height="auto"
-                      style={{ padding: "10px 0 0 0" }}
-                    />
-                  </Box>
-
-                  <Box>
-                    <Typography variant="h3">#14</Typography>
-                    <Typography variant="h6">Chad Marshall</Typography>
-                  </Box>
-                </Grid>
-
-                <Grid
-                  item
-                  sx={{ display: "flex", flexDirection: "row", mb: 3 }}
-                >
-                  <Box style={gameStyle.teamRosterHome}>
-                    <img
-                      src="images/player-default-profile.png"
-                      alt="Player Profile Icon"
-                      width="30px"
-                      height="auto"
-                      style={{ padding: "10px 0 0 0" }}
-                    />
-                  </Box>
-
-                  <Box>
-                    <Typography variant="h3">#17</Typography>
-                    <Typography variant="h6">Tjeert Van't Land</Typography>
-                  </Box>
-                </Grid>
-
-                <Grid
-                  item
-                  sx={{ display: "flex", flexDirection: "row", mb: 3 }}
-                >
-                  <Box style={gameStyle.teamRosterHome}>
-                    <img
-                      src="images/player-default-profile.png"
-                      alt="Player Profile Icon"
-                      width="30px"
-                      height="auto"
-                      style={{ padding: "10px 0 0 0" }}
-                    />
-                  </Box>
-
-                  <Box>
-                    <Typography variant="h3">#25</Typography>
-                    <Typography variant="h6">Brian Schmetzer</Typography>
-                  </Box>
-                </Grid>
-
-                <Grid
-                  item
-                  sx={{ display: "flex", flexDirection: "row", mb: 3 }}
-                >
-                  <Box style={gameStyle.teamRosterHome}>
-                    <img
-                      src="images/player-default-profile.png"
-                      alt="Player Profile Icon"
-                      width="30px"
-                      height="auto"
-                      style={{ padding: "10px 0 0 0" }}
-                    />
-                  </Box>
-
-                  <Box>
-                    <Typography variant="h3">#10</Typography>
-                    <Typography variant="h6">Mickey Cave</Typography>
-                  </Box>
-                </Grid>
-
-                {/* End Temporary Data. Delete */}
-                {/* ----------------------------------------------------- */}
+                {/* Player Details*/}
+                {homeTeamPlayers.map((player) => {
+                  return (
+                    <Grid
+                      item
+                      sx={{ display: "flex", flexDirection: "row", mb: 3 }}
+                    >
+                      <Box style={gameStyle.teamRosterHome}>
+                        <Link underline="none" href={`/player/${player._id}`}>
+                          <AccountCircleIcon
+                            fontSize="large"
+                            sx={{ color: homeTeamColor }}
+                          ></AccountCircleIcon>
+                        </Link>
+                      </Box>
+                      <Box>
+                        <Typography variant="h3">
+                          {player.playerNumber}
+                        </Typography>
+                        <Typography variant="h6">
+                          {player.playerFirstName} {player.playerLastName}
+                        </Typography>
+                      </Box>
+                    </Grid>
+                  );
+                })}
               </Grid>
             </Grid>
 
@@ -502,7 +417,12 @@ export default function Game() {
 
               {/* Heading */}
               <Box>
-                <img src="images/chicago.png" alt="Team Logo" width="50px" />
+                <img
+                  src={awayTeamPic}
+                  alt="Team Logo"
+                  width="70px"
+                  height="auto"
+                />
 
                 <Box
                   sx={{
@@ -514,7 +434,7 @@ export default function Game() {
                     mt: -1,
                   }}
                 >
-                  <Typography variant="h3">Chicago Fire</Typography>
+                  <Typography variant="h3">{awayTeam.teamName}</Typography>
 
                   {/* Add Player Button */}
                   {Auth.loggedIn() ? (
@@ -538,116 +458,35 @@ export default function Game() {
                 </Box>
               </Box>
 
-              {/* PLAYERS */}
+              {/* AWAY TEAM PLAYERS */}
 
               <Grid container sx={{ display: "flex", flexDirection: "column" }}>
-                {/* Player Details. TODO: Map over this section. (Future Development) */}
-
-                <Grid
-                  item
-                  sx={{ display: "flex", flexDirection: "row", mb: 3 }}
-                >
-                  <Box style={gameStyle.teamRosterAway}>
-                    <img
-                      src="images/player-default-profile.png"
-                      alt="Player Profile Icon"
-                      width="30px"
-                      height="auto"
-                      style={{ padding: "10px 0 0 0" }}
-                    />
-                  </Box>
-
-                  <Box>
-                    <Typography variant="h3">#6</Typography>
-                    <Typography variant="h6">Mike Ivanow</Typography>
-                  </Box>
-                </Grid>
-                {/* End Player Details Mapping. */}
-
-                {/* ----------------------------------------------------- */}
-                {/* Begin Temporary Data. Delete */}
-                <Grid
-                  item
-                  sx={{ display: "flex", flexDirection: "row", mb: 3 }}
-                >
-                  <Box style={gameStyle.teamRosterAway}>
-                    <img
-                      src="images/player-default-profile.png"
-                      alt="Player Profile Icon"
-                      width="30px"
-                      height="auto"
-                      style={{ padding: "10px 0 0 0" }}
-                    />
-                  </Box>
-
-                  <Box>
-                    <Typography variant="h3">#4</Typography>
-                    <Typography variant="h6">Greg Makowski</Typography>
-                  </Box>
-                </Grid>
-
-                <Grid
-                  item
-                  sx={{ display: "flex", flexDirection: "row", mb: 3 }}
-                >
-                  <Box style={gameStyle.teamRosterAway}>
-                    <img
-                      src="images/player-default-profile.png"
-                      alt="Player Profile Icon"
-                      width="30px"
-                      height="auto"
-                      style={{ padding: "10px 0 0 0" }}
-                    />
-                  </Box>
-
-                  <Box>
-                    <Typography variant="h3">#2</Typography>
-                    <Typography variant="h6">Yeferson Soteldo</Typography>
-                  </Box>
-                </Grid>
-
-                <Grid
-                  item
-                  sx={{ display: "flex", flexDirection: "row", mb: 3 }}
-                >
-                  <Box style={gameStyle.teamRosterAway}>
-                    <img
-                      src="images/player-default-profile.png"
-                      alt="Player Profile Icon"
-                      width="30px"
-                      height="auto"
-                      style={{ padding: "10px 0 0 0" }}
-                    />
-                  </Box>
-
-                  <Box>
-                    <Typography variant="h3">#3</Typography>
-                    <Typography variant="h6">Andre-Pierre Gignac</Typography>
-                  </Box>
-                </Grid>
-
-                <Grid
-                  item
-                  sx={{ display: "flex", flexDirection: "row", mb: 3 }}
-                >
-                  <Box style={gameStyle.teamRosterAway}>
-                    <img
-                      src="images/player-default-profile.png"
-                      alt="Player Profile Icon"
-                      width="30px"
-                      height="auto"
-                      style={{ padding: "10px 0 0 0" }}
-                    />
-                  </Box>
-
-                  <Box>
-                    <Typography variant="h3">#41</Typography>
-                    <Typography variant="h6">Florian Thauvin</Typography>
-                  </Box>
-                </Grid>
-
-                {/* End Temporary Data. Delete */}
-                {/* ----------------------------------------------------- */}
+                {/* Player Details */}
+                {awayTeamPlayers.map((player) => {
+                  return (
+                    <Grid
+                      item
+                      sx={{ display: "flex", flexDirection: "row", mb: 3 }}
+                    >
+                      <Box style={gameStyle.teamRosterAway}>
+                        <Link underline="none" href={`/player/${player._id}`}>
+                          <AccountCircleIcon
+                            fontSize="large"
+                            sx={{ color: awayTeamColor }}
+                          ></AccountCircleIcon>
+                        </Link>
+                      </Box>
+                      <Box>
+                        <Typography variant="h3">
+                          {player.playerNumber}
+                        </Typography>
+                        <Typography variant="h6">
+                          {player.playerFirstName} {player.playerLastName}
+                        </Typography>
+                      </Box>
+                    </Grid>
+                  );
+                })}
               </Grid>
             </Grid>
 
