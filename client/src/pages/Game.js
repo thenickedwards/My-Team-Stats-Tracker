@@ -87,8 +87,6 @@ export default function Game() {
   //Get Game ID
   const { soccerGameId } = useParams();
 
-  console.log(soccerGameId);
-
   // Get Game Data
   const { loading, data } = useQuery(QUERY_SOCCERGAME, {
     variables: { soccerGameId },
@@ -97,27 +95,31 @@ export default function Game() {
 
   console.log(game);
 
-  const homeTeamId = game.homeTeam;
-  const awayTeamId = game.awayTeam;
+  const homeTeamId = game.homeTeam._id;
+  const awayTeamId = game.awayTeam._id;
+
+  console.log(game.homeTeam._id);
+  console.log(homeTeamId);
 
   // Get Home Team Data
   const { loading: homeTeamLoading, data: homeTeamData } = useQuery(
     QUERY_SOCCERTEAM,
     {
-      variables: { homeTeamId },
+      variables: { soccerTeamId: homeTeamId },
     }
   );
   const homeTeam = homeTeamData?.soccerTeam || {};
+
   const homeTeamPlayers = homeTeam.roster || [];
   const homeTeamColor = homeTeam.teamColor;
   const homeTeamPic = homeTeam.teamPic;
-  console.log(homeTeamColor);
+  console.log(homeTeam);
 
   // Get Away Team Data
   const { loading: awayTeamLoading, data: awayTeamData } = useQuery(
     QUERY_SOCCERTEAM,
     {
-      variables: { awayTeamId },
+      variables: { soccerTeamId: awayTeamId },
     }
   );
   const awayTeam = awayTeamData?.soccerTeam || {};
@@ -447,23 +449,7 @@ export default function Game() {
                         alignItems: "center",
                         gap: "15px",
                       }}
-                    >
-                      <Typography
-                        variant="p"
-                        color="secondary.contrastText"
-                        fontWeight={600}
-                        sx={{ mb: -1 }}
-                      >
-                        May 8, 2022
-                      </Typography>
-                      <Typography
-                        variant="p"
-                        color="secondary.contrastText"
-                        sx={{ mt: -1 }}
-                      >
-                        8:00PM
-                      </Typography>
-                    </Box>
+                    ></Box>
                   </Box>
                 </Paper>
               </Box>
