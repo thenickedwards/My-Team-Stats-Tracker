@@ -1,5 +1,9 @@
 import React from "react";
+import { QUERY_SOCCERGAME, QUERY_SOCCERTEAM } from "../utils/queries";
+import { useQuery } from "@apollo/client";
+import { useParams } from "react-router-dom";
 import Auth from "../utils/auth";
+import Loading from "../components/Abstract/Loading";
 
 // MUI Imports
 import {
@@ -16,22 +20,12 @@ import {
   Select,
   TextField,
   Typography,
+  Link,
 } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import AddIcon from "@mui/icons-material/Add";
-
-
-// Team Options
-const teams = [
-  "Chi Town Tigers",
-  "Galaxy Bees",
-  "Salmon",
-  "Wolves",
-  "Hurricanes",
-  "Blizzard",
-  "Lightning",
-  "Thunder"
-];
+import { DataGrid } from "@mui/x-data-grid";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
 // Styles
 const gameStyle = {
@@ -43,7 +37,6 @@ const gameStyle = {
     borderRadius: 4,
   },
   teamRosterHome: {
-    backgroundColor: "#F5E410",
     borderRadius: "100%",
     width: "50px",
     height: "50px",
@@ -53,7 +46,6 @@ const gameStyle = {
     marginRight: "15px",
   },
   teamRosterAway: {
-    backgroundColor: "#168BE2",
     borderRadius: "100%",
     width: "50px",
     height: "50px",
@@ -80,7 +72,7 @@ const gameStyle = {
       backgroundColor: "primary.main",
     },
   },
-  submitButton: {
+  cardHeader: {
     height: 50,
     borderRadius: " 10px 10px 0 0",
     backgroundColor: "secondary.main",
@@ -90,8 +82,51 @@ const gameStyle = {
   },
 };
 
-
 export default function Game() {
+  //Get Game ID
+  const { soccerGameId } = useParams();
+
+  // Get Game Data
+  const { loading, data } = useQuery(QUERY_SOCCERGAME, {
+    variables: { soccerGameId },
+  });
+  const game = data?.soccerGame || {};
+
+  console.log(game);
+
+  const homeTeamId = game?.homeTeam?._id;
+  const awayTeamId = game?.awayTeam?._id;
+
+  console.log(game?.homeTeam?._id);
+  console.log(homeTeamId);
+
+  // Get Home Team Data
+  const { loading: homeTeamLoading, data: homeTeamData } = useQuery(
+    QUERY_SOCCERTEAM,
+    {
+      variables: { soccerTeamId: homeTeamId },
+    }
+  );
+  const homeTeam = homeTeamData?.soccerTeam || {};
+  const homeTeamPlayers = homeTeam?.roster || [];
+  const homeTeamColor = homeTeam?.teamColor;
+  const homeTeamPic = homeTeam?.teamPic;
+
+  // Get Away Team Data
+  const { loading: awayTeamLoading, data: awayTeamData } = useQuery(
+    QUERY_SOCCERTEAM,
+    {
+      variables: { soccerTeamId: awayTeamId },
+    }
+  );
+  const awayTeam = awayTeamData?.soccerTeam || {};
+  const awayTeamPlayers = awayTeam?.roster || [];
+  const awayTeamColor = awayTeam?.teamColor;
+  const awayTeamPic = awayTeam?.teamPic;
+
+  // Set variable for ALL PLAYERS for modal access
+  const allPlayers = homeTeamPlayers.concat(awayTeamPlayers);
+  console.log(allPlayers);
 
   // Functionality for Add Score Modal
   const [open, setOpen] = React.useState(false);
@@ -126,17 +161,74 @@ export default function Game() {
     );
   };
 
+  //   Datagrid
+  const columns = [
+    {
+      field: "goal",
+      headerName: "Goal",
+      width: 90,
+      renderCell: (params) => (
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: 2,
+          }}
+        >
+          <img
+            src={params.value.image}
+            alt="Team Logo"
+            height="auto"
+            width="40px"
+          />
+          {/* <Link href="#" variant="p" underline="none" color="inherit">
+            {params.value.team}
+          </Link> */}
+        </Box>
+      ),
+    },
+    { field: "scorer", headerName: "Scorer", width: 80 },
+    { field: "assister", headerName: "Assister", width: 80 },
+  ];
+
+  //   DATAGRID (TEMPORARY DATA) TODO: Map Scored Goals when seeds are ready (Future Development)
+  const rows = [
+    {
+      id: 1,
+      goal: { team: "Chi Town Tigers", image: "/images/chicago.png" },
+      scorer: "Bob",
+      assister: "Sally",
+      minute: "11",
+    },
+    {
+      id: 2,
+      goal: { team: "Galaxy Bees", image: "/images/la-galaxy.png" },
+      scorer: "TJ",
+      assister: "Aria",
+      minute: "37",
+    },
+    {
+      id: 3,
+      goal: { team: "Salmon", image: "/images/jacksonville.png" },
+      scorer: "Juanita",
+      assister: "Chris",
+      minute: "51",
+    },
+  ];
+
+  if ((loading, homeTeamLoading, awayTeamLoading)) {
+    return <Loading />;
+  }
+
   return (
     <>
       <CssBaseline />
       <Container disableGutters justify="center">
-
         {/* Outer container allows graphic images to be placed absolute. Also establishes padding. */}
         <Grid container sx={{ py: 8, px: 5 }}>
-
           {/* Creates container around two columns. Adds space between columns. */}
           <Grid container spacing={5}>
-
             {/* Left Column */}
             <Grid
               item
@@ -146,11 +238,9 @@ export default function Game() {
               lg={4}
               order={{ xs: 2, sm: 2, md: 1, lg: 1 }}
             >
-              {/* TEAM ROSTER */}
-
-              {/* Heading */}
+              {/* HOME TEAM ROSTER */}
               <Box>
-                <img src="images/la-galaxy.png" alt="Team Logo" width="50px" />
+                <img src={homeTeamPic} alt="logo" height="70px" width="auto" />
 
                 <Box
                   sx={{
@@ -162,7 +252,7 @@ export default function Game() {
                     mt: -1,
                   }}
                 >
-                  <Typography variant="h3">LA Galaxy</Typography>
+                  <Typography variant="h3">{homeTeam.teamName}</Typography>
 
                   {/* Add Player Button */}
                   {Auth.loggedIn() ? (
@@ -183,120 +273,38 @@ export default function Game() {
                   ) : (
                     <div></div>
                   )}
-
                 </Box>
               </Box>
 
-              {/* PLAYERS */}
+              {/* HOME TEAM PLAYERS */}
 
               <Grid container sx={{ display: "flex", flexDirection: "column" }}>
-                
-                {/* Player Details. TODO: Map over this section. (Future Development) */}
-                <Grid
-                  item
-                  sx={{ display: "flex", flexDirection: "row", mb: 3 }}
-                >
-                  <Box style={gameStyle.teamRosterHome}>
-                    <img
-                      src="/images/player-default-profile.png"
-                      alt="Player Profile Icon"
-                      width="30px"
-                      height="auto"
-                      style={{ padding: "10px 0 0 0" }}
-                    />
-                  </Box>
-
-                  <Box>
-                    <Typography variant="h3">#9</Typography>
-                    <Typography variant="h6">Raul Ruidaz</Typography>
-                  </Box>
-                </Grid>
-                {/* End Player Details Mapping. */}
-
-                {/* ----------------------------------------------------- */}
-                {/* Begin Temporary Data. Delete */}
-                <Grid
-                  item
-                  sx={{ display: "flex", flexDirection: "row", mb: 3 }}
-                >
-                  <Box style={gameStyle.teamRosterHome}>
-                    <img
-                      src="images/player-default-profile.png"
-                      alt="Player Profile Icon"
-                      width="30px"
-                      height="auto"
-                      style={{ padding: "10px 0 0 0" }}
-                    />
-                  </Box>
-
-                  <Box>
-                    <Typography variant="h3">#14</Typography>
-                    <Typography variant="h6">Chad Marshall</Typography>
-                  </Box>
-                </Grid>
-
-                <Grid
-                  item
-                  sx={{ display: "flex", flexDirection: "row", mb: 3 }}
-                >
-                  <Box style={gameStyle.teamRosterHome}>
-                    <img
-                      src="images/player-default-profile.png"
-                      alt="Player Profile Icon"
-                      width="30px"
-                      height="auto"
-                      style={{ padding: "10px 0 0 0" }}
-                    />
-                  </Box>
-
-                  <Box>
-                    <Typography variant="h3">#17</Typography>
-                    <Typography variant="h6">Tjeert Van't Land</Typography>
-                  </Box>
-                </Grid>
-
-                <Grid
-                  item
-                  sx={{ display: "flex", flexDirection: "row", mb: 3 }}
-                >
-                  <Box style={gameStyle.teamRosterHome}>
-                    <img
-                      src="images/player-default-profile.png"
-                      alt="Player Profile Icon"
-                      width="30px"
-                      height="auto"
-                      style={{ padding: "10px 0 0 0" }}
-                    />
-                  </Box>
-
-                  <Box>
-                    <Typography variant="h3">#25</Typography>
-                    <Typography variant="h6">Brian Schmetzer</Typography>
-                  </Box>
-                </Grid>
-
-                <Grid
-                  item
-                  sx={{ display: "flex", flexDirection: "row", mb: 3 }}
-                >
-                  <Box style={gameStyle.teamRosterHome}>
-                    <img
-                      src="images/player-default-profile.png"
-                      alt="Player Profile Icon"
-                      width="30px"
-                      height="auto"
-                      style={{ padding: "10px 0 0 0" }}
-                    />
-                  </Box>
-
-                  <Box>
-                    <Typography variant="h3">#10</Typography>
-                    <Typography variant="h6">Mickey Cave</Typography>
-                  </Box>
-                </Grid>
-
-                {/* End Temporary Data. Delete */}
-                {/* ----------------------------------------------------- */}
+                {/* Player Details*/}
+                {homeTeamPlayers.map((player) => {
+                  return (
+                    <Grid
+                      item
+                      sx={{ display: "flex", flexDirection: "row", mb: 3 }}
+                    >
+                      <Box style={gameStyle.teamRosterHome}>
+                        <Link underline="none" href={`/player/${player._id}`}>
+                          <AccountCircleIcon
+                            fontSize="large"
+                            sx={{ color: homeTeamColor }}
+                          ></AccountCircleIcon>
+                        </Link>
+                      </Box>
+                      <Box>
+                        <Typography variant="h3">
+                          {player.playerNumber}
+                        </Typography>
+                        <Typography variant="h6">
+                          {player.playerFirstName} {player.playerLastName}
+                        </Typography>
+                      </Box>
+                    </Grid>
+                  );
+                })}
               </Grid>
             </Grid>
 
@@ -321,11 +329,11 @@ export default function Game() {
                   <Button
                     variant="contained"
                     type="submit"
-                    sx={gameStyle.submitButton}
+                    sx={gameStyle.cardHeader}
                     fullWidth
                     disableElevation
                   >
-                    <Typography variant="h3">Submit Game</Typography>
+                    <Typography variant="h3">{game.gameDate}</Typography>
                   </Button>
 
                   <Box sx={{ p: 3 }}>
@@ -339,13 +347,13 @@ export default function Game() {
                       }}
                     >
                       <Typography fontSize={100} color="secondary.contrastText">
-                        3
+                        {game.goalsHome}
                       </Typography>
                       <Typography variant="h3" color="secondary.contrastText">
                         vs
                       </Typography>
                       <Typography fontSize={100} color="secondary.contrastText">
-                        2
+                        {game.goalsAway}
                       </Typography>
                     </Grid>
 
@@ -356,26 +364,44 @@ export default function Game() {
                         alignItems: "center",
                         gap: "15px",
                       }}
-                    >
-                      <Typography
-                        variant="p"
-                        color="secondary.contrastText"
-                        fontWeight={600}
-                        sx={{ mb: -1 }}
-                      >
-                        May 8, 2022
-                      </Typography>
-                      <Typography
-                        variant="p"
-                        color="secondary.contrastText"
-                        sx={{ mt: -1 }}
-                      >
-                        8:00PM
-                      </Typography>
-                    </Box>
+                    ></Box>
                   </Box>
                 </Paper>
               </Box>
+              {/* LEAGUE SEASONS TABLE */}
+              <Grid container spacing={{ xs: 4 }}>
+                <Box sx={{ width: "100%", mt: 8 }}>
+                  <div style={{ height: 400, width: "100%" }}>
+                    <DataGrid
+                      rows={rows}
+                      columns={columns}
+                      pageSize={5}
+                      rowsPerPageOptions={[5]}
+                      className={"customDataGrid"}
+                      sx={{
+                        "&.MuiDataGrid-root": {
+                          border: "none",
+                          fontFamily: "Helvetica, sans-serif",
+                          marginLeft: "30px",
+                        },
+                        "& .MuiDataGrid-iconSeparator": {
+                          display: "none",
+                        },
+                        "& .MuiDataGrid-columnHeaders": {
+                          fontFamily: '"Bebas Neue", Arial, sans-serif',
+                          fontSize: "1.25em",
+                          bgcolor: "secondary.main",
+                          color: "primary.contrastText",
+                        },
+                        "& .MuiDataGrid-cell": {
+                          border: "0",
+                        },
+                      }}
+                    />
+                  </div>
+                </Box>
+              </Grid>
+              {/* End League Seasons Table -------------*/}
             </Grid>
 
             {/* Right Column */}
@@ -391,7 +417,12 @@ export default function Game() {
 
               {/* Heading */}
               <Box>
-                <img src="images/chicago.png" alt="Team Logo" width="50px" />
+                <img
+                  src={awayTeamPic}
+                  alt="Team Logo"
+                  width="70px"
+                  height="auto"
+                />
 
                 <Box
                   sx={{
@@ -403,7 +434,7 @@ export default function Game() {
                     mt: -1,
                   }}
                 >
-                  <Typography variant="h3">Chicago Fire</Typography>
+                  <Typography variant="h3">{awayTeam.teamName}</Typography>
 
                   {/* Add Player Button */}
                   {Auth.loggedIn() ? (
@@ -427,116 +458,35 @@ export default function Game() {
                 </Box>
               </Box>
 
-              {/* PLAYERS */}
+              {/* AWAY TEAM PLAYERS */}
 
               <Grid container sx={{ display: "flex", flexDirection: "column" }}>
-                {/* Player Details. TODO: Map over this section. (Future Development) */}
-
-                <Grid
-                  item
-                  sx={{ display: "flex", flexDirection: "row", mb: 3 }}
-                >
-                  <Box style={gameStyle.teamRosterAway}>
-                    <img
-                      src="images/player-default-profile.png"
-                      alt="Player Profile Icon"
-                      width="30px"
-                      height="auto"
-                      style={{ padding: "10px 0 0 0" }}
-                    />
-                  </Box>
-
-                  <Box>
-                    <Typography variant="h3">#6</Typography>
-                    <Typography variant="h6">Mike Ivanow</Typography>
-                  </Box>
-                </Grid>
-                {/* End Player Details Mapping. */}
-
-                {/* ----------------------------------------------------- */}
-                {/* Begin Temporary Data. Delete */}
-                <Grid
-                  item
-                  sx={{ display: "flex", flexDirection: "row", mb: 3 }}
-                >
-                  <Box style={gameStyle.teamRosterAway}>
-                    <img
-                      src="images/player-default-profile.png"
-                      alt="Player Profile Icon"
-                      width="30px"
-                      height="auto"
-                      style={{ padding: "10px 0 0 0" }}
-                    />
-                  </Box>
-
-                  <Box>
-                    <Typography variant="h3">#4</Typography>
-                    <Typography variant="h6">Greg Makowski</Typography>
-                  </Box>
-                </Grid>
-
-                <Grid
-                  item
-                  sx={{ display: "flex", flexDirection: "row", mb: 3 }}
-                >
-                  <Box style={gameStyle.teamRosterAway}>
-                    <img
-                      src="images/player-default-profile.png"
-                      alt="Player Profile Icon"
-                      width="30px"
-                      height="auto"
-                      style={{ padding: "10px 0 0 0" }}
-                    />
-                  </Box>
-
-                  <Box>
-                    <Typography variant="h3">#2</Typography>
-                    <Typography variant="h6">Yeferson Soteldo</Typography>
-                  </Box>
-                </Grid>
-
-                <Grid
-                  item
-                  sx={{ display: "flex", flexDirection: "row", mb: 3 }}
-                >
-                  <Box style={gameStyle.teamRosterAway}>
-                    <img
-                      src="images/player-default-profile.png"
-                      alt="Player Profile Icon"
-                      width="30px"
-                      height="auto"
-                      style={{ padding: "10px 0 0 0" }}
-                    />
-                  </Box>
-
-                  <Box>
-                    <Typography variant="h3">#3</Typography>
-                    <Typography variant="h6">Andre-Pierre Gignac</Typography>
-                  </Box>
-                </Grid>
-
-                <Grid
-                  item
-                  sx={{ display: "flex", flexDirection: "row", mb: 3 }}
-                >
-                  <Box style={gameStyle.teamRosterAway}>
-                    <img
-                      src="images/player-default-profile.png"
-                      alt="Player Profile Icon"
-                      width="30px"
-                      height="auto"
-                      style={{ padding: "10px 0 0 0" }}
-                    />
-                  </Box>
-
-                  <Box>
-                    <Typography variant="h3">#41</Typography>
-                    <Typography variant="h6">Florian Thauvin</Typography>
-                  </Box>
-                </Grid>
-
-                {/* End Temporary Data. Delete */}
-                {/* ----------------------------------------------------- */}
+                {/* Player Details */}
+                {awayTeamPlayers.map((player) => {
+                  return (
+                    <Grid
+                      item
+                      sx={{ display: "flex", flexDirection: "row", mb: 3 }}
+                    >
+                      <Box style={gameStyle.teamRosterAway}>
+                        <Link underline="none" href={`/player/${player._id}`}>
+                          <AccountCircleIcon
+                            fontSize="large"
+                            sx={{ color: awayTeamColor }}
+                          ></AccountCircleIcon>
+                        </Link>
+                      </Box>
+                      <Box>
+                        <Typography variant="h3">
+                          {player.playerNumber}
+                        </Typography>
+                        <Typography variant="h6">
+                          {player.playerFirstName} {player.playerLastName}
+                        </Typography>
+                      </Box>
+                    </Grid>
+                  );
+                })}
               </Grid>
             </Grid>
 
@@ -550,13 +500,13 @@ export default function Game() {
             >
               <Box sx={gameStyle.addScoreModal}>
                 <Typography id="modal-modal-title" variant="h1" sx={{ mb: 4 }}>
-                  Add Score
+                  Add Goal
                 </Typography>
 
                 <form>
                   <FormControl fullWidth sx={{ gap: 4 }}>
                     <FormControl>
-                      <InputLabel id="select-player-goal">Home Team</InputLabel>
+                      <InputLabel id="select-player-goal">Scored by</InputLabel>
                       <Select
                         labelId="select-player-goal"
                         id="goal"
@@ -564,18 +514,17 @@ export default function Game() {
                         onChange={handleGoalChange}
                         label="Home Team"
                       >
-                        {teams.map((team) => (
-                          <MenuItem key={team} value={team}>
-                            {team}
+                        {allPlayers.map((player) => (
+                          <MenuItem key={player._id} value={player._id}>
+                            {player.playerFirstName} {player.playerLastName}
                           </MenuItem>
                         ))}
-
                       </Select>
                     </FormControl>
 
                     <FormControl>
                       <InputLabel id="select-player-assist">
-                        Away Team
+                        Assisted by
                       </InputLabel>
                       <Select
                         labelId="select-player-assist"
@@ -584,9 +533,9 @@ export default function Game() {
                         onChange={handleAssistChange}
                         label="Away Team"
                       >
-                        {teams.map((team) => (
-                          <MenuItem key={team} value={team}>
-                            {team}
+                        {allPlayers.map((player) => (
+                          <MenuItem key={player._id} value={player._id}>
+                            {player.playerFirstName} {player.playerLastName}
                           </MenuItem>
                         ))}
                       </Select>
@@ -609,7 +558,6 @@ export default function Game() {
                     >
                       <Typography variant="h3">Add Score</Typography>
                     </Button>
-                    
                   </FormControl>
                 </form>
               </Box>

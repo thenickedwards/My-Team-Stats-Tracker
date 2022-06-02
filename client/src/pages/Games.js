@@ -99,8 +99,8 @@ const columns = [
     headerName: "View Score",
     sortable: false,
     width: 250,
-    renderCell: () => (
-      <Link href="/game" variant="h3" underline="none">
+    renderCell: (params) => (
+      <Link href={`/game/${params.id}`} variant="h3" underline="none">
         View Game
       </Link>
     ),
@@ -141,11 +141,6 @@ export default function Games() {
   // Get All League data for modal
   const { data: leagueData } = useQuery(QUERY_LEAGUES);
   const leagues = leagueData?.allLeagues || [];
-
-  console.log(data);
-  console.log(leagueData);
-  console.log(teamData);
-  // console.log(leagues)
 
   // Functionality for Dropdown
   const [league, setLeague] = React.useState("");
@@ -276,7 +271,7 @@ export default function Games() {
 
           {/* End top Grid. ----------------------- */}
 
-          {/* LEAGUE SEASONS TABLE */}
+          {/* GAMES TABLE */}
           <Grid container spacing={{ xs: 4 }}>
             <Box sx={{ width: "100%", mt: 8 }}>
               <div style={{ height: 400, width: "100%" }}>
