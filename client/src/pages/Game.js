@@ -1,5 +1,9 @@
 import React from "react";
+import { QUERY_SOCCERGAME, QUERY_SOCCERTEAM } from "../utils/queries";
+import { useQuery } from "@apollo/client";
+import { useParams } from "react-router-dom";
 import Auth from "../utils/auth";
+import Loading from "../components/Abstract/Loading";
 
 // MUI Imports
 import {
@@ -19,19 +23,6 @@ import {
 } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import AddIcon from "@mui/icons-material/Add";
-
-
-// Team Options
-const teams = [
-  "Chi Town Tigers",
-  "Galaxy Bees",
-  "Salmon",
-  "Wolves",
-  "Hurricanes",
-  "Blizzard",
-  "Lightning",
-  "Thunder"
-];
 
 // Styles
 const gameStyle = {
@@ -90,8 +81,44 @@ const gameStyle = {
   },
 };
 
-
 export default function Game() {
+  //Get Game ID
+  const { soccerGameId } = useParams();
+
+  // Get Game Data
+  const { loading, data } = useQuery(QUERY_SOCCERGAME, {
+    variables: { soccerGameId },
+  });
+  const game = data?.soccerGame || {};
+  const homeTeamId = game.homeTeam;
+  const awayTeamId = game.awayTeam;
+
+  // Get Home Team Data
+  const { loading: homeTeamLoading, data: homeTeamData } = useQuery(
+    QUERY_SOCCERTEAM,
+    {
+      variables: { homeTeamId },
+    }
+  );
+  const homeTeam = homeTeamData?.soccerTeam || {};
+  const homeTeamPlayers = homeTeam.roster || [];
+  const homeTeamColor = homeTeam.teamColor;
+  const homeTeamPic = homeTeam.teamPic;
+
+  // Get Away Team Data
+  const { loading: awayTeamLoading, data: awayTeamData } = useQuery(
+    QUERY_SOCCERTEAM,
+    {
+      variables: { awayTeamId },
+    }
+  );
+  const awayTeam = awayTeamData?.soccerTeam || {};
+  const awayTeamPlayers = awayTeam.roster || [];
+  const awayTeamColor = awayTeam.teamColor;
+  const awayTeamPic = awayTeam.teamPic;
+
+  // Set variable for ALL PLAYERS for modal access
+  const allPlayers = homeTeamPlayers.concat(awayTeamPlayers);
 
   // Functionality for Add Score Modal
   const [open, setOpen] = React.useState(false);
@@ -126,17 +153,18 @@ export default function Game() {
     );
   };
 
+  if ((loading, homeTeamLoading, awayTeamLoading)) {
+    return <Loading />;
+  }
+
   return (
     <>
       <CssBaseline />
       <Container disableGutters justify="center">
-
         {/* Outer container allows graphic images to be placed absolute. Also establishes padding. */}
         <Grid container sx={{ py: 8, px: 5 }}>
-
           {/* Creates container around two columns. Adds space between columns. */}
           <Grid container spacing={5}>
-
             {/* Left Column */}
             <Grid
               item
@@ -183,14 +211,12 @@ export default function Game() {
                   ) : (
                     <div></div>
                   )}
-
                 </Box>
               </Box>
 
               {/* PLAYERS */}
 
               <Grid container sx={{ display: "flex", flexDirection: "column" }}>
-                
                 {/* Player Details. TODO: Map over this section. (Future Development) */}
                 <Grid
                   item
@@ -556,7 +582,7 @@ export default function Game() {
                 <form>
                   <FormControl fullWidth sx={{ gap: 4 }}>
                     <FormControl>
-                      <InputLabel id="select-player-goal">Home Team</InputLabel>
+                      <InputLabel id="select-player-goal">Scored by</InputLabel>
                       <Select
                         labelId="select-player-goal"
                         id="goal"
@@ -564,18 +590,17 @@ export default function Game() {
                         onChange={handleGoalChange}
                         label="Home Team"
                       >
-                        {teams.map((team) => (
-                          <MenuItem key={team} value={team}>
-                            {team}
+                        {allPlayers.map((player) => (
+                          <MenuItem key={player} value={player}>
+                            {player}
                           </MenuItem>
                         ))}
-
                       </Select>
                     </FormControl>
 
                     <FormControl>
                       <InputLabel id="select-player-assist">
-                        Away Team
+                        Assisted by
                       </InputLabel>
                       <Select
                         labelId="select-player-assist"
@@ -584,9 +609,9 @@ export default function Game() {
                         onChange={handleAssistChange}
                         label="Away Team"
                       >
-                        {teams.map((team) => (
-                          <MenuItem key={team} value={team}>
-                            {team}
+                        {allPlayers.map((player) => (
+                          <MenuItem key={player} value={player}>
+                            {player}
                           </MenuItem>
                         ))}
                       </Select>
@@ -609,7 +634,6 @@ export default function Game() {
                     >
                       <Typography variant="h3">Add Score</Typography>
                     </Button>
-                    
                   </FormControl>
                 </form>
               </Box>
