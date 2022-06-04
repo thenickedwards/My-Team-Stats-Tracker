@@ -190,6 +190,7 @@ export default function Game() {
     },
     { field: "scorer", headerName: "Scorer", width: 80 },
     { field: "assister", headerName: "Assister", width: 80 },
+    { field: "minute", headerName: "Minute", width: 80 },
   ];
 
   //   DATAGRID (TEMPORARY DATA) TODO: Map Scored Goals when seeds are ready (Future Development)
