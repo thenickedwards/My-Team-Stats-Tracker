@@ -13,13 +13,12 @@ import {
 } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 
-
 // Upcoming Games Table - Columns
 const columns = [
   {
     field: "homeTeam",
     headerName: "Home",
-    width: 250, 
+    width: 250,
     renderCell: (params) => (
       <Box
         sx={{
@@ -50,7 +49,7 @@ const columns = [
   {
     field: "awayTeam",
     headerName: "Away",
-    width: 250, 
+    width: 250,
     sortable: false,
     renderCell: (params) => (
       <Box
@@ -78,17 +77,14 @@ const columns = [
       </Box>
     ),
   },
-  { field: "gameDate", 
-    headerName: "Game Date", 
-    width: 250,  
-  },
+  { field: "gameDate", headerName: "Game Date", width: 250 },
   {
     field: "viewScore",
     headerName: "View Score",
     sortable: false,
-    width: 250, 
-    renderCell: () => (
-      <Link href="/game" variant="h3" underline="none">
+    width: 250,
+    renderCell: (params) => (
+      <Link href={`/game/${params.id}`} variant="h3" underline="none">
         View Game
       </Link>
     ),
@@ -127,9 +123,7 @@ const homeStyle = {
   },
 };
 
-
 const Home = () => {
-
   // Get All Soccer Games
   const { data } = useQuery(QUERY_SOCCERGAMES);
   const games = data?.allSoccerGames || [];
@@ -139,10 +133,8 @@ const Home = () => {
       <CssBaseline />
       <Container disableGutters justify="center">
         <Grid container sx={{ py: 8, px: 5 }}>
-          
           {/* Team Stats */}
           <Grid container spacing={{ xs: 4 }}>
-
             {games.map((game, index) => {
               if (index < 4) {
                 return (
@@ -185,7 +177,6 @@ const Home = () => {
                         </Box>
 
                         <Typography>{game.goalsAway}</Typography>
-
                       </Box>
                     </Paper>
                   </Grid>
@@ -195,7 +186,6 @@ const Home = () => {
 
             {/* Upcoming Games */}
             <Box sx={{ width: "100%", mt: 8 }}>
-
               <Typography variant="h1" sx={{ ml: 4, mb: 3 }}>
                 Upcoming Games
               </Typography>
@@ -239,7 +229,6 @@ const Home = () => {
                       border: "0",
                     },
                   }}
-                  
                 />
               </div>
             </Box>
