@@ -106,7 +106,7 @@ const Footer = () => {
           <List>
             <Link
               href="/"
-              passHref
+              passhref="true"
               sx={footerStyle.listText}
             >
               <ListItem button component="a" disableGutters>
@@ -116,7 +116,7 @@ const Footer = () => {
 
             <Link
               href="/login"
-              passHref
+              passhref="true"
               sx={footerStyle.listText}
             >
               <ListItem button component="a" disableGutters>
@@ -126,7 +126,7 @@ const Footer = () => {
 
             <Link
               href="/signup"
-              passHref
+              passhref="true"
               sx={footerStyle.listText}
             >
               <ListItem button component="a" disableGutters>
