@@ -3,6 +3,7 @@ import { useMutation } from "@apollo/client";
 import { ADD_LEAGUE } from "../../utils/mutations";
 import { QUERY_LEAGUES } from "../../utils/queries";
 
+
 // MUI Imports
 import {
   Button,
@@ -47,24 +48,29 @@ const leaguesStyle = {
 const AddLeague = ({ handleClose }) => {
 
   // Upload Image
-  const [ loading, setLoading ] = useState(false)
+  const [ imageLoading, setImageLoading ] = useState(false)
   const [ image, setImage ] = useState({
     leaguePic:""
   });
 
   const leaguePic = image;
 
+
+// Function to Upload Image
+//  *Could be created into a component
     const uploadImage = async e => {
 
     const files = e.target.files;
 
     const data = new FormData();
     data.append('file', files[0]);
-    // data.append('file', image);
+
     data.append("upload_preset", "zqaezwbg");
     data.append("cloud_name", "dv12r4xtz");
+    // data.append("upload_preset", process.env.CLOUD_PRESET);
+    // data.append("cloud_name", process.eng.CLOUD_NAME);
 
-    setLoading(true)
+    setImageLoading(true)
 
     const res = await fetch( "https://api.cloudinary.com/v1_1/dv12r4xtz/image/upload", {
       method: "POST", 
@@ -77,10 +83,10 @@ const AddLeague = ({ handleClose }) => {
    setImage(file.secure_url)
    console.log("File URL:", file.secure_url)
 
-   setLoading(false)
+   setImageLoading(false)
   
-
   }
+  // ----End Upload Image Function
 
 
   // Functionality to Adding League via Form

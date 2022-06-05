@@ -9,6 +9,7 @@ import {
   Typography,
   FormControl,
   TextField,
+  Input,
   // InputLabel,
   // Select,
   // MenuItem,
@@ -53,6 +54,48 @@ const teamStyle = {
 
 
 const AddPlayer = ({ handleClose }) => {
+
+// Upload Image
+const [ imageLoading, setImageLoading ] = useState(false);
+const [ image, setImage ] = useState({
+  playerPic: "",
+})
+
+const playerPic = image;
+
+// Function to Upload Image
+//  *Could be created into a component
+const uploadImage = async e => {
+
+  const files = e.target.files;
+
+  const data = new FormData();
+  data.append('file', files[0]);
+
+  data.append('upload_preset', 'zqaezwbg');
+  data.append('cloud_name', 'dv12r4xtz');
+
+  setImageLoading(true)
+
+  const res = await fetch("https://api.cloudinary.com/v1_1/dv12r4xtz/image/upload", {
+    method: 'POST',
+    body: data
+  })
+
+  const file = await res.json();
+  console.log('File:', file);
+
+  setImage(file.secure_url)
+  console.log('File URL:', file.secure_url)
+
+  setImageLoading(false)
+}
+ // ----End Upload Image Function
+
+
+
+
+
   const { teamId } = useParams();
   const { soccerTeamId } = useParams();
   const { loading, data } = useQuery(QUERY_SOCCERTEAMS);
@@ -64,13 +107,16 @@ const AddPlayer = ({ handleClose }) => {
   const [formState, setFormState] = useState({
     playerFirstName: "",
     playerLastName: "",
-    playerPic: "",
+    // playerPic: "",
     playerNumber: "",
     team: soccerTeamId,
   });
 
-  const { playerFirstName, playerLastName, playerPic, playerNumber, team } =
-    formState;
+  // const { playerFirstName, playerLastName, playerPic, playerNumber, team } =
+  //   formState;
+
+  const { playerFirstName, playerLastName, playerNumber, team } =
+  formState;
 
   const [addPlayer, { error }] = useMutation(ADD_SOCCERPLAYER, {
     refetchQueries: [QUERY_SOCCERTEAM],
@@ -89,9 +135,13 @@ const AddPlayer = ({ handleClose }) => {
     event.preventDefault();
     console.log(formState);
 
+    const playerDetails = {...formState, teamId, playerPic}
+    console.log("Player Details:", playerDetails)
+
     try {
       const { data } = await addPlayer({
-        variables: { roster: { ...formState, teamId } },
+        // variables: { roster: { ...formState, teamId } },
+        variables: { roster: playerDetails },
       });
       console.log(data);
 
@@ -100,10 +150,14 @@ const AddPlayer = ({ handleClose }) => {
       setFormState({
         playerFirstName: "",
         playerLastName: "",
-        playerPic: "",
+        // playerPic: "",
         playerNumber: "",
 
       });
+
+      setImage({
+        playerPic: "",
+      })
 
       handleClose();
     } catch (e) {
@@ -155,7 +209,7 @@ const AddPlayer = ({ handleClose }) => {
 
           {/* TODO: Add Upload Photo Field (Future Development) */}
 
-          <TextField
+          {/* <TextField
             id="playerPic"
             name="playerPic"
             label="Player Photo"
@@ -164,7 +218,23 @@ const AddPlayer = ({ handleClose }) => {
             value={playerPic}
             onChange={handleFormChange}
             InputLabelProps={{ shrink: true }}
+          /> */}
+
+          {/* IMAGE UPLOAD */}
+
+          <Input
+            id="playerPic"
+            name="playerPic"
+            label="Player Photo"
+            type="file"
+            acept="image/*"
+            variant="outlined"
+            color="secondary"
+            // value={playerPic}
+            onChange={uploadImage}
+            inputlabelprops={{ shrink: true }}
           />
+
 
         {/* Hidden field gets value from leagueId in URL */}
         <TextField

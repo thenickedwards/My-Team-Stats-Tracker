@@ -212,6 +212,8 @@ export default function Teams() {
                       alt="logo"
                       loading="lazy"
                       height={100}
+                      width={100}
+                      style={{objectFit:"contain"}}
                     />
                     <Typography
                       variant="p"
