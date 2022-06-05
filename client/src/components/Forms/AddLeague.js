@@ -3,6 +3,7 @@ import { useMutation } from "@apollo/client";
 import { ADD_LEAGUE } from "../../utils/mutations";
 import { QUERY_LEAGUES } from "../../utils/queries";
 
+
 // MUI Imports
 import {
   Button,
@@ -13,6 +14,7 @@ import {
   Select,
   MenuItem,
   OutlinedInput,
+  Input,
 } from "@mui/material";
 
 
@@ -45,19 +47,65 @@ const leaguesStyle = {
 
 const AddLeague = ({ handleClose }) => {
 
+  // Upload Image
+  const [ imageLoading, setImageLoading ] = useState(false)
+  const [ image, setImage ] = useState({
+    leaguePic:""
+  });
+
+  const leaguePic = image;
+
+
+// Function to Upload Image
+//  *Could be created into a component
+    const uploadImage = async e => {
+
+    const files = e.target.files;
+
+    const data = new FormData();
+    data.append('file', files[0]);
+
+    data.append("upload_preset", "zqaezwbg");
+    data.append("cloud_name", "dv12r4xtz");
+    // data.append("upload_preset", process.env.CLOUD_PRESET);
+    // data.append("cloud_name", process.eng.CLOUD_NAME);
+
+    setImageLoading(true)
+
+    const res = await fetch( "https://api.cloudinary.com/v1_1/dv12r4xtz/image/upload", {
+      method: "POST", 
+      body: data
+    })
+
+   const file = await res.json();
+   console.log("File:", file);
+   
+   setImage(file.secure_url)
+   console.log("File URL:", file.secure_url)
+
+   setImageLoading(false)
+  
+  }
+  // ----End Upload Image Function
+
+
   // Functionality to Adding League via Form
   const [formState, setFormState] = useState({
     leagueName: "",
     sport: "",
-    leaguePic: "",
+    // leaguePic: "",
+
   });
 
-  const { leagueName, sport, leaguePic } = formState;
+  // const { leagueName, sport, leaguePic } = formState;
+  const { leagueName, sport } = formState;
 
   const [addLeague, { error }] = useMutation(ADD_LEAGUE, {
     refetchQueries: [QUERY_LEAGUES],
   });
 
+
+// ----------------------------
   const handleFormChange = (event) => {
     const { name, value } = event.target;
 
@@ -67,27 +115,40 @@ const AddLeague = ({ handleClose }) => {
     });
   };
 
+
   const handleLeagueFormSubmit = async (event) => {
     event.preventDefault();
-    console.log(formState);
+
+    
+    const leagueDetails = {...formState, leaguePic}
+    console.log("League Details:", leagueDetails);
 
     try {
       const { data } = await addLeague({
-        variables: { league: { ...formState } },
+        // variables: { league: { ...formState } },
+        
+        variables: { league: leagueDetails },
       });
-      console.log("second", formState);
+      // console.log("formState", formState);
+      // console.log("League Details 2", leagueDetails);
 
       setFormState({
         leagueName: "",
         sport: "",
-        leaguePic: "",
+        // leaguePic: "",
       });
+
+      setImage({
+        leaguePic: "",
+      })
 
       handleClose();
     } catch (e) {
       console.error(e);
     }
   };
+
+
 
   return (
     <div>
@@ -102,7 +163,8 @@ const AddLeague = ({ handleClose }) => {
             color="secondary"
             value={leagueName}
             onChange={handleFormChange}
-            InputLabelProps={{ shrink: true }}
+            inputlabelprops={{ shrink: true }}
+            // InputLabelProps={{ shrink: true }}
           />
 
           <FormControl>
@@ -129,7 +191,7 @@ const AddLeague = ({ handleClose }) => {
             </Select>
           </FormControl>
 
-          <TextField
+          {/* <TextField
             id="leaguePic"
             name="leaguePic"
             label="League Picture"
@@ -139,16 +201,33 @@ const AddLeague = ({ handleClose }) => {
             value={leaguePic}
             onChange={handleFormChange}
             InputLabelProps={{ shrink: true }}
+          /> */}
+
+          {/* IMAGE UPLOAD */}
+          
+          <Input
+            id="leaguePic"
+            name="leaguePic"
+            label="League Picture"
+            type="file"
+            accept="image/*"
+            variant="outlined"
+            color="secondary"
+            // value={leaguePic}
+            onChange={uploadImage}
+            
+            inputlabelprops={{ shrink: true }}
+           
+            // InputLabelProps={{ shrink: true }}
           />
-
-          {/* TODO: Add Upload Photo Field (Future Development) */}
-
+          
           <Button
             variant="contained"
             type="submit"
             sx={leaguesStyle.formButton}
             fullWidth
             disableElevation
+            // onClick={uploadImage}
           >
             <Typography variant="h3">Add League</Typography>
           </Button>
@@ -158,6 +237,7 @@ const AddLeague = ({ handleClose }) => {
           {error && <div>{error.message}</div>}
         </Typography>
       </form>
+
     </div>
   );
 };

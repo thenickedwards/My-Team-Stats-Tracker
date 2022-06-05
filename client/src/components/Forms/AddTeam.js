@@ -12,6 +12,7 @@ import {
     Select,
     MenuItem,
     OutlinedInput,
+    Input
 } from '@mui/material';
 import { ADD_SOCCERTEAM } from '../../utils/mutations';
 import { QUERY_SEASONS, QUERY_SOCCERTEAMS } from '../../utils/queries';
@@ -43,6 +44,46 @@ const teamsStyle = {
 
 export default function AddTeam( {handleClose} ) {
 
+
+// Upload Image
+const [imageLoading, setImageLoading] = useState(false)
+const [image, setImage] = useState({
+  teamPic:""
+});
+
+const teamPic = image;
+
+// Function to Upload Image
+//  *Could be created into a component
+
+const uploadImage = async e => {
+
+  const files = e.target.files;
+
+  const data = new FormData();
+  data.append('file', files[0]);
+
+  data.append('upload_preset', 'zqaezwbg');
+  data.append('cloud_name', 'dv12r4xtz' );
+
+  setImageLoading(true)
+
+  const res = await fetch("https://api.cloudinary.com/v1_1/dv12r4xtz/image/upload", {
+    method: 'POST',
+    body: data
+  })
+
+  const file = await res.json();
+  console.log('File:', file);
+
+  setImage(file.secure_url)
+  console.log('File URL:', file.secure_url)
+
+  setImageLoading(false)
+}
+ // ----End Upload Image Function
+
+
     // Functionality for Select Team Dropdown
     const { loading, data } = useQuery(QUERY_SEASONS);
     const seasons = data?.allSeasons || [];
@@ -51,10 +92,11 @@ export default function AddTeam( {handleClose} ) {
     const [formState, setFormState] = useState({
             teamName: "",
             season: "",
-            teamPic: "",
+            // teamPic: "",
         });
 
-    const { teamName, season, teamPic } = formState;
+    // const { teamName, season, teamPic } = formState;
+    const { teamName, season } = formState;
 
     const [color, setColor] = useState(
         createColor("#000000"), 
@@ -87,7 +129,7 @@ export default function AddTeam( {handleClose} ) {
       const handleTeamFormSubmit = async (event) => {
         event.preventDefault();
 
-            const teamDetails = {...formState, teamColor}
+            const teamDetails = {...formState, teamColor, teamPic}
             console.log("Team Details", teamDetails)
     
         try {
@@ -98,8 +140,12 @@ export default function AddTeam( {handleClose} ) {
           setFormState({
             teamName: "",
             season: "",
-            teamPic: "",
+            // teamPic: "",
           });
+
+          setImage({
+            teamPic: "",
+          })
     
           setColor({
             teamColor: "",
@@ -156,7 +202,7 @@ export default function AddTeam( {handleClose} ) {
 
     {/* TODO: Add Upload Photo Field (Future Development) */}
 
-        <TextField 
+        {/* <TextField 
             id="teamPic" 
             name="teamPic"
             label="Team Photo" 
@@ -165,6 +211,21 @@ export default function AddTeam( {handleClose} ) {
             value={teamPic}
             onChange={handleFormChange}
             InputLabelProps={{ shrink: true }} 
+        /> */}
+
+        {/* IMAGE UPLOAD */}
+
+        <Input
+            id="teamPic" 
+            name="teamPic"
+            label="Team Photo" 
+            type="file"
+            accept="image/*"
+            variant="outlined" 
+            color="secondary"
+            // value={teamPic}
+            onChange={uploadImage}
+            inputlabelprops={{ shrink: true }} 
         />
 
         <ColorPicker
