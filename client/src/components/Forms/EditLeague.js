@@ -13,6 +13,7 @@ import {
   Select,
   MenuItem,
   OutlinedInput,
+  Input
 } from "@mui/material";
 
 
@@ -45,14 +46,56 @@ const leaguesStyle = {
 
 const EditLeague = ( {leagueId, handleCloseEdit} ) => {
 
+
+// Upload Image
+const [ imageLoading, setImageLoading ] = useState(false)
+const [ image, setImage ] = useState({
+  leaguePic:""
+});
+
+const leaguePic = image;
+
+// Function to Upload Image
+//  *Could be created into a component
+const uploadImage = async e => {
+
+  const files = e.target.files;
+
+  const data = new FormData();
+  data.append('file', files[0]);
+
+  data.append("upload_preset", "zqaezwbg");
+  data.append("cloud_name", "dv12r4xtz");
+  // data.append("upload_preset", process.env.CLOUD_PRESET);
+  // data.append("cloud_name", process.env.CLOUD_NAME);
+
+  setImageLoading(true)
+
+  const res = await fetch( "https://api.cloudinary.com/v1_1/dv12r4xtz/image/upload", {
+    method: "POST", 
+    body: data
+  })
+
+ const file = await res.json();
+ console.log("File:", file);
+ 
+ setImage(file.secure_url)
+ console.log("File URL:", file.secure_url)
+
+ setImageLoading(false)
+
+}
+
   // Functionality for Adding League via Form
   const [formState, setFormState] = useState({
+      // leagueName: "",
       leagueName: "",
       sport:"",
-      leaguePic:""
+      // leaguePic:""
   });
 
-  const { leagueName, sport, leaguePic } = formState;
+  // const { leagueName, sport, leaguePic } = formState;
+  const { leagueName, sport } = formState;
 
   const [updateLeague, { error }] = useMutation(UPDATE_LEAGUE, {
     refetchQueries: [ QUERY_LEAGUES ]
@@ -73,7 +116,7 @@ const EditLeague = ( {leagueId, handleCloseEdit} ) => {
     
     try {
       await updateLeague({
-        variables: { leagueId: leagueId, league: {...formState} },
+        variables: { leagueId: leagueId, league: {...formState, leaguePic} },
       });
 
       handleCloseEdit();
@@ -123,7 +166,7 @@ const EditLeague = ( {leagueId, handleCloseEdit} ) => {
             </Select>
           </FormControl>
 
-          <TextField
+          {/* <TextField
             id="leaguePic"
             name="leaguePic"
             label="League Picture"
@@ -133,7 +176,22 @@ const EditLeague = ( {leagueId, handleCloseEdit} ) => {
             value={leaguePic}
             onChange={handleFormChange}
             InputLabelProps={{ shrink: true }}
+          /> */}
+
+        <Input
+            id="leaguePic"
+            name="leaguePic"
+            label="League Picture"
+            type="file"
+            accept="image/*"
+            variant="outlined"
+            color="secondary"
+            // value={leaguePic}
+            // onChange={handleFormChange}
+            onChange={uploadImage}
+            inputlabelprops={{ shrink: true }}
           />
+
 
           {/* TODO: Add Upload Photo Field (Future Development) */}
 
