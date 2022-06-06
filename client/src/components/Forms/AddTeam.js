@@ -65,6 +65,8 @@ const uploadImage = async e => {
 
   data.append('upload_preset', 'zqaezwbg');
   data.append('cloud_name', 'dv12r4xtz' );
+// data.append("upload_preset", process.env.CLOUD_PRESET);
+// data.append("cloud_name", process.env.CLOUD_NAME);
 
   setImageLoading(true)
 
