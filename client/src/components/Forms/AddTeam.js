@@ -100,12 +100,17 @@ const uploadImage = async e => {
     // const { teamName, season, teamPic } = formState;
     const { teamName, season } = formState;
 
+    // const [color, setColor] = useState(
+    //     createColor("#062740"), 
+    //     {
+    //         teamColor: ""
+    //     }
+    // );
     const [color, setColor] = useState(
-        createColor("#000000"), 
-        {
-            teamColor: ""
-        }
-    );
+      createColor("#062740")
+  );
+ 
+
 
     const teamColor = color;
 
@@ -116,8 +121,12 @@ const uploadImage = async e => {
     const handleColorChange = (value) => {
         console.log("onChange=", value);
         console.log("new value", "#" + value.hex)
+        console.log("raw:", value.raw)
         setColor("#" + value.hex);
+        // setColor(value);
     }
+
+ 
 
     const handleFormChange = (event) => {
         const { name, value } = event.target;
@@ -234,8 +243,10 @@ const uploadImage = async e => {
             id="teamColor"
             name="teamColor"
             label="Team Color"
-            defaultValue="#000000"
-            value={teamColor}
+            format="hex"
+            defaultValue="#062740"
+            // value={teamColor}
+            value={color}
             onChange={handleColorChange}
          />
 
