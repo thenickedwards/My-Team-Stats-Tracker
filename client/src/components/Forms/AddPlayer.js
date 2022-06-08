@@ -57,9 +57,10 @@ const AddPlayer = ({ handleClose }) => {
 
 // Upload Image
 const [ imageLoading, setImageLoading ] = useState(false);
-const [ image, setImage ] = useState({
-  playerPic: "",
-})
+// const [ image, setImage ] = useState({
+//   playerPic: "",
+// })
+const [ image, setImage ] = useState("")
 
 const playerPic = image;
 
