@@ -182,8 +182,6 @@ export default function Team() {
     setValue(newValue);
   };
 
-
-
   if (loading || loadingTeam) {
     return <Loading />;
   }
@@ -220,7 +218,6 @@ export default function Team() {
       "aria-controls": `simple-tabpanel-${index}`,
     };
   }
-
 
   return (
     <>
@@ -464,7 +461,7 @@ export default function Team() {
                     aria-label="Add Player"
                     size="medium"
                     sx={{
-                      backgroundColor: currentTeamColor,
+                      backgroundColor: "secondary.accent",
                       borderRadius: 10,
                       "&:hover": {
                         backgroundColor: "primary.main",
@@ -495,25 +492,25 @@ export default function Team() {
                           underline="none"
                           href={`/player/${player._id}`}
                         >
-
-
-                    {player.playerPic ? (
-                        <img
-                        src={player.playerPic}
-                        alt="logo"
-                        loading="lazy"
-                        height={30}
-                        width={30}
-                        style={{objectFit:"contain", borderRadius:"100px"}}
-                      />
-                    ) : (
-                        <AccountCircleIcon
-                        fontSize="large"
-                        sx={{ color: currentTeamColor }}
-                        ></AccountCircleIcon>
-                    )
-                    }
-                        {/* <img
+                          {player.playerPic ? (
+                            <img
+                              src={player.playerPic}
+                              alt="logo"
+                              loading="lazy"
+                              height={30}
+                              width={30}
+                              style={{
+                                objectFit: "contain",
+                                borderRadius: "100px",
+                              }}
+                            />
+                          ) : (
+                            <AccountCircleIcon
+                              fontSize="large"
+                              sx={{ color: currentTeamColor }}
+                            ></AccountCircleIcon>
+                          )}
+                          {/* <img
                             src={player.playerPic}
                             alt="logo"
                             loading="lazy"
@@ -526,13 +523,6 @@ export default function Team() {
                             fontSize="large"
                             sx={{ color: currentTeamColor }}
                           ></AccountCircleIcon> */}
-
-
-
-
-
-
-
                         </Link>
                       </Box>
 

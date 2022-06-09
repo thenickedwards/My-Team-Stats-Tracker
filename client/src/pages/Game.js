@@ -91,14 +91,8 @@ export default function Game() {
     variables: { soccerGameId },
   });
   const game = data?.soccerGame || {};
-
-  console.log(game);
-
   const homeTeamId = game?.homeTeam?._id;
   const awayTeamId = game?.awayTeam?._id;
-
-  console.log(game?.homeTeam?._id);
-  console.log(homeTeamId);
 
   // Get Home Team Data
   const { loading: homeTeamLoading, data: homeTeamData } = useQuery(
@@ -126,7 +120,6 @@ export default function Game() {
 
   // Set variable for ALL PLAYERS for modal access
   const allPlayers = homeTeamPlayers.concat(awayTeamPlayers);
-  console.log(allPlayers);
 
   // Functionality for Add Score Modal
   const [open, setOpen] = React.useState(false);
