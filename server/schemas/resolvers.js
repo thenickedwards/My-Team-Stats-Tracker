@@ -7,6 +7,7 @@ const {
   SoccerTeam,
   SoccerPlayer,
   SoccerGame,
+  Goal
 } = require("../models");
 
 const resolvers = {
@@ -59,6 +60,13 @@ const resolvers = {
     },
     allSoccerGames: async () => {
       return SoccerGame.find().populate("homeTeam").populate("awayTeam");
+    },
+    // Goal queries
+    goal: async (parent, { goalId }) => {
+      return Goal.findOne({ _id: goalId });
+    },
+    allGoals: async () => {
+      return Goal.find().populate("scoringPlayer").populate("game");
     },
   },
 
