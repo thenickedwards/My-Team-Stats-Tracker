@@ -7,6 +7,7 @@ const {
   SoccerTeam,
   SoccerPlayer,
   SoccerGame,
+  Goal,
 } = require("../models");
 
 const userSeeds = require("./userSeeds.json");
@@ -15,67 +16,73 @@ const seasonSeeds = require("./seasonSeeds.json");
 const soccerTeamSeeds = require("./soccerTeamSeeds.json");
 const soccerPlayerSeeds = require("./soccerPlayerSeeds.json");
 const soccerGameSeeds = require("./soccerGameSeeds.json");
+const goalSeeds = require("./goalSeeds.json")
 
 db.once("open", async () => {
   try {
-    await User.deleteMany({});
+    // await User.deleteMany({});
 
-    await User.create(userSeeds);
+    // await User.create(userSeeds);
 
-    await League.deleteMany({});
+    // await League.deleteMany({});
 
-    await League.create(leagueSeeds);
+    // await League.create(leagueSeeds);
 
-    await Season.deleteMany({});
+    // await Season.deleteMany({});
 
-    for (let i = 0; i < seasonSeeds.length; i++) {
-      const newSeasonSeed = await Season.create(seasonSeeds[i]);
+    // for (let i = 0; i < seasonSeeds.length; i++) {
+    //   const newSeasonSeed = await Season.create(seasonSeeds[i]);
 
-      try {
-        await League.findOneAndUpdate(
-          { _id: seasonSeeds[i].league },
-          { $addToSet: { seasons: newSeasonSeed._id } }
-        );
-      } catch (err) {
-        console.log(err);
-      }
-    }
+    //   try {
+    //     await League.findOneAndUpdate(
+    //       { _id: seasonSeeds[i].league },
+    //       { $addToSet: { seasons: newSeasonSeed._id } }
+    //     );
+    //   } catch (err) {
+    //     console.log(err);
+    //   }
+    // }
 
-    await SoccerTeam.deleteMany({});
+    // await SoccerTeam.deleteMany({});
 
-    for (let i = 0; i < soccerTeamSeeds.length; i++) {
-      const newSoccerTeamSeed = await SoccerTeam.create(soccerTeamSeeds[i]);
+    // for (let i = 0; i < soccerTeamSeeds.length; i++) {
+    //   const newSoccerTeamSeed = await SoccerTeam.create(soccerTeamSeeds[i]);
 
-      try {
-        await Season.findOneAndUpdate(
-          { _id: soccerTeamSeeds[i].season },
-          { $addToSet: { seasons: newSoccerTeamSeed._id } }
-        );
-      } catch (err) {
-        console.log(err);
-      }
-    }
+    //   try {
+    //     await Season.findOneAndUpdate(
+    //       { _id: soccerTeamSeeds[i].season },
+    //       { $addToSet: { seasons: newSoccerTeamSeed._id } }
+    //     );
+    //   } catch (err) {
+    //     console.log(err);
+    //   }
+    // }
 
-    await SoccerPlayer.deleteMany({});
+    // await SoccerPlayer.deleteMany({});
 
-    for (let i = 0; i < soccerPlayerSeeds.length; i++) {
-      const newSoccerPlayerSeed = await SoccerPlayer.create(
-        soccerPlayerSeeds[i]
-      );
+    // for (let i = 0; i < soccerPlayerSeeds.length; i++) {
+    //   const newSoccerPlayerSeed = await SoccerPlayer.create(
+    //     soccerPlayerSeeds[i]
+    //   );
 
-      try {
-        await SoccerTeam.findOneAndUpdate(
-          { _id: soccerPlayerSeeds[i].team },
-          { $addToSet: { roster: newSoccerPlayerSeed._id } }
-        );
-      } catch (err) {
-        console.log(err);
-      }
-    }
+    //   try {
+    //     await SoccerTeam.findOneAndUpdate(
+    //       { _id: soccerPlayerSeeds[i].team },
+    //       { $addToSet: { roster: newSoccerPlayerSeed._id } }
+    //     );
+    //   } catch (err) {
+    //     console.log(err);
+    //   }
+    // }
 
-    await SoccerGame.deleteMany({});
+    // await SoccerGame.deleteMany({});
 
-    await SoccerGame.create(soccerGameSeeds);
+    // await SoccerGame.create(soccerGameSeeds);
+  
+    await Goal.deleteMany({});
+
+    await Goal.create(goalSeeds);
+  
   } catch (err) {
     console.error(err);
     process.exit(1);
