@@ -219,3 +219,35 @@ export const QUERY_SOCCERGAMES = gql`
     }
   }
 `;
+
+export const QUERY_GOAL = gql `
+  query goal($goalId: ID!) {
+    goal(goalId: $goalId) {
+      _id
+      scoringPlayer {
+        _id
+      }
+      game {
+        _id
+      }
+      minute
+    }
+  }
+`;
+
+export const QUERY_GOALS = gql `
+  query allGoals {
+    allGoals {
+      _id
+      scoringPlayer {
+        _id
+        playerFirstName
+        playerLastName
+      }
+      game {
+        _id
+      }
+      minute
+    }
+  }
+`;
