@@ -241,6 +241,8 @@ export const QUERY_GOALS = gql `
       _id
       scoringPlayer {
         _id
+        playerFirstName
+        playerLastName
       }
       game {
         _id
