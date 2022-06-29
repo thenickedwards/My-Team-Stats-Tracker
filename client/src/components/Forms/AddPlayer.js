@@ -17,7 +17,6 @@ import {
   Button,
 } from "@mui/material";
 
-
 // Add Seasons Modal Multiselect
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -52,50 +51,46 @@ const teamStyle = {
   },
 };
 
-
 const AddPlayer = ({ handleClose }) => {
+  // Upload Image
+  const [imageLoading, setImageLoading] = useState(false);
+  // const [ image, setImage ] = useState({
+  //   playerPic: "",
+  // })
+  const [image, setImage] = useState("");
 
-// Upload Image
-const [ imageLoading, setImageLoading ] = useState(false);
-// const [ image, setImage ] = useState({
-//   playerPic: "",
-// })
-const [ image, setImage ] = useState("")
+  const playerPic = image;
 
-const playerPic = image;
+  // Function to Upload Image
+  //  *Could be created into a component
+  const uploadImage = async (e) => {
+    const files = e.target.files;
 
-// Function to Upload Image
-//  *Could be created into a component
-const uploadImage = async e => {
+    const data = new FormData();
+    data.append("file", files[0]);
 
-  const files = e.target.files;
+    data.append("upload_preset", "zqaezwbg");
+    data.append("cloud_name", "dv12r4xtz");
 
-  const data = new FormData();
-  data.append('file', files[0]);
+    setImageLoading(true);
 
-  data.append('upload_preset', 'zqaezwbg');
-  data.append('cloud_name', 'dv12r4xtz');
+    const res = await fetch(
+      "https://api.cloudinary.com/v1_1/dv12r4xtz/image/upload",
+      {
+        method: "POST",
+        body: data,
+      }
+    );
 
-  setImageLoading(true)
+    const file = await res.json();
+    console.log("File:", file);
 
-  const res = await fetch("https://api.cloudinary.com/v1_1/dv12r4xtz/image/upload", {
-    method: 'POST',
-    body: data
-  })
+    setImage(file.secure_url);
+    console.log("File URL:", file.secure_url);
 
-  const file = await res.json();
-  console.log('File:', file);
-
-  setImage(file.secure_url)
-  console.log('File URL:', file.secure_url)
-
-  setImageLoading(false)
-}
- // ----End Upload Image Function
-
-
-
-
+    setImageLoading(false);
+  };
+  // ----End Upload Image Function
 
   const { teamId } = useParams();
   const { soccerTeamId } = useParams();
@@ -116,8 +111,7 @@ const uploadImage = async e => {
   // const { playerFirstName, playerLastName, playerPic, playerNumber, team } =
   //   formState;
 
-  const { playerFirstName, playerLastName, playerNumber, team } =
-  formState;
+  const { playerFirstName, playerLastName, playerNumber, team } = formState;
 
   const [addPlayer, { error }] = useMutation(ADD_SOCCERPLAYER, {
     refetchQueries: [QUERY_SOCCERTEAM],
@@ -136,8 +130,8 @@ const uploadImage = async e => {
     event.preventDefault();
     console.log(formState);
 
-    const playerDetails = {...formState, teamId, playerPic}
-    console.log("Player Details:", playerDetails)
+    const playerDetails = { ...formState, teamId, playerPic };
+    console.log("Player Details:", playerDetails);
 
     try {
       const { data } = await addPlayer({
@@ -153,12 +147,11 @@ const uploadImage = async e => {
         playerLastName: "",
         // playerPic: "",
         playerNumber: "",
-
       });
 
       setImage({
         playerPic: "",
-      })
+      });
 
       handleClose();
     } catch (e) {
@@ -169,7 +162,6 @@ const uploadImage = async e => {
   if (loading) {
     return <div>LOADING</div>;
   }
-
 
   return (
     <div>
@@ -236,9 +228,8 @@ const uploadImage = async e => {
             inputlabelprops={{ shrink: true }}
           />
 
-
-        {/* Hidden field gets value from leagueId in URL */}
-        <TextField
+          {/* Hidden field gets value from leagueId in URL */}
+          <TextField
             hiddenLabel
             type="hidden"
             labelId="team"
@@ -250,7 +241,7 @@ const uploadImage = async e => {
             InputProps={{
               disableUnderline: true,
             }}
-        />
+          />
 
           {/* <FormControl>
             <InputLabel id="team">Team</InputLabel>
@@ -290,7 +281,6 @@ const uploadImage = async e => {
             <Typography variant="p" color="secondary.contrastText">
               {error && <div>{error.message}</div>}
             </Typography>
-            
           </Button>
         </FormControl>
       </form>

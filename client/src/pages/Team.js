@@ -99,8 +99,8 @@ const columns = [
     headerName: "View Score",
     sortable: false,
     width: 200,
-    renderCell: () => (
-      <Link href="/game" variant="h3" underline="none">
+    renderCell: (params) => (
+      <Link href={`/game/${params.id}`} variant="h3" underline="none">
         View Game
       </Link>
     ),
