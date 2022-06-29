@@ -1,12 +1,12 @@
 const { Schema, model } = require("mongoose");
 
-const goalSchema = new Schema({
-  game: {
-    type: Schema.Types.ObjectId,
-    ref: "SoccerGame",
-  },
-  minute: Number,
-});
+// const goalSchema = new Schema({
+//   game: {
+//     type: Schema.Types.ObjectId,
+//     ref: "SoccerGame",
+//   },
+//   minute: Number,
+// });
 
 const assistSchema = new Schema({
   game: {
@@ -33,7 +33,12 @@ const soccerPlayerSchema = new Schema(
       trim: true,
     },
     playerNumber: Number,
-    goals: [goalSchema],
+    goals: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Goal",
+      },
+    ],
     assists: [assistSchema],
     team: {
       type: Schema.Types.ObjectId,

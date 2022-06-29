@@ -74,12 +74,14 @@ const typeDefs = gql`
 
   type Goal {
     _id: ID!
+    scoringPlayer: SoccerPlayer
     game: SoccerGame
     minute: Int
   }
 
   type Assist {
     _id: ID!
+    scoringPlayer: SoccerPlayer
     game: SoccerGame
     minute: Int
   }
@@ -138,6 +140,8 @@ const typeDefs = gql`
     allSoccerPlayers: [SoccerPlayer]
     soccerGame(soccerGameId: ID!): SoccerGame
     allSoccerGames: [SoccerGame]
+    goal(goalId: ID!): Goal
+    allGoals: [Goal]
   }
 
   type Mutation {
