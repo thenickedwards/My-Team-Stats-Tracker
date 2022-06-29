@@ -3,378 +3,301 @@
     "_id": "629abdb5fdd7512df5a78e4d",
     "playerFirstName": "Raul",
     "playerLastName": "Ruidiaz",
-    "playerNumber": "9",
-    "team": {
-      "_id": "626202fae2194997c7e76e86"
-    }
+    "playerNumber": 9,
+    "team": "626202fae2194997c7e76e86"
   },
   {
     "_id": "629abdb5fdd7512df5a78e50",
     "playerFirstName": "Chad",
     "playerLastName": "Marshall",
-    "playerNumber": "14",
-    "team": {
-      "_id": "626202fae2194997c7e76e86"
-    }
+    "playerNumber": 14,
+    "team": "626202fae2194997c7e76e86"
   },
   {
     "_id": "629abdb5fdd7512df5a78e53",
     "playerFirstName": "Tjeert",
     "playerLastName": "Van't Land",
-    "playerNumber": "17",
-    "team": {
-      "_id": "626202fae2194997c7e76e86"
-    }
+    "playerNumber": 17,
+    "team": "626202fae2194997c7e76e86"
   },
   {
     "_id": "629abdb5fdd7512df5a78e56",
     "playerFirstName": "Brian",
     "playerLastName": "Schmetzer",
-    "playerNumber": "25",
-    "team": {
-      "_id": "626202fae2194997c7e76e86"
-    }
+    "playerNumber": 25,
+    "team": "626202fae2194997c7e76e86"
   },
   {
     "_id": "629abdb5fdd7512df5a78e59",
     "playerFirstName": "Reine",
     "playerLastName": "Almqvist",
-    "playerNumber": "3",
-    "team": {
-      "_id": "626202fae2194997c7e76e86"
-    }
+    "playerNumber": 3,
+    "team": "626202fae2194997c7e76e86"
   },
   {
     "_id": "629abdb5fdd7512df5a78e5c",
     "playerFirstName": "Mickey",
     "playerLastName": "Cave",
-    "playerNumber": "10",
-    "team": {
-      "_id": "626202fae2194997c7e76e86"
-    }
+    "playerNumber": 10,
+    "team": "626202fae2194997c7e76e86"
   },
   {
     "_id": "629abdb5fdd7512df5a78e5f",
     "playerFirstName": "Mike",
     "playerLastName": "Ivanow",
-    "playerNumber": "6",
-    "team": {
-      "_id": "626202fae2194997c7e76e86"
-    }
+    "playerNumber": 6,
+    "team": "626202fae2194997c7e76e86"
   },
   {
     "_id": "629abdb5fdd7512df5a78e62",
     "playerFirstName": "Greg",
     "playerLastName": "Makowski",
-    "playerNumber": "4",
-    "team": {
-      "_id": "626202fae2194997c7e76e86"
-    }
+    "playerNumber": 4,
+    "team": "626202fae2194997c7e76e86"
   },
   {
     "_id": "629abdb5fdd7512df5a78e65",
     "playerFirstName": "Yeferson",
     "playerLastName": "Soteldo",
-    "playerNumber": "2",
-    "team": {
-      "_id": "626202fae2194997c7e76e89"
-    }
+    "playerNumber": 2,
+    "team": "626202fae2194997c7e76e89"
   },
   {
     "_id": "629abdb5fdd7512df5a78e68",
     "playerFirstName": "Andre-Pierre",
     "playerLastName": "Gignac",
-    "playerNumber": "3",
-    "team": {
-      "_id": "626202fae2194997c7e76e89"
-    }
+    "playerNumber": 3,
+    "team": "626202fae2194997c7e76e89"
   },
   {
     "_id": "629abdb5fdd7512df5a78e6b",
     "playerFirstName": "Florian",
     "playerLastName": "Thauvin",
-    "playerNumber": "41",
-    "team": {
-      "_id": "626202fae2194997c7e76e89"
-    }
+    "playerNumber": 41,
+    "team": "626202fae2194997c7e76e89"
   },
   {
     "_id": "629abdb5fdd7512df5a78e6e",
     "playerFirstName": "Igor",
     "playerLastName": "Lichnovsky",
-    "playerNumber": "5",
-    "team": {
-      "_id": "626202fae2194997c7e76e89"
-    }
+    "playerNumber": 5,
+    "team": "626202fae2194997c7e76e89"
   },
   {
     "_id": "629abdb5fdd7512df5a78e71",
     "playerFirstName": "Sebastian",
     "playerLastName": "Cordova",
-    "playerNumber": "7",
-    "team": {
-      "_id": "626202fae2194997c7e76e89"
-    }
+    "playerNumber": 7,
+    "team": "626202fae2194997c7e76e89"
   },
   {
     "_id": "629abdb5fdd7512df5a78e74",
     "playerFirstName": "David",
     "playerLastName": "Raya",
-    "playerNumber": "8",
-    "team": {
-      "_id": "626202fae2194997c7e76e8c"
-    }
+    "playerNumber": 8,
+    "team": "626202fae2194997c7e76e8c"
   },
   {
     "_id": "629abdb5fdd7512df5a78e77",
     "playerFirstName": "Matthew",
     "playerLastName": "Cox",
-    "playerNumber": "16",
-    "team": {
-      "_id": "626202fae2194997c7e76e8c"
-    }
+    "playerNumber": 16,
+    "team": "626202fae2194997c7e76e8c"
   },
   {
     "_id": "629abdb5fdd7512df5a78e7a",
     "playerFirstName": "Charlie",
     "playerLastName": "Goode",
-    "playerNumber": "11",
-    "team": {
-      "_id": "626202fae2194997c7e76e8c"
-    }
+    "playerNumber": 11,
+    "team": "626202fae2194997c7e76e8c"
   },
   {
     "_id": "629abdb5fdd7512df5a78e7d",
     "playerFirstName": "Luka",
     "playerLastName": "Racic",
-    "playerNumber": "19",
-    "team": {
-      "_id": "626202fae2194997c7e76e8c"
-    }
+    "playerNumber": 19,
+    "team": "626202fae2194997c7e76e8c"
   },
   {
     "_id": "629abdb5fdd7512df5a78e80",
     "playerFirstName": "Daniel",
     "playerLastName": "Oyegoke",
-    "playerNumber": "44",
-    "team": {
-      "_id": "626202fae2194997c7e76e8c"
-    }
+    "playerNumber": 44,
+    "team": "626202fae2194997c7e76e8c"
   },
   {
     "_id": "629abdb5fdd7512df5a78e83",
     "playerFirstName": "Chris",
     "playerLastName": "Bartels",
-    "playerNumber": "9",
-    "team": {
-      "_id": "626202fae2194997c7e76e8f"
-    }
+    "playerNumber": 9,
+    "team": "626202fae2194997c7e76e8f"
   },
   {
     "_id": "629abdb5fdd7512df5a78e86",
     "playerFirstName": "Ballan",
     "playerLastName": "Campeau",
-    "playerNumber": "11",
-    "team": {
-      "_id": "626202fae2194997c7e76e8f"
-    }
+    "playerNumber": 11,
+    "team": "626202fae2194997c7e76e8f"
   },
   {
     "_id": "629abdb5fdd7512df5a78e89",
     "playerFirstName": "Otey",
     "playerLastName": "Cannon",
-    "playerNumber": "12",
-    "team": {
-      "_id": "626202fae2194997c7e76e8f"
-    }
+    "playerNumber": 12,
+    "team": "626202fae2194997c7e76e8f"
   },
   {
     "_id": "629abdb5fdd7512df5a78e8c",
     "playerFirstName": "Cirilio Fernandez",
     "playerLastName": "Fernandez",
-    "playerNumber": "99",
-    "team": {
-      "_id": "626202fae2194997c7e76e8f"
-    }
+    "playerNumber": 99,
+    "team": "626202fae2194997c7e76e8f"
   },
   {
     "_id": "629abdb5fdd7512df5a78e8f",
     "playerFirstName": "Melissa",
     "playerLastName": "Dagenais",
-    "playerNumber": "8",
-    "team": {
-      "_id": "626202fae2194997c7e76e8f"
-    }
+    "playerNumber": 8,
+    "team": "626202fae2194997c7e76e8f"
   },
   {
     "_id": "629abdb5fdd7512df5a78e92",
     "playerFirstName": "Mia",
     "playerLastName": "Atrio",
-    "playerNumber": "1",
-    "team": {
-      "_id": "626202fae2194997c7e76e8f"
-    }
+    "playerNumber": 1,
+    "team": "626202fae2194997c7e76e8f"
   },
   {
     "_id": "629abdb5fdd7512df5a78e95",
     "playerFirstName": "Mikayla",
     "playerLastName": "Tupper",
-    "playerNumber": "3",
-    "team": {
-      "_id": "626202fae2194997c7e76e92"
-    }
+    "playerNumber": 3,
+    "team": "626202fae2194997c7e76e92"
   },
   {
     "_id": "629abdb5fdd7512df5a78e98",
     "playerFirstName": "Emma",
     "playerLastName": "Tucker",
-    "playerNumber": "5",
-    "team": {
-      "_id": "626202fae2194997c7e76e92"
-    }
+    "playerNumber": 5,
+    "team": "626202fae2194997c7e76e92"
   },
   {
     "_id": "629abdb5fdd7512df5a78e9b",
     "playerFirstName": "Johanna",
     "playerLastName": "Barth",
-    "playerNumber": "22",
-    "team": {
-      "_id": "626202fae2194997c7e76e92"
-    }
+    "playerNumber": 22,
+    "team": "626202fae2194997c7e76e92"
   },
   {
     "_id": "629abdb5fdd7512df5a78e9e",
     "playerFirstName": "Cece",
     "playerLastName": "Kizer",
-    "playerNumber": "7",
-    "team": {
-      "_id": "626202fae2194997c7e76e92"
-    }
+    "playerNumber": 7,
+    "team": "626202fae2194997c7e76e92"
   },
   {
     "_id": "629abdb5fdd7512df5a78ea1",
     "playerFirstName": "Savannah",
     "playerLastName": "DeMelo",
-    "playerNumber": "19",
-    "team": {
-      "_id": "626202fae2194997c7e76e92"
-    }
+    "playerNumber": 19,
+    "team": "626202fae2194997c7e76e92"
   },
   {
     "_id": "629abdb5fdd7512df5a78ea4",
     "playerFirstName": "Cheyna",
     "playerLastName": "Matthews",
-    "playerNumber": "18",
-    "team": {
-      "_id": "626202fae2194997c7e76e92"
-    }
+    "playerNumber": 18,
+    "team": "626202fae2194997c7e76e92"
   },
   {
     "_id": "629abdb5fdd7512df5a78ea7",
     "playerFirstName": "Ebony",
     "playerLastName": "Salmon",
-    "playerNumber": "9",
-    "team": {
-      "_id": "626202fae2194997c7e76e92"
-    }
+    "playerNumber": 9,
+    "team": "626202fae2194997c7e76e92"
   },
   {
     "_id": "629abdb5fdd7512df5a78eaa",
     "playerFirstName": "Freja",
     "playerLastName": "Olofsson",
-    "playerNumber": "35",
-    "team": {
-      "_id": "626202fae2194997c7e76e95"
-    }
+    "playerNumber": 35,
+    "team": "626202fae2194997c7e76e95"
   },
   {
     "_id": "629abdb5fdd7512df5a78ead",
     "playerFirstName": "Mila",
     "playerLastName": "Cardet",
-    "playerNumber": "22",
-    "team": {
-      "_id": "626202fae2194997c7e76e95"
-    }
+    "playerNumber": 22,
+    "team": "626202fae2194997c7e76e95"
   },
   {
     "_id": "629abdb5fdd7512df5a78eb0",
     "playerFirstName": "Teagin",
     "playerLastName": "Freiner",
-    "playerNumber": "7",
-    "team": {
-      "_id": "626202fae2194997c7e76e95"
-    }
+    "playerNumber": 7,
+    "team": "626202fae2194997c7e76e95"
   },
   {
     "_id": "629abdb5fdd7512df5a78eb3",
     "playerFirstName": "Ava",
     "playerLastName": "Winzeler",
-    "playerNumber": "23",
-    "team": {
-      "_id": "626202fae2194997c7e76e95"
-    }
+    "playerNumber": 23,
+    "team": "626202fae2194997c7e76e95"
   },
   {
     "_id": "629abdb5fdd7512df5a78eb6",
     "playerFirstName": "Samantha",
     "playerLastName": "Feather",
-    "playerNumber": "89",
-    "team": {
-      "_id": "626202fae2194997c7e76e98"
-    }
+    "playerNumber": 89,
+    "team": "626202fae2194997c7e76e98"
   },
   {
     "_id": "629abdb5fdd7512df5a78eb9",
     "playerFirstName": "Isla",
     "playerLastName": "Garber",
-    "playerNumber": "74",
-    "team": {
-      "_id": "626202fae2194997c7e76e98"
-    }
+
+    "playerNumber": 74,
+    "team": "626202fae2194997c7e76e98"
   },
   {
     "_id": "629abdb5fdd7512df5a78ebc",
     "playerFirstName": "Serena",
     "playerLastName": "Lewis",
-    "playerNumber": "9",
-    "team": {
-      "_id": "626202fae2194997c7e76e98"
-    }
+    "playerNumber": 9,
+    "team": "626202fae2194997c7e76e98"
+
   },
   {
     "_id": "629abdb5fdd7512df5a78ebf",
     "playerFirstName": "Reilly",
     "playerLastName": "Furr",
-    "playerNumber": "26",
-    "team": {
-      "_id": "626202fae2194997c7e76e98"
-    }
+    "playerNumber": 26,
+    "team": "626202fae2194997c7e76e98"
   },
   {
     "_id": "629abdb5fdd7512df5a78ec2",
     "playerFirstName": "India",
     "playerLastName": "Fortner",
-    "playerNumber": "19",
-    "team": {
-      "_id": "626202fae2194997c7e76e9b"
-    }
+
+    "playerNumber": 19,
+    "team": "626202fae2194997c7e76e9b"
   },
   {
     "_id": "629abdb5fdd7512df5a78ec5",
     "playerFirstName": "Aisling",
     "playerLastName": "Spillane",
-    "playerNumber": "9",
-    "team": {
-      "_id": "626202fae2194997c7e76e9b"
-    }
+
+    "playerNumber": 9,
+    "team": "626202fae2194997c7e76e9b"
+
   },
   {
     "_id": "629abdb5fdd7512df5a78ec8",
     "playerFirstName": "Lashanti",
     "playerLastName": "Williams",
-    "playerNumber": "10",
-    "team": {
-      "_id": "626202fae2194997c7e76e9b"
-    }
+
+    "playerNumber": 10,
+    "team": "626202fae2194997c7e76e9b"
+
   }
 ]
