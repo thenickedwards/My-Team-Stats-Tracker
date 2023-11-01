@@ -1,5 +1,7 @@
 # myTeam Stats
 
+_NOTE: The deployment of this project is currently down. I am currently in the process of researching deployment options and appreciate your patience in the meantime! I will continue to keep this code available, so feel free to have a look around and reach out if you have questions or would like to chat further._
+
 ## Description
 
 Welcome to the myTeam Stats sports stats tracker for youth leagues, adult recreation teams, and school sports! Whether you're a coach of a professional team looking to track the teams and players of a whole league, a player/manager corralling an adult rec team, a rec league admin building a season of teams, or an enthusiastic parent tracking their young athlete's progression through youth sports, myTeam Stats is the best way to manage anything from players on a team to multiple leagues running multiple seasons.
